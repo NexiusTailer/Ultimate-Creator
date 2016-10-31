@@ -1,4 +1,4 @@
-# Ultimate-Creator
+# [Ultimate-Creator](http://forum.sa-mp.com/showthread.php?t=620522)
 
 It is an advanced objects, vehicles, actors editor (full list below), which can work right in the game!  
 Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map-icons, Gang zones, 3D texts.
