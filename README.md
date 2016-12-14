@@ -7,7 +7,7 @@ Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map-icons, Gang zones,
 * **Editing from the game**  
   To do this, you need just connect the filterscript
 * **Mapping for several players**  
-  Ability to mapping for several people at the same time
+  Ability to mapping for several persons at the same time
 * **New editor from scratch**  
   Editor written entirely from scratch, 0.3e editor is not used
 * **Copying default objects**  
@@ -16,11 +16,11 @@ Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map-icons, Gang zones,
   You can change the textures and color of any created object
 
 ## How to use:
-1. To begin, you must have the RCon rights (optional).
+1. To begin, you must have an RCon rights (optional).
 2. Once you get them, type /edit command.
 3. Now you are in flymode - use the keys W, A, S, D to move, and move the mouse to look around.
 4. You can call the main menu by pressing the Enter key.
-5. Next, select items depending on what you want to do.
+5. Next, select items depending on what do you want to do.
 
 *Some keyboard shortcuts that will be useful:*
 
@@ -50,7 +50,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy the object/vehicle/actor...
 5. Open server.cfg file and add "creator" in line "filterscripts" after a space
 
 ## Related works:
-With these scripts, you can also extend the functionality and simplify the process of creating your works
+With these scripts you can also extend the functionality and simplify the process of creating your works
 
 [Cinematic Camera Mover](http://forum.sa-mp.com/showthread.php?t=329813)  
 [Zamaroht TextDraw Editor](http://forum.sa-mp.com/showthread.php?t=406833)  
