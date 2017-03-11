@@ -7,7 +7,7 @@ Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map-icons, Gang zones,
 * **Editing from the game**  
   To do this, you need just connect the filterscript
 * **Mapping for several players**  
-  Ability to mapping for several persons at the same time
+  Ability to mapping for several persons in the same time
 * **New editor from scratch**  
   Editor written entirely from scratch, 0.3e editor is not used
 * **Copying default objects**  
@@ -45,7 +45,9 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy the object/vehicle/actor...
 ## Installation:
 1. Download "creator.pwn" on the links below
 2. Copy this file to "filterscripts" folder
-3. Add the ColAndreas plugin (if you want to use all available functions)
+3. Add the ColAndreas plugin (if you want to use all available functions)  
+ 3.1. Also download "ColAndreasWizard.exe" from the ColAndreas repository and create a file named "ColAndreas.cadb"
+ 3.2. Create the folder "ColAndreas" in the "scriptfiles" folder and move here this created file
 4. Open "creator.pwn" and compile it
 5. Open server.cfg file and add "creator" in line "filterscripts" after a space
 
