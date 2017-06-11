@@ -57,8 +57,8 @@ With these scripts you can also extend the functionality and simplify the proces
 [Cinematic Camera Mover](http://forum.sa-mp.com/showthread.php?t=329813)  
 [Zamaroht TextDraw Editor](http://forum.sa-mp.com/showthread.php?t=406833)  
 [iPLEOMAX's TextDraw Editor](http://forum.sa-mp.com/showthread.php?t=376758)  
-[Map Mover 2.1](https://github.com/adri1-601/MAP-MOVER)  
-[Tube Connector 1.10](http://forum.sa-mp.com/showthread.php?t=578958)
+[Tube Connector 1.10](http://forum.sa-mp.com/showthread.php?t=578958)  
+[Map Mover 2.1](https://github.com/adri1-601/MAP-MOVER)
 
 ## Thanks:
 Batka1337, Vitalik_Gonsor, TheHero, Apec, Magic_York - help with testing  
