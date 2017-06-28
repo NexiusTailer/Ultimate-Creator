@@ -1,3 +1,5 @@
+[Download latest release (v1.3.2)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.3.2)
+
 # [Ultimate-Creator](http://forum.sa-mp.com/showthread.php?t=620522)
 
 It is an advanced objects, vehicles, actors editor (full list below), which can work right in the game!  
