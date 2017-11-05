@@ -7,7 +7,7 @@ Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map-icons, Gang zones,
 
 ## Features:
 * **Editing from the game**  
-  To do this, you need just connect the filterscript
+  To do this, you just need to connect the filterscript
 * **Mapping for several players**  
   Ability to mapping for several persons in the same time
 * **New editor from scratch**  
@@ -15,7 +15,7 @@ Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map-icons, Gang zones,
 * **Copying default objects**  
   You can copy default map objects by simply clicking on them
 * **Change textures**  
-  You can change the textures and color of any created object
+  You can change the textures and the color of any created object
 
 ## How to use:
 1. To begin, you must have an RCon rights (optional).
@@ -29,16 +29,16 @@ Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map-icons, Gang zones,
 ![http://vfl.ru/fotos/5cc8148314281759.html](http://images.vfl.ru/ii/1474982769/5cc81483/14281759_m.png)
 
 LAlt `(KEY_WALK)` - Slow moving/movement  
-LShift `(KEY_JUMP)` - Accelerate the moving/movement  
-LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` - Objects mapping in view of the rotate of the surface  
+LShift `(KEY_JUMP)` - Acceleration of moving/movement  
+LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` - Objects mapping in view of the surface rotate  
 LMB `(KEY_FIRE)` - Select the object/vehicle/actor...  
-* W, A, S, D - The movement of the selected object/vehicle/actor...  
-* LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` + W, A, S, D - Movement on the Z-axis of the selected object/vehicle/actor...  
+* W, A, S, D - Movement of the selected object/vehicle/actor...  
+* LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` + W, A, S, D - Movement along the Z-axis of the selected object/vehicle/actor...  
 * LCtrl `(KEY_FIRE)` + W, A, S, D - Changing the rotation angle of the selected object/vehicle/actor...  
-* LCtrl `(KEY_FIRE)` + LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` + W, A, S, D - Changing the rotation angle on the X-axis of the selected object/vehicle/actor...  
+* LCtrl `(KEY_FIRE)` + LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` + W, A, S, D - Changing the rotation angle along the X-axis of the selected object/vehicle/actor...  
 
 RMB `(KEY_HANDBRAKE)` - Moving object/vehicle/actor... by mouse  
-Space `(KEY_SPRINT)` - Remove select/movement of the object/vehicle/actor...  
+Space `(KEY_SPRINT)` - Remove selection/movement of the object/vehicle/actor...  
 C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy the object/vehicle/actor...  
 \ `(KEY_ACTION)` + LMB `(KEY_FIRE)` - Delete the object/vehicle/actor...  
 
@@ -54,7 +54,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy the object/vehicle/actor...
 5. Open server.cfg file and add "creator" in line "filterscripts" after a space
 
 ## Related works:
-With these scripts you can also extend the functionality and simplify the process of creating your works
+With these scripts you can also extend the functionality and simplify the process of creating your projects
 
 [Cinematic Camera Mover](http://forum.sa-mp.com/showthread.php?t=329813)  
 [Zamaroht TextDraw Editor](http://forum.sa-mp.com/showthread.php?t=406833)  
@@ -70,4 +70,4 @@ Special thanks to the huge number of authors whose ideas/developments have been 
 
 I will be glad to hear any ideas and suggestions.
 
-Enjoy your use! :)
+Enjoy using! :)
