@@ -1,4 +1,4 @@
-[Download latest release (v1.3.2)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.3.2)
+[Download latest release (v1.3.3)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.3.3)
 
 # [Ultimate-Creator](http://forum.sa-mp.com/showthread.php?t=620522)
 
