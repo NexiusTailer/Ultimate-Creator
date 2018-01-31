@@ -1,4 +1,4 @@
-[Download latest release (v1.3.3)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.3.3)
+[Download latest release (v1.3.4)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.3.4)
 
 # [Ultimate-Creator](http://forum.sa-mp.com/showthread.php?t=620522)
 
@@ -64,7 +64,7 @@ With these scripts you can also extend the functionality and simplify the proces
 [Hold Studio](http://forum.sa-mp.com/showthread.php?t=182317)
 
 ## Thanks:
-Batka1337, Vitalik_Gonsor, TheHero, Apec, Magic_York - help with testing  
+Batka1337, Vitalik_Gonsor, TheHero, Apec, Magic_York, f0Re3t - help with testing  
 Crayder - some help with ColAndreas
 
 Special thanks to the huge number of authors whose ideas/developments have been included in this script.
