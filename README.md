@@ -12,10 +12,16 @@ Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map-icons, Gang zones,
   Ability to mapping for several persons in the same time
 * **New editor from scratch**  
   Editor written entirely from scratch, 0.3e editor is not used
+* **Advanced vehicle (since v1.1.0) and actor (since v1.3.3) configuration**  
+  Ability to tune all created vehicles and set animations for any created actors
+* **Editing attached objects and 3D texts (since v1.2.0)**  
+  Ability to edit attached objects and 3D texts to vehicles, players and other objects
 * **Copying default objects**  
   You can copy default map objects by simply clicking on them
-* **Change textures**  
-  You can change the textures and the color of any created object
+* **Deleting default objects (since v1.3.0)**  
+  You can also delete default map objects by simply clicking on them
+* **Change textures and material text of objects**  
+  You can change textures, color and material text of any created object
 
 ## How to use:
 1. To begin, you must have an RCon rights (optional).
