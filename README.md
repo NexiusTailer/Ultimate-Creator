@@ -74,7 +74,7 @@ With these scripts you can also extend the functionality and simplify the proces
 ## Thanks:
 Batka1337, Vitalik_Gonsor, TheHero, Apec, Magic_York, f0Re3t - help with testing  
 Crayder - some help with ColAndreas  
-Vip_User - some advices
+Vip_Uzer - some advices
 
 Special thanks to the huge number of authors whose ideas/developments have been included in this script.
 
