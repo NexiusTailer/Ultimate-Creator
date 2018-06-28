@@ -60,6 +60,8 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
  3.2. Create the folder "ColAndreas" in the "scriptfiles" folder and move here this created file
 4. Open "creator.pwn" and compile it
 5. Open server.cfg file and add "creator" in line "filterscripts" after a space
+6. Keep it open and also add "ColAndreas" in line "plugins" after a space  
+ 6.1. If you are running the server on a hosting (linux), you should specify the plugin extension: "ColAndreas.so"
 
 ## Related works:
 With these scripts you can also extend the functionality and simplify the process of creating your projects
