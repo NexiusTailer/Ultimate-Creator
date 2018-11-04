@@ -1,4 +1,4 @@
-//Ultimate Creator by Nexius v1.3.8
+//Ultimate Creator by Nexius v1.3.9
 
 #define FILTERSCRIPT
 
@@ -41,7 +41,7 @@
 #define ONLY_FOR_ADMINS //Comment to disable
 //#define CREATOR_DEBUG
 
-#define CREATOR_VERSION				"1.3.8"
+#define CREATOR_VERSION				"1.3.9"
 
 #define DEFAULT_COLOR				-1
 
@@ -56,7 +56,7 @@
 #define MAX_TEXTURE_NAME_LENGTH		32
 #define MAX_VEHICLE_NAME_LENGTH		18
 #define MAX_ICON_NAME_LENGTH		22
-#define MAX_SKIN_MODEL_NAME_LENGTH	8
+#define MAX_SKIN_MODEL_NAME_LENGTH	40
 #define MAX_COMPONENT_NAME_LENGTH	44
 #define MAX_CAR_MOD_TYPES			14
 #define MAX_ITEMS_PER_PAGE			50
@@ -7361,49 +7361,62 @@ VehicleNames[][MAX_VEHICLE_NAME_LENGTH] =
 
 SkinModelNames[][MAX_SKIN_MODEL_NAME_LENGTH] =
 {
-	"cj", "truth", "maccer", "andre", "bbthin", "bb", "emmet", "male01",
-	"janitor", "bfori", "bfost", "vbfycrp", "bfyri", "bfyst", "bmori", "bmost",
-	"bmyap", "bmybu", "bmybe", "bmydj", "bmyri", "bmycr", "bmyst", "wmybmx",
-	"wbdyg1", "wbdyg2", "wmybp", "wmycon", "bmydrug", "wmydrug", "hmydrug",
-	"dwfolc", "dwmolc1", "dwmolc2", "dwmylc1", "hmogar", "wmygol1", "wmygol2",
-	"hfori", "hfost", "hfyri", "hfyst", "jethro", "hmori", "hmost", "hmybe",
-	"hmyri", "hmycr", "hmyst", "omokung", "wmymech", "bmymoun", "wmymoun",
-	"ofori", "ofost", "ofyri", "ofyst", "omori", "omost", "omyri", "omyst",
-	"wmyplt", "wmopj", "bfypro", "hfypro", "kendl", "bmypol1", "bmypol2",
-	"wmoprea", "sbfyst", "wmosci", "wmysgrd", "swmyhp1", "swmyhp2", "",
-	"swfopro", "wfystew", "swmotr1", "wmotr1", "bmotr1", "vbmybox", "vwmybox",
-	"vhmyelv", "vbmyelv", "vimyelv", "vwfypro", "ryder3", "vwfyst1", "wfori",
-	"wfost", "wfyjg", "wfyri", "wfyro", "wfyst", "wmori", "wmost", "wmyjg",
-	"wmylg", "wmyri", "wmyro", "wmycr", "wmyst", "ballas1", "ballas2",
-	"ballas3", "fam1", "fam2", "fam3", "lsv1", "lsv2", "lsv3", "maffa", "maffb",
-	"mafboss", "vla1", "vla2", "vla3", "triada", "triadb", "sindaco", "triboss",
-	"dnb1", "dnb2", "dnb3", "vmaff1", "vmaff2", "vmaff3", "vmaff4", "dnmylc",
-	"dnfolc1", "dnfolc2", "dnfylc", "dnmolc1", "dnmolc2", "sbmotr2", "swmotr2",
-	"sbmytr3", "swmotr3", "wfybe", "bfybe", "hfybe", "sofybu", "sbmyst",
-	"sbmycr", "bmycg", "wfycrk", "hmycm", "wmybu", "bfybu", "smokev", "wfybu",
-	"dwfylc1", "wfypro", "wmyconb", "wmybe", "wmypizz", "bmobar", "cwfyhb",
-	"cwmofr", "cwmohb1", "cwmohb2", "cwmyfr", "cwmyhb1", "bmyboun", "wmyboun",
-	"wmomib", "bmymib", "wmybell", "bmochil", "sofyri", "somyst", "vwmybjd",
-	"vwfycrp", "sfr1", "sfr2", "sfr3", "bmybar", "wmybar", "wfysex", "wmyammo",
-	"bmytatt", "vwmycr", "vbmocd", "vbmycr", "vhmycr", "sbmyri", "somyri",
-	"somybu", "swmyst", "wmyva", "copgrl3", "gungrl3", "mecgrl3", "nurgrl3",
-	"crogrl3", "gangrl3", "cwfofr", "cwfohb", "cwfyfr1", "cwfyfr2", "cwmyhb2",
-	"dwfylc2", "dwmylc2", "omykara", "wmykara", "wfyburg", "vwmycd", "vhfypro",
-	"suzie", "omonood", "omoboat", "wfyclot", "vwmotr1", "vwmotr2", "vwfywai",
-	"sbfori", "swfyri", "wmyclot", "sbfost", "sbfyri", "sbmocd", "sbmori",
-	"sbmost", "shmycr", "sofori", "sofost", "sofyst", "somobu", "somori",
-	"somost", "swmotr5", "swfori", "swfost", "swfyst", "swmocd", "swmori",
-	"swmost", "shfypro", "sbfypro", "swmotr4", "swmyri", "smyst", "smyst2",
-	"sfypro", "vbfyst2", "vbfypro", "vhfyst3", "bikera", "bikerb", "bmypimp",
-	"swmycr", "wfylg", "wmyva2", "bmosec", "bikdrug", "wmych", "sbfystr",
-	"swfystr", "heck1", "heck2", "bmycon", "wmycd1", "bmocd", "vwfywa2",
-	"wmoice", "tenpen", "pulaski", "hern", "dwayne", "smoke", "sweet", "ryder",
-	"forelli", "tbone", "laemt1", "lvemt1", "sfemt1", "lafd1", "lvfd1", "sffd1",
-	"lapd1", "sfpd1", "lvpd1", "csher", "lapdm1", "swat", "fbi", "army",
-	"dsher", "zero", "rose", "paul", "cesar", "ogloc", "wuzimu", "torino",
-	"jizzy", "maddogg", "cat", "claude", "lapdna", "sfpdna", "lvpdna", "lapdpc",
-	"lapdpd", "lvpdpc", "wfyclpd", "vbfycpd", "wfyclem", "wfycllv", "csherna",
-	"dsherna"
+	"Carl 'CJ' Johnson", "The Truth", "Maccer", "Andre", "Barry 'Big Bear' Thorne (Thin)",
+	"Barry 'Big Bear' Thorne (Big)", "Emmet", "Taxi/Train Driver", "Janitor", "Normal Ped", "Old Woman",
+	"Casino croupier", "Rich Woman", "Street Girl", "Normal Ped", "Mr.Whittaker (RS Haul Owner)",
+	"Airport Ground Worker", "Businessman", "Beach Visitor", "DJ", "Rich Guy (Madd Dogg's Manager)",
+	"Normal Ped", "Normal Ped", "BMXer", "Madd Dogg Bodyguard", "Madd Dogg Bodyguard", "Backpacker",
+	"Construction Worker", "Drug Dealer", "Drug Dealer", "Drug Dealer", "Farm-Town inhabitant",
+	"Farm-Town inhabitant", "Farm-Town inhabitant", "Farm-Town inhabitant", "Gardener", "Golfer",
+	"Golfer", "Normal Ped", "Normal Ped", "Normal Ped", "Normal Ped", "Jethro", "Normal Ped",
+	"Normal Ped", "Beach Visitor", "Normal Ped", "Normal Ped", "Normal Ped", "Snakehead (Da Nang)",
+	"Mechanic", "Mountain Biker", "Mountain Biker", "Unknown", "Normal Ped", "Normal Ped", "Normal Ped",
+	"Oriental Ped", "Oriental Ped", "Normal Ped", "Normal Ped", "Pilot", "Colonel Fuhrberger",
+	"Prostitute", "Prostitute", "Kendl Johnson", "Pool Player", "Pool Player", "Priest/Preacher",
+	"Normal Ped", "Scientist", "Security Guard", "Hippy", "Hippy", "", "Prostitute", "Stewardess",
+	"Homeless", "Homeless", "Homeless", "Boxer", "Boxer", "Black Elvis", "White Elvis", "Blue Elvis",
+	"Prostitute", "Ryder with robbery mask", "Stripper", "Normal Ped", "Normal Ped", "Jogger",
+	"Rich Woman", "Rollerskater", "Normal Ped", "Normal Ped", "Normal Ped, Dillimore Gas Station",
+	"Jogger", "Lifeguard", "Normal Ped", "Rollerskater", "Biker", "Normal Ped", "Balla", "Balla",
+	"Balla", "Grove Street Families", "Grove Street Families", "Grove Street Families", "Los Santos Vagos",
+	"Los Santos Vagos", "Los Santos Vagos", "The Russian Mafia", "The Russian Mafia", "The Russian Mafia",
+	"Varios Los Aztecas", "Varios Los Aztecas", "Varios Los Aztecas", "Triad", "Triad", "Johhny Sindacco",
+	"Triad Boss", "Da Nang Boy", "Da Nang Boy", "Da Nang Boy", "The Mafia", "The Mafia", "The Mafia",
+	"The Mafia", "Farm Inhabitant", "Farm Inhabitant", "Farm Inhabitant", "Farm Inhabitant",
+	"Farm Inhabitant", "Farm Inhabitant", "Homeless", "Homeless", "Normal Ped", "Homeless",
+	"Beach Visitor", "Beach Visitor", "Beach Visitor", "Businesswoman", "Taxi Driver", "Crack Maker",
+	"Crack Maker", "Crack Maker", "Crack Maker", "Businessman", "Businesswoman", "Big Smoke armored",
+	"Businesswoman", "Normal Ped", "Prostitute", "Construction Worker", "Beach Visitor",
+	"Well Stacked Pizza Worker", "Barber", "Hillbilly", "Farmer", "Hillbilly", "Hillbilly", "Farmer",
+	"Hillbilly", "Black Bouncer", "White Bouncer", "White MIB agent", "Black MIB agent",
+	"Cluckin' Bell Worker", "Hotdog/Chilli Dog Vendor", "Normal Ped", "Normal Ped", "Blackjack Dealer",
+	"Casino croupier", "San Fierro Rifa", "San Fierro Rifa", "San Fierro Rifa", "Barber", "Barber",
+	"Whore", "Ammunation Salesman", "Tattoo Artist", "Punk", "Cab Driver", "Normal Ped", "Normal Ped",
+	"Normal Ped", "Normal Ped", "Businessman", "Normal Ped", "Valet", "Barbara Schternvart",
+	"Helena Wankstein", "Michelle Cannes", "Katie Zhan", "Millie Perkins", "Denise Robinson",
+	"Farm-Town inhabitant", "Hillbilly", "Farm-Town inhabitant", "Farm-Town inhabitant", "Hillbilly",
+	"Farmer", "Farmer", "Karate Teacher", "Karate Teacher", "Burger Shot Cashier", "Cab Driver",
+	"Prostitute", "Su Xi Mu (Suzie)", "Noodle stand vendor", "Boating School Instructor",
+	"Clothes shop staff", "Homeless", "Weird old man", "Waitress (Maria Latore)", "Normal Ped",
+	"Normal Ped", "Clothes shop staff", "Normal Ped", "Rich Woman", "Cab Driver", "Normal Ped",
+	"Normal Ped", "Normal Ped", "Normal Ped", "Normal Ped", "Normal Ped", "Oriental Businessman",
+	"Oriental Ped", "Oriental Ped", "Homeless", "Normal Ped", "Normal Ped", "Normal Ped", "Cab Driver",
+	"Normal Ped", "Normal Ped", "Prostitute", "Prostitute", "Homeless", "The D.A", "Afro-American",
+	"Mexican", "Prostitute", "Stripper", "Prostitute", "Stripper", "Biker", "Biker", "Pimp", "Normal Ped",
+	"Lifeguard", "Naked Valet", "Bus Driver", "Biker Drug Dealer", "Chauffeur (Limo Driver)", "Stripper",
+	"Stripper", "Heckler", "Heckler", "Construction Worker", "Cab driver", "Cab driver", "Normal Ped",
+	"Clown (Ice-cream Van Driver)", "Frank Tenpenny (Corrupt Cop)", "Eddie Pulaski (Corrupt Cop)",
+	"Jimmy Hernandez", "Dwaine/Dwayne", "Melvin 'Big Smoke' Harris (Mission)", "Sean 'Sweet' Johnson",
+	"Lance 'Ryder' Wilson", "Mafia Boss", "T-Bone Mendez", "Paramedic", "Paramedic", "Paramedic",
+	"Firefighter", "Firefighter", "Firefighter", "LS Police Officer", "SF Police Officer",
+	"LV Police Officer", "County Sheriff", "LSPD Motorbike Cop", "S.W.A.T Special Forces", "Federal Agent",
+	"SA Army", "Desert Sheriff", "Zero", "Ken Rosenberg", "Kent Paul", "Cesar Vialpando",
+	"Jeffery 'OG Loc' Martin/Cross", "Wu Zi Mu (Woozie)", "Michael Toreno", "Jizzy B.", "Madd Dogg",
+	"Catalina", "Claude Speed", "LS Police Officer (Without gun holster)",
+	"SF Police Officer (Without gun holster)", "LV Police Officer (Without gun holster)",
+	"LS Police Officer (Without uniform)", "LS Police Officer (Without uniform)",
+	"LV Police Officer (Without uniform)", "LS Police Officer", "SF Police Officer",
+	"SF Paramedic", "LV Police Officer", "Country Sheriff (Without hat)", "Desert Sheriff (Without hat)"
 },
 
 ComponentNames[][MAX_COMPONENT_NAME_LENGTH] =
@@ -10060,14 +10073,15 @@ public OnFilterScriptInit()
 	#if defined COLANDREAS || defined COLANDREAS_VERSION
 		CA_Init();
 	#endif
-	AimPoint = TextDrawCreate(318.0, 211.5, ".");
+	AimPoint = TextDrawCreate(320.5, 211.5, ".");
 	TextDrawBackgroundColor(AimPoint, 255);
 	TextDrawFont(AimPoint, 1);
 	TextDrawLetterSize(AimPoint, 0.5, 1.8);
 	TextDrawColor(AimPoint, -1);
 	TextDrawSetOutline(AimPoint, 0);
+	TextDrawAlignment(AimPoint, 2);
 	TextDrawSetProportional(AimPoint, 1);
-	TextDrawSetShadow(AimPoint, 0);
+	TextDrawSetShadow(AimPoint, 1);
 	for(new i = sizeof(ObjectsInfo) - 1; i >= 1; --i)
 	{
 		ObjectsInfo[i][oAttachedPlayerID] = INVALID_PLAYER_ID;
@@ -10089,7 +10103,7 @@ public OnFilterScriptInit()
 		PlayerTextDrawSetProportional(i, CreatorInfo[i][ucHoldInfo], 1);
 		PlayerTextDrawSetOutline(i, CreatorInfo[i][ucHoldInfo], 0);
 		PlayerTextDrawAlignment(i, CreatorInfo[i][ucHoldInfo], 2);
-		PlayerTextDrawSetShadow(i, CreatorInfo[i][ucHoldInfo], 0);
+		PlayerTextDrawSetShadow(i, CreatorInfo[i][ucHoldInfo], 1);
 		PlayerTextDrawColor(i, CreatorInfo[i][ucHoldInfo], -1);
 		PlayerTextDrawFont(i, CreatorInfo[i][ucHoldInfo], 1);
 		CreatorInfo[i][ucSelectedObj] = INVALID_OBJECT_ID;
@@ -10170,7 +10184,7 @@ public OnPlayerConnect(playerid)
 	PlayerTextDrawSetProportional(playerid, CreatorInfo[playerid][ucHoldInfo], 1);
 	PlayerTextDrawSetOutline(playerid, CreatorInfo[playerid][ucHoldInfo], 0);
 	PlayerTextDrawAlignment(playerid, CreatorInfo[playerid][ucHoldInfo], 2);
-	PlayerTextDrawSetShadow(playerid, CreatorInfo[playerid][ucHoldInfo], 0);
+	PlayerTextDrawSetShadow(playerid, CreatorInfo[playerid][ucHoldInfo], 1);
 	PlayerTextDrawColor(playerid, CreatorInfo[playerid][ucHoldInfo], -1);
 	PlayerTextDrawFont(playerid, CreatorInfo[playerid][ucHoldInfo], 1);
 	for(new i = sizeof(RemoveInfo) - 1; i >= 0; --i)
@@ -17454,7 +17468,7 @@ public OnVehicleSpawn(vehicleid)
 	return 1;
 }
 
-fpublic cmd_edit(playerid, params[])
+fpublic cmd_edit(playerid, const params[])
 {
 	#if defined ONLY_FOR_ADMINS
 		if(!IsPlayerAdmin(playerid)) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_RCON_ADMIN_ERROR);

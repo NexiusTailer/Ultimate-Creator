@@ -1,8 +1,8 @@
-[Download latest release (v1.3.8)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.3.8)
+[Download latest release (v1.3.9)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.3.9)
 
 # [Ultimate-Creator](http://forum.sa-mp.com/showthread.php?t=620522)
 
-It is an advanced objects, vehicles, actors editor (full list below), which can work right in the game!  
+It is an advanced object, vehicle, actor editor (full list below), which can work right in the game!  
 Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map-icons, Gang zones, 3D texts.
 
 ## Features:
