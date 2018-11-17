@@ -27,7 +27,7 @@ Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map-icons, Gang zones,
 1. To begin, you must have an RCon rights (optional).
 2. Once you get them, type /edit command.
 3. Now you are in flymode - use the keys W, A, S, D to move, and move the mouse to look around.
-4. You can call the main menu by pressing the Enter key.
+4. You can open the main menu by pressing the Enter key.
 5. Next, select items depending on what do you want to do.
 
 *Some keyboard shortcuts that will be useful:*
@@ -59,12 +59,12 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
  3.1. Also download "ColAndreasWizard.exe" from the ColAndreas repository and create a file named "ColAndreas.cadb"
  3.2. Create the folder "ColAndreas" in the "scriptfiles" folder and move here this created file
 4. Open "creator.pwn" and compile it
-5. Open server.cfg file and add "creator" in line "filterscripts" after a space
-6. Keep it open and also add "ColAndreas" in line "plugins" after a space  
- 6.1. If you are running the server on a hosting (linux), you should specify the plugin extension: "ColAndreas.so"
+5. Open server.cfg file and add "creator" in the "filterscripts" line after a space
+6. Keep it open and also add "ColAndreas" in the "plugins" line after a space  
+ 6.1. If you run the server on a hosting (linux), you should specify the plugin extension: "ColAndreas.so"
 
 ## Related works:
-With these scripts you can also extend the functionality and simplify the process of creating your projects
+Using these scripts you can also extend the functionality and simplify the process of creating your projects
 
 [Cinematic Camera Mover](http://forum.sa-mp.com/showthread.php?t=329813)  
 [Gammix's Textdraw Editor](http://forum.sa-mp.com/showthread.php?t=642981)  
@@ -78,7 +78,7 @@ Batka1337, Vitalik_Gonsor, TheHero, Apec, Magic_York, f0Re3t - help with testing
 Crayder - some help with ColAndreas  
 Vip_Uzer - some advices
 
-Special thanks to the huge number of authors whose ideas/developments have been included in this script.
+Special thanks to the huge number of authors whose ideas/developments were included in this script.
 
 I will be glad to hear any ideas and suggestions.
 
