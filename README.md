@@ -1,9 +1,9 @@
-[Download latest release (v1.3.9)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.3.9)
+[Download latest release (v1.4.0)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.4.0)
 
 # [Ultimate-Creator](http://forum.sa-mp.com/showthread.php?t=620522)
 
 It is an advanced object, vehicle, actor editor (full list below), which can work right in the game!  
-Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map-icons, Gang zones, 3D texts.
+Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map icons, Gangzones, 3D texts.
 
 ## Features:
 * **Editing from the game**  
@@ -26,7 +26,7 @@ Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map-icons, Gang zones,
 ## How to use:
 1. To begin, you must have an RCon rights (optional).
 2. Once you get them, type /edit command.
-3. Now you are in flymode - use the keys W, A, S, D to move, and move the mouse to look around.
+3. Now you are in flymode: use the keys W, A, S, D to move, and move the mouse to look around.
 4. You can open the main menu by pressing the Enter key.
 5. Next, select items depending on what do you want to do.
 
@@ -49,6 +49,170 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 * LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` + C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an attached object/3D text  
 
 \ `(KEY_ACTION)` + LMB `(KEY_FIRE)` - Delete an object/vehicle/actor...  
+
+## Available commands:
+**Map management:**  
+`/newmap` - create a new map  
+`/loadmap` - load an existing map  
+`/savemap` - save the current map  
+`/delmap` - delete map
+
+**Objects:**  
+`/newobj` - create an object  
+`/delobj` - delete the selected object  
+`/cobj` - copy the selected object  
+`/selobj` *[object ID]* - select an object by ID  
+`/gotoobj` - teleport to the selected object  
+`/getobj` - teleport the selected object to yourself  
+`/objtext` - text editor on the selected object  
+`/oplattach` *[player ID]* - attach the selected object to player  
+`/oobjattach` *[object ID]* - attach the selected object to object  
+`/ovehattach` *[vehicle ID]* - attach the selected object to vehicle  
+`/objx` - `/objy` - `/objz` - set position of the selected object  
+`/objrx` - `/objry` - `/objrz` - set rotation angles of the selected object
+
+**Textures:**  
+`/txdset` *[layer ID]* *[texture ID]* - set material of the selected object  
+`/txdreset` *[layer ID]* - reset material of the selected object  
+`/txdcolor` *[layer ID]* *[hex code]* - set color of the selected object  
+`/txdcreset` *[layer ID]* - reset color of the selected object
+
+**Vehicles:**  
+`/newveh` - create a vehicle  
+`/delveh` - delete the selected vehicle  
+`/cveh` - copy the selected vehicle  
+`/selveh` *[vehicle ID]* - select a vehicle by ID  
+`/gotoveh` - teleport to the selected vehicle  
+`/getveh` - teleport the selected vehicle to yourself  
+`/vehrepair` - repair the selected vehicle  
+`/vehx` - /vehy - /vehz - set position of the selected vehicle  
+`/vehrz` - set rotation angle of the selected vehicle  
+`/vehrtime` - set respawn time of the selected vehicle  
+`/vehcolor` - set colors of the selected vehicle
+
+**Tuning:**  
+`/compadd` - add component on the selected vehicle  
+`/complist` - viewing and deleting components on the selected vehicle  
+`/compremoveall` - remove all components from the selected vehicle  
+`/paintjob` - set paintjob (for certain vehicles)  
+`/pjobremove` - remove paintjob from the selected vehicle
+
+**Actors:**  
+`/newact` - create an actor  
+`/delact` - delete the selected actor  
+`/cact` - copy the selected actor  
+`/selact` *[actor ID]* - select an actor by ID  
+`/gotoact` - teleport to the selected actor  
+`/getact` - teleport the selected actor to yourself  
+`/actanim` - set animation to the selected actor  
+`/actclear` - reset the animation to the selected actor  
+`/actx` - `/acty` - `/actz` - set position of the selected actor  
+`/actrz` - set rotation angle of the selected actor
+
+**Pickups:**  
+`/newpick` - create a pickup  
+`/delpick` - delete the selected pickup  
+`/cpick` - copy the selected pickup  
+`/selpick` *[pickup ID]* - select a pickup by ID  
+`/gotopick` - teleport to the selected pickup  
+`/getpick` - teleport the selected pickup to yourself  
+`/picktype` - set type of the selected pickup  
+`/pickx` - /picky - /pickz - set position of the selected pickup  
+`/pickvw` - set virtual world of the selected pickup
+
+**Checkpoints:**  
+`/newcp` - create a checkpoint  
+`/delcp` - delete the checkpoint  
+`/selcp` - select the checkpoint  
+`/gotocp` - teleport to the checkpoint  
+`/getcp` - teleport the checkpoint to yourself  
+`/cpx` - `/cpy` - set position of the checkpoint  
+`/cpsize` - set size of the checkpoint
+
+**Race checkpoints:**  
+`/newrcp` - create a race checkpoint  
+`/delrcp` - delete the race checkpoint  
+`/selrcp` - select the race checkpoint  
+`/gotorcp` - teleport to the race checkpoint  
+`/getrcp` - teleport the race checkpoint to yourself  
+`/rcptype` - set type of the race checkpoint  
+`/rcpx` - `/rcpy` - `/rcpz` - set position of the race checkpoint  
+`/rcpnextx` - `/rcpnexty` - `/rcpnextz` - arrow pointer's position of the race checkpoint  
+`/rcpsize` - set size of the race checkpoint
+
+**Map icons:**  
+`/newicon` - create a map icon  
+`/delicon` - delete the selected map icon  
+`/cicon` - copy the selected map icon  
+`/selicon` *[map icon ID]* - select a map icon by ID  
+`/gotoicon` - teleport to the selected map icon  
+`/geticon` - teleport the selected map icon to yourself  
+`/iconx` - `/icony` - `/iconz` - set position of the selected map icon  
+`/iconcolor` - set color of the selected map icon  
+`/iconstyle` - set style of the selected map icon
+
+**Gangzones:**  
+`/newzone` - create a gangzone  
+`/delzone` - delete the selected gangzone  
+`/czone` - copy the selected gangzone  
+`/selzone` *[gangzone ID]* - select a gangzone by ID (size changing)  
+`/holdzone` *[gangzone ID]* - select a gangzone by ID (movement)  
+`/gotozone` - teleport to the selected gangzone  
+`/getzone` - teleport the selected gangzone to yourself  
+`/zoneminx` - `/zoneminy` - `/zonemaxx` - `/zonemaxy` - set position of the selected gangzone  
+`/zonecolor` - set color of the selected gangzone
+
+**3D texts:**  
+`/newlab` - create a 3D text  
+`/dellab` - delete the selected 3D text  
+`/clab` - copy the selected 3D text  
+`/sellab` *[label ID]* - select a 3D text by ID  
+`/gotolab` - teleport to the selected 3D text  
+`/getlab` - teleport the selected 3D text to yourself  
+`/labtext` - set text to the selected 3D text  
+`/labcolor` - set color of the selected 3D text  
+`/lplattach` *[player ID]* - attach the selected 3D text to player  
+`/lvehattach` *[vehicle ID]* - attach the selected 3D text to vehicle  
+`/labx` - /laby - /labz - set position of the selected 3D text  
+`/labdd` - set draw distance of the selected 3D text  
+`/labvw` - set virtual world of the selected 3D text  
+`/lablos` - set visibility through walls of the selected 3D text
+
+**Moving around the map:**  
+`/setpos` – teleport to the coordinates  
+`/setint` – interior setting by ID  
+`/setvw` – virtual world setting by ID  
+`/maptp` – teleport to the last map marker  
+`/gotoint` – teleport to default interiors
+
+**Default objects:**  
+`/copyobjects` - copy default objects mode  
+`/remobjects` - delete default objects mode
+
+**Editor settings:**  
+`/camspeed` - change camera speed  
+`/camspeedslow` - change camera speed (Alt)  
+`/camspeedfast` - change camera speed (Shift)  
+`/camdist` - change camera distance  
+`/movedist` - change movement distance  
+`/movedistshort` - change movement distance (Alt)  
+`/movedistlong` - change movement distance (Shift)  
+`/movedistgz` - change gangzone movement distance  
+`/movedistgzshort` - change gangzone movement distance (Alt)  
+`/movedistgzlong` - change gangzone movement distance (Shift)  
+`/movedisti` - change map icon movement distance  
+`/movedistishort` - change map icon movement distance (Alt)  
+`/movedistilong` - change map icon movement distance (Shift)  
+`/rotspeed` - change rotation speed  
+`/rotspeedslow` - change rotation speed (Alt)  
+`/rotspeedfast` - change rotation speed (Shift)  
+`/showgui` - show interface  
+`/hidegui` - hide interface
+
+**Map settings:**  
+`/setweather` - set weather  
+`/settime` - set time  
+`/setgravity` - set gravity
 
 **ATTENTION!** Some features works only with [ColAndreas](http://forum.sa-mp.com/showthread.php?t=586068) plugin!
 
