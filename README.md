@@ -179,11 +179,11 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/lablos` - set visibility through walls of the selected 3D text
 
 **Moving around the map:**  
-`/setpos` – teleport to the coordinates  
-`/setint` – interior setting by ID  
-`/setvw` – virtual world setting by ID  
-`/maptp` – teleport to the last map marker  
-`/gotoint` – teleport to default interiors
+`/setpos` - teleport to the coordinates  
+`/setint` - interior setting by ID  
+`/setvw` - virtual world setting by ID  
+`/maptp` - teleport to the last map marker  
+`/gotoint` - teleport to default interiors
 
 **Default objects:**  
 `/copyobjects` - copy default objects mode  
