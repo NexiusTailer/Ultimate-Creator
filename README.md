@@ -8,6 +8,8 @@ Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map icons, Gangzones, 
 ## Features:
 * **Editing from the game**  
   To do this, you just need to connect the filterscript
+* **Different ways of interaction**
+  You can use dialogs, hotkeys and commands for the same things
 * **Mapping for several players**  
   Ability to mapping for several persons in the same time
 * **New editor from scratch**  
