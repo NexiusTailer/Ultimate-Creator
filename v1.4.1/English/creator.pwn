@@ -1,4 +1,4 @@
-//Ultimate Creator by Nexius v1.4.0
+//Ultimate Creator by Nexius v1.4.1
 
 #define FILTERSCRIPT
 
@@ -43,7 +43,7 @@
 #define ONLY_FOR_RCON_ADMINS //Comment to disable
 //#define CREATOR_DEBUG
 
-#define CREATOR_VERSION				"1.4.0"
+#define CREATOR_VERSION				"1.4.1"
 
 #define DEFAULT_COLOR				-1
 
@@ -74,743 +74,766 @@
 #define DELAY_LAST_CAM_MOVE			100
 #define DELAY_CALL_MAIN_MENU		300
 
-#define MAP_DOES_NOT_EXIST_ERROR		"Вам необходимо создать какую-либо карту!"
-#define MAP_DOES_NOT_EXIST_SAVE_ERROR	"Вам необходимо создать какую-либо карту для её сохранения!"
-#define MAP_SAVED						"%s сохранил карту %s"
-#define SAVE_MAP_ERROR					"При сохранении карты произошла ошибка!"
-#define ENTER_MAP_NAME_FOR_SAVE			"Введите название карты, которую хотите сохранить:"
-#define MAP_CREATED						"%s создал новую карту"
-#define MAP_OPENED						"%s открыл карту %s"
-#define FILE_NOT_FOUND_ERROR			"Файл не найден!"
-#define INCORRECT_FILE_NAME_ERROR		"Введите корректное имя файла!"
-#define MAP_DELETED						"%s удалил карту %s"
-#define COLANDREAS_COMPATIBILITY_ERROR	"Данная функция доступна только после подключения ColAndreas!"
-#define SHOW_FOUNDED_MATCHES			"Показано %d первых совпадений"
-#define NO_MATCHES_FOUND				"Совпадений не найдено"
-#define ENTER_OBJECT_NAME				"Введите ID или название модели объекта:"
-#define INCORRECT_OBJ_MODEL_ERROR		"Введите правильный ID или название модели объекта!"
-#define OBJECT_CREATED					"Объект id %d создан"
-#define LIMIT_ERROR						"Вы достигли лимита!"
-#define ENTER_VEHICLE_NAME				"Введите ID или название модели транспорта:"
-#define INCORRECT_VEH_MODEL_ERROR		"Введите правильный ID или название модели транспорта!"
-#define VEHICLE_CREATED					"Транспорт id %d создан"
-#define ENTER_SKIN_NAME					"Введите ID или название скина актёра:"
-#define INCORRECT_SKIN_ID_ERROR			"Введите правильный ID или название скина актёра!"
-#define ACTOR_CREATED					"Актёр id %d создан"
-#define ENTER_PICKUP_NAME				"Введите ID или название модели пикапа:"
-#define INCORRECT_PICKUP_MODEL_ERROR	"Введите правильный ID или название модели пикапа!"
-#define PICKUP_CREATED					"Пикап id %d создан"
-#define CP_CREATED						"Checkpoint id %d создан"
-#define RCP_TYPE_NORMAL					"Обычный"
-#define RCP_TYPE_FINISH					"Финиш"
-#define RCP_TYPE_NOTHING				"Без указателя"
-#define RCP_TYPE_AIR_NORMAL				"Воздушный обычный"
-#define RCP_TYPE_AIR_FINISH				"Воздушный финиш"
-#define RCP_TYPE_AIR_ROTATE				"Воздушный: поворачивается"
-#define RCP_TYPE_AIR_RESIZE				"Воздушный: увеличивается, уменьшается и исчезает"
-#define RCP_TYPE_AIR_SWINGS_DOWNUP		"Воздушный: качается вниз-вверх"
-#define RCP_TYPE_AIR_SWINGS_UPDOWN		"Воздушный: качается вверх-вниз"
-#define RCP_CREATED						"Race checkpoint id %d создан"
-#define ENTER_ICON_NAME					"Введите ID или название map иконки:"
-#define INVALID_MAP_ICONS_WARNING		"ID 1, 2, 4 и 56 могут привести к крашу игры, если у вас включена легенда карты!"
-#define INCORRECT_ICON_ID_ERROR			"Введите правильный ID или название map иконки!"
-#define UNKNOWN_ICON_ID_ERROR			"Данная map иконка создана не через редактор!"
-#define NO_SELECTED_ICONS_ERROR			"Вы не выделили ни одной map иконки!"
-#define ICON_CREATED					"Map иконка id %d создана"
-#define ZONE_CREATED					"Gang зона id %d создана"
-#define INCORRECT_LABEL_NAME_ERROR		"Введите текст, который будет отображать 3D текст!"
-#define ENTER_TEXT						"Введите текст:"
-#define LABEL_CREATED					"3D текст id %d создан"
-#define TELEPORTED_TO_OBJECT			"Вы переместились к объекту id %d"
-#define OBJECT_IS_ATTACHED_ERROR		"Перемещение невозможно, объект прикреплён!"
-#define TELEPORTED_OBJECT				"Вы переместили объект id %d к себе"
-#define OBJECT_COPIED					"Объект id %d скопирован"
-#define OBJECT_DELETED					"Объект id %d удалён"
-#define OBJECT_REMOVED					"Модель id %d удалена"
-#define TEXTURE_RESET					"Текстура объекта id %d сброшена (слой %d)"
-#define COLOR_RESET						"Цвет объекта id %d сброшен (слой %d)"
-#define ENTER_TEXTURE_NAME				"Введите ID или название текстуры:"
-#define INCORRECT_TEXTURE_ID_ERROR		"Введите правильный ID или название текстуры!"
-#define TEXTURE_CHANGED					"Текстура объекта id %d изменена на %d (слой %d)"
-#define INCORRECT_OBJECT_COLOR_ERROR	"Введите правильный цвет объекта!"
-#define ENTER_OBJECT_COLOR				"Введите цвет объекта в формате ARGB:"
-#define OBJECT_COLOR_CHANGED			"Вы установили цвет 0x%08x объекту id %d (слой %d)"
-#define INCORRECT_ALPHA_ERROR			"Введите правильное значение прозрачности!"
-#define ENTER_ALPHA						"Введите значение прозрачности (alpha) от 0 до 255:"
-#define OBJECT_ALPHA_CHANGED			"Прозрачность объекта id %d изменена на %d (слой %d)"
-#define INCORRECT_LAYER_ID_ERROR		"Введите правильный ID слоя (materialindex)!"
-#define OBJECT_TEXT_RESET				"Текст объекта id %d сброшен (слой %d)"
-#define INCORRECT_OBJECT_TEXT_ERROR		"Введите текст, который будет отображаться на объекте!"
-#define OBJECT_TEXT_CHANGED				"Текст объекта id %d изменён (слой %d)"
-#define OBJECT_TEXT_SIZE_CHANGED		"Размер текста объекта id %d изменён на %d (слой %d)"
-#define INCORRECT_FONT_NAME_ERROR		"Введите название шрифта, которым будет написан текст на объекте!"
-#define ENTER_FONT_NAME					"Введите название шрифта:"
-#define FONT_CHANGED					"Шрифт текста объекта id %d изменён (слой %d)"
-#define INCORRECT_FONT_SIZE_ERROR		"Введите правильный размер шрифта!"
-#define ENTER_FONT_SIZE					"Введите размер шрифта от 0 до 255:"
-#define FONT_SIZE_CHANGED				"Размер шрифта текста объекта id %d изменён на %d (слой %d)"
-#define OBJECT_TEXT_BOLD_CHANGED		"Жирность текста объекта id %d установлена на %d (слой %d)"
-#define INCORRECT_FONT_COLOR_ERROR		"Введите правильный цвет шрифта объекта!"
-#define ENTER_FONT_COLOR				"Введите цвет шрифта в формате ARGB:"
-#define FONT_COLOR_CHANGED				"Вы установили цвет 0x%08x тексту объекта id %d (слой %d)"
-#define FONT_ALPHA_CHANGED				"Прозрачность текста объекта id %d изменена на %d (слой %d)"
-#define INCORRECT_BACK_COLOR_ERROR		"Введите правильный цвет фона объекта!"
-#define ENTER_BACK_COLOR				"Введите цвет фона в формате ARGB:"
-#define BACK_COLOR_CHANGED				"Вы установили цвет 0x%08x фону объекта id %d (слой %d)"
-#define ALIGNMENT_CHANGED				"Выравнивание текста объекта id %d изменено на %d (слой %d)"
-#define INCORRECT_PLAYER_ID_ERROR		"Введите правильный ID игрока!"
-#define PLAYER_IS_NOT_SPAWNED_ERROR		"Данный игрок не заспавнен!"
-#define OBJECT_ATTACHED_TO_PLAYER		"Объект id %d прикреплён к игроку id %d"
-#define INCORRECT_OBJECT_ID_ERROR		"Введите правильный ID объекта!"
-#define UNKNOWN_OBJECT_ID_ERROR			"Данный объект создан не через редактор!"
-#define OBJECT_ATTACHED_TO_OBJECT		"Объект id %d прикреплён к объекту id %d"
-#define INCORRECT_VEHICLE_ID_ERROR		"Введите правильный ID транспорта!"
-#define UNKNOWN_VEHICLE_ID_ERROR		"Данный транспорт создан не через редактор!"
-#define OBJECT_ATTACHED_TO_VEHICLE		"Объект id %d прикреплён к транспорту id %d"
-#define INCORRECT_COORD_X_ERROR			"Введите правильную координату X!"
-#define OBJECT_TELEPORTED_TO_X			"Вы переместили объект id %d на координату X: %.4f"
-#define INCORRECT_COORD_Y_ERROR			"Введите правильную координату Y!"
-#define OBJECT_TELEPORTED_TO_Y			"Вы переместили объект id %d на координату Y: %.4f"
-#define INCORRECT_COORD_Z_ERROR			"Введите правильную координату Z!"
-#define OBJECT_TELEPORTED_TO_Z			"Вы переместили объект id %d на координату Z: %.4f"
-#define INCORRECT_ROT_X_ERROR			"Введите правильную координату вращения X!"
-#define OBJECT_TELEPORTED_TO_RX			"Вы переместили объект id %d на координату вращения X: %.4f"
-#define INCORRECT_ROT_Y_ERROR			"Введите правильную координату вращения Y!"
-#define OBJECT_TELEPORTED_TO_RY			"Вы переместили объект id %d на координату вращения Y: %.4f"
-#define INCORRECT_ROT_Z_ERROR			"Введите правильную координату вращения Z!"
-#define OBJECT_TELEPORTED_TO_RZ			"Вы переместили объект id %d на координату вращения Z: %.4f"
-#define NO_SELECTED_OBJECTS_ERROR		"Вы не выделили ни одного объекта!"
-#define TELEPORTED_TO_VEHICLE			"Вы переместились к транспорту id %d"
-#define TELEPORTED_VEHICLE				"Вы переместили транспорт id %d к себе"
-#define VEHICLE_COPIED					"Транспорт id %d скопирован"
-#define VEHICLE_DELETED					"Транспорт id %d удалён"
-#define VEHICLE_REPAIRED				"Транспорт id %d отремонтирован"
-#define PAINTJOB_REMOVED				"Покрасочная работа с транспорта id %d удалена"
-#define ALL_COMPONENTS_REMOVED			"Все компоненты с транспорта id %d удалены"
-#define ENTER_COMPONENT_NAME			"Введите ID или название компонента:"
-#define INCORRECT_COMPONENT_ID_ERROR	"Введите правильный ID или название компонента!"
-#define INCOMPATIBLE_COMPONENT_ID_ERROR	"Данный компонент не совместим с выбранным транспортом!"
-#define COMPONENT_ADDED					"Компонент id %d добавлен на транспорт id %d"
-#define ENTER_PAINTJOB_ID				"Введите ID покрасочной работы:"
-#define PAINTJOB_NOW					"Покрасочная работа сейчас:"
-#define INCORRECT_PAINTJOB_ID_ERROR		"Введите правильный ID покрасочной работы!"
-#define INCOMPATIBLE_PAINTJOB_ID_ERROR	"Данная покрасочная работа несовместима с выбранным транспортом!"
-#define PAINTJOB_CHANGED				"Покрасочная работа id %d добавлена на транспорт id %d"
-#define COMPONENT_REMOVED				"Компонент id %d удалён с транспорта id %d"
-#define VEHICLE_TELEPORTED_TO_X			"Вы переместили транспорт id %d на координату X: %.4f"
-#define VEHICLE_TELEPORTED_TO_Y			"Вы переместили транспорт id %d на координату Y: %.4f"
-#define VEHICLE_TELEPORTED_TO_Z			"Вы переместили транспорт id %d на координату Z: %.4f"
-#define VEHICLE_TELEPORTED_TO_RZ		"Вы переместили транспорт id %d на координату вращения Z: %.4f"
-#define INCORRECT_RESPAWN_TIME_ERROR	"Введите правильное время респавна!"
-#define RESPAWN_TIME_CHANGED			"Вы установили время респавна %d с транспорту id %d"
-#define INCORRECT_COLOR_1_ERROR			"Введите правильный цвет 1!"
-#define COLOR_1_CHANGED					"Вы установили транспорту id %d цвет 1: %d"
-#define INCORRECT_COLOR_2_ERROR			"Введите правильный цвет 2!"
-#define COLOR_2_CHANGED					"Вы установили транспорту id %d цвет 2: %d"
-#define NO_SELECTED_VEHICLES_ERROR		"Вы не выделили ни один транспорт!"
-#define TELEPORTED_TO_ACTOR				"Вы переместились к актёру id %d"
-#define TELEPORTED_ACTOR				"Вы переместили актёра id %d к себе"
-#define ACTOR_COPIED					"Актёр id %d скопирован"
-#define ACTOR_DELETED					"Актёр id %d удалён"
-#define INCORRECT_ANIMATION_ID_ERROR	"Введите правильный ID или название анимации!"
-#define ACTOR_ANIM_CHANGED				"Анимация актёра id %d изменена на %d"
-#define ACTOR_ANIM_CLEANED				"Анимация актёра id %d очищена"
-#define ACTOR_TELEPORTED_TO_X			"Вы переместили актёра id %d на координату X: %.4f"
-#define ACTOR_TELEPORTED_TO_Y			"Вы переместили актёра id %d на координату Y: %.4f"
-#define ACTOR_TELEPORTED_TO_Z			"Вы переместили актёра id %d на координату Z: %.4f"
-#define ACTOR_TELEPORTED_TO_RZ			"Вы переместили актёра id %d на координату вращения Z: %.4f"
-#define INCORRECT_ACTOR_ID_ERROR		"Введите правильный ID актёра!"
-#define UNKNOWN_ACTOR_ID_ERROR			"Данный актёр создан не через редактор!"
-#define NO_SELECTED_ACTORS_ERROR		"Вы не выделили ни одного актёра!"
-#define TELEPORTED_TO_PICKUP			"Вы переместились к пикапу id %d"
-#define TELEPORTED_PICKUP				"Вы переместили пикап id %d к себе"
-#define PICKUP_COPIED					"Пикап id %d скопирован"
-#define PICKUP_DELETED					"Пикап id %d удалён"
-#define INCORRECT_PICKUP_TYPE_ERROR		"Введите правильный тип пикапа!"
-#define PICKUP_TYPE_CHANGED				"Вы установили тип %d пикапу id %d"
-#define PICKUP_TELEPORTED_TO_X			"Вы переместили пикап id %d на координату X: %.4f"
-#define PICKUP_TELEPORTED_TO_Y			"Вы переместили пикап id %d на координату Y: %.4f"
-#define PICKUP_TELEPORTED_TO_Z			"Вы переместили пикап id %d на координату Z: %.4f"
-#define INCORRECT_VW_ERROR				"Введите правильный ID виртуального мира!"
-#define PICKUP_VW_CHANGED				"Вы установили виртуальный мир %d пикапу id %d"
-#define INCORRECT_PICKUP_ID_ERROR		"Введите правильный ID пикапа!"
-#define UNKNOWN_PICKUP_ID_ERROR			"Данный пикап создан не через редактор!"
-#define NO_SELECTED_PICKUPS_ERROR		"Вы не выделили ни одного пикапа!"
-#define TELEPORTED_TO_CP				"Вы переместились к checkpoint'у id %d"
-#define TELEPORTED_CP					"Вы переместили checkpoint id %d к себе"
-#define CP_DELETED						"Checkpoint id %d удалён"
-#define CP_TELEPORTED_TO_X				"Вы переместили checkpoint id %d на координату X: %.4f"
-#define CP_TELEPORTED_TO_Y				"Вы переместили checkpoint id %d на координату Y: %.4f"
-#define INCORRECT_SIZE_ERROR			"Введите правильный размер!"
-#define CP_SIZE_CHANGED					"Вы установили размер %.1f checkpoint'у id %d"
-#define NO_CPS_CREATED_ERROR			"В данный момент не создано ни одного checkpoint'а!"
-#define TELEPORTED_TO_RCP				"Вы переместились к race checkpoint'у id %d"
-#define TELEPORTED_RCP					"Вы переместили race checkpoint id %d к себе"
-#define RCP_DELETED						"Race checkpoint id %d удалён"
-#define RCP_TYPE_CHANGED				"Вы установили тип %d race checkpoint'у id %d"
-#define RCP_TELEPORTED_TO_X				"Вы переместили race checkpoint id %d на координату X: %.4f"
-#define RCP_TELEPORTED_TO_Y				"Вы переместили race checkpoint id %d на координату Y: %.4f"
-#define RCP_TELEPORTED_TO_Z				"Вы переместили race checkpoint id %d на координату Z: %.4f"
-#define INCORRECT_NEXTX_ERROR			"Введите правильную координату X следующей точки, на которую будет повёрнут указатель!"
-#define RCP_NEXTX_CHANGED				"NextX для race checkpoint'а id %d установлена на %.4f"
-#define INCORRECT_NEXTY_ERROR			"Введите правильную координату Y следующей точки, на которую будет повёрнут указатель!"
-#define RCP_NEXTY_CHANGED				"NextY для race checkpoint'а id %d установлена на %.4f"
-#define INCORRECT_NEXTZ_ERROR			"Введите правильную координату Z следующей точки, на которую будет повёрнут указатель!"
-#define RCP_NEXTZ_CHANGED				"NextZ для race checkpoint'а id %d установлена на %.4f"
-#define RCP_SIZE_CHANGED				"Вы установили размер %.1f race checkpoint'у id %d"
-#define INCORRECT_RCP_TYPE_ERROR		"Введите правильный тип race checkpoint'а!"
-#define NO_RCPS_CREATED_ERROR			"В данный момент не создано ни одного race checkpoint'а!"
-#define TELEPORTED_TO_MAPICON			"Вы переместились к map иконке id %d"
-#define TELEPORTED_MAPICON				"Вы переместили map иконку id %d к себе"
-#define MAPICON_COPIED					"Map иконка id %d скопирована"
-#define MAPICON_DELETED					"Map иконка id %d удалена"
-#define MAPICON_TELEPORTED_TO_X			"Вы переместили map иконку id %d на координату X: %.4f"
-#define MAPICON_TELEPORTED_TO_Y			"Вы переместили map иконку id %d на координату Y: %.4f"
-#define MAPICON_TELEPORTED_TO_Z			"Вы переместили map иконку id %d на координату Z: %.4f"
-#define INCORRECT_ICON_COLOR_ERROR		"Введите правильный цвет map иконки!"
-#define MAPICON_COLOR_CHANGED			"Вы установили цвет 0x%08x map иконке id %d"
-#define MAPICON_ALPHA_CHANGED			"Прозрачность map иконки id %d изменена на %d"
-#define INCORRECT_ICON_STYLE_ERROR		"Введите правильный стиль отображения map иконки!"
-#define MAPICON_STYLE_CHANGED			"Вы установили стиль отображения %d map иконке id %d"
-#define TELEPORTED_TO_GANGZONE			"Вы переместились к gang зоне id %d"
-#define TELEPORTED_GANGZONE				"Вы переместили gang зону id %d к себе"
-#define GANGZONE_COPIED					"Gang зона id %d скопирована"
-#define GANGZONE_DELETED				"Gang зона id %d удалена"
-#define INCORRECT_COORD_MINX_ERROR		"Введите правильную координату min X!"
-#define GANGZONE_MINX_CHANGED			"Вы установили gang зоне id %d координату min X: %.4f"
-#define INCORRECT_COORD_MINY_ERROR		"Введите правильную координату min Y!"
-#define GANGZONE_MINY_CHANGED			"Вы установили gang зоне id %d координату min Y: %.4f"
-#define INCORRECT_COORD_MAXX_ERROR		"Введите правильную координату max X!"
-#define GANGZONE_MAXX_CHANGED			"Вы установили gang зоне id %d координату max X: %.4f"
-#define INCORRECT_COORD_MAXY_ERROR		"Введите правильную координату max Y!"
-#define GANGZONE_MAXY_CHANGED			"Вы установили gang зоне id %d координату max Y: %.4f"
-#define INCORRECT_ZONE_COLOR_ERROR		"Введите правильный цвет gang зоны!"
-#define GANGZONE_COLOR_CHANGED			"Вы установили цвет 0x%08x gang зоне id %d"
-#define GANGZONE_ALPHA_CHANGED			"Прозрачность gang зоны id %d изменена на %d"
-#define INCORRECT_ZONE_ID_ERROR			"Введите правильный ID gang зоны!"
-#define UNKNOWN_ZONE_ID_ERROR			"Данная gang зона создана не через редактор!"
-#define NO_SELECTED_ZONES_ERROR			"Вы не выделили ни одной gang зоны!"
-#define TELEPORTED_TO_LABEL				"Вы переместились к 3D тексту id %d"
-#define LABEL_IS_ATTACHED_ERROR			"Перемещение невозможно, 3D текст прикреплён!"
-#define TELEPORTED_LABEL				"Вы переместили 3D текст id %d к себе"
-#define LABEL_COPIED					"3D текст id %d скопирован"
-#define LABEL_DELETED					"3D текст id %d удалён"
-#define LABEL_TEXT_CHANGED				"Текст 3D текста id %d изменён"
-#define INCORRECT_LABEL_COLOR_ERROR		"Введите правильный цвет 3D текста!"
-#define LABEL_COLOR_CHANGED				"Вы установили цвет 0x%08x 3D тексту id %d"
-#define LABEL_ALPHA_CHANGED				"Прозрачность 3D текста id %d изменена на %d"
-#define LABEL_ATTACHED_TO_PLAYER		"3D текст id %d прикреплён к игроку id %d"
-#define LABEL_ATTACHED_TO_VEHICLE		"3D текст id %d прикреплён к транспорту id %d"
-#define LABEL_TELEPORTED_TO_X			"Вы переместили 3D текст id %d на координату X: %.4f"
-#define LABEL_TELEPORTED_TO_Y			"Вы переместили 3D текст id %d на координату Y: %.4f"
-#define LABEL_TELEPORTED_TO_Z			"Вы переместили 3D текст id %d на координату Z: %.4f"
-#define INCORRECT_LABEL_DD_ERROR		"Введите правильную дистанцию прорисовки!"
-#define LABEL_DD_CHANGED				"Вы установили дистанцию прорисовки %.4f 3D тексту id %d"
-#define LABEL_VW_CHANGED				"Вы установили виртуальный мир %d 3D тексту id %d"
-#define LABEL_LOS_ENABLED				"Видимость сквозь стены 3D текста id %d включена"
-#define LABEL_LOS_DISABLED				"Видимость сквозь стены 3D текста id %d отключена"
-#define INCORRECT_LABEL_ID_ERROR		"Введите правильный ID 3D текста!"
-#define UNKNOWN_LABEL_ID_ERROR			"Данный 3D текст создан не через редактор!"
-#define NO_SELECTED_LABELS_ERROR		"Вы не выделили ни одного 3D текста!"
-#define INCORRECT_COORDS_ERROR			"Введите правильные координаты!"
-#define TELEPORTED_TO_COORDS			"Вы переместились на координаты %.4f, %.4f, %.4f"
-#define INCORRECT_INTERIOR_ID_ERROR		"Введите правильный ID интерьера!"
-#define TELEPORTED_TO_INTERIOR			"Вы переместились в интерьер id %d"
-#define TELEPORTED_TO_VW				"Вы переместились в виртуальный мир id %d"
-#define INCORRECT_MAP_MARKER_ERROR		"Установите метку на карте!"
-#define TELEPORTED_TO_DEFAULT_INT		"Вы переместились в интерьер %s"
-#define INCORRECT_CAM_SPEED_ERROR		"Введите правильную скорость полёта камеры!"
-#define CAM_SPEED_SLOW_CHANGED			"%s изменил скорость полёта камеры (Alt) на %.1f"
-#define CAM_SPEED_FAST_CHANGED			"%s изменил скорость полёта камеры (Shift) на %.1f"
-#define CAM_SPEED_CHANGED				"%s изменил скорость полёта камеры на %.1f"
-#define INCORRECT_CAM_DIST_ERROR		"Введите правильную дистанцию от камеры!"
-#define CAM_DIST_CHANGED				"%s изменил дистанцию от камеры на %.1f"
-#define INCORRECT_ZONE_DIST_ERROR		"Введите правильную дистанцию перемещения gang зоны!"
-#define ZONE_DIST_SHORT_CHANGED			"%s изменил дистанцию перемещения gang зоны (Alt) на %.1f"
-#define ZONE_DIST_LONG_CHANGED			"%s изменил дистанцию перемещения gang зоны (Shift) на %.1f"
-#define ZONE_DIST_CHANGED				"%s изменил дистанцию перемещения gang зоны на %.1f"
-#define INCORRECT_ICON_DIST_ERROR		"Введите правильную дистанцию перемещения map иконки!"
-#define ICON_DIST_SHORT_CHANGED			"%s изменил дистанцию перемещения map иконки (Alt) на %.1f"
-#define ICON_DIST_LONG_CHANGED			"%s изменил дистанцию перемещения map иконки (Shift) на %.1f"
-#define ICON_DIST_CHANGED				"%s изменил дистанцию перемещения map иконки на %.1f"
-#define INCORRECT_DIST_ERROR			"Введите правильную дистанцию перемещения!"
-#define DIST_SHORT_CHANGED				"%s изменил дистанцию перемещения (Alt) на %.1f"
-#define DIST_LONG_CHANGED				"%s изменил дистанцию перемещения (Shift) на %.1f"
-#define DIST_CHANGED					"%s изменил дистанцию перемещения на %.1f"
-#define INCORRECT_ROT_SPEED_ERROR		"Введите правильную скорость вращения!"
-#define ROT_SPEED_SLOW_CHANGED			"%s изменил скорость вращения (Alt) на %.1f"
-#define ROT_SPEED_FAST_CHANGED			"%s изменил скорость вращения (Shift) на %.1f"
-#define ROT_SPEED_CHANGED				"%s изменил скорость вращения на %.1f"
-#define INTERFACE_VISIBILITY_ENABLED	"%s включил видимость интерфейса"
-#define INTERFACE_VISIBILITY_DISABLED	"%s отключил видимость интерфейса"
-#define INCORRECT_WEATHER_ID_ERROR		"Введите правильный ID погоды!"
-#define WEATHER_ID_CHANGED				"%s изменил погоду на id %d"
-#define TIME_CHANGED					"%s установил время на %d:00"
-#define INCORRECT_GRAVITY_ERROR			"Введите правильное значение гравитации!"
-#define GRAVITY_CHANGED					"%s установил значение гравитации на %f"
-#define NOT_RCON_ADMIN_ERROR			"Вы не являетесь RCon админом!"
-#define NOT_IN_FLYMODE_ERROR			"Вы не в режиме редактирования!"
-#define MAP_MANAGEMENT					"Управление картами"
-#define OK_BUTTON						"Ок"
-#define DELETE_BUTTON					"Удалить"
-#define CANCEL_BUTTON					"Отмена"
-#define NEW_MAP							"Новая карта"
-#define OPEN_MAP						"Открыть карту"
-#define SAVE_MAP						"Сохранить карту"
-#define SAVE_MAP_AS						"Сохранить карту как"
-#define DELETE_MAP						"Удалить карту"
-#define BACK_BUTTON						"Назад"
-#define NEW_MAP_WARNING					"Вы действительно хотите создать новую карту?"
-#define NEW_MAP_WARNING_2				"Все объекты старой карты будут удалены."
-#define OPEN_MAP_WARNING				"Вы действительно хотите открыть карту?"
-#define ENTER_MAP_NAME_FOR_OPEN			"Введите название карты, которую хотите открыть:"
-#define ENTER_MAP_NAME_FOR_DELETE		"Введите название карты, которую хотите удалить:"
-#define CREATE							"Создать"
-#define EDIT							"Редактировать"
-#define TELEPORT_INTO					"Переместиться в"
-#define COPY_DEFAULT_OBJECTS			"Скопировать стандартные объекты"
-#define DELETE_DEFAULT_OBJECTS			"Удалить стандартные объекты"
-#define EDIT_SETTINGS					"Настройки редактора"
-#define MAP_SETTINGS					"Настройки карты"
-#define KEY_INSTRUCTION					"Инструкция по клавишам"
-#define CMD_INSTRUCTION					"Инструкция по командам"
-#define CREATE_OBJECT					"Создать объект"
-#define CREATE_VEHICLE					"Создать транспорт"
-#define CREATE_ACTOR					"Создать актёра"
-#define CREATE_PICKUP					"Создать пикап"
-#define CREATE_CP						"Создать checkpoint"
-#define CREATE_RCP						"Создать race checkpoint"
-#define CREATE_ICON						"Создать map иконку"
-#define CREATE_ZONE						"Создать gang зону"
-#define CREATE_LABEL					"Создать 3D текст"
-#define OBJECT							"Объект"
-#define VEHICLE							"Транспорт"
-#define COMPONENT						"Компонент"
-#define ACTOR							"Актёр"
-#define PICKUP							"Пикап"
+#define MAP_DOES_NOT_EXIST_ERROR		"You need to create a map!"
+#define MAP_DOES_NOT_EXIST_SAVE_ERROR	"You need to create a map in order to save it!"
+#define MAP_SAVED						"%s has saved the map %s"
+#define SAVE_MAP_ERROR					"An error occurred while saving the map!"
+#define ENTER_MAP_NAME_FOR_SAVE			"Enter the name of map you want to save:"
+#define MAP_CREATED						"%s has created a new map"
+#define MAP_OPENED						"%s has opened the map %s"
+#define FILE_NOT_FOUND_ERROR			"File not found!"
+#define INCORRECT_FILE_NAME_ERROR		"Enter a valid file name!"
+#define MAP_DELETED						"%s has removed the map %s"
+#define COLANDREAS_COMPATIBILITY_ERROR	"This feature is only available after ColAndreas connection!"
+#define SHOW_FOUNDED_MATCHES			"Displaying %d first matches"
+#define NO_MATCHES_FOUND				"No matches found"
+#define ENTER_OBJECT_NAME				"Enter the ID or name of object model:"
+#define INCORRECT_OBJ_MODEL_ERROR		"Enter the valid ID or name of object model!"
+#define OBJECT_CREATED					"Object id %d created"
+#define LIMIT_ERROR						"You have reached the limit!"
+#define ENTER_VEHICLE_NAME				"Enter the ID or name of vehicle model:"
+#define INCORRECT_VEH_MODEL_ERROR		"Enter the valid ID or name of vehicle model!"
+#define VEHICLE_CREATED					"Vehicle id %d created"
+#define ENTER_SKIN_NAME					"Enter the ID or name of actor's skin:"
+#define INCORRECT_SKIN_ID_ERROR			"Enter the valid ID or name of actor's skin!"
+#define ACTOR_CREATED					"Actor id %d created"
+#define ENTER_PICKUP_NAME				"Enter the ID or name of pickup model:"
+#define INCORRECT_PICKUP_MODEL_ERROR	"Enter the valid ID or name of pickup model!"
+#define PICKUP_CREATED					"Pickup id %d created"
+#define CP_CREATED						"Checkpoint id %d created"
+#define RCP_TYPE_NORMAL					"Normal"
+#define RCP_TYPE_FINISH					"Finish"
+#define RCP_TYPE_NOTHING				"Nothing"
+#define RCP_TYPE_AIR_NORMAL				"Air normal"
+#define RCP_TYPE_AIR_FINISH				"Air finish"
+#define RCP_TYPE_AIR_ROTATE				"Air: rotates"
+#define RCP_TYPE_AIR_RESIZE				"Air: increases, decreases and disappears"
+#define RCP_TYPE_AIR_SWINGS_DOWNUP		"Air: swings down and up"
+#define RCP_TYPE_AIR_SWINGS_UPDOWN		"Air: swings up and down"
+#define RCP_CREATED						"Race checkpoint id %d created"
+#define ENTER_ICON_NAME					"Enter the ID or name of map icon:"
+#define INVALID_MAP_ICONS_WARNING		"ID 1, 2, 4 and 56 can lead to crash of the game, if you have enabled map legend!"
+#define INCORRECT_ICON_ID_ERROR			"Enter the valid ID or name of map icon!"
+#define UNKNOWN_ICON_ID_ERROR			"This map icon is not created in the editor!"
+#define NO_SELECTED_ICONS_ERROR			"You have not selected any map icon!"
+#define ICON_CREATED					"Map icon id %d created"
+#define ZONE_CREATED					"Gangzone id %d created"
+#define INCORRECT_LABEL_NAME_ERROR		"Enter the text that will be displayed in the 3D text!"
+#define ENTER_TEXT						"Enter the text:"
+#define LABEL_CREATED					"3D text id %d created"
+#define TELEPORTED_TO_OBJECT			"You moved to object id %d"
+#define OBJECT_IS_ATTACHED_ERROR		"Moving is not possible, the object is attached!"
+#define TELEPORTED_OBJECT				"You moved object id %d to youself"
+#define OBJECT_COPIED					"Object id %d copied"
+#define OBJECT_DELETED					"Object id %d deleted"
+#define OBJECT_REMOVED					"Model id %d deleted"
+#define TEXTURE_RESET					"The texture of object id %d reset (layer %d)"
+#define OBJECT_COLOR_RESET				"The color of object id %d reset (layer %d)"
+#define ENTER_TEXTURE_NAME				"Enter the ID or name of texture:"
+#define INCORRECT_TEXTURE_ID_ERROR		"Enter the valid ID or name of texture!"
+#define TEXTURE_CHANGED					"The texture of object id %d changed to %d (layer %d)"
+#define INCORRECT_OBJECT_COLOR_ERROR	"Enter the valid color of the object!"
+#define ENTER_OBJECT_COLOR				"Enter object color in ARGB format:"
+#define OBJECT_COLOR_CHANGED			"You've set color 0x%08x to object id %d (layer %d)"
+#define INCORRECT_ALPHA_ERROR			"Enter the valid alpha value!"
+#define ENTER_ALPHA						"Enter alpha value from 0 to 255:"
+#define OBJECT_ALPHA_CHANGED			"The alpha of object id %d changed to %d (layer %d)"
+#define INCORRECT_LAYER_ID_ERROR		"Enter the valid layer ID (materialindex)!"
+#define OBJECT_TEXT_RESET				"The text of object id %d reset (layer %d)"
+#define INCORRECT_OBJECT_TEXT_ERROR		"Enter the text to be displayed on the object!"
+#define OBJECT_TEXT_CHANGED				"The text of object id %d changed (layer %d)"
+#define OBJECT_TEXT_SIZE_CHANGED		"Text size of object id %d changed to %d (layer %d)"
+#define INCORRECT_FONT_NAME_ERROR		"Enter the name of text font which will be displayed on the object!"
+#define ENTER_FONT_NAME					"Enter the name of font:"
+#define FONT_CHANGED					"Text font of object id %d changed (layer %d)"
+#define INCORRECT_FONT_SIZE_ERROR		"Enter the valid size of font!"
+#define ENTER_FONT_SIZE					"Enter font size from 0 to 255:"
+#define FONT_SIZE_CHANGED				"Text font size of object id %d changed to %d (layer %d)"
+#define OBJECT_TEXT_BOLD_CHANGED		"Text bold of object id %d set to %d (layer %d)"
+#define INCORRECT_FONT_COLOR_ERROR		"Enter the valid font color of the object!"
+#define ENTER_FONT_COLOR				"Enter font color in ARGB format:"
+#define FONT_COLOR_CHANGED				"You've set color 0x%08x to the text of object id %d (layer %d)"
+#define FONT_ALPHA_CHANGED				"Text alpha of object id %d changed to %d (layer %d)"
+#define INCORRECT_BACK_COLOR_ERROR		"Enter the valid background color of the object!"
+#define ENTER_BACK_COLOR				"Enter background color in ARGB format:"
+#define BACK_COLOR_CHANGED				"You've set background color 0x%08x to object id %d (layer %d)"
+#define ALIGNMENT_CHANGED				"Text alignment of object id %d changed to %d (layer %d)"
+#define TEXT_TEXTURE_COPIED				"The text/texture of object id %d copied (layer %d)"
+#define TEXT_TEXTURE_PASTED				"The text/texture pasted on object id %d (layer %d)"
+#define TEXT_TEXTURE_RESET				"The text/texture of object id %d reset (layer %d)"
+#define TEXTURES_PASTED					"The text and textures pasted on object id %d"
+#define TEXTURES_COPIED					"The text and textures of object id %d copied"
+#define TEXTURES_RESET					"The text and textures of object id %d were reset"
+#define BUFFER_CLEARED					"Text and textures clipboard cleared"
+#define INCORRECT_PLAYER_ID_ERROR		"Enter the valid player ID!"
+#define PLAYER_IS_NOT_SPAWNED_ERROR		"This player is not spawned!"
+#define OBJECT_ATTACHED_TO_PLAYER		"Object id %d attached to player id %d"
+#define INCORRECT_OBJECT_ID_ERROR		"Enter the valid object ID!"
+#define UNKNOWN_OBJECT_ID_ERROR			"This object is not created in the editor!"
+#define OBJECT_ATTACHED_TO_OBJECT		"Object id %d attached to object id %d"
+#define INCORRECT_VEHICLE_ID_ERROR		"Enter the valid vehicle ID!"
+#define UNKNOWN_VEHICLE_ID_ERROR		"This vehicle is not created in the editor!"
+#define OBJECT_ATTACHED_TO_VEHICLE		"Object id %d attached to vehicle id %d"
+#define INCORRECT_COORD_X_ERROR			"Enter the valid X coordinate!"
+#define OBJECT_TELEPORTED_TO_X			"You moved object id %d to X coordinate: %.4f"
+#define INCORRECT_COORD_Y_ERROR			"Enter the valid Y coordinate!"
+#define OBJECT_TELEPORTED_TO_Y			"You moved object id %d to Y coordinate: %.4f"
+#define INCORRECT_COORD_Z_ERROR			"Enter the valid Z coordinate!"
+#define OBJECT_TELEPORTED_TO_Z			"You moved object id %d to Z coordinate: %.4f"
+#define INCORRECT_ROT_X_ERROR			"Enter the valid rotation of the X coordinate!"
+#define OBJECT_TELEPORTED_TO_RX			"You moved object id %d to X rotation coordinate: %.4f"
+#define INCORRECT_ROT_Y_ERROR			"Enter the valid rotation of the Y coordinate!"
+#define OBJECT_TELEPORTED_TO_RY			"You moved object id %d to Y rotation coordinate: %.4f"
+#define INCORRECT_ROT_Z_ERROR			"Enter the valid rotation of the Z coordinate!"
+#define OBJECT_TELEPORTED_TO_RZ			"You moved object id %d to Z rotation coordinate: %.4f"
+#define OBJECT_ROT_RESET				"You've reset rotation of object id %d"
+#define NO_SELECTED_OBJECTS_ERROR		"You have not selected any object!"
+#define EMPTY_BUFFER_ERROR				"Clipboard is empty for this operation!"
+#define TELEPORTED_TO_VEHICLE			"You moved to vehicle id %d"
+#define TELEPORTED_VEHICLE				"You moved vehicle id %d to youself"
+#define VEHICLE_COPIED					"Vehicle id %d copied"
+#define VEHICLE_DELETED					"Vehicle id %d deleted"
+#define VEHICLE_REPAIRED				"Vehicle id %d repaired"
+#define PAINTJOB_REMOVED				"Paintjob removed from vehicle id %d"
+#define ALL_COMPONENTS_REMOVED			"All components removed from vehicle id %d"
+#define ENTER_COMPONENT_NAME			"Enter the ID or name of component:"
+#define INCORRECT_COMPONENT_ID_ERROR	"Enter the valid ID or name of component!"
+#define INCOMPATIBLE_COMPONENT_ID_ERROR	"This component is not compatible with the selected vehicle!"
+#define COMPONENT_ADDED					"Component id %d added to vehicle id %d"
+#define ENTER_PAINTJOB_ID				"Enter the ID of paintjob:"
+#define PAINTJOB_NOW					"Paintjob now:"
+#define INCORRECT_PAINTJOB_ID_ERROR		"Enter the valid ID of paintjob!"
+#define INCOMPATIBLE_PAINTJOB_ID_ERROR	"This paintjob is incompatible with the selected vehicle!"
+#define PAINTJOB_CHANGED				"Paintjob id %d added to vehicle id %d"
+#define COMPONENT_REMOVED				"Component id %d removed from vehicle id %d"
+#define VEHICLE_TELEPORTED_TO_X			"You moved vehicle id %d to X coordinate: %.4f"
+#define VEHICLE_TELEPORTED_TO_Y			"You moved vehicle id %d to Y coordinate: %.4f"
+#define VEHICLE_TELEPORTED_TO_Z			"You moved vehicle id %d to Z coordinate: %.4f"
+#define VEHICLE_TELEPORTED_TO_RZ		"You moved vehicle id %d to Z rotation coordinate: %.4f"
+#define INCORRECT_RESPAWN_TIME_ERROR	"Enter the valid respawn time!"
+#define RESPAWN_TIME_CHANGED			"You've set respawn time %d s to vehicle id %d"
+#define INCORRECT_COLOR_1_ERROR			"Enter the valid color 1!"
+#define COLOR_1_CHANGED					"You've set vehicle id %d color 1 to: %d"
+#define INCORRECT_COLOR_2_ERROR			"Enter the valid color 2!"
+#define COLOR_2_CHANGED					"You've set vehicle id %d color 2 to: %d"
+#define NO_SELECTED_VEHICLES_ERROR		"You have not selected any vehicle!"
+#define TELEPORTED_TO_ACTOR				"You moved to actor id %d"
+#define TELEPORTED_ACTOR				"You moved actor id %d to youself"
+#define ACTOR_COPIED					"Actor id %d copied"
+#define ACTOR_DELETED					"Actor id %d deleted"
+#define INCORRECT_ANIMATION_ID_ERROR	"Enter the valid ID or name of animation!"
+#define ACTOR_ANIM_CHANGED				"The animation of actor id %d changed to %d"
+#define ACTOR_ANIM_CLEANED				"The animation of actor id %d cleared"
+#define ACTOR_TELEPORTED_TO_X			"You moved actor id %d to X coordinate: %.4f"
+#define ACTOR_TELEPORTED_TO_Y			"You moved actor id %d to Y coordinate: %.4f"
+#define ACTOR_TELEPORTED_TO_Z			"You moved actor id %d to Z coordinate: %.4f"
+#define ACTOR_TELEPORTED_TO_RZ			"You moved actor id %d to Z rotation coordinate: %.4f"
+#define INCORRECT_ACTOR_ID_ERROR		"Enter the valid actor ID!"
+#define UNKNOWN_ACTOR_ID_ERROR			"This actor is not created in the editor!"
+#define NO_SELECTED_ACTORS_ERROR		"You have not selected any actor!"
+#define TELEPORTED_TO_PICKUP			"You moved to pickup id %d"
+#define TELEPORTED_PICKUP				"You moved pickup id %d to youself"
+#define PICKUP_COPIED					"Pickup id %d copied"
+#define PICKUP_DELETED					"Pickup id %d deleted"
+#define INCORRECT_PICKUP_TYPE_ERROR		"Enter the valid type of the pickup!"
+#define PICKUP_TYPE_CHANGED				"You've set type %d to pickup id %d"
+#define PICKUP_TELEPORTED_TO_X			"You moved pickup id %d to X coordinate: %.4f"
+#define PICKUP_TELEPORTED_TO_Y			"You moved pickup id %d to Y coordinate: %.4f"
+#define PICKUP_TELEPORTED_TO_Z			"You moved pickup id %d to Z coordinate: %.4f"
+#define INCORRECT_VW_ERROR				"Enter the valid ID of virtual world!"
+#define PICKUP_VW_CHANGED				"You've set virtual world %d to pickup id %d"
+#define INCORRECT_PICKUP_ID_ERROR		"Enter the valid pickup ID!"
+#define UNKNOWN_PICKUP_ID_ERROR			"This pickup is not created in the editor!"
+#define NO_SELECTED_PICKUPS_ERROR		"You have not selected any pickup!"
+#define TELEPORTED_TO_CP				"You moved to checkpoint id %d"
+#define TELEPORTED_CP					"You moved checkpoint id %d to youself"
+#define CP_DELETED						"Checkpoint id %d deleted"
+#define CP_TELEPORTED_TO_X				"You moved checkpoint id %d to X coordinate: %.4f"
+#define CP_TELEPORTED_TO_Y				"You moved checkpoint id %d to Y coordinate: %.4f"
+#define INCORRECT_SIZE_ERROR			"Enter the valid size!"
+#define CP_SIZE_CHANGED					"You've set size %.1f to checkpoint id %d"
+#define NO_CPS_CREATED_ERROR			"There are no created checkpoints at the moment!"
+#define TELEPORTED_TO_RCP				"You moved to race checkpoint id %d"
+#define TELEPORTED_RCP					"You moved race checkpoint id %d to youself"
+#define RCP_DELETED						"Race checkpoint id %d deleted"
+#define RCP_TYPE_CHANGED				"You've set type %d to race checkpoint id %d"
+#define RCP_TELEPORTED_TO_X				"You moved race checkpoint id %d to X coordinate: %.4f"
+#define RCP_TELEPORTED_TO_Y				"You moved race checkpoint id %d to Y coordinate: %.4f"
+#define RCP_TELEPORTED_TO_Z				"You moved race checkpoint id %d to Z coordinate: %.4f"
+#define INCORRECT_NEXTX_ERROR			"Enter the valid X coordinate of the next point to which will be rotated the pointer!"
+#define RCP_NEXTX_CHANGED				"NextX of race checkpoint id %d set to %.4f"
+#define INCORRECT_NEXTY_ERROR			"Enter the valid Y coordinate of the next point to which will be rotated the pointer!"
+#define RCP_NEXTY_CHANGED				"NextY of race checkpoint id %d set to %.4f"
+#define INCORRECT_NEXTZ_ERROR			"Enter the valid Z coordinate of the next point to which will be rotated the pointer!"
+#define RCP_NEXTZ_CHANGED				"NextZ of race checkpoint id %d set to %.4f"
+#define RCP_SIZE_CHANGED				"You've set size %.1f to race checkpoint id %d"
+#define INCORRECT_RCP_TYPE_ERROR		"Enter the valid type of race checkpoint!"
+#define NO_RCPS_CREATED_ERROR			"There are no created race checkpoints at the moment!"
+#define TELEPORTED_TO_MAPICON			"You moved to map icon id %d"
+#define TELEPORTED_MAPICON				"You moved map icon id %d to youself"
+#define MAPICON_COPIED					"Map icon id %d copied"
+#define MAPICON_DELETED					"Map icon id %d deleted"
+#define MAPICON_TELEPORTED_TO_X			"You moved map icon id %d to X coordinate: %.4f"
+#define MAPICON_TELEPORTED_TO_Y			"You moved map icon id %d to Y coordinate: %.4f"
+#define MAPICON_TELEPORTED_TO_Z			"You moved map icon id %d to Z coordinate: %.4f"
+#define INCORRECT_ICON_COLOR_ERROR		"Enter the valid color of the map icon!"
+#define MAPICON_COLOR_CHANGED			"You've set color 0x%08x to map icon id %d"
+#define MAPICON_ALPHA_CHANGED			"The alpha of map icon id %d changed to %d"
+#define INCORRECT_ICON_STYLE_ERROR		"Enter the valid display style of the map icon!"
+#define MAPICON_STYLE_CHANGED			"You've set display style %d to map icon id %d"
+#define TELEPORTED_TO_GANGZONE			"You moved to gangzone id %d"
+#define TELEPORTED_GANGZONE				"You moved gangzone id %d to youself"
+#define GANGZONE_COPIED					"Gangzone id %d copied"
+#define GANGZONE_DELETED				"Gangzone id %d deleted"
+#define INCORRECT_COORD_MINX_ERROR		"Enter the valid min X coordinate!"
+#define GANGZONE_MINX_CHANGED			"You've set min X coordinate to gangzone id %d: %.4f"
+#define INCORRECT_COORD_MINY_ERROR		"Enter the valid min Y coordinate!"
+#define GANGZONE_MINY_CHANGED			"You've set min Y coordinate to gangzone id %d: %.4f"
+#define INCORRECT_COORD_MAXX_ERROR		"Enter the valid max X coordinate!"
+#define GANGZONE_MAXX_CHANGED			"You've set max X coordinate to gangzone id %d: %.4f"
+#define INCORRECT_COORD_MAXY_ERROR		"Enter the valid max Y coordinate!"
+#define GANGZONE_MAXY_CHANGED			"You've set max Y coordinate to gangzone id %d: %.4f"
+#define INCORRECT_ZONE_COLOR_ERROR		"Enter the valid gangzone color!"
+#define GANGZONE_COLOR_CHANGED			"You've set color 0x%08x to gangzone id %d"
+#define GANGZONE_ALPHA_CHANGED			"The alpha of gangzone id %d changed to %d"
+#define INCORRECT_ZONE_ID_ERROR			"Enter the valid gangzone ID!"
+#define UNKNOWN_ZONE_ID_ERROR			"This gangzone is not created in the editor!"
+#define NO_SELECTED_ZONES_ERROR			"You have not selected any gangzone!"
+#define TELEPORTED_TO_LABEL				"You moved to 3D text id %d"
+#define LABEL_IS_ATTACHED_ERROR			"Moving is not possible, 3D text is attached!"
+#define TELEPORTED_LABEL				"You moved 3D text id %d to youself"
+#define LABEL_COPIED					"3D text id %d copied"
+#define LABEL_DELETED					"3D text id %d deleted"
+#define LABEL_TEXT_CHANGED				"The text of 3D text id %d changed"
+#define INCORRECT_LABEL_COLOR_ERROR		"Enter the valid 3D text color!"
+#define LABEL_COLOR_CHANGED				"You've set color 0x%08x to 3D text id %d"
+#define LABEL_ALPHA_CHANGED				"The alpha of 3D text id %d changed to %d"
+#define LABEL_ATTACHED_TO_PLAYER		"3D text id %d attached to player id %d"
+#define LABEL_ATTACHED_TO_VEHICLE		"3D text id %d attached to vehicle id %d"
+#define LABEL_TELEPORTED_TO_X			"You moved 3D text id %d to X coordinate: %.4f"
+#define LABEL_TELEPORTED_TO_Y			"You moved 3D text id %d to Y coordinate: %.4f"
+#define LABEL_TELEPORTED_TO_Z			"You moved 3D text id %d to Z coordinate: %.4f"
+#define INCORRECT_LABEL_DD_ERROR		"Enter the valid draw distance!"
+#define LABEL_DD_CHANGED				"You've set draw distance %.4f to 3D text id %d"
+#define LABEL_VW_CHANGED				"You've set virtual world %d to 3D text id %d"
+#define LABEL_LOS_ENABLED				"Visibility through walls of 3D text id %d enabled"
+#define LABEL_LOS_DISABLED				"Visibility through walls of 3D text id %d disabled"
+#define INCORRECT_LABEL_ID_ERROR		"Enter the valid 3D text ID!"
+#define UNKNOWN_LABEL_ID_ERROR			"This 3D text is not created in the editor!"
+#define NO_SELECTED_LABELS_ERROR		"You have not selected any 3D text!"
+#define INCORRECT_COORDS_ERROR			"Enter the valid coordinates!"
+#define TELEPORTED_TO_COORDS			"You moved to coordinates %.4f, %.4f, %.4f"
+#define INCORRECT_INTERIOR_ID_ERROR		"Enter the valid ID of interior!"
+#define TELEPORTED_TO_INTERIOR			"You moved to interior id %d"
+#define TELEPORTED_TO_VW				"You moved to virtual world id %d"
+#define INCORRECT_MAP_MARKER_ERROR		"Set the marker on the map!"
+#define TELEPORTED_TO_DEFAULT_INT		"You moved to %s interior"
+#define INCORRECT_CAM_SPEED_ERROR		"Enter the valid camera speed!"
+#define CAM_SPEED_SLOW_CHANGED			"%s has changed camera speed (Alt) to %.1f"
+#define CAM_SPEED_FAST_CHANGED			"%s has changed camera speed (Shift) to %.1f"
+#define CAM_SPEED_CHANGED				"%s has changed camera speed to %.1f"
+#define INCORRECT_CAM_DIST_ERROR		"Enter the valid distance from the camera!"
+#define CAM_DIST_CHANGED				"%s has changed the distance from the camera to %.1f"
+#define INCORRECT_ZONE_DIST_ERROR		"Enter the valid distance of gangzone movement!"
+#define ZONE_DIST_SHORT_CHANGED			"%s has changed the distance of gangzone movement (Alt) to %.1f"
+#define ZONE_DIST_LONG_CHANGED			"%s has changed the distance of gangzone movement (Shift) to %.1f"
+#define ZONE_DIST_CHANGED				"%s has changed the distance of gangzone movement to %.1f"
+#define INCORRECT_ICON_DIST_ERROR		"Enter the valid distance of map icon movement!"
+#define ICON_DIST_SHORT_CHANGED			"%s has changed the distance of map icon movement (Alt) to %.1f"
+#define ICON_DIST_LONG_CHANGED			"%s has changed the distance of map icon movement (Shift) to %.1f"
+#define ICON_DIST_CHANGED				"%s has changed the distance of map icon movement to %.1f"
+#define INCORRECT_DIST_ERROR			"Enter the valid distance of movement!"
+#define DIST_SHORT_CHANGED				"%s has changed the distance of movement (Alt) to %.1f"
+#define DIST_LONG_CHANGED				"%s has changed the distance of movement (Shift) to %.1f"
+#define DIST_CHANGED					"%s has changed the distance of movement to %.1f"
+#define INCORRECT_ROT_SPEED_ERROR		"Enter the valid rotation speed!"
+#define ROT_SPEED_SLOW_CHANGED			"%s has changed rotation speed (Alt) to %.1f"
+#define ROT_SPEED_FAST_CHANGED			"%s has changed rotation speed (Shift) to %.1f"
+#define ROT_SPEED_CHANGED				"%s has changed rotation speed to %.1f"
+#define INTERFACE_VISIBILITY_ENABLED	"%s has enabled interface visibility"
+#define INTERFACE_VISIBILITY_DISABLED	"%s has disabled interface visibility"
+#define INCORRECT_WEATHER_ID_ERROR		"Enter the valid ID of weather!"
+#define WEATHER_ID_CHANGED				"%s has set the weather to id %d"
+#define TIME_CHANGED					"%s has set the time to %s"
+#define INCORRECT_GRAVITY_ERROR			"Enter the valid value of gravity!"
+#define GRAVITY_CHANGED					"%s has set gravity value to %f"
+#define NOT_RCON_ADMIN_ERROR			"You are not RCon admin!"
+#define NOT_IN_FLYMODE_ERROR			"You are not in edit mode!"
+#define MAP_MANAGEMENT					"Map management"
+#define OK_BUTTON						"Ok"
+#define DELETE_BUTTON					"Delete"
+#define CANCEL_BUTTON					"Cancel"
+#define NEW_MAP							"New map"
+#define OPEN_MAP						"Open map"
+#define SAVE_MAP						"Save map"
+#define SAVE_MAP_AS						"Save map as"
+#define DELETE_MAP						"Delete map"
+#define BACK_BUTTON						"Back"
+#define NEW_MAP_WARNING					"Are you sure you want to create a new map?"
+#define NEW_MAP_WARNING_2				"All objects on the old map will be deleted."
+#define OPEN_MAP_WARNING				"Are you sure you want to open the map?"
+#define ENTER_MAP_NAME_FOR_OPEN			"Enter the name of map you want to open:"
+#define ENTER_MAP_NAME_FOR_DELETE		"Enter the name of map you want to delete:"
+#define CREATE							"Create"
+#define EDIT							"Edit"
+#define TELEPORT_INTO					"Move to"
+#define COPY_DEFAULT_OBJECTS			"Copy default map objects"
+#define DELETE_DEFAULT_OBJECTS			"Remove default map objects"
+#define EDIT_SETTINGS					"Editor settings"
+#define MAP_SETTINGS					"Map settings"
+#define KEY_INSTRUCTION					"Keyboard instructions"
+#define CMD_INSTRUCTION					"Commands instructions"
+#define CREATE_OBJECT					"Create object"
+#define CREATE_VEHICLE					"Create vehicle"
+#define CREATE_ACTOR					"Create actor"
+#define CREATE_PICKUP					"Create pickup"
+#define CREATE_CP						"Create checkpoint"
+#define CREATE_RCP						"Create race checkpoint"
+#define CREATE_ICON						"Create map icon"
+#define CREATE_ZONE						"Create gangzone"
+#define CREATE_LABEL					"Create 3D text"
+#define OBJECT							"Object"
+#define VEHICLE							"Vehicle"
+#define COMPONENT						"Component"
+#define ACTOR							"Actor"
+#define PICKUP							"Pickup"
 #define CHECKPOINT						"Checkpoint"
 #define RACECP							"Race checkpoint"
-#define MAPICON							"Map иконка"
-#define GANGZONE						"Gang зона"
-#define LABEL							"3D текст"
-#define NEXT_ITEM						"Далее"
-#define PREV_ITEM						"Назад"
-#define EMPTY_MAP_ERROR					"На данный момент ничего не создано!"
-#define EDIT_OBJECT						"Редактировать объект"
-#define SELECT_OBJECT					"Выделить объект"
-#define TELEPORT_TO_OBJECT				"Переместиться к объекту"
-#define TELEPORT_OBJECT					"Переместить объект к себе"
-#define COPY_OBJECT						"Скопировать объект"
-#define DELETE_OBJECT					"Удалить объект"
-#define EDIT_MATERIAL					"Замена текстур"
-#define EDIT_MATERIAL_TEXT				"Замена текстур с текстом"
-#define ATTACH_TO_PLAYER				"Прикрепить к игроку"
-#define ATTACH_TO_OBJECT				"Прикрепить к объекту"
-#define ATTACH_TO_VEHICLE				"Прикрепить к транспорту"
-#define COORD_X							"Координаты по оси X"
-#define COORD_Y							"Координаты по оси Y"
-#define COORD_Z							"Координаты по оси Z"
-#define ROT_X							"Вращение по оси X"
-#define ROT_Y							"Вращение по оси Y"
-#define ROT_Z							"Вращение по оси Z"
-#define LAYER							"Слой"
-#define RESET_TEXTURE					"Сбросить текстуру"
-#define RESET_OBJECT_COLOR				"Сбросить цвет объекта"
-#define OBJECT_TEXTURE					"Текстура объекта:"
-#define OBJECT_COLOR					"Цвет объекта:"
-#define EDIT_TEXTURE					"Изменить текстуру (слой %d)"
-#define EDIT_OBJECT_COLOR				"Изменить цвет объекта (слой %d)"
-#define ENTER_LAYER_ID					"Введите номер слоя (materialindex) от 0 до 15:"
-#define RESET_TEXT						"Сбросить текст"
-#define OBJECT_TEXT						"Текст объекта:"
-#define OBJECT_TEXT_SIZE				"Размер текста:"
-#define TEXT_FONT						"Шрифт:"
-#define FONT_SIZE						"Размер шрифта:"
-#define BOLD							"Жирный:"
-#define FONT_COLOR						"Цвет шрифта:"
-#define BACK_COLOR						"Цвет фона:"
-#define ALIGNMENT						"Выравнивание:"
-#define EDIT_TEXT						"Изменить текст"
-#define EDIT_OBJECT_TEXT_SIZE			"Изменить размер текста"
-#define EDIT_FONT						"Изменить шрифт"
-#define CHOOSE_FROM_EXIST_FONTS			"Выбрать из готовых шрифтов"
-#define ENTER_FONT						"Ввести название шрифта"
-#define CHOOSE_FONT						"Выбрать шрифт"
-#define EDIT_FONT_SIZE					"Изменить размер шрифта"
-#define EDIT_OBJECT_TEXT_BOLD			"Изменить жирность шрифта"
-#define ENABLE_BOLD						"Сделать текст жирным"
-#define DISABLE_BOLD					"Снять жирность с текста"
-#define EDIT_OBJECT_FONT_COLOR			"Изменить цвет шрифта"
-#define EDIT_OBJECT_BACK_COLOR			"Изменить цвет фона"
-#define EDIT_OBJECT_TEXT_ALIGNMENT		"Изменить выравнивание"
-#define ALIGNMENT_LEFT					"По левому краю"
-#define ALIGNMENT_CENTER				"По центру"
-#define ALIGNMENT_RIGHT					"По правому краю"
-#define ENTER_PLAYER_ID					"Введите ID игрока:"
-#define ENTER_OBJECT_ID					"Введите ID объекта, к которому хотите прикрепить объект:"
-#define ENTER_VEHICLE_ID				"Введите ID транспорта:"
-#define COORDS_NOW						"Координаты сейчас:"
-#define ENTER_COORD_X					"Введите координату X"
-#define ENTER_COORD_Y					"Введите координату Y"
-#define ENTER_COORD_Z					"Введите координату Z"
-#define ENTER_ROT_X						"Введите координату вращения X"
-#define ENTER_ROT_Y						"Введите координату вращения Y"
-#define ENTER_ROT_Z						"Введите координату вращения Z"
-#define COORD_NOW						"Координата сейчас:"
-#define EDIT_VEHICLE					"Редактировать транспорт"
-#define SELECT_VEHICLE					"Выделить транспорт"
-#define TELEPORT_TO_VEHICLE				"Переместиться к транспорту"
-#define TELEPORT_VEHICLE				"Переместить транспорт к себе"
-#define COPY_VEHICLE					"Скопировать транспорт"
-#define DELETE_VEHICLE					"Удалить транспорт"
-#define REPAIR_VEHICLE					"Отремонтировать транспорт"
-#define TUNE_VEHICLE					"Тюнинг транспорта"
-#define RESPAWN_TIME					"Время респавна"
-#define COLOR_1							"Цвет 1"
-#define COLOR_2							"Цвет 2"
-#define ADD_COMPONENT					"Добавить компонент"
-#define CHANGE_PAINTJOB					"Изменить покрасочную работу"
-#define REMOVE_COMPONENT				"Просмотр и удаление компонентов"
-#define REMOVE_PAINTJOB					"Удалить покрасочную работу"
-#define REMOVE_ALL_COMPONENTS			"Удалить все компоненты"
-#define NO_COMPONENTS_ERROR				"На транспорт не установлено никаких компонентов!"
-#define ENTER_RESPAWN_TIME				"Введите время респавна (в секундах), через которое будет появляться транспорт"
-#define RESPAWN_TIME_NOW				"Время сейчас: %d с"
-#define ENTER_COLOR_1					"Введите цвет 1"
-#define ENTER_COLOR_2					"Введите цвет 2"
-#define COLOR_NOW						"Цвет сейчас:"
-#define EDIT_ACTOR						"Редактировать актёра"
-#define SELECT_ACTOR					"Выделить актёра"
-#define TELEPORT_TO_ACTOR				"Переместиться к актёру"
-#define TELEPORT_ACTOR					"Переместить актёра к себе"
-#define COPY_ACTOR						"Скопировать актёра"
-#define DELETE_ACTOR					"Удалить актёра"
-#define SET_ACTOR_ANIM					"Установить анимацию"
-#define ENTER_ANIMATION_NAME			"Введите ID или название анимации:"
-#define CLEAR_ACTOR_ANIM				"Очистить анимацию"
-#define EDIT_PICKUP						"Редактировать пикап"
-#define SELECT_PICKUP					"Выделить пикап"
-#define TELEPORT_TO_PICKUP				"Переместиться к пикапу"
-#define TELEPORT_PICKUP					"Переместить пикап к себе"
-#define COPY_PICKUP						"Скопировать пикап"
-#define DELETE_PICKUP					"Удалить пикап"
-#define EDIT_PICKUP_TYPE				"Изменить тип пикапа"
-#define EDIT_VW							"Виртуальный мир"
-#define ENTER_PICKUP_TYPE				"Введите тип пикапа"
-#define TYPE_NOW						"Тип сейчас:"
-#define ENTER_VW_ID						"Введите ID виртуального мира"
-#define VW_NOW							"Виртуальный мир сейчас:"
-#define EDIT_CHECKPOINT					"Редактировать checkpoint"
-#define SELECT_CHECKPOINT				"Выделить checkpoint"
-#define TELEPORT_TO_CHECKPOINT			"Переместиться к checkpoint'у"
-#define TELEPORT_CHECKPOINT				"Переместить checkpoint к себе"
-#define DELETE_CHECKPOINT				"Удалить checkpoint"
-#define EDIT_SIZE						"Изменить размер"
-#define ENTER_SIZE						"Введите размер"
-#define SIZE_NOW						"Размер сейчас:"
-#define EDIT_RACECP						"Редактировать race checkpoint"
-#define SELECT_RACECP					"Выделить race checkpoint"
-#define TELEPORT_TO_RACECP				"Переместиться к race checkpoint'у"
-#define TELEPORT_RACECP					"Переместить race checkpoint к себе"
-#define DELETE_RACECP					"Удалить race checkpoint"
-#define EDIT_TYPE						"Изменить тип"
-#define COORD_NEXTX						"Координата NextX"
-#define COORD_NEXTY						"Координата NextY"
-#define COORD_NEXTZ						"Координата NextZ"
-#define EDIT_MAPICON					"Редактировать map иконку"
-#define SELECT_MAPICON					"Выделить map иконку"
-#define TELEPORT_TO_MAPICON				"Переместиться к map иконке"
-#define TELEPORT_MAPICON				"Переместить map иконку к себе"
-#define COPY_MAPICON					"Скопировать map иконку"
-#define DELETE_MAPICON					"Удалить map иконку"
-#define EDIT_COLOR						"Изменить цвет"
-#define CHOOSE_FROM_EXIST_COLORS		"Выбрать из готовых цветов"
-#define ENTER_RGBA_COLOR				"Ввести в формате RGBA"
-#define ENTER_ARGB_COLOR				"Ввести в формате ARGB"
-#define CHANGE_ALPHA					"Изменить прозрачность"
-#define CHOOSE_COLOR					"Выбрать цвет"
-#define WHITE_COLOR						"Белый"
-#define BLACK_COLOR						"Чёрный"
-#define YELLOW_COLOR					"Жёлтый"
-#define GREEN_COLOR						"Зелёный"
-#define RED_COLOR						"Красный"
-#define PINK_COLOR						"Розовый"
-#define ORANGE_COLOR					"Оранжевый"
-#define BROWN_COLOR						"Коричневый"
-#define PURPLE_COLOR					"Фиолетовый"
-#define LIGHT_BLUE_COLOR				"Голубой"
-#define DARK_BLUE_COLOR					"Синий"
-#define EDIT_STYLE						"Стиль отображения"
-#define ENTER_MAPICON_COLOR				"Введите цвет map иконки (только для ID 0):"
-#define MAPICON_STYLE_NOW				"Стиль отображения сейчас:"
-#define MAPICON_STYLE_LOCAL				"Показывать только вблизи"
-#define MAPICON_STYLE_GLOBAL			"Показывать всегда"
-#define MAPICON_STYLE_LOCAL_CP			"Показывать только вблизи (с чекпоинтом)"
-#define MAPICON_STYLE_GLOBAL_CP			"Показывать всегда (с чекпоинтом)"
-#define EDIT_GANGZONE					"Редактировать gang зону"
-#define EDIT_ZONE_SIZE					"Изменить размер gang зоны"
-#define EDIT_ZONE_POS					"Изменить позицию gang зоны"
-#define TELEPORT_TO_ZONE				"Переместиться к gang зоне"
-#define TELEPORT_ZONE					"Переместить gang зону к себе"
-#define COPY_ZONE						"Скопировать gang зону"
-#define DELETE_ZONE						"Удалить gang зону"
-#define COORD_MINX						"Координата min X"
-#define COORD_MINY						"Координата min Y"
-#define COORD_MAXX						"Координата max X"
-#define COORD_MAXY						"Координата max Y"
-#define ENTER_COORD_MINX				"Введите координату min X:"
-#define ENTER_COORD_MINY				"Введите координату min Y:"
-#define ENTER_COORD_MAXX				"Введите координату max X:"
-#define ENTER_COORD_MAXY				"Введите координату max Y:"
-#define ENTER_GANGZONE_COLOR			"Введите цвет gang зоны:"
-#define EDIT_LABEL						"Редактировать 3D текст"
-#define SELECT_LABEL					"Выделить 3D текст"
-#define TELEPORT_TO_LABEL				"Переместиться к 3D тексту"
-#define TELEPORT_LABEL					"Переместить 3D текст к себе"
-#define COPY_LABEL						"Скопировать 3D текст"
-#define DELETE_LABEL					"Удалить 3D текст"
-#define LABEL_DD						"Дистанция прорисовки"
-#define LABEL_LOS						"Видимость сквозь стены"
-#define LABEL_TEXT_NOW					"Текст 3D текста сейчас:"
-#define ENTER_LABEL_COLOR				"Введите цвет 3D текста"
-#define ENTER_LABEL_DD					"Введите дистанцию прорисовки, на которой будет отображаться 3D текст"
-#define LABEL_DD_NOW					"Дистанция прорисовки сейчас:"
-#define LABEL_LOS_NOW					"Видимость сейчас:"
-#define ENABLE_LABEL_LOS				"Включить видимость сквозь стены"
-#define DISABLE_LABEL_LOS				"Отключить видимость сквозь стены"
-#define ENABLED							"включена"
-#define DISABLED						"отключена"
-#define TELEPORT_TO_COORDS				"Переместиться на координаты"
-#define TELEPORT_TO_INT					"Переместиться в интерьер"
-#define TELEPORT_TO_VW					"Переместиться в виртуальный мир"
-#define TELEPORT_TO_MAP_MARKER			"Переместиться по метке на карте"
-#define TELEPORT_TO_DEFAULT_INTS		"Переместиться в стандартные интерьеры"
-#define ENTER_COORDS					"Введите координаты (X, Y, Z):"
-#define ENTER_INTERIOR					"Введите интерьер:"
-#define INTERIOR_NOW					"Интерьер сейчас:"
-#define CHOOSE_INTERIOR					"Выбрать интерьер"
-#define REMOVE_OBJECTS_WARNING			"Вы действительно хотите перейти в режим удаления стандартных объектов?"
-#define REMOVE_OBJECTS_WARNING_2		"Восстановить их можно будет только после создания новой карты и перезахода на сервер."
-#define EDIT_CAM_SPEED					"Изменить скорость полёта камеры"
-#define EDIT_CAM_SPEED_SLOW				"Изменить скорость полёта камеры (Alt)"
-#define EDIT_CAM_SPEED_FAST				"Изменить скорость полёта камеры (Shift)"
-#define EDIT_CAM_SPEED_NORMAL			"Изменить скорость полёта камеры"
-#define EDIT_CAM_DIST					"Изменить расстояние от камеры"
-#define EDIT_MOVE_DIST					"Изменить дистанцию перемещения"
-#define EDIT_MOVE_DIST_ZONE				"Изменить дистанцию перемещения gang зоны"
-#define EDIT_MOVE_DIST_Z_SHORT			"Изменить дистанцию перемещения gang зоны (Alt)"
-#define EDIT_MOVE_DIST_Z_LONG			"Изменить дистанцию перемещения gang зоны (Shift)"
-#define EDIT_MOVE_DIST_Z_NORMAL			"Изменить дистанцию перемещения gang зоны"
-#define EDIT_MOVE_DIST_ICON				"Изменить дистанцию перемещения map иконки"
-#define EDIT_MOVE_DIST_I_SHORT			"Изменить дистанцию перемещения map иконки (Alt)"
-#define EDIT_MOVE_DIST_I_LONG			"Изменить дистанцию перемещения map иконки (Shift)"
-#define EDIT_MOVE_DIST_I_NORMAL			"Изменить дистанцию перемещения map иконки"
-#define EDIT_MOVE_DIST_OTHER			"Изменить дистанцию перемещения остального"
-#define EDIT_MOVE_DIST_SHORT			"Изменить дистанцию перемещения (Alt)"
-#define EDIT_MOVE_DIST_LONG				"Изменить дистанцию перемещения (Shift)"
-#define EDIT_MOVE_DIST_NORMAL			"Изменить дистанцию перемещения"
-#define EDIT_ROT_SPEED					"Изменить скорость вращения"
-#define EDIT_ROT_SPEED_SLOW				"Изменить скорость вращения (Alt)"
-#define EDIT_ROT_SPEED_FAST				"Изменить скорость вращения (Shift)"
-#define EDIT_ROT_SPEED_NORMAL			"Изменить скорость вращения"
-#define EDIT_INTERFACE_VISIBILITY		"Изменить видимость интерфейса"
-#define ENTER_CAM_SPEED_SLOW			"Введите скорость полёта камеры (Alt)"
-#define ENTER_CAM_SPEED_FAST			"Введите скорость полёта камеры (Shift)"
-#define ENTER_CAM_SPEED					"Введите скорость полёта камеры"
-#define CAM_SPEED_NOW					"Скорость полёта камеры сейчас:"
-#define ENTER_CAM_DIST					"Введите расстояние от камеры"
-#define CAM_DIST_NOW					"Расстояние от камеры сейчас:"
-#define ENTER_ZONE_DIST_SHORT			"Введите дистанцию перемещения gang зоны (Alt)"
-#define ENTER_ZONE_DIST_LONG			"Введите дистанцию перемещения gang зоны (Shift)"
-#define ENTER_ZONE_DIST					"Введите дистанцию перемещения gang зоны"
-#define ZONE_DIST_NOW					"Дистанция перемещения gang зоны сейчас:"
-#define ENTER_ICON_DIST_SHORT			"Введите дистанцию перемещения map иконки (Alt)"
-#define ENTER_ICON_DIST_LONG			"Введите дистанцию перемещения map иконки (Shift)"
-#define ENTER_ICON_DIST					"Введите дистанцию перемещения map иконки"
-#define ICON_DIST_NOW					"Дистанция перемещения map иконки сейчас:"
-#define ENTER_DIST_SHORT				"Введите дистанцию перемещения (Alt)"
-#define ENTER_DIST_LONG					"Введите дистанцию перемещения (Shift)"
-#define ENTER_DIST						"Введите дистанцию перемещения"
-#define DIST_NOW						"Дистанция перемещения сейчас:"
-#define ENTER_ROT_SPEED_SLOW			"Введите скорость вращения (Alt)"
-#define ENTER_ROT_SPEED_FAST			"Введите скорость вращения (Shift)"
-#define ENTER_ROT_SPEED					"Введите скорость вращения"
-#define ROT_SPEED_NOW					"Скорость вращения сейчас:"
-#define ENABLE_INTERFACE_VISIBILITY		"Включить видимость интерфейса"
-#define DISABLE_INTERFACE_VISIBILITY	"Отключить видимость интерфейса"
-#define INTERFACE_VISIBILITY_NOW		"Видимость интерфейса сейчас:"
-#define EDIT_WEATHER					"Установить погоду"
-#define EDIT_WORLDTIME					"Установить время"
-#define EDIT_GRAVITY					"Установить гравитацию"
-#define ENTER_WEATHER_ID				"Введите ID погоды"
-#define WEATHER_NOW						"Погода сейчас:"
-#define WORLDTIME_NOW					"Время сейчас:"
-#define ENTER_GRAVITY_VALUE				"Введите значение гравитации"
-#define GRAVITY_NOW						"Гравитация сейчас:"
-#define KEY_INSTRUCTION_STRING_1		"LAlt (KEY_WALK) - Замедление перемещения/движения"
-#define KEY_INSTRUCTION_STRING_2		"LShift (KEY_JUMP) - Ускорение перемещения/движения"
-#define KEY_INSTRUCTION_STRING_3		"LShift (KEY_JUMP) + LAlt (KEY_WALK) - Размещение объектов с учетом наклона поверхности"
-#define KEY_INSTRUCTION_STRING_4		"ЛКМ (KEY_FIRE) - Выделение объекта/транспорта/актера..."
-#define KEY_INSTRUCTION_STRING_5		"* W, A, S, D - Перемещение выделенного объекта/транспорта/актера..."
-#define KEY_INSTRUCTION_STRING_6		"* LShift (KEY_JUMP) + LAlt (KEY_WALK) + W, A, S, D - Перемещение выделенного объекта/транспорта/актера... по оси Z"
-#define KEY_INSTRUCTION_STRING_7		"* LCtrl (KEY_FIRE) + W, A, S, D - Изменение угла поворота выделенного объекта/транспорта/актера..."
-#define KEY_INSTRUCTION_STRING_8		"* LCtrl (KEY_FIRE) + LShift (KEY_JUMP) + LAlt (KEY_WALK) + W, A, S, D - Изменение угла поворота выделенного объекта/транспорта/актера... по оси X"
-#define KEY_INSTRUCTION_STRING_9		"ПКМ (KEY_HANDBRAKE) - Перемещение объекта/транспорта/актера... с помощью мыши"
-#define KEY_INSTRUCTION_STRING_10		"Пробел (KEY_SPRINT) - Сбросить выделение/перемещение объекта/транспорта/актера..."
-#define KEY_INSTRUCTION_STRING_11		"C (KEY_CROUCH) + ЛКМ (KEY_FIRE) - Копирование объекта/транспорта/актера..."
-#define KEY_INSTRUCTION_STRING_12		"* LShift (KEY_JUMP) + LAlt (KEY_WALK) + C (KEY_CROUCH) + ЛКМ (KEY_FIRE) - Копирование приаттаченного объекта/3D текста"
-#define KEY_INSTRUCTION_STRING_13		"\\ (KEY_ACTION) + ЛКМ (KEY_FIRE) - Удаление объекта/транспорта/актера..."
-#define CMD_INSTRUCTION_CAPTION_1		"Управление картами"
-#define CMD_INSTRUCTION_STRING_1		"/newmap - создать новую карту"
-#define CMD_INSTRUCTION_STRING_2		"/loadmap - загрузить существующую карту"
-#define CMD_INSTRUCTION_STRING_3		"/savemap - сохранить текущую карту"
-#define CMD_INSTRUCTION_STRING_4		"/delmap - удалить карту"
-#define CMD_INSTRUCTION_CAPTION_2		"Объекты"
-#define CMD_INSTRUCTION_STRING_5		"/newobj - создать объект"
-#define CMD_INSTRUCTION_STRING_6		"/delobj - удалить выделенный объект"
-#define CMD_INSTRUCTION_STRING_7		"/cobj - скопировать выделенный объект"
-#define CMD_INSTRUCTION_STRING_8		"/selobj [ID объекта] - выделение объекта по ID'у"
-#define CMD_INSTRUCTION_STRING_9		"/gotoobj - телепортироваться к выделенному объекту"
-#define CMD_INSTRUCTION_STRING_10		"/getobj - телепортировать выделенный объект к себе"
-#define CMD_INSTRUCTION_STRING_11		"/objtext - редактор текста на выделенном объекте"
-#define CMD_INSTRUCTION_STRING_12		"/oplattach [ID игрока] - привязать выделенный объект к игроку"
-#define CMD_INSTRUCTION_STRING_13		"/oobjattach [ID объекта] - привязать выделенный объект к объекту"
-#define CMD_INSTRUCTION_STRING_14		"/ovehattach [ID транспорта] - привязать выделенный объект к транспорту"
-#define CMD_INSTRUCTION_STRING_15		"/objx - /objy - /objz - установить позицию для выделенного объекта"
-#define CMD_INSTRUCTION_STRING_16		"/objrx - /objry - /objrz - установить углы вращения для выделенного объекта"
-#define CMD_INSTRUCTION_CAPTION_3		"Текстуры"
-#define CMD_INSTRUCTION_STRING_17		"/txdset [ID слоя] [ID текстуры] - установить материал для выделенного объекта"
-#define CMD_INSTRUCTION_STRING_18		"/txdreset [ID слоя] - сбросить материал для выделенного объекта"
-#define CMD_INSTRUCTION_STRING_19		"/txdcolor [ID слоя] [код цвета] - поставить цвет для выделенного объекта"
-#define CMD_INSTRUCTION_STRING_20		"/txdcreset [ID слоя] - сбросить цвет для выделенного объекта"
-#define CMD_INSTRUCTION_CAPTION_4		"Транспорт"
-#define CMD_INSTRUCTION_STRING_21		"/newveh - создать транспорт"
-#define CMD_INSTRUCTION_STRING_22		"/delveh - удалить выделенный транспорт"
-#define CMD_INSTRUCTION_STRING_23		"/cveh - скопировать выделенный транспорт"
-#define CMD_INSTRUCTION_STRING_24		"/selveh [ID транспорта] - выделение транспорта по ID'у"
-#define CMD_INSTRUCTION_STRING_25		"/gotoveh - телепортироваться к выделенному транспорту"
-#define CMD_INSTRUCTION_STRING_26		"/getveh - телепортировать выделенный транспорт к себе"
-#define CMD_INSTRUCTION_STRING_27		"/vehrepair - отремонтировать выделенный транспорт"
-#define CMD_INSTRUCTION_STRING_28		"/vehx - /vehy - /vehz - установить позицию для выделенного транспорта"
-#define CMD_INSTRUCTION_STRING_29		"/vehrz - установить угол поворота для выделенного транспорта"
-#define CMD_INSTRUCTION_STRING_30		"/vehrtime - установить время респавна для выделенного транспорта"
-#define CMD_INSTRUCTION_STRING_31		"/vehcolor - установить цвета для выделенного транспорта"
-#define CMD_INSTRUCTION_CAPTION_5		"Тюнинг"
-#define CMD_INSTRUCTION_STRING_32		"/compadd - добавить тюнинг-компонент на выделенный транспорт"
-#define CMD_INSTRUCTION_STRING_33		"/complist - просмотр и удаление тюнинг-компонентов на выделенном транспорте"
-#define CMD_INSTRUCTION_STRING_34		"/compremoveall - удалить все тюнинг-компоненты с выделенного транспорта"
-#define CMD_INSTRUCTION_STRING_35		"/paintjob - установить покрасочную работу (для определённого транспорта)"
-#define CMD_INSTRUCTION_STRING_36		"/pjobremove - удалить покрасочную работу на выделенном транспорте"
-#define CMD_INSTRUCTION_CAPTION_6		"Актёры"
-#define CMD_INSTRUCTION_STRING_37		"/newact - создать актёра"
-#define CMD_INSTRUCTION_STRING_38		"/delact - удалить выделенного актёра"
-#define CMD_INSTRUCTION_STRING_39		"/cact - скопировать выделенного актёра"
-#define CMD_INSTRUCTION_STRING_40		"/selact [ID актёра] - выделение актёра по ID'у"
-#define CMD_INSTRUCTION_STRING_41		"/gotoact - телепортироваться к выделенному актёру"
-#define CMD_INSTRUCTION_STRING_42		"/getact - телепортировать выделенного актёра к себе"
-#define CMD_INSTRUCTION_STRING_43		"/actanim - установить анимацию для выделенного актёра"
-#define CMD_INSTRUCTION_STRING_44		"/actclear - сбросить анимацию для выделенного актёра"
-#define CMD_INSTRUCTION_STRING_45		"/actx - /acty - /actz - установить позицию для выделенного актёра"
-#define CMD_INSTRUCTION_STRING_46		"/actrz - установить угол поворота для выделенного актёра"
-#define CMD_INSTRUCTION_CAPTION_7		"Пикапы"
-#define CMD_INSTRUCTION_STRING_47		"/newpick - создать пикап"
-#define CMD_INSTRUCTION_STRING_48		"/delpick - удалить выделенный пикап"
-#define CMD_INSTRUCTION_STRING_49		"/cpick - скопировать выделенный пикап"
-#define CMD_INSTRUCTION_STRING_50		"/selpick [ID пикапа] - выделение пикапа по ID'у"
-#define CMD_INSTRUCTION_STRING_51		"/gotopick - телепортироваться к выделенному пикапу"
-#define CMD_INSTRUCTION_STRING_52		"/getpick - телепортировать выделенный пикап к себе"
-#define CMD_INSTRUCTION_STRING_53		"/picktype - установить тип для выделенного пикапа"
-#define CMD_INSTRUCTION_STRING_54		"/pickx - /picky - /pickz - установить позицию для выделенного пикапа"
-#define CMD_INSTRUCTION_STRING_55		"/pickvw - установить виртуальный мир для выделенного пикапа"
-#define CMD_INSTRUCTION_CAPTION_8		"Checkpoint'ы"
-#define CMD_INSTRUCTION_STRING_56		"/newcp - создать checkpoint"
-#define CMD_INSTRUCTION_STRING_57		"/delcp - удалить checkpoint"
-#define CMD_INSTRUCTION_STRING_58		"/selcp - выделение checkpoint'а"
-#define CMD_INSTRUCTION_STRING_59		"/gotocp - телепортироваться к checkpoint'у"
-#define CMD_INSTRUCTION_STRING_60		"/getcp - телепортировать checkpoint к себе"
-#define CMD_INSTRUCTION_STRING_61		"/cpx - /cpy - установить позицию для checkpoint'а"
-#define CMD_INSTRUCTION_STRING_62		"/cpsize - установить размер для checkpoint'а"
-#define CMD_INSTRUCTION_CAPTION_9		"Race checkpoint'ы"
-#define CMD_INSTRUCTION_STRING_63		"/newrcp - создать race checkpoint"
-#define CMD_INSTRUCTION_STRING_64		"/delrcp - удалить race checkpoint"
-#define CMD_INSTRUCTION_STRING_65		"/selrcp - выделение race checkpoint'а"
-#define CMD_INSTRUCTION_STRING_66		"/gotorcp - телепортироваться к race checkpoint'у"
-#define CMD_INSTRUCTION_STRING_67		"/getrcp - телепортировать race checkpoint к себе"
-#define CMD_INSTRUCTION_STRING_68		"/rcptype - установить тип для race checkpoint'а"
-#define CMD_INSTRUCTION_STRING_69		"/rcpx - /rcpy - /rcpz - установить позицию для race checkpoint'а"
-#define CMD_INSTRUCTION_STRING_70		"/rcpnextx - /rcpnexty - /rcpnextz - позиция для указателя стрелки race checkpoint'а"
-#define CMD_INSTRUCTION_STRING_71		"/rcpsize - установить размер для race checkpoint'а"
-#define CMD_INSTRUCTION_CAPTION_10		"Map иконки"
-#define CMD_INSTRUCTION_STRING_72		"/newicon - создать map иконку"
-#define CMD_INSTRUCTION_STRING_73		"/delicon - удалить выделенную map иконку"
-#define CMD_INSTRUCTION_STRING_74		"/cicon - скопировать выделенную map иконку"
-#define CMD_INSTRUCTION_STRING_75		"/selicon [ID map иконки] - выделение map иконки по ID'у"
-#define CMD_INSTRUCTION_STRING_76		"/gotoicon - телепортироваться к выделенной map иконке"
-#define CMD_INSTRUCTION_STRING_77		"/geticon - телепортировать выделенную map иконку к себе"
-#define CMD_INSTRUCTION_STRING_78		"/iconx - /icony - /iconz - установить позицию для выделенной map иконки"
-#define CMD_INSTRUCTION_STRING_79		"/iconcolor - установить цвет для выделенной map иконки"
-#define CMD_INSTRUCTION_STRING_80		"/iconstyle - установить стиль для выделенной map иконки"
-#define CMD_INSTRUCTION_CAPTION_11		"Gang зоны"
-#define CMD_INSTRUCTION_STRING_81		"/newzone - создать gang зону"
-#define CMD_INSTRUCTION_STRING_82		"/delzone - удалить выделенную gang зону"
-#define CMD_INSTRUCTION_STRING_83		"/czone - скопировать выделенную gang зону"
-#define CMD_INSTRUCTION_STRING_84		"/selzone [ID gang зоны] - выделение gang зоны по ID'у (изменение размера)"
-#define CMD_INSTRUCTION_STRING_85		"/holdzone [ID gang зоны] - выделение gang зоны по ID'у (перемещение)"
-#define CMD_INSTRUCTION_STRING_86		"/gotozone - телепортироваться к выделенной gang зоне"
-#define CMD_INSTRUCTION_STRING_87		"/getzone - телепортировать выделенную gang зону к себе"
-#define CMD_INSTRUCTION_STRING_88		"/zoneminx - /zoneminy - /zonemaxx - /zonemaxy - установить позицию для выделенной gang зоны"
-#define CMD_INSTRUCTION_STRING_89		"/zonecolor - установить цвет для выделенной gang зоны"
-#define CMD_INSTRUCTION_CAPTION_12		"3D тексты"
-#define CMD_INSTRUCTION_STRING_90		"/newlab - создать 3D текст"
-#define CMD_INSTRUCTION_STRING_91		"/dellab - удалить выделенный 3D текст"
-#define CMD_INSTRUCTION_STRING_92		"/clab - скопировать выделенный 3D текст"
-#define CMD_INSTRUCTION_STRING_93		"/sellab [ID 3D текста] - выделение 3D текста по ID'у"
-#define CMD_INSTRUCTION_STRING_94		"/gotolab - телепортироваться к выделенному 3D тексту"
-#define CMD_INSTRUCTION_STRING_95		"/getlab - телепортировать выделенный 3D текст к себе"
-#define CMD_INSTRUCTION_STRING_96		"/labtext - задать текст для выделенного 3D текста"
-#define CMD_INSTRUCTION_STRING_97		"/labcolor - установить цвет для выделенного 3D текста"
-#define CMD_INSTRUCTION_STRING_98		"/lplattach [ID игрока] - привязать выделенный 3D текст к игроку"
-#define CMD_INSTRUCTION_STRING_99		"/lvehattach [ID транспорта] - привязать выделенный 3D текст к транспорту"
-#define CMD_INSTRUCTION_STRING_100		"/labx - /laby - /labz - установить позицию для выделенного 3D текста"
-#define CMD_INSTRUCTION_STRING_101		"/labdd - установить дистанцию прорисовки для выделенного 3D текста"
-#define CMD_INSTRUCTION_STRING_102		"/labvw - установить виртуальный мир для выделенного 3D текста"
-#define CMD_INSTRUCTION_STRING_103		"/lablos - установить видимость сквозь стены для выделенного 3D текста"
-#define CMD_INSTRUCTION_CAPTION_13		"Перемещение по карте"
-#define CMD_INSTRUCTION_STRING_104		"/setpos – телепортироваться по координатам"
-#define CMD_INSTRUCTION_STRING_105		"/setint – установка интерьера по ID'у"
-#define CMD_INSTRUCTION_STRING_106		"/setvw – установка виртуального мира по ID'у"
-#define CMD_INSTRUCTION_STRING_107		"/maptp – телепортация по последней метке на карте"
-#define CMD_INSTRUCTION_STRING_108		"/gotoint – телепортация в стандартные интерьеры"
-#define CMD_INSTRUCTION_CAPTION_14		"Стандартные объекты"
-#define CMD_INSTRUCTION_STRING_109		"/copyobjects - режим копирования стандартных объектов"
-#define CMD_INSTRUCTION_STRING_110		"/remobjects - режим удаления стандартных объектов"
-#define CMD_INSTRUCTION_CAPTION_15		"Настройки редактора"
-#define CMD_INSTRUCTION_STRING_111		"/camspeed - изменить скорость полёта камеры"
-#define CMD_INSTRUCTION_STRING_112		"/camspeedslow - изменить скорость полёта камеры (Alt)"
-#define CMD_INSTRUCTION_STRING_113		"/camspeedfast - изменить скорость полёта камеры (Shift)"
-#define CMD_INSTRUCTION_STRING_114		"/camdist - изменить расстояние от камеры"
-#define CMD_INSTRUCTION_STRING_115		"/movedist - изменить дистанцию перемещения"
-#define CMD_INSTRUCTION_STRING_116		"/movedistshort - изменить дистанцию перемещения (Alt)"
-#define CMD_INSTRUCTION_STRING_117		"/movedistlong - изменить дистанцию перемещения (Shift)"
-#define CMD_INSTRUCTION_STRING_118		"/movedistgz - изменить дистанцию перемещения gang зоны"
-#define CMD_INSTRUCTION_STRING_119		"/movedistgzshort - изменить дистанцию перемещения gang зоны (Alt)"
-#define CMD_INSTRUCTION_STRING_120		"/movedistgzlong - изменить дистанцию перемещения gang зоны (Shift)"
-#define CMD_INSTRUCTION_STRING_121		"/movedisti - изменить дистанцию перемещения map иконки"
-#define CMD_INSTRUCTION_STRING_122		"/movedistishort - изменить дистанцию перемещения map иконки (Alt)"
-#define CMD_INSTRUCTION_STRING_123		"/movedistilong - изменить дистанцию перемещения map иконки (Shift)"
-#define CMD_INSTRUCTION_STRING_124		"/rotspeed - изменить скорость вращения"
-#define CMD_INSTRUCTION_STRING_125		"/rotspeedslow - изменить скорость вращения (Alt)"
-#define CMD_INSTRUCTION_STRING_126		"/rotspeedfast - изменить скорость вращения (Shift)"
-#define CMD_INSTRUCTION_STRING_127		"/showgui - показать интерфейс"
-#define CMD_INSTRUCTION_STRING_128		"/hidegui - скрыть интерфейс"
-#define CMD_INSTRUCTION_CAPTION_16		"Настройки карты"
-#define CMD_INSTRUCTION_STRING_129		"/setweather - установить погоду"
-#define CMD_INSTRUCTION_STRING_130		"/settime - установить время"
-#define CMD_INSTRUCTION_STRING_131		"/setgravity - установить гравитацию"
-#define EDIT_LOG_IN_MSG					"%s вошёл в режим редактирования"
-#define EDIT_LOG_OUT_MSG				"%s вышел из режима редактирования"
-#define REMOVE_OBJECTS_MODE_WARNING		"Чтобы выйти из режима удаления стандартных объектов, нажмите пробел (KEY_SPRINT)"
-#define REMOVED_OBJECTS_WARNING			"Чтобы восстановить удалённые объекты, требуется перезайти на сервер"
+#define MAPICON							"Map icon"
+#define GANGZONE						"Gangzone"
+#define LABEL							"3D text"
+#define NEXT_ITEM						"Next"
+#define PREV_ITEM						"Back"
+#define EMPTY_MAP_ERROR					"Currently nothing is created!"
+#define EDIT_OBJECT						"Edit object"
+#define SELECT_OBJECT					"Select object"
+#define TELEPORT_TO_OBJECT				"Move to object"
+#define TELEPORT_OBJECT					"Move object to youself"
+#define COPY_OBJECT						"Copy object"
+#define DELETE_OBJECT					"Delete object"
+#define EDIT_MATERIAL					"Textures replacement"
+#define EDIT_MATERIAL_TEXT				"Textures replacement with text"
+#define PASTE_TEXTURES					"Paste text and textures"
+#define COPY_TEXTURES					"Copy text and textures"
+#define RESET_TEXTURES					"Reset text and textures"
+#define ATTACH_TO_PLAYER				"Attach to player"
+#define ATTACH_TO_OBJECT				"Attach to object"
+#define ATTACH_TO_VEHICLE				"Attach to vehicle"
+#define COORD_X							"X axis coordinate"
+#define COORD_Y							"Y axis coordinate"
+#define COORD_Z							"Z axis coordinate"
+#define ROT_X							"X axis rotation"
+#define ROT_Y							"Y axis rotation"
+#define ROT_Z							"Z axis rotation"
+#define ROT_RESET						"Reset rotation"
+#define LAYER							"Layer"
+#define RESET_TEXTURE					"Reset texture"
+#define RESET_OBJECT_COLOR				"Reset object color"
+#define COPY_TEXTURE					"Copy texture and color"
+#define OBJECT_TEXTURE					"Object texture:"
+#define OBJECT_COLOR					"Object color:"
+#define EDIT_TEXTURE					"Change texture (layer %d)"
+#define EDIT_OBJECT_COLOR				"Change object color (layer %d)"
+#define ENTER_LAYER_ID					"Enter the ID of layer (materialindex) from 0 to 15:"
+#define RESET_TEXT						"Reset text"
+#define COPY_TEXT						"Copy text"
+#define OBJECT_TEXT						"Object text:"
+#define OBJECT_TEXT_SIZE				"Text size:"
+#define TEXT_FONT						"Font:"
+#define FONT_SIZE						"Font size:"
+#define BOLD							"Bold:"
+#define FONT_COLOR						"Font color:"
+#define BACK_COLOR						"Background color:"
+#define ALIGNMENT						"Alignment:"
+#define EDIT_TEXT						"Change text"
+#define EDIT_OBJECT_TEXT_SIZE			"Change text size"
+#define EDIT_FONT						"Change font"
+#define CHOOSE_FROM_EXIST_FONTS			"Choose from available fonts"
+#define ENTER_FONT						"Enter font name"
+#define CHOOSE_FONT						"Choose font"
+#define EDIT_FONT_SIZE					"Change font size"
+#define EDIT_OBJECT_TEXT_BOLD			"Set/Unset font bold"
+#define ENABLE_BOLD						"Make text bold"
+#define DISABLE_BOLD					"Remove bold from the text"
+#define EDIT_OBJECT_FONT_COLOR			"Change font color"
+#define EDIT_OBJECT_BACK_COLOR			"Change background color"
+#define EDIT_OBJECT_TEXT_ALIGNMENT		"Change alignment"
+#define ALIGNMENT_LEFT					"Left"
+#define ALIGNMENT_CENTER				"Center"
+#define ALIGNMENT_RIGHT					"Right"
+#define ENTER_PLAYER_ID					"Enter the ID of player:"
+#define ENTER_OBJECT_ID					"Enter the ID of the object to which you want to attach an object:"
+#define ENTER_VEHICLE_ID				"Enter the ID of vehicle:"
+#define COORDS_NOW						"Coordinates now:"
+#define ENTER_COORD_X					"Enter the X coordinate"
+#define ENTER_COORD_Y					"Enter the Y coordinate"
+#define ENTER_COORD_Z					"Enter the Z coordinate"
+#define ENTER_ROT_X						"Enter the X coordinate of the rotation"
+#define ENTER_ROT_Y						"Enter the Y coordinate of the rotation"
+#define ENTER_ROT_Z						"Enter the Z coordinate of the rotation"
+#define COORD_NOW						"Coordinate now:"
+#define EDIT_VEHICLE					"Edit vehicle"
+#define SELECT_VEHICLE					"Select vehicle"
+#define TELEPORT_TO_VEHICLE				"Move to vehicle"
+#define TELEPORT_VEHICLE				"Move vehicle to youself"
+#define COPY_VEHICLE					"Copy vehicle"
+#define DELETE_VEHICLE					"Delete vehicle"
+#define REPAIR_VEHICLE					"Repair vehicle"
+#define TUNE_VEHICLE					"Vehicle tuning"
+#define RESPAWN_TIME					"Respawn time"
+#define COLOR_1							"Color 1"
+#define COLOR_2							"Color 2"
+#define ADD_COMPONENT					"Add component"
+#define CHANGE_PAINTJOB					"Change paintjob"
+#define REMOVE_COMPONENT				"View and remove components"
+#define REMOVE_PAINTJOB					"Remove paintjob"
+#define REMOVE_ALL_COMPONENTS			"Remove all components"
+#define NO_COMPONENTS_ERROR				"The vehicle do not have any components!"
+#define ENTER_RESPAWN_TIME				"Enter respawn time (in seconds), after which the vehicle will appear"
+#define RESPAWN_TIME_NOW				"Time now: %d s"
+#define ENTER_COLOR_1					"Enter the color 1"
+#define ENTER_COLOR_2					"Enter the color 2"
+#define COLOR_NOW						"Color now:"
+#define EDIT_ACTOR						"Edit actor"
+#define SELECT_ACTOR					"Select actor"
+#define TELEPORT_TO_ACTOR				"Move to actor"
+#define TELEPORT_ACTOR					"Move actor to youself"
+#define COPY_ACTOR						"Copy actor"
+#define DELETE_ACTOR					"Delete actor"
+#define SET_ACTOR_ANIM					"Set animation"
+#define ENTER_ANIMATION_NAME			"Enter the ID or name of animation:"
+#define CLEAR_ACTOR_ANIM				"Clear animation"
+#define EDIT_PICKUP						"Edit pickup"
+#define SELECT_PICKUP					"Select pickup"
+#define TELEPORT_TO_PICKUP				"Move to pickup"
+#define TELEPORT_PICKUP					"Move pickup to youself"
+#define COPY_PICKUP						"Copy pickup"
+#define DELETE_PICKUP					"Delete pickup"
+#define EDIT_PICKUP_TYPE				"Change pickup type"
+#define EDIT_VW							"Virtual world"
+#define ENTER_PICKUP_TYPE				"Enter the type of the pickup"
+#define TYPE_NOW						"Type now:"
+#define ENTER_VW_ID						"Enter the ID of virtual world"
+#define VW_NOW							"Virtual world now:"
+#define EDIT_CHECKPOINT					"Edit checkpoint"
+#define SELECT_CHECKPOINT				"Select checkpoint"
+#define TELEPORT_TO_CHECKPOINT			"Move to checkpoint"
+#define TELEPORT_CHECKPOINT				"Move checkpoint to youself"
+#define DELETE_CHECKPOINT				"Delete checkpoint"
+#define EDIT_SIZE						"Change size"
+#define ENTER_SIZE						"Enter the size"
+#define SIZE_NOW						"Size now:"
+#define EDIT_RACECP						"Edit race checkpoint"
+#define SELECT_RACECP					"Select race checkpoint"
+#define TELEPORT_TO_RACECP				"Move to race checkpoint"
+#define TELEPORT_RACECP					"Move race checkpoint to youself"
+#define DELETE_RACECP					"Delete race checkpoint"
+#define EDIT_TYPE						"Change type"
+#define COORD_NEXTX						"NextX coordinate"
+#define COORD_NEXTY						"NextY coordinate"
+#define COORD_NEXTZ						"NextZ coordinate"
+#define EDIT_MAPICON					"Edit map icon"
+#define SELECT_MAPICON					"Select map icon"
+#define TELEPORT_TO_MAPICON				"Move to map icon"
+#define TELEPORT_MAPICON				"Move map icon to youself"
+#define COPY_MAPICON					"Copy map icon"
+#define DELETE_MAPICON					"Delete map icon"
+#define EDIT_COLOR						"Change color"
+#define CHOOSE_FROM_EXIST_COLORS		"Choose from available colors"
+#define ENTER_RGBA_COLOR				"Enter in RGBA format"
+#define ENTER_ARGB_COLOR				"Enter in ARGB format"
+#define CHANGE_ALPHA					"Change alpha"
+#define CHOOSE_COLOR					"Choose color"
+#define WHITE_COLOR						"White"
+#define BLACK_COLOR						"Black"
+#define YELLOW_COLOR					"Yellow"
+#define GREEN_COLOR						"Green"
+#define RED_COLOR						"Red"
+#define PINK_COLOR						"Pink"
+#define ORANGE_COLOR					"Orange"
+#define BROWN_COLOR						"Brown"
+#define PURPLE_COLOR					"Purple"
+#define LIGHT_BLUE_COLOR				"Light blue"
+#define DARK_BLUE_COLOR					"Dark blue"
+#define EDIT_STYLE						"Display style"
+#define ENTER_MAPICON_COLOR				"Enter the color of the map icon (only for ID 0):"
+#define MAPICON_STYLE_NOW				"Display style now:"
+#define MAPICON_STYLE_LOCAL				"Show only near"
+#define MAPICON_STYLE_GLOBAL			"Show always"
+#define MAPICON_STYLE_LOCAL_CP			"Show only near (with the checkpoint)"
+#define MAPICON_STYLE_GLOBAL_CP			"Show always (with the checkpoint)"
+#define EDIT_GANGZONE					"Edit gangzone"
+#define EDIT_ZONE_SIZE					"Edit gangzone size"
+#define EDIT_ZONE_POS					"Edit gangzone position"
+#define TELEPORT_TO_ZONE				"Move to gangzone"
+#define TELEPORT_ZONE					"Move gangzone to youself"
+#define COPY_ZONE						"Copy gangzone"
+#define DELETE_ZONE						"Delete gangzone"
+#define COORD_MINX						"Min X coordinate"
+#define COORD_MINY						"Min Y coordinate"
+#define COORD_MAXX						"Max X coordinate"
+#define COORD_MAXY						"Max Y coordinate"
+#define ENTER_COORD_MINX				"Enter the min X coordinate:"
+#define ENTER_COORD_MINY				"Enter the min Y coordinate:"
+#define ENTER_COORD_MAXX				"Enter the max X coordinate:"
+#define ENTER_COORD_MAXY				"Enter the max Y coordinate:"
+#define ENTER_GANGZONE_COLOR			"Enter the color of the gangzone:"
+#define EDIT_LABEL						"Edit 3D text"
+#define SELECT_LABEL					"Select 3D text"
+#define TELEPORT_TO_LABEL				"Move to 3D text"
+#define TELEPORT_LABEL					"Move 3D text to youself"
+#define COPY_LABEL						"Copy 3D text"
+#define DELETE_LABEL					"Delete 3D text"
+#define LABEL_DD						"Draw distance"
+#define LABEL_LOS						"Visibility through walls"
+#define LABEL_TEXT_NOW					"The text of the 3D text now:"
+#define ENTER_LABEL_COLOR				"Enter the color of the 3D text:"
+#define ENTER_LABEL_DD					"Enter the draw distance on which you can see the 3D text"
+#define LABEL_DD_NOW					"Draw distance now:"
+#define LABEL_LOS_NOW					"Visibility now:"
+#define ENABLE_LABEL_LOS				"Enable visibility through walls"
+#define DISABLE_LABEL_LOS				"Disable visibility through walls"
+#define ENABLED							"enabled"
+#define DISABLED						"disabled"
+#define TELEPORT_TO_COORDS				"Move to coordinates"
+#define TELEPORT_TO_INT					"Move into interior"
+#define TELEPORT_TO_VW					"Move into virtual world"
+#define TELEPORT_TO_MAP_MARKER			"Move to map marker"
+#define TELEPORT_TO_DEFAULT_INTS		"Move to default interiors"
+#define ENTER_COORDS					"Enter the coordinates (X, Y, Z):"
+#define ENTER_INTERIOR					"Enter the interior"
+#define INTERIOR_NOW					"Interior now:"
+#define CHOOSE_INTERIOR					"Choose interior"
+#define REMOVE_OBJECTS_WARNING			"Are you sure you want to delete default objects?"
+#define REMOVE_OBJECTS_WARNING_2		"You can restore them only after creating a new map and reconnecting to the server."
+#define EDIT_CAM_SPEED					"Change camera speed"
+#define EDIT_CAM_SPEED_SLOW				"Change camera speed (Alt)"
+#define EDIT_CAM_SPEED_FAST				"Change camera speed (Shift)"
+#define EDIT_CAM_SPEED_NORMAL			"Change camera speed"
+#define EDIT_CAM_DIST					"Change camera distance"
+#define EDIT_MOVE_DIST					"Change movement distance"
+#define EDIT_MOVE_DIST_ZONE				"Change gangzone movement distance"
+#define EDIT_MOVE_DIST_Z_SHORT			"Change gangzone movement distance (Alt)"
+#define EDIT_MOVE_DIST_Z_LONG			"Change gangzone movement distance (Shift)"
+#define EDIT_MOVE_DIST_Z_NORMAL			"Change gangzone movement distance"
+#define EDIT_MOVE_DIST_ICON				"Change map icon movement distance"
+#define EDIT_MOVE_DIST_I_SHORT			"Change map icon movement distance (Alt)"
+#define EDIT_MOVE_DIST_I_LONG			"Change map icon movement distance (Shift)"
+#define EDIT_MOVE_DIST_I_NORMAL			"Change map icon movement distance"
+#define EDIT_MOVE_DIST_OTHER			"Change other stuff movement distance"
+#define EDIT_MOVE_DIST_SHORT			"Change movement distance (Alt)"
+#define EDIT_MOVE_DIST_LONG				"Change movement distance (Shift)"
+#define EDIT_MOVE_DIST_NORMAL			"Change movement distance"
+#define EDIT_ROT_SPEED					"Change rotation speed"
+#define EDIT_ROT_SPEED_SLOW				"Change rotation speed (Alt)"
+#define EDIT_ROT_SPEED_FAST				"Change rotation speed (Shift)"
+#define EDIT_ROT_SPEED_NORMAL			"Change rotation speed"
+#define EDIT_INTERFACE_VISIBILITY		"Change interface visibility"
+#define ENTER_CAM_SPEED_SLOW			"Enter the speed of the camera (Alt)"
+#define ENTER_CAM_SPEED_FAST			"Enter the speed of the camera (Shift)"
+#define ENTER_CAM_SPEED					"Enter the speed of the camera"
+#define CAM_SPEED_NOW					"Camera speed now:"
+#define ENTER_CAM_DIST					"Enter the distance from the camera"
+#define CAM_DIST_NOW					"Camera distance now:"
+#define ENTER_ZONE_DIST_SHORT			"Enter the distance of gangzone movement (Alt)"
+#define ENTER_ZONE_DIST_LONG			"Enter the distance of gangzone movement (Shift)"
+#define ENTER_ZONE_DIST					"Enter the distance of gangzone movement"
+#define ZONE_DIST_NOW					"Gangzone movement distance now:"
+#define ENTER_ICON_DIST_SHORT			"Enter the distance of map icon movement (Alt)"
+#define ENTER_ICON_DIST_LONG			"Enter the distance of map icon movement (Shift)"
+#define ENTER_ICON_DIST					"Enter the distance of map icon movement"
+#define ICON_DIST_NOW					"Map icon movement distance now:"
+#define ENTER_DIST_SHORT				"Enter the distance of movement (Alt)"
+#define ENTER_DIST_LONG					"Enter the distance of movement (Shift)"
+#define ENTER_DIST						"Enter the distance of movement"
+#define DIST_NOW						"Movement distance now:"
+#define ENTER_ROT_SPEED_SLOW			"Enter the speed of rotation (Alt)"
+#define ENTER_ROT_SPEED_FAST			"Enter the speed of rotation (Shift)"
+#define ENTER_ROT_SPEED					"Enter the speed of rotation"
+#define ROT_SPEED_NOW					"Rotation speed now:"
+#define ENABLE_INTERFACE_VISIBILITY		"Enable interface visibility"
+#define DISABLE_INTERFACE_VISIBILITY	"Disable interface visibility"
+#define INTERFACE_VISIBILITY_NOW		"Interface visibility now:"
+#define EDIT_WEATHER					"Set weather"
+#define EDIT_WORLDTIME					"Set time"
+#define EDIT_GRAVITY					"Set gravity"
+#define ENTER_WEATHER_ID				"Enter the ID of weather"
+#define WEATHER_NOW						"Current weather:"
+#define WORLDTIME_NOW					"Current time:"
+#define ENTER_GRAVITY_VALUE				"Enter the value of gravity"
+#define GRAVITY_NOW						"Current gravity:"
+#define KEY_INSTRUCTION_STRING_1		"LAlt (KEY_WALK) - Slow moving/movement"
+#define KEY_INSTRUCTION_STRING_2		"LShift (KEY_JUMP) - Accelerate the moving/movement"
+#define KEY_INSTRUCTION_STRING_3		"LShift (KEY_JUMP) + LAlt (KEY_WALK) - Objects mapping in view of the rotate of the surface"
+#define KEY_INSTRUCTION_STRING_4		"LMB (KEY_FIRE) - Select an object/vehicle/actor..."
+#define KEY_INSTRUCTION_STRING_5		"* W, A, S, D - The movement of the selected object/vehicle/actor..."
+#define KEY_INSTRUCTION_STRING_6		"* LShift (KEY_JUMP) + LAlt (KEY_WALK) + W, A, S, D - Movement on the Z-axis of the selected object/vehicle/actor..."
+#define KEY_INSTRUCTION_STRING_7		"* LCtrl (KEY_FIRE) + W, A, S, D - Changing the rotation angle of the selected object/vehicle/actor..."
+#define KEY_INSTRUCTION_STRING_8		"* LCtrl (KEY_FIRE) + LShift (KEY_JUMP) + LAlt (KEY_WALK) + W, A, S, D - Changing the rotation angle on the X-axis of the selected object/vehicle/actor..."
+#define KEY_INSTRUCTION_STRING_9		"RMB (KEY_HANDBRAKE) - Moving an object/vehicle/actor... by mouse"
+#define KEY_INSTRUCTION_STRING_10		"Space (KEY_SPRINT) - Remove select/movement of an object/vehicle/actor..."
+#define KEY_INSTRUCTION_STRING_11		"C (KEY_CROUCH) + LMB (KEY_FIRE) - Copy an object/vehicle/actor..."
+#define KEY_INSTRUCTION_STRING_12		"* LShift (KEY_JUMP) + LAlt (KEY_WALK) + C (KEY_CROUCH) + LMB (KEY_FIRE) - Copy an attached object/3D text"
+#define KEY_INSTRUCTION_STRING_13		"\\ (KEY_ACTION) + LMB (KEY_FIRE) - Delete an object/vehicle/actor..."
+#define CMD_INSTRUCTION_CAPTION_1		"Map management"
+#define CMD_INSTRUCTION_STRING_1_1		"/newmap - create a new map"
+#define CMD_INSTRUCTION_STRING_1_2		"/loadmap - load an existing map"
+#define CMD_INSTRUCTION_STRING_1_3		"/savemap - save the current map"
+#define CMD_INSTRUCTION_STRING_1_4		"/delmap - delete map"
+#define CMD_INSTRUCTION_CAPTION_2		"Objects"
+#define CMD_INSTRUCTION_STRING_2_1		"/newobj - create an object"
+#define CMD_INSTRUCTION_STRING_2_2		"/delobj - delete the selected object"
+#define CMD_INSTRUCTION_STRING_2_3		"/cobj - copy the selected object"
+#define CMD_INSTRUCTION_STRING_2_4		"/selobj [object ID] - select an object by ID"
+#define CMD_INSTRUCTION_STRING_2_5		"/gotoobj - teleport to the selected object"
+#define CMD_INSTRUCTION_STRING_2_6		"/getobj - teleport the selected object to yourself"
+#define CMD_INSTRUCTION_STRING_2_7		"/objtext - text editor on the selected object"
+#define CMD_INSTRUCTION_STRING_2_8		"/oplattach [player ID] - attach the selected object to player"
+#define CMD_INSTRUCTION_STRING_2_9		"/oobjattach [object ID] - attach the selected object to object"
+#define CMD_INSTRUCTION_STRING_2_10		"/ovehattach [vehicle ID] - attach the selected object to vehicle"
+#define CMD_INSTRUCTION_STRING_2_11		"/objx - /objy - /objz - set position of the selected object"
+#define CMD_INSTRUCTION_STRING_2_12		"/objrx - /objry - /objrz - set rotation angles of the selected object"
+#define CMD_INSTRUCTION_STRING_2_13		"/objrreset - reset rotation angles of the selected object"
+#define CMD_INSTRUCTION_CAPTION_3		"Textures"
+#define CMD_INSTRUCTION_STRING_3_1		"/txdset [layer ID] [texture ID] - set material of the selected object"
+#define CMD_INSTRUCTION_STRING_3_2		"/txdreset [layer ID] - reset material of the selected object"
+#define CMD_INSTRUCTION_STRING_3_3		"/txdcolor [layer ID] [hex code] - set color of the selected object"
+#define CMD_INSTRUCTION_STRING_3_4		"/txdcreset [layer ID] - reset color of the selected object"
+#define CMD_INSTRUCTION_STRING_3_5		"/tcopy [layer ID] - copy text/texture of the selected object"
+#define CMD_INSTRUCTION_STRING_3_6		"/tpaste [layer ID] - paste text/texture on the selected object"
+#define CMD_INSTRUCTION_STRING_3_7		"/treset [layer ID] - reset text/texture of the selected object"
+#define CMD_INSTRUCTION_STRING_3_8		"/tcopyall - copy text and textures of the selected object from all layers"
+#define CMD_INSTRUCTION_STRING_3_9		"/tpasteall - paste text and textures on all layers of the selected object"
+#define CMD_INSTRUCTION_STRING_3_10		"/tresetall - reset text and textures of the selected object from all layers"
+#define CMD_INSTRUCTION_STRING_3_11		"/tclear - clear text and textures clipboard"
+#define CMD_INSTRUCTION_CAPTION_4		"Vehicles"
+#define CMD_INSTRUCTION_STRING_4_1		"/newveh - create a vehicle"
+#define CMD_INSTRUCTION_STRING_4_2		"/delveh - delete the selected vehicle"
+#define CMD_INSTRUCTION_STRING_4_3		"/cveh - copy the selected vehicle"
+#define CMD_INSTRUCTION_STRING_4_4		"/selveh [vehicle ID] - select a vehicle by ID"
+#define CMD_INSTRUCTION_STRING_4_5		"/gotoveh - teleport to the selected vehicle"
+#define CMD_INSTRUCTION_STRING_4_6		"/getveh - teleport the selected vehicle to yourself"
+#define CMD_INSTRUCTION_STRING_4_7		"/vehrepair - repair the selected vehicle"
+#define CMD_INSTRUCTION_STRING_4_8		"/vehx - /vehy - /vehz - set position of the selected vehicle"
+#define CMD_INSTRUCTION_STRING_4_9		"/vehrz - set rotation angle of the selected vehicle"
+#define CMD_INSTRUCTION_STRING_4_10		"/vehrtime - set respawn time of the selected vehicle"
+#define CMD_INSTRUCTION_STRING_4_11		"/vehcolor - set colors of the selected vehicle"
+#define CMD_INSTRUCTION_CAPTION_5		"Tuning"
+#define CMD_INSTRUCTION_STRING_5_1		"/compadd - add component on the selected vehicle"
+#define CMD_INSTRUCTION_STRING_5_2		"/complist - viewing and deleting components on the selected vehicle"
+#define CMD_INSTRUCTION_STRING_5_3		"/compremoveall - remove all components from the selected vehicle"
+#define CMD_INSTRUCTION_STRING_5_4		"/paintjob - set paintjob (for certain vehicles)"
+#define CMD_INSTRUCTION_STRING_5_5		"/pjobremove - remove paintjob from the selected vehicle"
+#define CMD_INSTRUCTION_CAPTION_6		"Actors"
+#define CMD_INSTRUCTION_STRING_6_1		"/newact - create an actor"
+#define CMD_INSTRUCTION_STRING_6_2		"/delact - delete the selected actor"
+#define CMD_INSTRUCTION_STRING_6_3		"/cact - copy the selected actor"
+#define CMD_INSTRUCTION_STRING_6_4		"/selact [actor ID] - select an actor by ID"
+#define CMD_INSTRUCTION_STRING_6_5		"/gotoact - teleport to the selected actor"
+#define CMD_INSTRUCTION_STRING_6_6		"/getact - teleport the selected actor to yourself"
+#define CMD_INSTRUCTION_STRING_6_7		"/actanim - set animation to the selected actor"
+#define CMD_INSTRUCTION_STRING_6_8		"/actclear - reset the animation to the selected actor"
+#define CMD_INSTRUCTION_STRING_6_9		"/actx - /acty - /actz - set position of the selected actor"
+#define CMD_INSTRUCTION_STRING_6_10		"/actrz - set rotation angle of the selected actor"
+#define CMD_INSTRUCTION_CAPTION_7		"Pickups"
+#define CMD_INSTRUCTION_STRING_7_1		"/newpick - create a pickup"
+#define CMD_INSTRUCTION_STRING_7_2		"/delpick - delete the selected pickup"
+#define CMD_INSTRUCTION_STRING_7_3		"/cpick - copy the selected pickup"
+#define CMD_INSTRUCTION_STRING_7_4		"/selpick [pickup ID] - select a pickup by ID"
+#define CMD_INSTRUCTION_STRING_7_5		"/gotopick - teleport to the selected pickup"
+#define CMD_INSTRUCTION_STRING_7_6		"/getpick - teleport the selected pickup to yourself"
+#define CMD_INSTRUCTION_STRING_7_7		"/picktype - set type of the selected pickup"
+#define CMD_INSTRUCTION_STRING_7_8		"/pickx - /picky - /pickz - set position of the selected pickup"
+#define CMD_INSTRUCTION_STRING_7_9		"/pickvw - set virtual world of the selected pickup"
+#define CMD_INSTRUCTION_CAPTION_8		"Checkpoints"
+#define CMD_INSTRUCTION_STRING_8_1		"/newcp - create a checkpoint"
+#define CMD_INSTRUCTION_STRING_8_2		"/delcp - delete the checkpoint"
+#define CMD_INSTRUCTION_STRING_8_3		"/selcp - select the checkpoint"
+#define CMD_INSTRUCTION_STRING_8_4		"/gotocp - teleport to the checkpoint"
+#define CMD_INSTRUCTION_STRING_8_5		"/getcp - teleport the checkpoint to yourself"
+#define CMD_INSTRUCTION_STRING_8_6		"/cpx - /cpy - set position of the checkpoint"
+#define CMD_INSTRUCTION_STRING_8_7		"/cpsize - set size of the checkpoint"
+#define CMD_INSTRUCTION_CAPTION_9		"Race checkpoints"
+#define CMD_INSTRUCTION_STRING_9_1		"/newrcp - create a race checkpoint"
+#define CMD_INSTRUCTION_STRING_9_2		"/delrcp - delete the race checkpoint"
+#define CMD_INSTRUCTION_STRING_9_3		"/selrcp - select the race checkpoint"
+#define CMD_INSTRUCTION_STRING_9_4		"/gotorcp - teleport to the race checkpoint"
+#define CMD_INSTRUCTION_STRING_9_5		"/getrcp - teleport the race checkpoint to yourself"
+#define CMD_INSTRUCTION_STRING_9_6		"/rcptype - set type of the race checkpoint"
+#define CMD_INSTRUCTION_STRING_9_7		"/rcpx - /rcpy - /rcpz - set position of the race checkpoint"
+#define CMD_INSTRUCTION_STRING_9_8		"/rcpnextx - /rcpnexty - /rcpnextz - arrow pointer's position of the race checkpoint"
+#define CMD_INSTRUCTION_STRING_9_9		"/rcpsize - set size of the race checkpoint"
+#define CMD_INSTRUCTION_CAPTION_10		"Map icons"
+#define CMD_INSTRUCTION_STRING_10_1		"/newicon - create a map icon"
+#define CMD_INSTRUCTION_STRING_10_2		"/delicon - delete the selected map icon"
+#define CMD_INSTRUCTION_STRING_10_3		"/cicon - copy the selected map icon"
+#define CMD_INSTRUCTION_STRING_10_4		"/selicon [map icon ID] - select a map icon by ID"
+#define CMD_INSTRUCTION_STRING_10_5		"/gotoicon - teleport to the selected map icon"
+#define CMD_INSTRUCTION_STRING_10_6		"/geticon - teleport the selected map icon to yourself"
+#define CMD_INSTRUCTION_STRING_10_7		"/iconx - /icony - /iconz - set position of the selected map icon"
+#define CMD_INSTRUCTION_STRING_10_8		"/iconcolor - set color of the selected map icon"
+#define CMD_INSTRUCTION_STRING_10_9		"/iconstyle - set style of the selected map icon"
+#define CMD_INSTRUCTION_CAPTION_11		"Gangzones"
+#define CMD_INSTRUCTION_STRING_11_1		"/newzone - create a gangzone"
+#define CMD_INSTRUCTION_STRING_11_2		"/delzone - delete the selected gangzone"
+#define CMD_INSTRUCTION_STRING_11_3		"/czone - copy the selected gangzone"
+#define CMD_INSTRUCTION_STRING_11_4		"/selzone [gangzone ID] - select a gangzone by ID (size changing)"
+#define CMD_INSTRUCTION_STRING_11_5		"/holdzone [gangzone ID] - select a gangzone by ID (movement)"
+#define CMD_INSTRUCTION_STRING_11_6		"/gotozone - teleport to the selected gangzone"
+#define CMD_INSTRUCTION_STRING_11_7		"/getzone - teleport the selected gangzone to yourself"
+#define CMD_INSTRUCTION_STRING_11_8		"/zoneminx - /zoneminy - /zonemaxx - /zonemaxy - set position of the selected gangzone"
+#define CMD_INSTRUCTION_STRING_11_9		"/zonecolor - set color of the selected gangzone"
+#define CMD_INSTRUCTION_CAPTION_12		"3D texts"
+#define CMD_INSTRUCTION_STRING_12_1		"/newlab - create a 3D text"
+#define CMD_INSTRUCTION_STRING_12_2		"/dellab - delete the selected 3D text"
+#define CMD_INSTRUCTION_STRING_12_3		"/clab - copy the selected 3D text"
+#define CMD_INSTRUCTION_STRING_12_4		"/sellab [label ID] - select a 3D text by ID"
+#define CMD_INSTRUCTION_STRING_12_5		"/gotolab - teleport to the selected 3D text"
+#define CMD_INSTRUCTION_STRING_12_6		"/getlab - teleport the selected 3D text to yourself"
+#define CMD_INSTRUCTION_STRING_12_7		"/labtext - set text to the selected 3D text"
+#define CMD_INSTRUCTION_STRING_12_8		"/labcolor - set color of the selected 3D text"
+#define CMD_INSTRUCTION_STRING_12_9		"/lplattach [player ID] - attach the selected 3D text to player"
+#define CMD_INSTRUCTION_STRING_12_10	"/lvehattach [vehicle ID] - attach the selected 3D text to vehicle"
+#define CMD_INSTRUCTION_STRING_12_11	"/labx - /laby - /labz - set position of the selected 3D text"
+#define CMD_INSTRUCTION_STRING_12_12	"/labdd - set draw distance of the selected 3D text"
+#define CMD_INSTRUCTION_STRING_12_13	"/labvw - set virtual world of the selected 3D text"
+#define CMD_INSTRUCTION_STRING_12_14	"/lablos - set visibility through walls of the selected 3D text"
+#define CMD_INSTRUCTION_CAPTION_13		"Moving around the map"
+#define CMD_INSTRUCTION_STRING_13_1		"/setpos – teleport to the coordinates"
+#define CMD_INSTRUCTION_STRING_13_2		"/setint – interior setting by ID"
+#define CMD_INSTRUCTION_STRING_13_3		"/setvw – virtual world setting by ID"
+#define CMD_INSTRUCTION_STRING_13_4		"/maptp – teleport to the last map marker"
+#define CMD_INSTRUCTION_STRING_13_5		"/gotoint – teleport to default interiors"
+#define CMD_INSTRUCTION_CAPTION_14		"Default objects"
+#define CMD_INSTRUCTION_STRING_14_1		"/copyobjects - copy default objects mode"
+#define CMD_INSTRUCTION_STRING_14_2		"/remobjects - delete default objects mode"
+#define CMD_INSTRUCTION_CAPTION_15		"Editor settings"
+#define CMD_INSTRUCTION_STRING_15_1		"/camspeed - change camera speed"
+#define CMD_INSTRUCTION_STRING_15_2		"/camspeedslow - change camera speed (Alt)"
+#define CMD_INSTRUCTION_STRING_15_3		"/camspeedfast - change camera speed (Shift)"
+#define CMD_INSTRUCTION_STRING_15_4		"/camdist - change camera distance"
+#define CMD_INSTRUCTION_STRING_15_5		"/movedist - change movement distance"
+#define CMD_INSTRUCTION_STRING_15_6		"/movedistshort - change movement distance (Alt)"
+#define CMD_INSTRUCTION_STRING_15_7		"/movedistlong - change movement distance (Shift)"
+#define CMD_INSTRUCTION_STRING_15_8		"/movedistgz - change gangzone movement distance"
+#define CMD_INSTRUCTION_STRING_15_9		"/movedistgzshort - change gangzone movement distance (Alt)"
+#define CMD_INSTRUCTION_STRING_15_10	"/movedistgzlong - change gangzone movement distance (Shift)"
+#define CMD_INSTRUCTION_STRING_15_11	"/movedisti - change map icon movement distance"
+#define CMD_INSTRUCTION_STRING_15_12	"/movedistishort - change map icon movement distance (Alt)"
+#define CMD_INSTRUCTION_STRING_15_13	"/movedistilong - change map icon movement distance (Shift)"
+#define CMD_INSTRUCTION_STRING_15_14	"/rotspeed - change rotation speed"
+#define CMD_INSTRUCTION_STRING_15_15	"/rotspeedslow - change rotation speed (Alt)"
+#define CMD_INSTRUCTION_STRING_15_16	"/rotspeedfast - change rotation speed (Shift)"
+#define CMD_INSTRUCTION_STRING_15_17	"/showgui - show interface"
+#define CMD_INSTRUCTION_STRING_15_18	"/hidegui - hide interface"
+#define CMD_INSTRUCTION_CAPTION_16		"Map settings"
+#define CMD_INSTRUCTION_STRING_16_1		"/setweather - set weather"
+#define CMD_INSTRUCTION_STRING_16_2		"/settime - set time"
+#define CMD_INSTRUCTION_STRING_16_3		"/setgravity - set gravity"
+#define EDIT_LOG_IN_MSG					"%s has entered edit mode"
+#define EDIT_LOG_OUT_MSG				"%s has left edit mode"
+#define REMOVE_OBJECTS_MODE_WARNING		"To exit 'delete default objects' mode, press the space (KEY_SPRINT)"
+#define REMOVED_OBJECTS_WARNING			"To restore deleted objects you need to reconnect to the server"
 
 #define DIALOG_CHOOSE_MAP					16384
 #define DIALOG_NEW_MAP						16385
@@ -8040,6 +8063,22 @@ enum remInfo
 	bool:rbRemoved
 }
 
+enum buffInfo
+{
+	bBold,
+	bLayerID,
+	bFontSize,
+	bTextSize,
+	bTextIndex,
+	bFontColor,
+	bBackColor,
+	bTextAlignment,
+	bFont[MAX_FONT_NAME_LENGTH],
+	bText[MAX_OBJECT_TEXT_LENGTH],
+	bTextureid[MAX_TEXTURES_PER_OBJECT],
+	bMaterialColor[MAX_TEXTURES_PER_OBJECT]
+}
+
 enum ucInfo
 {
 	Float:ucAccelMul,
@@ -8058,6 +8097,7 @@ enum ucInfo
 	ucMode,
 	ucPage,
 	ucLastMove,
+	ucBufferMode,
 	ucHoldingObj,
 	ucHoldingVeh,
 	ucHoldingAct,
@@ -8098,6 +8138,7 @@ enum ucInfo
 
 new
 	CreatorInfo[MAX_PLAYERS][ucInfo],
+	BufferInfo[MAX_PLAYERS][buffInfo],
 
 	ObjectsInfo[MAX_UC_OBJECTS][objInfo],
 	VehiclesInfo[MAX_VEHICLES][vehInfo],
@@ -10502,6 +10543,9 @@ public OnFilterScriptInit()
 		ObjectsInfo[i][oAttachedObjectID] = INVALID_OBJECT_ID;
 		ObjectsInfo[i][oAttachedVehicleID] = INVALID_VEHICLE_ID;
 	}
+	#if defined Streamer_SetVisibleItems
+		Streamer_SetVisibleItems(STREAMER_TYPE_OBJECT, MAX_OBJECTS, -1);
+	#endif
 	#if defined foreach
 		foreach(new i : Player)
 	#else
@@ -10592,6 +10636,7 @@ public OnPlayerConnect(playerid)
 	CreatorInfo[playerid][ucOldPosY] = 0.0;
 	CreatorInfo[playerid][ucOldPosZ] = 0.0;
 	CreatorInfo[playerid][ucOldAngle] = 0.0;
+	CreatorInfo[playerid][ucBufferMode] = 0;
 	CreatorInfo[playerid][ucFlyObject] = 0;
 	CreatorInfo[playerid][ucOldInt] = 0;
 	CreatorInfo[playerid][ucOldVW] = 0;
@@ -10632,6 +10677,7 @@ public OnPlayerSpawn(playerid)
 	CreatorInfo[playerid][ucPage] = 0;
 	CreatorInfo[playerid][ucLrOld] = 0;
 	CreatorInfo[playerid][ucUdOld] = 0;
+	CreatorInfo[playerid][ucBufferMode] = 0;
 	CreatorInfo[playerid][ucAccelMul] = 0.0;
 	CreatorInfo[playerid][ucCameraMode] = false;
 	CreatorInfo[playerid][ucCopyDefObj] = false;
@@ -10674,12 +10720,20 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	dcmd2(objrx, 5, cmdtext);
 	dcmd2(objry, 5, cmdtext);
 	dcmd2(objrz, 5, cmdtext);
+	dcmd2(objrreset, 9, cmdtext);
 
 	//Textures
 	dcmd2(txdset, 6, cmdtext);
 	dcmd2(txdreset, 8, cmdtext);
 	dcmd2(txdcolor, 8, cmdtext);
 	dcmd2(txdcreset, 9, cmdtext);
+	dcmd2(tcopy, 5, cmdtext);
+	dcmd2(tpaste, 6, cmdtext);
+	dcmd2(treset, 6, cmdtext);
+	dcmd2(tcopyall, 8, cmdtext);
+	dcmd2(tpasteall, 9, cmdtext);
+	dcmd2(tresetall, 9, cmdtext);
+	dcmd2(tclear, 6, cmdtext);
 
 	//Vehicles
 	dcmd2(newveh, 6, cmdtext);
@@ -10837,94 +10891,172 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	dcmd2(setgravity, 10, cmdtext);
 
 	//Miscellaneous
+	dcmd2(flymode, 7, cmdtext);
 	dcmd2(openmap, 7, cmdtext);
 	dcmd2(deletemap, 9, cmdtext);
 	dcmd2(newobject, 9, cmdtext);
+	dcmd2(dobj, 4, cmdtext);
+	dcmd2(dobject, 7, cmdtext);
+	dcmd2(delobject, 9, cmdtext);
 	dcmd2(deleteobj, 9, cmdtext);
 	dcmd2(deleteobject, 12, cmdtext);
 	dcmd2(copyobj, 7, cmdtext);
 	dcmd2(copyobject, 10, cmdtext);
+	dcmd2(selobject, 9, cmdtext);
 	dcmd2(selectobj, 9, cmdtext);
 	dcmd2(selectobject, 12, cmdtext);
+	dcmd2(ogoto, 5, cmdtext);
 	dcmd2(gotoobject, 10, cmdtext);
 	dcmd2(getobject, 9, cmdtext);
+	dcmd2(otext, 5, cmdtext);
+	dcmd2(objtxt, 6, cmdtext);
 	dcmd2(objecttext, 10, cmdtext);
+	dcmd2(objecttxt, 9, cmdtext);
 	dcmd2(oplayerattach, 13, cmdtext);
 	dcmd2(oobjectattach, 13, cmdtext);
 	dcmd2(ovehicleattach, 14, cmdtext);
+	dcmd2(ox, 2, cmdtext);
+	dcmd2(oy, 2, cmdtext);
+	dcmd2(oz, 2, cmdtext);
 	dcmd2(objectx, 7, cmdtext);
 	dcmd2(objecty, 7, cmdtext);
 	dcmd2(objectz, 7, cmdtext);
+	dcmd2(orx, 3, cmdtext);
+	dcmd2(ory, 3, cmdtext);
+	dcmd2(orz, 3, cmdtext);
 	dcmd2(objectrx, 8, cmdtext);
 	dcmd2(objectry, 8, cmdtext);
 	dcmd2(objectrz, 8, cmdtext);
+	dcmd2(orreset, 7, cmdtext);
+	dcmd2(objectrreset, 12, cmdtext);
+	dcmd2(rotreset, 8, cmdtext);
+	dcmd2(mtset, 5, cmdtext);
 	dcmd2(txdcset, 7, cmdtext);
+	dcmd2(mtcolor, 7, cmdtext);
 	dcmd2(txdcolorreset, 13, cmdtext);
+	dcmd2(texturecopy, 11, cmdtext);
+	dcmd2(texturepaste, 12, cmdtext);
+	dcmd2(texturereset, 12, cmdtext);
+	dcmd2(texturecopyall, 14, cmdtext);
+	dcmd2(texturepasteall, 15, cmdtext);
+	dcmd2(textureresetall, 15, cmdtext);
+	dcmd2(robject, 7, cmdtext);
+	dcmd2(clearbuff, 9, cmdtext);
+	dcmd2(textureclear, 12, cmdtext);
 	dcmd2(newvehicle, 10, cmdtext);
+	dcmd2(avnewcar, 8, cmdtext);
+	dcmd2(dveh, 4, cmdtext);
+	dcmd2(dvehicle, 8, cmdtext);
+	dcmd2(delvehicle, 10, cmdtext);
 	dcmd2(deleteveh, 9, cmdtext);
 	dcmd2(deletevehicle, 13, cmdtext);
+	dcmd2(avdeletecar, 11, cmdtext);
 	dcmd2(copyveh, 7, cmdtext);
 	dcmd2(copyvehicle, 11, cmdtext);
+	dcmd2(avclonecar, 10, cmdtext);
+	dcmd2(selvehicle, 10, cmdtext);
 	dcmd2(selectveh, 9, cmdtext);
 	dcmd2(selectvehicle, 13, cmdtext);
+	dcmd2(avsel, 5, cmdtext);
+	dcmd2(avselectcar, 11, cmdtext);
+	dcmd2(vgoto, 5, cmdtext);
 	dcmd2(gotovehicle, 11, cmdtext);
+	dcmd2(avgoto, 6, cmdtext);
 	dcmd2(getvehicle, 10, cmdtext);
+	dcmd2(vrepair, 7, cmdtext);
 	dcmd2(repairveh, 9, cmdtext);
 	dcmd2(vehiclerepair, 13, cmdtext);
 	dcmd2(repairvehicle, 13, cmdtext);
+	dcmd2(vx, 2, cmdtext);
+	dcmd2(vy, 2, cmdtext);
+	dcmd2(vz, 2, cmdtext);
 	dcmd2(vehiclex, 8, cmdtext);
 	dcmd2(vehicley, 8, cmdtext);
 	dcmd2(vehiclez, 8, cmdtext);
+	dcmd2(vrz, 3, cmdtext);
 	dcmd2(vehiclerz, 9, cmdtext);
+	dcmd2(vrtime, 6, cmdtext);
 	dcmd2(vehiclertime, 12, cmdtext);
+	dcmd2(vcolor, 6, cmdtext);
 	dcmd2(vehiclecolor, 12, cmdtext);
+	dcmd2(avcarcolor, 10, cmdtext);
 	dcmd2(compremove, 10, cmdtext);
 	dcmd2(pjob, 4, cmdtext);
+	dcmd2(avpaint, 7, cmdtext);
 	dcmd2(paintjobremove, 14, cmdtext);
 	dcmd2(newactor, 8, cmdtext);
+	dcmd2(dact, 4, cmdtext);
+	dcmd2(dactor, 6, cmdtext);
+	dcmd2(delactor, 8, cmdtext);
 	dcmd2(deleteact, 9, cmdtext);
 	dcmd2(deleteactor, 11, cmdtext);
 	dcmd2(copyact, 7, cmdtext);
 	dcmd2(copyactor, 9, cmdtext);
+	dcmd2(selactor, 8, cmdtext);
 	dcmd2(selectact, 9, cmdtext);
 	dcmd2(selectactor, 11, cmdtext);
+	dcmd2(agoto, 5, cmdtext);
 	dcmd2(gotoactor, 9, cmdtext);
 	dcmd2(getactor, 8, cmdtext);
+	dcmd2(aanim, 5, cmdtext);
 	dcmd2(actoranim, 9, cmdtext);
+	dcmd2(aclear, 6, cmdtext);
 	dcmd2(actorclear, 10, cmdtext);
+	dcmd2(ax, 2, cmdtext);
+	dcmd2(ay, 2, cmdtext);
+	dcmd2(az, 2, cmdtext);
 	dcmd2(actorx, 6, cmdtext);
 	dcmd2(actory, 6, cmdtext);
 	dcmd2(actorz, 6, cmdtext);
+	dcmd2(arz, 3, cmdtext);
 	dcmd2(actorrz, 7, cmdtext);
 	dcmd2(newpickup, 9, cmdtext);
+	dcmd2(dpick, 5, cmdtext);
+	dcmd2(dpickup, 7, cmdtext);
+	dcmd2(delpickup, 9, cmdtext);
 	dcmd2(deletepick, 10, cmdtext);
 	dcmd2(deletepickup, 12, cmdtext);
 	dcmd2(copypick, 8, cmdtext);
 	dcmd2(copypickup, 10, cmdtext);
+	dcmd2(selpickup, 9, cmdtext);
 	dcmd2(selectpick, 10, cmdtext);
 	dcmd2(selectpickup, 12, cmdtext);
+	dcmd2(pgoto, 5, cmdtext);
 	dcmd2(gotopickup, 10, cmdtext);
 	dcmd2(getpickup, 9, cmdtext);
+	dcmd2(ptype, 5, cmdtext);
 	dcmd2(pickuptype, 10, cmdtext);
+	dcmd2(px, 2, cmdtext);
+	dcmd2(py, 2, cmdtext);
+	dcmd2(pz, 2, cmdtext);
 	dcmd2(pickupx, 7, cmdtext);
 	dcmd2(pickupy, 7, cmdtext);
 	dcmd2(pickupz, 7, cmdtext);
+	dcmd2(pvw, 3, cmdtext);
 	dcmd2(pickupvw, 8, cmdtext);
 	dcmd2(newcheckpoint, 13, cmdtext);
+	dcmd2(dcp, 3, cmdtext);
+	dcmd2(dcheckpoint, 11, cmdtext);
 	dcmd2(deletecp, 8, cmdtext);
 	dcmd2(delcheckpoint, 13, cmdtext);
 	dcmd2(selectcp, 8, cmdtext);
 	dcmd2(selcheckpoint, 13, cmdtext);
+	dcmd2(cpgoto, 6, cmdtext);
 	dcmd2(gotocheckpoint, 14, cmdtext);
 	dcmd2(getcheckpoint, 13, cmdtext);
 	dcmd2(checkpointx, 11, cmdtext);
 	dcmd2(checkpointy, 11, cmdtext);
 	dcmd2(checkpointsize, 14, cmdtext);
 	dcmd2(newracecp, 9, cmdtext);
+	dcmd2(drcp, 4, cmdtext);
+	dcmd2(dracecp, 7, cmdtext);
+	dcmd2(delracecp, 9, cmdtext);
 	dcmd2(deletercp, 9, cmdtext);
 	dcmd2(deleteracecp, 12, cmdtext);
+	dcmd2(selracecp, 9, cmdtext);
 	dcmd2(selectrcp, 9, cmdtext);
 	dcmd2(selectracecp, 12, cmdtext);
+	dcmd2(rcpgoto, 7, cmdtext);
 	dcmd2(gotoracecp, 10, cmdtext);
 	dcmd2(getracecp, 9, cmdtext);
 	dcmd2(racecptype, 10, cmdtext);
@@ -10936,55 +11068,92 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	dcmd2(racecpnextz, 11, cmdtext);
 	dcmd2(racecpsize, 10, cmdtext);
 	dcmd2(newmapicon, 10, cmdtext);
+	dcmd2(dicon, 5, cmdtext);
+	dcmd2(dmapicon, 8, cmdtext);
+	dcmd2(delmapicon, 10, cmdtext);
 	dcmd2(deleteicon, 10, cmdtext);
 	dcmd2(deletemapicon, 13, cmdtext);
 	dcmd2(copyicon, 8, cmdtext);
 	dcmd2(copymapicon, 11, cmdtext);
+	dcmd2(selmapicon, 10, cmdtext);
 	dcmd2(selecticon, 10, cmdtext);
 	dcmd2(selectmapicon, 13, cmdtext);
+	dcmd2(igoto, 5, cmdtext);
 	dcmd2(gotomapicon, 11, cmdtext);
 	dcmd2(getmapicon, 10, cmdtext);
+	dcmd2(ix, 2, cmdtext);
+	dcmd2(iy, 2, cmdtext);
+	dcmd2(iz, 2, cmdtext);
 	dcmd2(mapiconx, 8, cmdtext);
 	dcmd2(mapicony, 8, cmdtext);
 	dcmd2(mapiconz, 8, cmdtext);
+	dcmd2(icolor, 6, cmdtext);
 	dcmd2(mapiconcolor, 12, cmdtext);
+	dcmd2(istyle, 6, cmdtext);
 	dcmd2(mapiconstyle, 12, cmdtext);
 	dcmd2(newgangzone, 11, cmdtext);
+	dcmd2(dzone, 5, cmdtext);
+	dcmd2(dgangzone, 9, cmdtext);
+	dcmd2(delgangzone, 11, cmdtext);
 	dcmd2(deletezone, 10, cmdtext);
 	dcmd2(deletegangzone, 14, cmdtext);
 	dcmd2(copyzone, 8, cmdtext);
 	dcmd2(copygangzone, 12, cmdtext);
+	dcmd2(selgangzone, 11, cmdtext);
 	dcmd2(selectzone, 10, cmdtext);
 	dcmd2(selectgangzone, 14, cmdtext);
 	dcmd2(holdgangzone, 12, cmdtext);
+	dcmd2(zgoto, 5, cmdtext);
 	dcmd2(gotogangzone, 12, cmdtext);
 	dcmd2(getgangzone, 11, cmdtext);
+	dcmd2(zminx, 5, cmdtext);
+	dcmd2(zminy, 5, cmdtext);
+	dcmd2(zmaxx, 5, cmdtext);
+	dcmd2(zmaxy, 5, cmdtext);
 	dcmd2(gangzoneminx, 12, cmdtext);
 	dcmd2(gangzoneminy, 12, cmdtext);
 	dcmd2(gangzonemaxx, 12, cmdtext);
 	dcmd2(gangzonemaxy, 12, cmdtext);
+	dcmd2(zcolor, 6, cmdtext);
 	dcmd2(gangzonecolor, 13, cmdtext);
 	dcmd2(newlabel, 8, cmdtext);
+	dcmd2(dlab, 4, cmdtext);
+	dcmd2(dlabel, 6, cmdtext);
+	dcmd2(dellabel, 8, cmdtext);
 	dcmd2(deletelab, 9, cmdtext);
 	dcmd2(deletelabel, 11, cmdtext);
 	dcmd2(copylab, 7, cmdtext);
 	dcmd2(copylabel, 9, cmdtext);
+	dcmd2(sellabel, 8, cmdtext);
 	dcmd2(selectlab, 9, cmdtext);
 	dcmd2(selectlabel, 11, cmdtext);
+	dcmd2(lgoto, 5, cmdtext);
 	dcmd2(gotolabel, 9, cmdtext);
 	dcmd2(getlabel, 8, cmdtext);
+	dcmd2(ltext, 5, cmdtext);
 	dcmd2(labeltext, 9, cmdtext);
+	dcmd2(lcolor, 6, cmdtext);
 	dcmd2(labelcolor, 10, cmdtext);
 	dcmd2(lplayerattach, 13, cmdtext);
 	dcmd2(lvehicleattach, 14, cmdtext);
+	dcmd2(lx, 2, cmdtext);
+	dcmd2(ly, 2, cmdtext);
+	dcmd2(lz, 2, cmdtext);
 	dcmd2(labelx, 6, cmdtext);
 	dcmd2(labely, 6, cmdtext);
 	dcmd2(labelz, 6, cmdtext);
+	dcmd2(ldd, 3, cmdtext);
 	dcmd2(labeldd, 7, cmdtext);
+	dcmd2(lvw, 3, cmdtext);
 	dcmd2(labelvw, 7, cmdtext);
+	dcmd2(llos, 4, cmdtext);
 	dcmd2(labellos, 8, cmdtext);
 	dcmd2(tpcoord, 7, cmdtext);
+	dcmd2(fmspeed, 7, cmdtext);
+	dcmd2(weather, 7, cmdtext);
+	dcmd2(time, 4, cmdtext);
 	dcmd2(setworldtime, 12, cmdtext);
+	dcmd2(gravity, 7, cmdtext);
 	return 0;
 }
 
@@ -12777,48 +12946,194 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 							}
 							case 7:
 							{
-								CreatorInfo[playerid][ucCallCmdDialog] = false;
-								ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_PLAYER);
+								if(CreatorInfo[playerid][ucBufferMode] > 0)
+								{
+									if(ObjectsInfo[clickedid][oCreated])
+									{
+										if(BufferInfo[playerid][bTextIndex] != -1)
+										{
+											static text[MAX_OBJECT_TEXT_LENGTH], font[MAX_FONT_NAME_LENGTH];
+											strcpy(text, BufferInfo[playerid][bText], MAX_OBJECT_TEXT_LENGTH);
+											strcpy(font, BufferInfo[playerid][bFont], MAX_FONT_NAME_LENGTH);
+											SetDynamicObjectMaterialText(clickedid, BufferInfo[playerid][bTextIndex], text, BufferInfo[playerid][bTextSize], font, BufferInfo[playerid][bFontSize], BufferInfo[playerid][bBold], BufferInfo[playerid][bFontColor], BufferInfo[playerid][bBackColor], BufferInfo[playerid][bTextAlignment]);
+										}
+										for(new i = MAX_TEXTURES_PER_OBJECT - 1; i >= 0; --i)
+										{
+											if(BufferInfo[playerid][bTextureid][i] >= 0)
+												SetDynamicObjectMaterial(clickedid, i, TexturesArray[BufferInfo[playerid][bTextureid][i]][tModel], TexturesArray[BufferInfo[playerid][bTextureid][i]][tTXDName], TexturesArray[BufferInfo[playerid][bTextureid][i]][tTextureName], BufferInfo[playerid][bMaterialColor][i]);
+											else if(BufferInfo[playerid][bMaterialColor][i])
+												SetDynamicObjectMaterial(clickedid, i, -1, "none", "none", BufferInfo[playerid][bMaterialColor][i]);
+										}
+										format(strtmp, sizeof strtmp, TEXTURES_PASTED, clickedid);
+										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+									}
+								}
+								else
+								{
+									listitem_case_8:
+									if(ObjectsInfo[clickedid][oCreated])
+									{
+										BufferInfo[playerid][bTextIndex] = ObjectsInfo[clickedid][oTextIndex];
+										if(BufferInfo[playerid][bTextIndex] != -1)
+										{
+											strcpy(BufferInfo[playerid][bText], ObjectsInfo[clickedid][oText], MAX_OBJECT_TEXT_LENGTH);
+											BufferInfo[playerid][bTextSize] = ObjectsInfo[clickedid][oTextSize];
+											strcpy(BufferInfo[playerid][bFont], ObjectsInfo[clickedid][oFont], MAX_FONT_NAME_LENGTH);
+											BufferInfo[playerid][bFontSize] = ObjectsInfo[clickedid][oFontSize];
+											BufferInfo[playerid][bBold] = ObjectsInfo[clickedid][oBold];
+											BufferInfo[playerid][bFontColor] = ObjectsInfo[clickedid][oFontColor];
+											BufferInfo[playerid][bBackColor] = ObjectsInfo[clickedid][oBackColor];
+											BufferInfo[playerid][bTextAlignment] = ObjectsInfo[clickedid][oTextAlignment];
+										}
+										for(new i = MAX_TEXTURES_PER_OBJECT - 1; i >= 0; --i)
+										{
+											BufferInfo[playerid][bTextureid][i] = ObjectsInfo[clickedid][oTextureid][i];
+											BufferInfo[playerid][bMaterialColor][i] = ObjectsInfo[clickedid][oMaterialColor][i];
+										}
+										CreatorInfo[playerid][ucBufferMode] = 1;
+										format(strtmp, sizeof strtmp, TEXTURES_COPIED, clickedid);
+										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+									}
+								}
 							}
 							case 8:
 							{
-								CreatorInfo[playerid][ucCallCmdDialog] = false;
-								ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_OBJECT);
+								if(CreatorInfo[playerid][ucBufferMode] > 0) goto listitem_case_8;
+								listitem_case_9:
+								if(ObjectsInfo[clickedid][oCreated])
+								{
+									for(new i = MAX_TEXTURES_PER_OBJECT - 1; i >= 0; --i)
+									{
+										#if defined SetDynamicObjectMaterial
+											SetDynamicObjectMaterial(clickedid, i, -1, "none", "none", 0);
+										#else
+											SetObjectMaterial(clickedid, i, -1, "none", "none", 0);
+										#endif
+									}
+									format(strtmp, sizeof strtmp, TEXTURES_RESET, clickedid);
+									SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+								}
 							}
 							case 9:
 							{
+								if(CreatorInfo[playerid][ucBufferMode] > 0) goto listitem_case_9;
+								listitem_case_10:
 								CreatorInfo[playerid][ucCallCmdDialog] = false;
-								ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_VEHICLE);
+								ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_PLAYER);
 							}
 							case 10:
 							{
+								if(CreatorInfo[playerid][ucBufferMode] > 0) goto listitem_case_10;
+								listitem_case_11:
 								CreatorInfo[playerid][ucCallCmdDialog] = false;
-								ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_X);
+								ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_OBJECT);
 							}
 							case 11:
 							{
+								if(CreatorInfo[playerid][ucBufferMode] > 0) goto listitem_case_11;
+								listitem_case_12:
 								CreatorInfo[playerid][ucCallCmdDialog] = false;
-								ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_Y);
+								ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_VEHICLE);
 							}
 							case 12:
 							{
+								if(CreatorInfo[playerid][ucBufferMode] > 0) goto listitem_case_12;
+								listitem_case_13:
 								CreatorInfo[playerid][ucCallCmdDialog] = false;
-								ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_Z);
+								ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_X);
 							}
 							case 13:
 							{
+								if(CreatorInfo[playerid][ucBufferMode] > 0) goto listitem_case_13;
+								listitem_case_14:
 								CreatorInfo[playerid][ucCallCmdDialog] = false;
-								ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_RX);
+								ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_Y);
 							}
 							case 14:
 							{
+								if(CreatorInfo[playerid][ucBufferMode] > 0) goto listitem_case_14;
+								listitem_case_15:
 								CreatorInfo[playerid][ucCallCmdDialog] = false;
-								ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_RY);
+								ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_Z);
 							}
 							case 15:
 							{
+								if(CreatorInfo[playerid][ucBufferMode] > 0) goto listitem_case_15;
+								listitem_case_16:
+								CreatorInfo[playerid][ucCallCmdDialog] = false;
+								ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_RX);
+							}
+							case 16:
+							{
+								if(CreatorInfo[playerid][ucBufferMode] > 0) goto listitem_case_16;
+								listitem_case_17:
+								CreatorInfo[playerid][ucCallCmdDialog] = false;
+								ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_RY);
+							}
+							case 17:
+							{
+								if(CreatorInfo[playerid][ucBufferMode] > 0) goto listitem_case_17;
+								listitem_case_18:
 								CreatorInfo[playerid][ucCallCmdDialog] = false;
 								ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_RZ);
+							}
+							case 18:
+							{
+								if(CreatorInfo[playerid][ucBufferMode] > 0) goto listitem_case_18;
+								listitem_case_19:
+								if(ObjectsInfo[clickedid][oCreated])
+								{
+									if(ObjectsInfo[clickedid][oAttachedPlayerID] != INVALID_PLAYER_ID)
+									{
+										new
+											Float:X = ObjectsInfo[clickedid][oX],
+											Float:Y = ObjectsInfo[clickedid][oY],
+											Float:Z = ObjectsInfo[clickedid][oZ];
+										#if defined AttachDynamicObjectToPlayer
+											AttachDynamicObjectToPlayer(clickedid, ObjectsInfo[clickedid][oAttachedPlayerID], X, Y, Z, 0.0, 0.0, 0.0);
+										#else
+											AttachObjectToPlayer(clickedid, ObjectsInfo[clickedid][oAttachedPlayerID], X, Y, Z, 0.0, 0.0, 0.0);
+										#endif
+									}
+									else if(ObjectsInfo[clickedid][oAttachedObjectID] != INVALID_OBJECT_ID)
+									{
+										new
+											Float:X = ObjectsInfo[clickedid][oX],
+											Float:Y = ObjectsInfo[clickedid][oY],
+											Float:Z = ObjectsInfo[clickedid][oZ];
+										#if defined AttachDynamicObjectToObject
+											AttachDynamicObjectToObject(clickedid, ObjectsInfo[clickedid][oAttachedObjectID], X, Y, Z, 0.0, 0.0, 0.0);
+										#else
+											AttachObjectToObject(clickedid, ObjectsInfo[clickedid][oAttachedObjectID], X, Y, Z, 0.0, 0.0, 0.0);
+										#endif
+									}
+									else if(ObjectsInfo[clickedid][oAttachedVehicleID] != INVALID_VEHICLE_ID)
+									{
+										new
+											Float:X = ObjectsInfo[clickedid][oX],
+											Float:Y = ObjectsInfo[clickedid][oY],
+											Float:Z = ObjectsInfo[clickedid][oZ];
+										#if defined AttachDynamicObjectToVehicle
+											AttachDynamicObjectToVehicle(clickedid, ObjectsInfo[clickedid][oAttachedVehicleID], X, Y, Z, 0.0, 0.0, 0.0);
+										#else
+											AttachObjectToVehicle(clickedid, ObjectsInfo[clickedid][oAttachedVehicleID], X, Y, Z, 0.0, 0.0, 0.0);
+										#endif
+									}
+									else
+									{
+										#if defined SetDynamicObjectRot
+											SetDynamicObjectRot(clickedid, 0.0, 0.0, 0.0, true);
+										#else
+											SetObjectRot(clickedid, 0.0, 0.0, 0.0, true);
+										#endif
+									}
+									format(strtmp, sizeof strtmp, OBJECT_ROT_RESET, clickedid);
+									SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+								}
+							}
+							case 19:
+							{
+								if(CreatorInfo[playerid][ucBufferMode] > 0) goto listitem_case_19;
 							}
 						}
 					}
@@ -12882,16 +13197,34 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 									#endif
 								}
 								static strtmp[145];
-								format(strtmp, sizeof strtmp, COLOR_RESET, clickedid, layerid);
+								format(strtmp, sizeof strtmp, OBJECT_COLOR_RESET, clickedid, layerid);
 								SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 								return ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXD);
 							}
 							case 2:
 							{
+								new layerid = CreatorInfo[playerid][ucClickedLayer];
+								for(new i = MAX_TEXTURES_PER_OBJECT - 1; i >= 0; --i)
+								{
+									BufferInfo[playerid][bTextureid][i] = -1;
+									BufferInfo[playerid][bMaterialColor][i] = 0;
+								}
+								BufferInfo[playerid][bTextureid][layerid] = ObjectsInfo[clickedid][oTextureid][layerid];
+								BufferInfo[playerid][bMaterialColor][layerid] = ObjectsInfo[clickedid][oMaterialColor][layerid];
+								BufferInfo[playerid][bLayerID] = layerid;
+								BufferInfo[playerid][bTextIndex] = -1;
+								static strtmp[145];
+								CreatorInfo[playerid][ucBufferMode] = 2;
+								format(strtmp, sizeof strtmp, TEXT_TEXTURE_COPIED, clickedid, layerid);
+								SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+								return ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXD);
+							}
+							case 3:
+							{
 								CreatorInfo[playerid][ucCallCmdDialog] = false;
 								ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXD_ID);
 							}
-							case 3:
+							case 4:
 							{
 								CreatorInfo[playerid][ucCallCmdDialog] = false;
 								ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXD_COLOR_MAIN);
@@ -13128,14 +13461,42 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 								if(!CreatorInfo[playerid][ucCallCmdDialog]) return ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT);
 							}
-							case 1: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_TEXT);
-							case 2: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_SIZE);
-							case 3: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_FONT_MAIN);
-							case 4: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_FSIZE);
-							case 5: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_BOLD);
-							case 6: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_FCOLOR_MAIN);
-							case 7: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_BCOLOR_MAIN);
-							case 8: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_ALIGN);
+							case 1:
+							{
+								new layerid = CreatorInfo[playerid][ucClickedLayer];
+								if(ObjectsInfo[clickedid][oTextIndex] == layerid)
+								{
+									BufferInfo[playerid][bTextIndex] = layerid;
+									strcpy(BufferInfo[playerid][bText], ObjectsInfo[clickedid][oText], MAX_OBJECT_TEXT_LENGTH);
+									BufferInfo[playerid][bTextSize] = ObjectsInfo[clickedid][oTextSize];
+									strcpy(BufferInfo[playerid][bFont], ObjectsInfo[clickedid][oFont], MAX_FONT_NAME_LENGTH);
+									BufferInfo[playerid][bFontSize] = ObjectsInfo[clickedid][oFontSize];
+									BufferInfo[playerid][bBold] = ObjectsInfo[clickedid][oBold];
+									BufferInfo[playerid][bFontColor] = ObjectsInfo[clickedid][oFontColor];
+									BufferInfo[playerid][bBackColor] = ObjectsInfo[clickedid][oBackColor];
+									BufferInfo[playerid][bTextAlignment] = ObjectsInfo[clickedid][oTextAlignment];
+								}
+								else BufferInfo[playerid][bTextIndex] = -1;
+								for(new i = MAX_TEXTURES_PER_OBJECT - 1; i >= 0; --i)
+								{
+									BufferInfo[playerid][bTextureid][i] = -1;
+									BufferInfo[playerid][bMaterialColor][i] = 0;
+								}
+								BufferInfo[playerid][bLayerID] = layerid;
+								static strtmp[145];
+								CreatorInfo[playerid][ucBufferMode] = 2;
+								format(strtmp, sizeof strtmp, TEXT_TEXTURE_COPIED, clickedid, layerid);
+								SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+								if(!CreatorInfo[playerid][ucCallCmdDialog]) return ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT);
+							}
+							case 2: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_TEXT);
+							case 3: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_SIZE);
+							case 4: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_FONT_MAIN);
+							case 5: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_FSIZE);
+							case 6: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_BOLD);
+							case 7: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_FCOLOR_MAIN);
+							case 8: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_BCOLOR_MAIN);
+							case 9: ShowCreatorDialog(playerid, DIALOG_EDIT_OBJECT_TXT_ALIGN);
 						}
 					}
 					else if(!CreatorInfo[playerid][ucCallCmdDialog])
@@ -17164,10 +17525,18 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			{
 				if(response)
 				{
+					new time = listitem;
+					static strtmp2[145], strtmp3[16], pname[MAX_PLAYER_NAME];
+					if(time > 11)
+					{
+						if(time != 12) time -= 12;
+						format(strtmp3, sizeof strtmp3, "%d:00 PM", time);
+					}
+					else if(time == 0) strtmp3 = "12:00 AM";
+					else format(strtmp3, sizeof strtmp3, "%d:00 AM", time);
 					SetWorldTime(listitem);
-					static strtmp2[145], pname[MAX_PLAYER_NAME];
 					GetPlayerName(playerid, pname, sizeof pname);
-					format(strtmp2, sizeof strtmp2, TIME_CHANGED, pname, listitem);
+					format(strtmp2, sizeof strtmp2, TIME_CHANGED, pname, strtmp3);
 					SendMessageToCreators(DEFAULT_COLOR, strtmp2);
 				}
 				else if(!CreatorInfo[playerid][ucCallCmdDialog]) ShowCreatorDialog(playerid, DIALOG_SETTINGS);
@@ -18781,6 +19150,8 @@ public OnVehicleSpawn(vehicleid)
 	return 1;
 }
 
+fpublic cmd_flymode(playerid, const params[]) return cmd_edit(playerid, params);
+
 fpublic cmd_edit(playerid, const params[])
 {
 	#if defined ONLY_FOR_RCON_ADMINS
@@ -19002,6 +19373,12 @@ fpublic cmd_newobj(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_dobj(playerid, const params[]) return cmd_delobj(playerid, params);
+
+fpublic cmd_dobject(playerid, const params[]) return cmd_delobj(playerid, params);
+
+fpublic cmd_delobject(playerid, const params[]) return cmd_delobj(playerid, params);
+
 fpublic cmd_deleteobj(playerid, const params[]) return cmd_delobj(playerid, params);
 
 fpublic cmd_deleteobject(playerid, const params[]) return cmd_delobj(playerid, params);
@@ -19137,6 +19514,8 @@ fpublic cmd_cobj(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_selobject(playerid, const params[]) return cmd_selobj(playerid, params);
+
 fpublic cmd_selectobj(playerid, const params[]) return cmd_selobj(playerid, params);
 
 fpublic cmd_selectobject(playerid, const params[]) return cmd_selobj(playerid, params);
@@ -19165,6 +19544,8 @@ fpublic cmd_selobj(playerid, const params[])
 	CreatorInfo[playerid][ucSelectedObj] = selectedid;
 	return 1;
 }
+
+fpublic cmd_ogoto(playerid, const params[]) return cmd_gotoobj(playerid, params);
 
 fpublic cmd_gotoobject(playerid, const params[]) return cmd_gotoobj(playerid, params);
 
@@ -19311,7 +19692,13 @@ fpublic cmd_getobj(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_otext(playerid, const params[]) return cmd_objtext(playerid, params);
+
+fpublic cmd_objtxt(playerid, const params[]) return cmd_objtext(playerid, params);
+
 fpublic cmd_objecttext(playerid, const params[]) return cmd_objtext(playerid, params);
+
+fpublic cmd_objecttxt(playerid, const params[]) return cmd_objtext(playerid, params);
 
 fpublic cmd_objtext(playerid, const params[])
 {
@@ -19467,6 +19854,8 @@ fpublic cmd_ovehattach(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_ox(playerid, const params[]) return cmd_objx(playerid, params);
+
 fpublic cmd_objectx(playerid, const params[]) return cmd_objx(playerid, params);
 
 fpublic cmd_objx(playerid, const params[])
@@ -19541,6 +19930,8 @@ fpublic cmd_objx(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_oy(playerid, const params[]) return cmd_objy(playerid, params);
 
 fpublic cmd_objecty(playerid, const params[]) return cmd_objy(playerid, params);
 
@@ -19617,6 +20008,8 @@ fpublic cmd_objy(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_oz(playerid, const params[]) return cmd_objz(playerid, params);
+
 fpublic cmd_objectz(playerid, const params[]) return cmd_objz(playerid, params);
 
 fpublic cmd_objz(playerid, const params[])
@@ -19691,6 +20084,8 @@ fpublic cmd_objz(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_orx(playerid, const params[]) return cmd_objrx(playerid, params);
 
 fpublic cmd_objectrx(playerid, const params[]) return cmd_objrx(playerid, params);
 
@@ -19767,6 +20162,8 @@ fpublic cmd_objrx(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_ory(playerid, const params[]) return cmd_objry(playerid, params);
+
 fpublic cmd_objectry(playerid, const params[]) return cmd_objry(playerid, params);
 
 fpublic cmd_objry(playerid, const params[])
@@ -19842,6 +20239,8 @@ fpublic cmd_objry(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_orz(playerid, const params[]) return cmd_objrz(playerid, params);
+
 fpublic cmd_objectrz(playerid, const params[]) return cmd_objrz(playerid, params);
 
 fpublic cmd_objrz(playerid, const params[])
@@ -19916,6 +20315,94 @@ fpublic cmd_objrz(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_orreset(playerid, const params[]) return cmd_objrreset(playerid, params);
+
+fpublic cmd_objectrreset(playerid, const params[]) return cmd_objrreset(playerid, params);
+
+fpublic cmd_rotreset(playerid, const params[]) return cmd_objrreset(playerid, params);
+
+fpublic cmd_objrreset(playerid, const params[])
+{
+	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
+	if(!MapName[0]) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
+	new selectedid;
+	if(isnull(params))
+	{
+		selectedid = CreatorInfo[playerid][ucSelectedObj];
+		if(selectedid == INVALID_OBJECT_ID)
+		{
+			selectedid = CreatorInfo[playerid][ucHoldingObj];
+			if(selectedid == INVALID_OBJECT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_OBJECTS_ERROR);
+		}
+	}
+	else
+	{
+		selectedid = strval(params);
+		#if defined IsValidDynamicObject\
+			&& defined Streamer_GetItemStreamerID
+		if(!IsNumeric(params) || !IsValidDynamicObject(selectedid) && !IsValidObject(selectedid) &&
+		(!IsValidPlayerObject(playerid, selectedid) || Streamer_GetItemStreamerID(playerid, STREAMER_TYPE_OBJECT, selectedid) != INVALID_STREAMER_ID))
+		#else
+		if(!IsNumeric(params) || !IsValidObject(selectedid) && !IsValidPlayerObject(playerid, selectedid))
+		#endif
+		{
+			SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_OBJECT_ID_ERROR);
+			return 1;
+		}
+		if(!ObjectsInfo[selectedid][oCreated]) return SendClientMessage(playerid, DEFAULT_COLOR, UNKNOWN_OBJECT_ID_ERROR);
+	}
+	if(ObjectsInfo[selectedid][oAttachedPlayerID] != INVALID_PLAYER_ID)
+	{
+		new
+			Float:X = ObjectsInfo[selectedid][oX],
+			Float:Y = ObjectsInfo[selectedid][oY],
+			Float:Z = ObjectsInfo[selectedid][oZ];
+		#if defined AttachDynamicObjectToPlayer
+			AttachDynamicObjectToPlayer(selectedid, ObjectsInfo[selectedid][oAttachedPlayerID], X, Y, Z, 0.0, 0.0, 0.0);
+		#else
+			AttachObjectToPlayer(selectedid, ObjectsInfo[selectedid][oAttachedPlayerID], X, Y, Z, 0.0, 0.0, 0.0);
+		#endif
+	}
+	else if(ObjectsInfo[selectedid][oAttachedObjectID] != INVALID_OBJECT_ID)
+	{
+		new
+			Float:X = ObjectsInfo[selectedid][oX],
+			Float:Y = ObjectsInfo[selectedid][oY],
+			Float:Z = ObjectsInfo[selectedid][oZ];
+		#if defined AttachDynamicObjectToObject
+			AttachDynamicObjectToObject(selectedid, ObjectsInfo[selectedid][oAttachedObjectID], X, Y, Z, 0.0, 0.0, 0.0);
+		#else
+			AttachObjectToObject(selectedid, ObjectsInfo[selectedid][oAttachedObjectID], X, Y, Z, 0.0, 0.0, 0.0);
+		#endif
+	}
+	else if(ObjectsInfo[selectedid][oAttachedVehicleID] != INVALID_VEHICLE_ID)
+	{
+		new
+			Float:X = ObjectsInfo[selectedid][oX],
+			Float:Y = ObjectsInfo[selectedid][oY],
+			Float:Z = ObjectsInfo[selectedid][oZ];
+		#if defined AttachDynamicObjectToVehicle
+			AttachDynamicObjectToVehicle(selectedid, ObjectsInfo[selectedid][oAttachedVehicleID], X, Y, Z, 0.0, 0.0, 0.0);
+		#else
+			AttachObjectToVehicle(selectedid, ObjectsInfo[selectedid][oAttachedVehicleID], X, Y, Z, 0.0, 0.0, 0.0);
+		#endif
+	}
+	else
+	{
+		#if defined SetDynamicObjectRot
+			SetDynamicObjectRot(selectedid, 0.0, 0.0, 0.0, true);
+		#else
+			SetObjectRot(selectedid, 0.0, 0.0, 0.0, true);
+		#endif
+	}
+	static strtmp[145];
+	format(strtmp, sizeof strtmp, OBJECT_ROT_RESET, selectedid);
+	SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+	return 1;
+}
+
+fpublic cmd_mtset(playerid, const params[]) return cmd_txdset(playerid, params);
 
 fpublic cmd_txdset(playerid, const params[])
 {
@@ -20013,6 +20500,8 @@ fpublic cmd_txdreset(playerid, const params[])
 
 fpublic cmd_txdcset(playerid, const params[]) return cmd_txdcolor(playerid, params);
 
+fpublic cmd_mtcolor(playerid, const params[]) return cmd_txdcolor(playerid, params);
+
 fpublic cmd_txdcolor(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
@@ -20100,12 +20589,281 @@ fpublic cmd_txdcreset(playerid, const params[])
 		#endif
 	}
 	static strtmp[145];
-	format(strtmp, sizeof strtmp, COLOR_RESET, selectedid, layerid);
+	format(strtmp, sizeof strtmp, OBJECT_COLOR_RESET, selectedid, layerid);
 	SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 	return 1;
 }
 
+fpublic cmd_texturecopy(playerid, const params[]) return cmd_tcopy(playerid, params);
+
+fpublic cmd_tcopy(playerid, const params[])
+{
+	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
+	if(!MapName[0]) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
+	new selectedid = CreatorInfo[playerid][ucSelectedObj];
+	if(selectedid == INVALID_OBJECT_ID)
+	{
+		selectedid = CreatorInfo[playerid][ucHoldingObj];
+		if(selectedid == INVALID_OBJECT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_OBJECTS_ERROR);
+	}
+	new layerid = strval(params);
+	if(!IsNumeric(params) || !(0 <= layerid < MAX_TEXTURES_PER_OBJECT)) return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_LAYER_ID_ERROR);
+	if(ObjectsInfo[selectedid][oTextIndex] == layerid)
+	{
+		BufferInfo[playerid][bTextIndex] = layerid;
+		strcpy(BufferInfo[playerid][bText], ObjectsInfo[selectedid][oText], MAX_OBJECT_TEXT_LENGTH);
+		BufferInfo[playerid][bTextSize] = ObjectsInfo[selectedid][oTextSize];
+		strcpy(BufferInfo[playerid][bFont], ObjectsInfo[selectedid][oFont], MAX_FONT_NAME_LENGTH);
+		BufferInfo[playerid][bFontSize] = ObjectsInfo[selectedid][oFontSize];
+		BufferInfo[playerid][bBold] = ObjectsInfo[selectedid][oBold];
+		BufferInfo[playerid][bFontColor] = ObjectsInfo[selectedid][oFontColor];
+		BufferInfo[playerid][bBackColor] = ObjectsInfo[selectedid][oBackColor];
+		BufferInfo[playerid][bTextAlignment] = ObjectsInfo[selectedid][oTextAlignment];
+	}
+	else BufferInfo[playerid][bTextIndex] = -1;
+	for(new i = MAX_TEXTURES_PER_OBJECT - 1; i >= 0; --i)
+	{
+		BufferInfo[playerid][bTextureid][i] = -1;
+		BufferInfo[playerid][bMaterialColor][i] = 0;
+	}
+	BufferInfo[playerid][bTextureid][layerid] = ObjectsInfo[selectedid][oTextureid][layerid];
+	BufferInfo[playerid][bMaterialColor][layerid] = ObjectsInfo[selectedid][oMaterialColor][layerid];
+	BufferInfo[playerid][bLayerID] = layerid;
+	static strtmp[145];
+	CreatorInfo[playerid][ucBufferMode] = 2;
+	format(strtmp, sizeof strtmp, TEXT_TEXTURE_COPIED, selectedid, layerid);
+	SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+	return 1;
+}
+
+fpublic cmd_texturepaste(playerid, const params[]) return cmd_tpaste(playerid, params);
+
+fpublic cmd_tpaste(playerid, const params[])
+{
+	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
+	if(!MapName[0]) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
+	if(CreatorInfo[playerid][ucBufferMode] != 2) return SendClientMessage(playerid, DEFAULT_COLOR, EMPTY_BUFFER_ERROR);
+	new selectedid = CreatorInfo[playerid][ucSelectedObj];
+	if(selectedid == INVALID_OBJECT_ID)
+	{
+		selectedid = CreatorInfo[playerid][ucHoldingObj];
+		if(selectedid == INVALID_OBJECT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_OBJECTS_ERROR);
+	}
+	new layerid = strval(params);
+	if(!IsNumeric(params) || !(0 <= layerid < MAX_TEXTURES_PER_OBJECT)) return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_LAYER_ID_ERROR);
+	if(BufferInfo[playerid][bTextIndex] != -1)
+	{
+		static text[MAX_OBJECT_TEXT_LENGTH], font[MAX_FONT_NAME_LENGTH];
+		strcpy(text, BufferInfo[playerid][bText], MAX_OBJECT_TEXT_LENGTH);
+		strcpy(font, BufferInfo[playerid][bFont], MAX_FONT_NAME_LENGTH);
+		SetDynamicObjectMaterialText(selectedid, layerid, text, BufferInfo[playerid][bTextSize], font, BufferInfo[playerid][bFontSize], BufferInfo[playerid][bBold], BufferInfo[playerid][bFontColor], BufferInfo[playerid][bBackColor], BufferInfo[playerid][bTextAlignment]);
+	}
+	new lastlayerid = BufferInfo[playerid][bLayerID], lasttextureid = BufferInfo[playerid][bTextureid][lastlayerid];
+	if(lasttextureid >= 0) SetDynamicObjectMaterial(selectedid, layerid, TexturesArray[lasttextureid][tModel], TexturesArray[lasttextureid][tTXDName], TexturesArray[lasttextureid][tTextureName], BufferInfo[playerid][bMaterialColor][lastlayerid]);
+	else SetDynamicObjectMaterial(selectedid, layerid, -1, "none", "none", BufferInfo[playerid][bMaterialColor][lastlayerid]);
+	static strtmp[145];
+	format(strtmp, sizeof strtmp, TEXT_TEXTURE_PASTED, selectedid, layerid);
+	SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+	return 1;
+}
+
+fpublic cmd_texturereset(playerid, const params[]) return cmd_treset(playerid, params);
+
+fpublic cmd_treset(playerid, const params[])
+{
+	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
+	if(!MapName[0]) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
+	new selectedid = CreatorInfo[playerid][ucSelectedObj];
+	if(selectedid == INVALID_OBJECT_ID)
+	{
+		selectedid = CreatorInfo[playerid][ucHoldingObj];
+		if(selectedid == INVALID_OBJECT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_OBJECTS_ERROR);
+	}
+	new layerid = strval(params);
+	if(!IsNumeric(params) || !(0 <= layerid < MAX_TEXTURES_PER_OBJECT)) return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_LAYER_ID_ERROR);
+	#if defined SetDynamicObjectMaterial
+		SetDynamicObjectMaterial(selectedid, layerid, -1, "none", "none", 0);
+	#else
+		SetObjectMaterial(selectedid, layerid, -1, "none", "none", 0);
+	#endif
+	static strtmp[145];
+	format(strtmp, sizeof strtmp, TEXT_TEXTURE_RESET, selectedid, layerid);
+	SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+	return 1;
+}
+
+fpublic cmd_texturecopyall(playerid, const params[]) return cmd_tcopyall(playerid, params);
+
+fpublic cmd_tcopyall(playerid, const params[])
+{
+	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
+	if(!MapName[0]) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
+	new selectedid;
+	if(isnull(params))
+	{
+		selectedid = CreatorInfo[playerid][ucSelectedObj];
+		if(selectedid == INVALID_OBJECT_ID)
+		{
+			selectedid = CreatorInfo[playerid][ucHoldingObj];
+			if(selectedid == INVALID_OBJECT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_OBJECTS_ERROR);
+		}
+	}
+	else
+	{
+		selectedid = strval(params);
+		#if defined IsValidDynamicObject\
+			&& defined Streamer_GetItemStreamerID
+		if(!IsNumeric(params) || !IsValidDynamicObject(selectedid) && !IsValidObject(selectedid) &&
+		(!IsValidPlayerObject(playerid, selectedid) || Streamer_GetItemStreamerID(playerid, STREAMER_TYPE_OBJECT, selectedid) != INVALID_STREAMER_ID))
+		#else
+		if(!IsNumeric(params) || !IsValidObject(selectedid) && !IsValidPlayerObject(playerid, selectedid))
+		#endif
+		{
+			SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_OBJECT_ID_ERROR);
+			return 1;
+		}
+		if(!ObjectsInfo[selectedid][oCreated]) return SendClientMessage(playerid, DEFAULT_COLOR, UNKNOWN_OBJECT_ID_ERROR);
+	}
+	BufferInfo[playerid][bTextIndex] = ObjectsInfo[selectedid][oTextIndex];
+	if(BufferInfo[playerid][bTextIndex] != -1)
+	{
+		strcpy(BufferInfo[playerid][bText], ObjectsInfo[selectedid][oText], MAX_OBJECT_TEXT_LENGTH);
+		BufferInfo[playerid][bTextSize] = ObjectsInfo[selectedid][oTextSize];
+		strcpy(BufferInfo[playerid][bFont], ObjectsInfo[selectedid][oFont], MAX_FONT_NAME_LENGTH);
+		BufferInfo[playerid][bFontSize] = ObjectsInfo[selectedid][oFontSize];
+		BufferInfo[playerid][bBold] = ObjectsInfo[selectedid][oBold];
+		BufferInfo[playerid][bFontColor] = ObjectsInfo[selectedid][oFontColor];
+		BufferInfo[playerid][bBackColor] = ObjectsInfo[selectedid][oBackColor];
+		BufferInfo[playerid][bTextAlignment] = ObjectsInfo[selectedid][oTextAlignment];
+	}
+	for(new i = MAX_TEXTURES_PER_OBJECT - 1; i >= 0; --i)
+	{
+		BufferInfo[playerid][bTextureid][i] = ObjectsInfo[selectedid][oTextureid][i];
+		BufferInfo[playerid][bMaterialColor][i] = ObjectsInfo[selectedid][oMaterialColor][i];
+	}
+	static strtmp[145];
+	CreatorInfo[playerid][ucBufferMode] = 1;
+	format(strtmp, sizeof strtmp, TEXTURES_COPIED, selectedid);
+	SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+	return 1;
+}
+
+fpublic cmd_texturepasteall(playerid, const params[]) return cmd_tpasteall(playerid, params);
+
+fpublic cmd_tpasteall(playerid, const params[])
+{
+	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
+	if(!MapName[0]) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
+	if(CreatorInfo[playerid][ucBufferMode] < 1) return SendClientMessage(playerid, DEFAULT_COLOR, EMPTY_BUFFER_ERROR);
+	new selectedid;
+	if(isnull(params))
+	{
+		selectedid = CreatorInfo[playerid][ucSelectedObj];
+		if(selectedid == INVALID_OBJECT_ID)
+		{
+			selectedid = CreatorInfo[playerid][ucHoldingObj];
+			if(selectedid == INVALID_OBJECT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_OBJECTS_ERROR);
+		}
+	}
+	else
+	{
+		selectedid = strval(params);
+		#if defined IsValidDynamicObject\
+			&& defined Streamer_GetItemStreamerID
+		if(!IsNumeric(params) || !IsValidDynamicObject(selectedid) && !IsValidObject(selectedid) &&
+		(!IsValidPlayerObject(playerid, selectedid) || Streamer_GetItemStreamerID(playerid, STREAMER_TYPE_OBJECT, selectedid) != INVALID_STREAMER_ID))
+		#else
+		if(!IsNumeric(params) || !IsValidObject(selectedid) && !IsValidPlayerObject(playerid, selectedid))
+		#endif
+		{
+			SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_OBJECT_ID_ERROR);
+			return 1;
+		}
+		if(!ObjectsInfo[selectedid][oCreated]) return SendClientMessage(playerid, DEFAULT_COLOR, UNKNOWN_OBJECT_ID_ERROR);
+	}
+	if(BufferInfo[playerid][bTextIndex] != -1)
+	{
+		static text[MAX_OBJECT_TEXT_LENGTH], font[MAX_FONT_NAME_LENGTH];
+		strcpy(text, BufferInfo[playerid][bText], MAX_OBJECT_TEXT_LENGTH);
+		strcpy(font, BufferInfo[playerid][bFont], MAX_FONT_NAME_LENGTH);
+		SetDynamicObjectMaterialText(selectedid, BufferInfo[playerid][bTextIndex], text, BufferInfo[playerid][bTextSize], font, BufferInfo[playerid][bFontSize], BufferInfo[playerid][bBold], BufferInfo[playerid][bFontColor], BufferInfo[playerid][bBackColor], BufferInfo[playerid][bTextAlignment]);
+	}
+	for(new i = MAX_TEXTURES_PER_OBJECT - 1; i >= 0; --i)
+	{
+		if(BufferInfo[playerid][bTextureid][i] >= 0)
+			SetDynamicObjectMaterial(selectedid, i, TexturesArray[BufferInfo[playerid][bTextureid][i]][tModel], TexturesArray[BufferInfo[playerid][bTextureid][i]][tTXDName], TexturesArray[BufferInfo[playerid][bTextureid][i]][tTextureName], BufferInfo[playerid][bMaterialColor][i]);
+		else if(BufferInfo[playerid][bMaterialColor][i])
+			SetDynamicObjectMaterial(selectedid, i, -1, "none", "none", BufferInfo[playerid][bMaterialColor][i]);
+	}
+	static strtmp[145];
+	format(strtmp, sizeof strtmp, TEXTURES_PASTED, selectedid);
+	SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+	return 1;
+}
+
+fpublic cmd_textureresetall(playerid, const params[]) return cmd_tresetall(playerid, params);
+
+fpublic cmd_robject(playerid, const params[]) return cmd_tresetall(playerid, params);
+
+fpublic cmd_tresetall(playerid, const params[])
+{
+	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
+	if(!MapName[0]) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
+	new selectedid;
+	if(isnull(params))
+	{
+		selectedid = CreatorInfo[playerid][ucSelectedObj];
+		if(selectedid == INVALID_OBJECT_ID)
+		{
+			selectedid = CreatorInfo[playerid][ucHoldingObj];
+			if(selectedid == INVALID_OBJECT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_OBJECTS_ERROR);
+		}
+	}
+	else
+	{
+		selectedid = strval(params);
+		#if defined IsValidDynamicObject\
+			&& defined Streamer_GetItemStreamerID
+		if(!IsNumeric(params) || !IsValidDynamicObject(selectedid) && !IsValidObject(selectedid) &&
+		(!IsValidPlayerObject(playerid, selectedid) || Streamer_GetItemStreamerID(playerid, STREAMER_TYPE_OBJECT, selectedid) != INVALID_STREAMER_ID))
+		#else
+		if(!IsNumeric(params) || !IsValidObject(selectedid) && !IsValidPlayerObject(playerid, selectedid))
+		#endif
+		{
+			SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_OBJECT_ID_ERROR);
+			return 1;
+		}
+		if(!ObjectsInfo[selectedid][oCreated]) return SendClientMessage(playerid, DEFAULT_COLOR, UNKNOWN_OBJECT_ID_ERROR);
+	}
+	for(new i = MAX_TEXTURES_PER_OBJECT - 1; i >= 0; --i)
+	{
+		#if defined SetDynamicObjectMaterial
+			SetDynamicObjectMaterial(selectedid, i, -1, "none", "none", 0);
+		#else
+			SetObjectMaterial(selectedid, i, -1, "none", "none", 0);
+		#endif
+	}
+	static strtmp[145];
+	format(strtmp, sizeof strtmp, TEXTURES_RESET, selectedid);
+	SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+	return 1;
+}
+
+fpublic cmd_clearbuff(playerid, const params[]) return cmd_tclear(playerid, params);
+
+fpublic cmd_textureclear(playerid, const params[]) return cmd_tclear(playerid, params);
+
+fpublic cmd_tclear(playerid, const params[])
+{
+	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
+	CreatorInfo[playerid][ucBufferMode] = 0;
+	SendClientMessage(playerid, DEFAULT_COLOR, BUFFER_CLEARED);
+	return 1;
+}
+
 fpublic cmd_newvehicle(playerid, const params[]) return cmd_newveh(playerid, params);
+
+fpublic cmd_avnewcar(playerid, const params[]) return cmd_newveh(playerid, params);
 
 fpublic cmd_newveh(playerid, const params[])
 {
@@ -20175,9 +20933,17 @@ fpublic cmd_newveh(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_dveh(playerid, const params[]) return cmd_delveh(playerid, params);
+
+fpublic cmd_dvehicle(playerid, const params[]) return cmd_delveh(playerid, params);
+
+fpublic cmd_delvehicle(playerid, const params[]) return cmd_delveh(playerid, params);
+
 fpublic cmd_deleteveh(playerid, const params[]) return cmd_delveh(playerid, params);
 
 fpublic cmd_deletevehicle(playerid, const params[]) return cmd_delveh(playerid, params);
+
+fpublic cmd_avdeletecar(playerid, const params[]) return cmd_delveh(playerid, params);
 
 fpublic cmd_delveh(playerid, const params[])
 {
@@ -20215,6 +20981,8 @@ fpublic cmd_copyveh(playerid, const params[]) return cmd_cveh(playerid, params);
 
 fpublic cmd_copyvehicle(playerid, const params[]) return cmd_cveh(playerid, params);
 
+fpublic cmd_avclonecar(playerid, const params[]) return cmd_cveh(playerid, params);
+
 fpublic cmd_cveh(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
@@ -20250,9 +21018,15 @@ fpublic cmd_cveh(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_selvehicle(playerid, const params[]) return cmd_selveh(playerid, params);
+
 fpublic cmd_selectveh(playerid, const params[]) return cmd_selveh(playerid, params);
 
 fpublic cmd_selectvehicle(playerid, const params[]) return cmd_selveh(playerid, params);
+
+fpublic cmd_avsel(playerid, const params[]) return cmd_selveh(playerid, params);
+
+fpublic cmd_avselectcar(playerid, const params[]) return cmd_selveh(playerid, params);
 
 fpublic cmd_selveh(playerid, const params[])
 {
@@ -20269,7 +21043,11 @@ fpublic cmd_selveh(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_vgoto(playerid, const params[]) return cmd_gotoveh(playerid, params);
+
 fpublic cmd_gotovehicle(playerid, const params[]) return cmd_gotoveh(playerid, params);
+
+fpublic cmd_avgoto(playerid, const params[]) return cmd_gotoveh(playerid, params);
 
 fpublic cmd_gotoveh(playerid, const params[])
 {
@@ -20329,6 +21107,8 @@ fpublic cmd_getveh(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_vrepair(playerid, const params[]) return cmd_vehrepair(playerid, params);
+
 fpublic cmd_repairveh(playerid, const params[]) return cmd_vehrepair(playerid, params);
 
 fpublic cmd_vehiclerepair(playerid, const params[]) return cmd_vehrepair(playerid, params);
@@ -20362,6 +21142,8 @@ fpublic cmd_vehrepair(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_vx(playerid, const params[]) return cmd_vehx(playerid, params);
+
 fpublic cmd_vehiclex(playerid, const params[]) return cmd_vehx(playerid, params);
 
 fpublic cmd_vehx(playerid, const params[])
@@ -20392,6 +21174,8 @@ fpublic cmd_vehx(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_vy(playerid, const params[]) return cmd_vehy(playerid, params);
 
 fpublic cmd_vehicley(playerid, const params[]) return cmd_vehy(playerid, params);
 
@@ -20424,6 +21208,8 @@ fpublic cmd_vehy(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_vz(playerid, const params[]) return cmd_vehz(playerid, params);
+
 fpublic cmd_vehiclez(playerid, const params[]) return cmd_vehz(playerid, params);
 
 fpublic cmd_vehz(playerid, const params[])
@@ -20455,6 +21241,8 @@ fpublic cmd_vehz(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_vrz(playerid, const params[]) return cmd_vehrz(playerid, params);
+
 fpublic cmd_vehiclerz(playerid, const params[]) return cmd_vehrz(playerid, params);
 
 fpublic cmd_vehrz(playerid, const params[])
@@ -20484,6 +21272,8 @@ fpublic cmd_vehrz(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_vrtime(playerid, const params[]) return cmd_vehrtime(playerid, params);
+
 fpublic cmd_vehiclertime(playerid, const params[]) return cmd_vehrtime(playerid, params);
 
 fpublic cmd_vehrtime(playerid, const params[])
@@ -20512,7 +21302,11 @@ fpublic cmd_vehrtime(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_vcolor(playerid, const params[]) return cmd_vehcolor(playerid, params);
+
 fpublic cmd_vehiclecolor(playerid, const params[]) return cmd_vehcolor(playerid, params);
+
+fpublic cmd_avcarcolor(playerid, const params[]) return cmd_vehcolor(playerid, params);
 
 fpublic cmd_vehcolor(playerid, const params[])
 {
@@ -20674,6 +21468,8 @@ fpublic cmd_compremoveall(playerid, const params[])
 
 fpublic cmd_pjob(playerid, const params[]) return cmd_paintjob(playerid, params);
 
+fpublic cmd_avpaint(playerid, const params[]) return cmd_paintjob(playerid, params);
+
 fpublic cmd_paintjob(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
@@ -20813,6 +21609,12 @@ fpublic cmd_newact(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_dact(playerid, const params[]) return cmd_delact(playerid, params);
+
+fpublic cmd_dactor(playerid, const params[]) return cmd_delact(playerid, params);
+
+fpublic cmd_delactor(playerid, const params[]) return cmd_delact(playerid, params);
+
 fpublic cmd_deleteact(playerid, const params[]) return cmd_delact(playerid, params);
 
 fpublic cmd_deleteactor(playerid, const params[]) return cmd_delact(playerid, params);
@@ -20944,6 +21746,8 @@ fpublic cmd_cact(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_selactor(playerid, const params[]) return cmd_selact(playerid, params);
+
 fpublic cmd_selectact(playerid, const params[]) return cmd_selact(playerid, params);
 
 fpublic cmd_selectactor(playerid, const params[]) return cmd_selact(playerid, params);
@@ -20972,6 +21776,8 @@ fpublic cmd_selact(playerid, const params[])
 	CreatorInfo[playerid][ucSelectedAct] = selectedid;
 	return 1;
 }
+
+fpublic cmd_agoto(playerid, const params[]) return cmd_gotoact(playerid, params);
 
 fpublic cmd_gotoactor(playerid, const params[]) return cmd_gotoact(playerid, params);
 
@@ -21078,6 +21884,8 @@ fpublic cmd_getact(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_aanim(playerid, const params[]) return cmd_actanim(playerid, params);
+
 fpublic cmd_actoranim(playerid, const params[]) return cmd_actanim(playerid, params);
 
 fpublic cmd_actanim(playerid, const params[])
@@ -21144,6 +21952,8 @@ fpublic cmd_actanim(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_aclear(playerid, const params[]) return cmd_actclear(playerid, params);
+
 fpublic cmd_actorclear(playerid, const params[]) return cmd_actclear(playerid, params);
 
 fpublic cmd_actclear(playerid, const params[])
@@ -21187,6 +21997,8 @@ fpublic cmd_actclear(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_ax(playerid, const params[]) return cmd_actx(playerid, params);
+
 fpublic cmd_actorx(playerid, const params[]) return cmd_actx(playerid, params);
 
 fpublic cmd_actx(playerid, const params[])
@@ -21225,6 +22037,8 @@ fpublic cmd_actx(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_ay(playerid, const params[]) return cmd_acty(playerid, params);
 
 fpublic cmd_actory(playerid, const params[]) return cmd_acty(playerid, params);
 
@@ -21265,6 +22079,8 @@ fpublic cmd_acty(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_az(playerid, const params[]) return cmd_actz(playerid, params);
+
 fpublic cmd_actorz(playerid, const params[]) return cmd_actz(playerid, params);
 
 fpublic cmd_actz(playerid, const params[])
@@ -21303,6 +22119,8 @@ fpublic cmd_actz(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_arz(playerid, const params[]) return cmd_actrz(playerid, params);
 
 fpublic cmd_actorrz(playerid, const params[]) return cmd_actrz(playerid, params);
 
@@ -21413,6 +22231,12 @@ fpublic cmd_newpick(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_dpick(playerid, const params[]) return cmd_delpick(playerid, params);
+
+fpublic cmd_dpickup(playerid, const params[]) return cmd_delpick(playerid, params);
+
+fpublic cmd_delpickup(playerid, const params[]) return cmd_delpick(playerid, params);
 
 fpublic cmd_deletepick(playerid, const params[]) return cmd_delpick(playerid, params);
 
@@ -21534,6 +22358,8 @@ fpublic cmd_cpick(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_selpickup(playerid, const params[]) return cmd_selpick(playerid, params);
+
 fpublic cmd_selectpick(playerid, const params[]) return cmd_selpick(playerid, params);
 
 fpublic cmd_selectpickup(playerid, const params[]) return cmd_selpick(playerid, params);
@@ -21552,6 +22378,8 @@ fpublic cmd_selpick(playerid, const params[])
 	CreatorInfo[playerid][ucSelectedPick] = selectedid;
 	return 1;
 }
+
+fpublic cmd_pgoto(playerid, const params[]) return cmd_gotopick(playerid, params);
 
 fpublic cmd_gotopickup(playerid, const params[]) return cmd_gotopick(playerid, params);
 
@@ -21630,6 +22458,8 @@ fpublic cmd_getpick(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_ptype(playerid, const params[]) return cmd_picktype(playerid, params);
+
 fpublic cmd_pickuptype(playerid, const params[]) return cmd_picktype(playerid, params);
 
 fpublic cmd_picktype(playerid, const params[])
@@ -21663,6 +22493,8 @@ fpublic cmd_picktype(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_px(playerid, const params[]) return cmd_pickx(playerid, params);
+
 fpublic cmd_pickupx(playerid, const params[]) return cmd_pickx(playerid, params);
 
 fpublic cmd_pickx(playerid, const params[])
@@ -21693,6 +22525,8 @@ fpublic cmd_pickx(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_py(playerid, const params[]) return cmd_picky(playerid, params);
 
 fpublic cmd_pickupy(playerid, const params[]) return cmd_picky(playerid, params);
 
@@ -21725,6 +22559,8 @@ fpublic cmd_picky(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_pz(playerid, const params[]) return cmd_pickz(playerid, params);
+
 fpublic cmd_pickupz(playerid, const params[]) return cmd_pickz(playerid, params);
 
 fpublic cmd_pickz(playerid, const params[])
@@ -21755,6 +22591,8 @@ fpublic cmd_pickz(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_pvw(playerid, const params[]) return cmd_pickvw(playerid, params);
 
 fpublic cmd_pickupvw(playerid, const params[]) return cmd_pickvw(playerid, params);
 
@@ -21821,6 +22659,10 @@ fpublic cmd_newcp(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_dcp(playerid, const params[]) return cmd_delcp(playerid, params);
+
+fpublic cmd_dcheckpoint(playerid, const params[]) return cmd_delcp(playerid, params);
+
 fpublic cmd_deletecp(playerid, const params[]) return cmd_delcp(playerid, params);
 
 fpublic cmd_delcheckpoint(playerid, const params[]) return cmd_delcp(playerid, params);
@@ -21861,6 +22703,8 @@ fpublic cmd_selcp(playerid, const params[])
 	else SendClientMessage(playerid, DEFAULT_COLOR, NO_CPS_CREATED_ERROR);
 	return 1;
 }
+
+fpublic cmd_cpgoto(playerid, const params[]) return cmd_gotocp(playerid, params);
 
 fpublic cmd_gotocheckpoint(playerid, const params[]) return cmd_gotocp(playerid, params);
 
@@ -22028,6 +22872,12 @@ fpublic cmd_newrcp(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_drcp(playerid, const params[]) return cmd_delrcp(playerid, params);
+
+fpublic cmd_dracecp(playerid, const params[]) return cmd_delrcp(playerid, params);
+
+fpublic cmd_delracecp(playerid, const params[]) return cmd_delrcp(playerid, params);
+
 fpublic cmd_deletercp(playerid, const params[]) return cmd_delrcp(playerid, params);
 
 fpublic cmd_deleteracecp(playerid, const params[]) return cmd_delrcp(playerid, params);
@@ -22049,6 +22899,8 @@ fpublic cmd_delrcp(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_selracecp(playerid, const params[]) return cmd_selrcp(playerid, params);
+
 fpublic cmd_selectrcp(playerid, const params[]) return cmd_selrcp(playerid, params);
 
 fpublic cmd_selectracecp(playerid, const params[]) return cmd_selrcp(playerid, params);
@@ -22068,6 +22920,8 @@ fpublic cmd_selrcp(playerid, const params[])
 	else SendClientMessage(playerid, DEFAULT_COLOR, NO_RCPS_CREATED_ERROR);
 	return 1;
 }
+
+fpublic cmd_rcpgoto(playerid, const params[]) return cmd_gotorcp(playerid, params);
 
 fpublic cmd_gotoracecp(playerid, const params[]) return cmd_gotorcp(playerid, params);
 
@@ -22420,6 +23274,12 @@ fpublic cmd_newicon(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_dicon(playerid, const params[]) return cmd_delicon(playerid, params);
+
+fpublic cmd_dmapicon(playerid, const params[]) return cmd_delicon(playerid, params);
+
+fpublic cmd_delmapicon(playerid, const params[]) return cmd_delicon(playerid, params);
+
 fpublic cmd_deleteicon(playerid, const params[]) return cmd_delicon(playerid, params);
 
 fpublic cmd_deletemapicon(playerid, const params[]) return cmd_delicon(playerid, params);
@@ -22538,6 +23398,8 @@ fpublic cmd_cicon(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_selmapicon(playerid, const params[]) return cmd_selicon(playerid, params);
+
 fpublic cmd_selecticon(playerid, const params[]) return cmd_selicon(playerid, params);
 
 fpublic cmd_selectmapicon(playerid, const params[]) return cmd_selicon(playerid, params);
@@ -22556,6 +23418,8 @@ fpublic cmd_selicon(playerid, const params[])
 	CreatorInfo[playerid][ucSelectedIco] = selectedid;
 	return 1;
 }
+
+fpublic cmd_igoto(playerid, const params[]) return cmd_gotoicon(playerid, params);
 
 fpublic cmd_gotomapicon(playerid, const params[]) return cmd_gotoicon(playerid, params);
 
@@ -22623,6 +23487,8 @@ fpublic cmd_geticon(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_ix(playerid, const params[]) return cmd_iconx(playerid, params);
+
 fpublic cmd_mapiconx(playerid, const params[]) return cmd_iconx(playerid, params);
 
 fpublic cmd_iconx(playerid, const params[])
@@ -22646,6 +23512,8 @@ fpublic cmd_iconx(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_iy(playerid, const params[]) return cmd_icony(playerid, params);
 
 fpublic cmd_mapicony(playerid, const params[]) return cmd_icony(playerid, params);
 
@@ -22671,6 +23539,8 @@ fpublic cmd_icony(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_iz(playerid, const params[]) return cmd_iconz(playerid, params);
+
 fpublic cmd_mapiconz(playerid, const params[]) return cmd_iconz(playerid, params);
 
 fpublic cmd_iconz(playerid, const params[])
@@ -22694,6 +23564,8 @@ fpublic cmd_iconz(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_icolor(playerid, const params[]) return cmd_iconcolor(playerid, params);
 
 fpublic cmd_mapiconcolor(playerid, const params[]) return cmd_iconcolor(playerid, params);
 
@@ -22728,6 +23600,8 @@ fpublic cmd_iconcolor(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_istyle(playerid, const params[]) return cmd_iconstyle(playerid, params);
 
 fpublic cmd_mapiconstyle(playerid, const params[]) return cmd_iconstyle(playerid, params);
 
@@ -22783,6 +23657,12 @@ fpublic cmd_newzone(playerid, const params[])
 	else SendClientMessage(playerid, DEFAULT_COLOR, LIMIT_ERROR);
 	return 1;
 }
+
+fpublic cmd_dzone(playerid, const params[]) return cmd_delzone(playerid, params);
+
+fpublic cmd_dgangzone(playerid, const params[]) return cmd_delzone(playerid, params);
+
+fpublic cmd_delgangzone(playerid, const params[]) return cmd_delzone(playerid, params);
 
 fpublic cmd_deletezone(playerid, const params[]) return cmd_delzone(playerid, params);
 
@@ -22864,6 +23744,8 @@ fpublic cmd_czone(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_selgangzone(playerid, const params[]) return cmd_selzone(playerid, params);
+
 fpublic cmd_selectzone(playerid, const params[]) return cmd_selzone(playerid, params);
 
 fpublic cmd_selectgangzone(playerid, const params[]) return cmd_selzone(playerid, params);
@@ -22899,6 +23781,8 @@ fpublic cmd_holdzone(playerid, const params[])
 	CreatorInfo[playerid][ucHoldingGzn] = selectedid;
 	return 1;
 }
+
+fpublic cmd_zgoto(playerid, const params[]) return cmd_gotozone(playerid, params);
 
 fpublic cmd_gotogangzone(playerid, const params[]) return cmd_gotozone(playerid, params);
 
@@ -22977,6 +23861,8 @@ fpublic cmd_getzone(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_zminx(playerid, const params[]) return cmd_zoneminx(playerid, params);
+
 fpublic cmd_gangzoneminx(playerid, const params[]) return cmd_zoneminx(playerid, params);
 
 fpublic cmd_zoneminx(playerid, const params[])
@@ -23004,6 +23890,8 @@ fpublic cmd_zoneminx(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_zminy(playerid, const params[]) return cmd_zoneminy(playerid, params);
 
 fpublic cmd_gangzoneminy(playerid, const params[]) return cmd_zoneminy(playerid, params);
 
@@ -23033,6 +23921,8 @@ fpublic cmd_zoneminy(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_zmaxx(playerid, const params[]) return cmd_zonemaxx(playerid, params);
+
 fpublic cmd_gangzonemaxx(playerid, const params[]) return cmd_zonemaxx(playerid, params);
 
 fpublic cmd_zonemaxx(playerid, const params[])
@@ -23061,6 +23951,8 @@ fpublic cmd_zonemaxx(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_zmaxy(playerid, const params[]) return cmd_zonemaxy(playerid, params);
+
 fpublic cmd_gangzonemaxy(playerid, const params[]) return cmd_zonemaxy(playerid, params);
 
 fpublic cmd_zonemaxy(playerid, const params[])
@@ -23088,6 +23980,8 @@ fpublic cmd_zonemaxy(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_zcolor(playerid, const params[]) return cmd_zonecolor(playerid, params);
 
 fpublic cmd_gangzonecolor(playerid, const params[]) return cmd_zonecolor(playerid, params);
 
@@ -23174,6 +24068,12 @@ fpublic cmd_newlab(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_dlab(playerid, const params[]) return cmd_dellab(playerid, params);
+
+fpublic cmd_dlabel(playerid, const params[]) return cmd_dellab(playerid, params);
+
+fpublic cmd_dellabel(playerid, const params[]) return cmd_dellab(playerid, params);
 
 fpublic cmd_deletelab(playerid, const params[]) return cmd_dellab(playerid, params);
 
@@ -23299,6 +24199,8 @@ fpublic cmd_clab(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_sellabel(playerid, const params[]) return cmd_sellab(playerid, params);
+
 fpublic cmd_selectlab(playerid, const params[]) return cmd_sellab(playerid, params);
 
 fpublic cmd_selectlabel(playerid, const params[]) return cmd_sellab(playerid, params);
@@ -23317,6 +24219,8 @@ fpublic cmd_sellab(playerid, const params[])
 	CreatorInfo[playerid][ucSelectedLab] = selectedid;
 	return 1;
 }
+
+fpublic cmd_lgoto(playerid, const params[]) return cmd_gotolab(playerid, params);
 
 fpublic cmd_gotolabel(playerid, const params[]) return cmd_gotolab(playerid, params);
 
@@ -23416,6 +24320,8 @@ fpublic cmd_getlab(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_ltext(playerid, const params[]) return cmd_labtext(playerid, params);
+
 fpublic cmd_labeltext(playerid, const params[]) return cmd_labtext(playerid, params);
 
 fpublic cmd_labtext(playerid, const params[])
@@ -23449,6 +24355,8 @@ fpublic cmd_labtext(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_lcolor(playerid, const params[]) return cmd_labcolor(playerid, params);
 
 fpublic cmd_labelcolor(playerid, const params[]) return cmd_labcolor(playerid, params);
 
@@ -23567,6 +24475,8 @@ fpublic cmd_lvehattach(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_lx(playerid, const params[]) return cmd_labx(playerid, params);
+
 fpublic cmd_labelx(playerid, const params[]) return cmd_labx(playerid, params);
 
 fpublic cmd_labx(playerid, const params[])
@@ -23615,6 +24525,8 @@ fpublic cmd_labx(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_ly(playerid, const params[]) return cmd_laby(playerid, params);
 
 fpublic cmd_labely(playerid, const params[]) return cmd_laby(playerid, params);
 
@@ -23665,6 +24577,8 @@ fpublic cmd_laby(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_lz(playerid, const params[]) return cmd_labz(playerid, params);
+
 fpublic cmd_labelz(playerid, const params[]) return cmd_labz(playerid, params);
 
 fpublic cmd_labz(playerid, const params[])
@@ -23714,6 +24628,8 @@ fpublic cmd_labz(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_ldd(playerid, const params[]) return cmd_labdd(playerid, params);
+
 fpublic cmd_labeldd(playerid, const params[]) return cmd_labdd(playerid, params);
 
 fpublic cmd_labdd(playerid, const params[])
@@ -23745,6 +24661,8 @@ fpublic cmd_labdd(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_lvw(playerid, const params[]) return cmd_labvw(playerid, params);
+
 fpublic cmd_labelvw(playerid, const params[]) return cmd_labvw(playerid, params);
 
 fpublic cmd_labvw(playerid, const params[])
@@ -23775,6 +24693,8 @@ fpublic cmd_labvw(playerid, const params[])
 	}
 	return 1;
 }
+
+fpublic cmd_llos(playerid, const params[]) return cmd_lablos(playerid, params);
 
 fpublic cmd_labellos(playerid, const params[]) return cmd_lablos(playerid, params);
 
@@ -23955,6 +24875,8 @@ fpublic cmd_remobjects(playerid, const params[])
 	#endif
 	return 1;
 }
+
+fpublic cmd_fmspeed(playerid, const params[]) return cmd_camspeed(playerid, params);
 
 fpublic cmd_camspeed(playerid, const params[])
 {
@@ -24344,6 +25266,8 @@ fpublic cmd_hidegui(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_weather(playerid, const params[]) return cmd_setweather(playerid, params);
+
 fpublic cmd_setweather(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
@@ -24373,6 +25297,8 @@ fpublic cmd_setweather(playerid, const params[])
 	return 1;
 }
 
+fpublic cmd_time(playerid, const params[]) return cmd_settime(playerid, params);
+
 fpublic cmd_setworldtime(playerid, const params[]) return cmd_settime(playerid, params);
 
 fpublic cmd_settime(playerid, const params[])
@@ -24386,20 +25312,51 @@ fpublic cmd_settime(playerid, const params[])
 	else
 	{
 		new time = strval(params);
-		if(!IsNumeric(params) || !(0 <= time <= 23))
+		if(!IsNumeric(params) && strfind(params, "AM", true) == -1 && strfind(params, "PM", true) == -1 || !(0 <= time <= 23))
+		{
+			CreatorInfo[playerid][ucCallCmdDialog] = true;
+			ShowCreatorDialog(playerid, DIALOG_SETTINGS_TIME);
+			return 1;
+		}
+		new time_fixed = time;
+		static strtmp2[145], strtmp3[16], pname[MAX_PLAYER_NAME];
+		if(time_fixed > 12 || strfind(params, "AM", true) == -1 && strfind(params, "PM", true) == -1)
+		{
+			if(time_fixed > 11)
+			{
+				if(time_fixed != 12) time_fixed -= 12;
+				format(strtmp3, sizeof strtmp3, "%d:00 PM", time_fixed);
+			}
+			else if(time == 0) strtmp3 = "12:00 AM";
+			else format(strtmp3, sizeof strtmp3, "%d:00 AM", time_fixed);
+		}
+		else if(strfind(params, "AM", true) != -1)
+		{
+			if(time_fixed == 0) strtmp3 = "12:00 AM";
+			else format(strtmp3, sizeof strtmp3, "%d:00 AM", time_fixed);
+			if(time == 12) time = 0;
+		}
+		else if(strfind(params, "PM", true) != -1)
+		{
+			if(time_fixed == 0) strtmp3 = "12:00 PM";
+			else format(strtmp3, sizeof strtmp3, "%d:00 PM", time_fixed);
+			if(time != 12) time += 12;
+		}
+		else
 		{
 			CreatorInfo[playerid][ucCallCmdDialog] = true;
 			ShowCreatorDialog(playerid, DIALOG_SETTINGS_TIME);
 			return 1;
 		}
 		SetWorldTime(time);
-		static strtmp2[145], pname[MAX_PLAYER_NAME];
 		GetPlayerName(playerid, pname, sizeof pname);
-		format(strtmp2, sizeof strtmp2, TIME_CHANGED, pname, time);
+		format(strtmp2, sizeof strtmp2, TIME_CHANGED, pname, strtmp3);
 		SendMessageToCreators(DEFAULT_COLOR, strtmp2);
 	}
 	return 1;
 }
+
+fpublic cmd_gravity(playerid, const params[]) return cmd_setgravity(playerid, params);
 
 fpublic cmd_setgravity(playerid, const params[])
 {
@@ -24709,7 +25666,14 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			static strtmp[64];
 			format(strtmp, sizeof strtmp, EDIT_OBJECT" (id %d)", CreatorInfo[playerid][ucClickedObj]);
 			if(text[0]) ShowPlayerDialog(playerid, DIALOG_EDIT_OBJECT, DIALOG_STYLE_LIST, strtmp, text, OK_BUTTON, BACK_BUTTON);
-			else ShowPlayerDialog(playerid, DIALOG_EDIT_OBJECT, DIALOG_STYLE_LIST, strtmp, SELECT_OBJECT"\n"TELEPORT_TO_OBJECT"\n"TELEPORT_OBJECT"\n"COPY_OBJECT"\n"DELETE_OBJECT"\n"EDIT_MATERIAL"\n"EDIT_MATERIAL_TEXT"\n"ATTACH_TO_PLAYER"\n"ATTACH_TO_OBJECT"\n"ATTACH_TO_VEHICLE"\n"COORD_X"\n"COORD_Y"\n"COORD_Z"\n"ROT_X"\n"ROT_Y"\n"ROT_Z, OK_BUTTON, BACK_BUTTON);
+			else
+			{
+				static strtmp2[512];
+				format(strtmp2, sizeof strtmp2, SELECT_OBJECT"\n"TELEPORT_TO_OBJECT"\n"TELEPORT_OBJECT"\n"COPY_OBJECT"\n"DELETE_OBJECT"\n"EDIT_MATERIAL"\n"EDIT_MATERIAL_TEXT"\n");
+				if(CreatorInfo[playerid][ucBufferMode] > 0) strcat(strtmp2, PASTE_TEXTURES"\n");
+				strcat(strtmp2, COPY_TEXTURES"\n"RESET_TEXTURES"\n"ATTACH_TO_PLAYER"\n"ATTACH_TO_OBJECT"\n"ATTACH_TO_VEHICLE"\n"COORD_X"\n"COORD_Y"\n"COORD_Z"\n"ROT_X"\n"ROT_Y"\n"ROT_Z"\n"ROT_RESET);
+				ShowPlayerDialog(playerid, DIALOG_EDIT_OBJECT, DIALOG_STYLE_LIST, strtmp, strtmp2, OK_BUTTON, BACK_BUTTON);
+			}
 		}
 		case DIALOG_EDIT_OBJECT_TXD_MAIN:
 		{
@@ -24726,7 +25690,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			{
 				static strtmp2[128];
 				new clickedid = CreatorInfo[playerid][ucClickedObj];
-				format(strtmp2, sizeof strtmp2, RESET_TEXTURE"\n"RESET_OBJECT_COLOR"\n"OBJECT_TEXTURE" %d\n"OBJECT_COLOR" 0x%08x", ObjectsInfo[clickedid][oTextureid][layerid], ObjectsInfo[clickedid][oMaterialColor][layerid]);
+				format(strtmp2, sizeof strtmp2, RESET_TEXTURE"\n"RESET_OBJECT_COLOR"\n"COPY_TEXTURE"\n"OBJECT_TEXTURE" %d\n"OBJECT_COLOR" 0x%08x", ObjectsInfo[clickedid][oTextureid][layerid], ObjectsInfo[clickedid][oMaterialColor][layerid]);
 				ShowPlayerDialog(playerid, DIALOG_EDIT_OBJECT_TXD, DIALOG_STYLE_LIST, strtmp, strtmp2, OK_BUTTON, BACK_BUTTON);
 			}
 		}
@@ -24775,7 +25739,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			else
 			{
 				static strtmp2[256 + MAX_OBJECT_TEXT_LENGTH + MAX_FONT_NAME_LENGTH];
-				format(strtmp2, sizeof strtmp2, RESET_TEXT"\n"OBJECT_TEXT" \"%s\"\n"OBJECT_TEXT_SIZE" %d\n"TEXT_FONT" %s\n"FONT_SIZE" %d\n"BOLD" %d\n"FONT_COLOR" 0x%08x\n"BACK_COLOR" 0x%08x\n"ALIGNMENT" %d",
+				format(strtmp2, sizeof strtmp2, RESET_TEXT"\n"COPY_TEXT"\n"OBJECT_TEXT" \"%s\"\n"OBJECT_TEXT_SIZE" %d\n"TEXT_FONT" %s\n"FONT_SIZE" %d\n"BOLD" %d\n"FONT_COLOR" 0x%08x\n"BACK_COLOR" 0x%08x\n"ALIGNMENT" %d",
 				ObjectsInfo[clickedid][oText], ObjectsInfo[clickedid][oTextSize], ObjectsInfo[clickedid][oFont], ObjectsInfo[clickedid][oFontSize], ObjectsInfo[clickedid][oBold],
 				ObjectsInfo[clickedid][oFontColor], ObjectsInfo[clickedid][oBackColor], ObjectsInfo[clickedid][oTextAlignment]);
 				ShowPlayerDialog(playerid, DIALOG_EDIT_OBJECT_TXT, DIALOG_STYLE_LIST, strtmp, strtmp2, OK_BUTTON, BACK_BUTTON);
@@ -25900,9 +26864,18 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			if(text[0]) ShowPlayerDialog(playerid, DIALOG_SETTINGS_TIME, DIALOG_STYLE_TABLIST_HEADERS, EDIT_WORLDTIME, text, OK_BUTTON, BACK_BUTTON);
 			else
 			{
-				static strtmp[256], strtmp2[8];
+				new time;
+				static strtmp[256], strtmp2[16];
 				GetServerVarAsString("worldtime", strtmp2, sizeof strtmp2);
-				format(strtmp, sizeof strtmp, WORLDTIME_NOW" %d:00\n0:00\n1:00\n2:00\n3:00\n4:00\n5:00\n6:00\n7:00\n8:00\n9:00\n10:00\n11:00\n12:00\n13:00\n14:00\n15:00\n16:00\n17:00\n18:00\n19:00\n20:00\n21:00\n22:00\n23:00", strval(strtmp2));
+				time = strval(strtmp2);
+				if(time > 11)
+				{
+					if(time != 12) time -= 12;
+					format(strtmp2, sizeof strtmp2, "%d:00 PM", time);
+				}
+				else if(time == 0) strtmp2 = "12:00 AM";
+				else format(strtmp2, sizeof strtmp2, "%d:00 AM", time);
+				format(strtmp, sizeof strtmp, WORLDTIME_NOW" %s\n12:00 AM\n1:00 AM\n2:00 AM\n3:00 AM\n4:00 AM\n5:00 AM\n6:00 AM\n7:00 AM\n8:00 AM\n9:00 AM\n10:00 AM\n11:00 AM\n12:00 PM\n1:00 PM\n2:00 PM\n3:00 PM\n4:00 PM\n5:00 PM\n6:00 PM\n7:00 PM\n8:00 PM\n9:00 PM\n10:00 PM\n11:00 PM", strtmp2);
 				ShowPlayerDialog(playerid, DIALOG_SETTINGS_TIME, DIALOG_STYLE_TABLIST_HEADERS, EDIT_WORLDTIME, strtmp, OK_BUTTON, BACK_BUTTON);
 			}
 		}
@@ -25976,7 +26949,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 		case DIALOG_CMD_INSTRUCTION_1:
 		{
 			if(text[0]) ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_1, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_1, text, OK_BUTTON, "");
-			else ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_1, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_1, CMD_INSTRUCTION_STRING_1"\n"CMD_INSTRUCTION_STRING_2"\n"CMD_INSTRUCTION_STRING_3"\n"CMD_INSTRUCTION_STRING_4, OK_BUTTON, "");
+			else ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_1, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_1, CMD_INSTRUCTION_STRING_1_1"\n"CMD_INSTRUCTION_STRING_1_2"\n"CMD_INSTRUCTION_STRING_1_3"\n"CMD_INSTRUCTION_STRING_1_4, OK_BUTTON, "");
 		}
 		case DIALOG_CMD_INSTRUCTION_2:
 		{
@@ -25985,18 +26958,19 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			{
 				static const CmdInstructionStr2[][] =
 				{
-					CMD_INSTRUCTION_STRING_5"\n",
-					CMD_INSTRUCTION_STRING_6"\n",
-					CMD_INSTRUCTION_STRING_7"\n",
-					CMD_INSTRUCTION_STRING_8"\n",
-					CMD_INSTRUCTION_STRING_9"\n",
-					CMD_INSTRUCTION_STRING_10"\n",
-					CMD_INSTRUCTION_STRING_11"\n",
-					CMD_INSTRUCTION_STRING_12"\n",
-					CMD_INSTRUCTION_STRING_13"\n",
-					CMD_INSTRUCTION_STRING_14"\n",
-					CMD_INSTRUCTION_STRING_15"\n",
-					CMD_INSTRUCTION_STRING_16
+					CMD_INSTRUCTION_STRING_2_1"\n",
+					CMD_INSTRUCTION_STRING_2_2"\n",
+					CMD_INSTRUCTION_STRING_2_3"\n",
+					CMD_INSTRUCTION_STRING_2_4"\n",
+					CMD_INSTRUCTION_STRING_2_5"\n",
+					CMD_INSTRUCTION_STRING_2_6"\n",
+					CMD_INSTRUCTION_STRING_2_7"\n",
+					CMD_INSTRUCTION_STRING_2_8"\n",
+					CMD_INSTRUCTION_STRING_2_9"\n",
+					CMD_INSTRUCTION_STRING_2_10"\n",
+					CMD_INSTRUCTION_STRING_2_11"\n",
+					CMD_INSTRUCTION_STRING_2_12"\n",
+					CMD_INSTRUCTION_STRING_2_13
 				};
 				static strtmp[768];
 				strtmp[0] = EOS;
@@ -26007,7 +26981,27 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 		case DIALOG_CMD_INSTRUCTION_3:
 		{
 			if(text[0]) ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_3, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_3, text, OK_BUTTON, "");
-			else ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_3, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_3, CMD_INSTRUCTION_STRING_17"\n"CMD_INSTRUCTION_STRING_18"\n"CMD_INSTRUCTION_STRING_19"\n"CMD_INSTRUCTION_STRING_20, OK_BUTTON, "");
+			else
+			{
+				static const CmdInstructionStr3[][] =
+				{
+					CMD_INSTRUCTION_STRING_3_1"\n",
+					CMD_INSTRUCTION_STRING_3_2"\n",
+					CMD_INSTRUCTION_STRING_3_3"\n",
+					CMD_INSTRUCTION_STRING_3_4"\n",
+					CMD_INSTRUCTION_STRING_3_5"\n",
+					CMD_INSTRUCTION_STRING_3_6"\n",
+					CMD_INSTRUCTION_STRING_3_7"\n",
+					CMD_INSTRUCTION_STRING_3_8"\n",
+					CMD_INSTRUCTION_STRING_3_9"\n",
+					CMD_INSTRUCTION_STRING_3_10"\n",
+					CMD_INSTRUCTION_STRING_3_11
+				};
+				static strtmp[768];
+				strtmp[0] = EOS;
+				for(new i; i < sizeof CmdInstructionStr3; i++) strcat(strtmp, CmdInstructionStr3[i]);
+				ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_3, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_3, strtmp, OK_BUTTON, "");
+			}
 		}
 		case DIALOG_CMD_INSTRUCTION_4:
 		{
@@ -26016,17 +27010,17 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			{
 				static const CmdInstructionStr4[][] =
 				{
-					CMD_INSTRUCTION_STRING_21"\n",
-					CMD_INSTRUCTION_STRING_22"\n",
-					CMD_INSTRUCTION_STRING_23"\n",
-					CMD_INSTRUCTION_STRING_24"\n",
-					CMD_INSTRUCTION_STRING_25"\n",
-					CMD_INSTRUCTION_STRING_26"\n",
-					CMD_INSTRUCTION_STRING_27"\n",
-					CMD_INSTRUCTION_STRING_28"\n",
-					CMD_INSTRUCTION_STRING_29"\n",
-					CMD_INSTRUCTION_STRING_30"\n",
-					CMD_INSTRUCTION_STRING_31
+					CMD_INSTRUCTION_STRING_4_1"\n",
+					CMD_INSTRUCTION_STRING_4_2"\n",
+					CMD_INSTRUCTION_STRING_4_3"\n",
+					CMD_INSTRUCTION_STRING_4_4"\n",
+					CMD_INSTRUCTION_STRING_4_5"\n",
+					CMD_INSTRUCTION_STRING_4_6"\n",
+					CMD_INSTRUCTION_STRING_4_7"\n",
+					CMD_INSTRUCTION_STRING_4_8"\n",
+					CMD_INSTRUCTION_STRING_4_9"\n",
+					CMD_INSTRUCTION_STRING_4_10"\n",
+					CMD_INSTRUCTION_STRING_4_11
 				};
 				static strtmp[640];
 				strtmp[0] = EOS;
@@ -26037,7 +27031,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 		case DIALOG_CMD_INSTRUCTION_5:
 		{
 			if(text[0]) ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_5, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_5, text, OK_BUTTON, "");
-			else ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_5, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_5, CMD_INSTRUCTION_STRING_32"\n"CMD_INSTRUCTION_STRING_33"\n"CMD_INSTRUCTION_STRING_34"\n"CMD_INSTRUCTION_STRING_35"\n"CMD_INSTRUCTION_STRING_36, OK_BUTTON, "");
+			else ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_5, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_5, CMD_INSTRUCTION_STRING_5_1"\n"CMD_INSTRUCTION_STRING_5_2"\n"CMD_INSTRUCTION_STRING_5_3"\n"CMD_INSTRUCTION_STRING_5_4"\n"CMD_INSTRUCTION_STRING_5_5, OK_BUTTON, "");
 		}
 		case DIALOG_CMD_INSTRUCTION_6:
 		{
@@ -26046,16 +27040,16 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			{
 				static const CmdInstructionStr6[][] =
 				{
-					CMD_INSTRUCTION_STRING_37"\n",
-					CMD_INSTRUCTION_STRING_38"\n",
-					CMD_INSTRUCTION_STRING_39"\n",
-					CMD_INSTRUCTION_STRING_40"\n",
-					CMD_INSTRUCTION_STRING_41"\n",
-					CMD_INSTRUCTION_STRING_42"\n",
-					CMD_INSTRUCTION_STRING_43"\n",
-					CMD_INSTRUCTION_STRING_44"\n",
-					CMD_INSTRUCTION_STRING_45"\n",
-					CMD_INSTRUCTION_STRING_46
+					CMD_INSTRUCTION_STRING_6_1"\n",
+					CMD_INSTRUCTION_STRING_6_2"\n",
+					CMD_INSTRUCTION_STRING_6_3"\n",
+					CMD_INSTRUCTION_STRING_6_4"\n",
+					CMD_INSTRUCTION_STRING_6_5"\n",
+					CMD_INSTRUCTION_STRING_6_6"\n",
+					CMD_INSTRUCTION_STRING_6_7"\n",
+					CMD_INSTRUCTION_STRING_6_8"\n",
+					CMD_INSTRUCTION_STRING_6_9"\n",
+					CMD_INSTRUCTION_STRING_6_10
 				};
 				static strtmp[512];
 				strtmp[0] = EOS;
@@ -26070,15 +27064,15 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			{
 				static const CmdInstructionStr7[][] =
 				{
-					CMD_INSTRUCTION_STRING_47"\n",
-					CMD_INSTRUCTION_STRING_48"\n",
-					CMD_INSTRUCTION_STRING_49"\n",
-					CMD_INSTRUCTION_STRING_50"\n",
-					CMD_INSTRUCTION_STRING_51"\n",
-					CMD_INSTRUCTION_STRING_52"\n",
-					CMD_INSTRUCTION_STRING_53"\n",
-					CMD_INSTRUCTION_STRING_54"\n",
-					CMD_INSTRUCTION_STRING_55
+					CMD_INSTRUCTION_STRING_7_1"\n",
+					CMD_INSTRUCTION_STRING_7_2"\n",
+					CMD_INSTRUCTION_STRING_7_3"\n",
+					CMD_INSTRUCTION_STRING_7_4"\n",
+					CMD_INSTRUCTION_STRING_7_5"\n",
+					CMD_INSTRUCTION_STRING_7_6"\n",
+					CMD_INSTRUCTION_STRING_7_7"\n",
+					CMD_INSTRUCTION_STRING_7_8"\n",
+					CMD_INSTRUCTION_STRING_7_9
 				};
 				static strtmp[512];
 				strtmp[0] = EOS;
@@ -26093,13 +27087,13 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			{
 				static const CmdInstructionStr8[][] =
 				{
-					CMD_INSTRUCTION_STRING_56"\n",
-					CMD_INSTRUCTION_STRING_57"\n",
-					CMD_INSTRUCTION_STRING_58"\n",
-					CMD_INSTRUCTION_STRING_59"\n",
-					CMD_INSTRUCTION_STRING_60"\n",
-					CMD_INSTRUCTION_STRING_61"\n",
-					CMD_INSTRUCTION_STRING_62
+					CMD_INSTRUCTION_STRING_8_1"\n",
+					CMD_INSTRUCTION_STRING_8_2"\n",
+					CMD_INSTRUCTION_STRING_8_3"\n",
+					CMD_INSTRUCTION_STRING_8_4"\n",
+					CMD_INSTRUCTION_STRING_8_5"\n",
+					CMD_INSTRUCTION_STRING_8_6"\n",
+					CMD_INSTRUCTION_STRING_8_7
 				};
 				static strtmp[512];
 				strtmp[0] = EOS;
@@ -26114,15 +27108,15 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			{
 				static const CmdInstructionStr9[][] =
 				{
-					CMD_INSTRUCTION_STRING_63"\n",
-					CMD_INSTRUCTION_STRING_64"\n",
-					CMD_INSTRUCTION_STRING_65"\n",
-					CMD_INSTRUCTION_STRING_66"\n",
-					CMD_INSTRUCTION_STRING_67"\n",
-					CMD_INSTRUCTION_STRING_68"\n",
-					CMD_INSTRUCTION_STRING_69"\n",
-					CMD_INSTRUCTION_STRING_70"\n",
-					CMD_INSTRUCTION_STRING_71
+					CMD_INSTRUCTION_STRING_9_1"\n",
+					CMD_INSTRUCTION_STRING_9_2"\n",
+					CMD_INSTRUCTION_STRING_9_3"\n",
+					CMD_INSTRUCTION_STRING_9_4"\n",
+					CMD_INSTRUCTION_STRING_9_5"\n",
+					CMD_INSTRUCTION_STRING_9_6"\n",
+					CMD_INSTRUCTION_STRING_9_7"\n",
+					CMD_INSTRUCTION_STRING_9_8"\n",
+					CMD_INSTRUCTION_STRING_9_9
 				};
 				static strtmp[512];
 				strtmp[0] = EOS;
@@ -26137,15 +27131,15 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			{
 				static const CmdInstructionStr10[][] =
 				{
-					CMD_INSTRUCTION_STRING_72"\n",
-					CMD_INSTRUCTION_STRING_73"\n",
-					CMD_INSTRUCTION_STRING_74"\n",
-					CMD_INSTRUCTION_STRING_75"\n",
-					CMD_INSTRUCTION_STRING_76"\n",
-					CMD_INSTRUCTION_STRING_77"\n",
-					CMD_INSTRUCTION_STRING_78"\n",
-					CMD_INSTRUCTION_STRING_79"\n",
-					CMD_INSTRUCTION_STRING_80
+					CMD_INSTRUCTION_STRING_10_1"\n",
+					CMD_INSTRUCTION_STRING_10_2"\n",
+					CMD_INSTRUCTION_STRING_10_3"\n",
+					CMD_INSTRUCTION_STRING_10_4"\n",
+					CMD_INSTRUCTION_STRING_10_5"\n",
+					CMD_INSTRUCTION_STRING_10_6"\n",
+					CMD_INSTRUCTION_STRING_10_7"\n",
+					CMD_INSTRUCTION_STRING_10_8"\n",
+					CMD_INSTRUCTION_STRING_10_9
 				};
 				static strtmp[512];
 				strtmp[0] = EOS;
@@ -26160,15 +27154,15 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			{
 				static const CmdInstructionStr11[][] =
 				{
-					CMD_INSTRUCTION_STRING_81"\n",
-					CMD_INSTRUCTION_STRING_82"\n",
-					CMD_INSTRUCTION_STRING_83"\n",
-					CMD_INSTRUCTION_STRING_84"\n",
-					CMD_INSTRUCTION_STRING_85"\n",
-					CMD_INSTRUCTION_STRING_86"\n",
-					CMD_INSTRUCTION_STRING_87"\n",
-					CMD_INSTRUCTION_STRING_88"\n",
-					CMD_INSTRUCTION_STRING_89
+					CMD_INSTRUCTION_STRING_11_1"\n",
+					CMD_INSTRUCTION_STRING_11_2"\n",
+					CMD_INSTRUCTION_STRING_11_3"\n",
+					CMD_INSTRUCTION_STRING_11_4"\n",
+					CMD_INSTRUCTION_STRING_11_5"\n",
+					CMD_INSTRUCTION_STRING_11_6"\n",
+					CMD_INSTRUCTION_STRING_11_7"\n",
+					CMD_INSTRUCTION_STRING_11_8"\n",
+					CMD_INSTRUCTION_STRING_11_9
 				};
 				static strtmp[512];
 				strtmp[0] = EOS;
@@ -26183,20 +27177,20 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			{
 				static const CmdInstructionStr12[][] =
 				{
-					CMD_INSTRUCTION_STRING_90"\n",
-					CMD_INSTRUCTION_STRING_91"\n",
-					CMD_INSTRUCTION_STRING_92"\n",
-					CMD_INSTRUCTION_STRING_93"\n",
-					CMD_INSTRUCTION_STRING_94"\n",
-					CMD_INSTRUCTION_STRING_95"\n",
-					CMD_INSTRUCTION_STRING_96"\n",
-					CMD_INSTRUCTION_STRING_97"\n",
-					CMD_INSTRUCTION_STRING_98"\n",
-					CMD_INSTRUCTION_STRING_99"\n",
-					CMD_INSTRUCTION_STRING_100"\n",
-					CMD_INSTRUCTION_STRING_101"\n",
-					CMD_INSTRUCTION_STRING_102"\n",
-					CMD_INSTRUCTION_STRING_103
+					CMD_INSTRUCTION_STRING_12_1"\n",
+					CMD_INSTRUCTION_STRING_12_2"\n",
+					CMD_INSTRUCTION_STRING_12_3"\n",
+					CMD_INSTRUCTION_STRING_12_4"\n",
+					CMD_INSTRUCTION_STRING_12_5"\n",
+					CMD_INSTRUCTION_STRING_12_6"\n",
+					CMD_INSTRUCTION_STRING_12_7"\n",
+					CMD_INSTRUCTION_STRING_12_8"\n",
+					CMD_INSTRUCTION_STRING_12_9"\n",
+					CMD_INSTRUCTION_STRING_12_10"\n",
+					CMD_INSTRUCTION_STRING_12_11"\n",
+					CMD_INSTRUCTION_STRING_12_12"\n",
+					CMD_INSTRUCTION_STRING_12_13"\n",
+					CMD_INSTRUCTION_STRING_12_14
 				};
 				static strtmp[896];
 				strtmp[0] = EOS;
@@ -26207,12 +27201,12 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 		case DIALOG_CMD_INSTRUCTION_13:
 		{
 			if(text[0]) ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_13, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_13, text, OK_BUTTON, "");
-			else ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_13, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_13, CMD_INSTRUCTION_STRING_104"\n"CMD_INSTRUCTION_STRING_105"\n"CMD_INSTRUCTION_STRING_106"\n"CMD_INSTRUCTION_STRING_107"\n"CMD_INSTRUCTION_STRING_108, OK_BUTTON, "");
+			else ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_13, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_13, CMD_INSTRUCTION_STRING_13_1"\n"CMD_INSTRUCTION_STRING_13_2"\n"CMD_INSTRUCTION_STRING_13_3"\n"CMD_INSTRUCTION_STRING_13_4"\n"CMD_INSTRUCTION_STRING_13_5, OK_BUTTON, "");
 		}
 		case DIALOG_CMD_INSTRUCTION_14:
 		{
 			if(text[0]) ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_14, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_14, text, OK_BUTTON, "");
-			else ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_14, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_14, CMD_INSTRUCTION_STRING_109"\n"CMD_INSTRUCTION_STRING_110, OK_BUTTON, "");
+			else ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_14, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_14, CMD_INSTRUCTION_STRING_14_1"\n"CMD_INSTRUCTION_STRING_14_2, OK_BUTTON, "");
 		}
 		case DIALOG_CMD_INSTRUCTION_15:
 		{
@@ -26221,24 +27215,24 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 			{
 				static const CmdInstructionStr15[][] =
 				{
-					CMD_INSTRUCTION_STRING_111"\n",
-					CMD_INSTRUCTION_STRING_112"\n",
-					CMD_INSTRUCTION_STRING_113"\n",
-					CMD_INSTRUCTION_STRING_114"\n",
-					CMD_INSTRUCTION_STRING_115"\n",
-					CMD_INSTRUCTION_STRING_116"\n",
-					CMD_INSTRUCTION_STRING_117"\n",
-					CMD_INSTRUCTION_STRING_118"\n",
-					CMD_INSTRUCTION_STRING_119"\n",
-					CMD_INSTRUCTION_STRING_120"\n",
-					CMD_INSTRUCTION_STRING_121"\n",
-					CMD_INSTRUCTION_STRING_122"\n",
-					CMD_INSTRUCTION_STRING_123"\n",
-					CMD_INSTRUCTION_STRING_124"\n",
-					CMD_INSTRUCTION_STRING_125"\n",
-					CMD_INSTRUCTION_STRING_126"\n",
-					CMD_INSTRUCTION_STRING_127"\n",
-					CMD_INSTRUCTION_STRING_128
+					CMD_INSTRUCTION_STRING_15_1"\n",
+					CMD_INSTRUCTION_STRING_15_2"\n",
+					CMD_INSTRUCTION_STRING_15_3"\n",
+					CMD_INSTRUCTION_STRING_15_4"\n",
+					CMD_INSTRUCTION_STRING_15_5"\n",
+					CMD_INSTRUCTION_STRING_15_6"\n",
+					CMD_INSTRUCTION_STRING_15_7"\n",
+					CMD_INSTRUCTION_STRING_15_8"\n",
+					CMD_INSTRUCTION_STRING_15_9"\n",
+					CMD_INSTRUCTION_STRING_15_10"\n",
+					CMD_INSTRUCTION_STRING_15_11"\n",
+					CMD_INSTRUCTION_STRING_15_12"\n",
+					CMD_INSTRUCTION_STRING_15_13"\n",
+					CMD_INSTRUCTION_STRING_15_14"\n",
+					CMD_INSTRUCTION_STRING_15_15"\n",
+					CMD_INSTRUCTION_STRING_15_16"\n",
+					CMD_INSTRUCTION_STRING_15_17"\n",
+					CMD_INSTRUCTION_STRING_15_18
 				};
 				static strtmp[1024];
 				strtmp[0] = EOS;
@@ -26249,7 +27243,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "")
 		case DIALOG_CMD_INSTRUCTION_16:
 		{
 			if(text[0]) ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_16, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_16, text, OK_BUTTON, "");
-			else ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_16, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_16, CMD_INSTRUCTION_STRING_129"\n"CMD_INSTRUCTION_STRING_130"\n"CMD_INSTRUCTION_STRING_131, OK_BUTTON, "");
+			else ShowPlayerDialog(playerid, DIALOG_CMD_INSTRUCTION_16, DIALOG_STYLE_MSGBOX, CMD_INSTRUCTION_CAPTION_16, CMD_INSTRUCTION_STRING_16_1"\n"CMD_INSTRUCTION_STRING_16_2"\n"CMD_INSTRUCTION_STRING_16_3, OK_BUTTON, "");
 		}
 	}
 	return 1;
@@ -27246,6 +28240,7 @@ CancelFlyMode(playerid)
 	CreatorInfo[playerid][ucCameraMode] = false;
 	CreatorInfo[playerid][ucCopyDefObj] = false;
 	CreatorInfo[playerid][ucDelDefObj] = false;
+	CreatorInfo[playerid][ucBufferMode] = 0;
 	CreatorInfo[playerid][ucFlyObject] = 0;
 	static strtmp[145], pname[MAX_PLAYER_NAME];
 	GetPlayerName(playerid, pname, sizeof pname);

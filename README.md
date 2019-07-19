@@ -1,4 +1,4 @@
-[Download latest release (v1.4.0)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.4.0)
+[Download latest release (v1.4.1)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.4.1)
 
 # [Ultimate-Creator](http://forum.sa-mp.com/showthread.php?t=620522)
 
@@ -72,12 +72,20 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/ovehattach` *[vehicle ID]* - attach the selected object to vehicle  
 `/objx` - `/objy` - `/objz` - set position of the selected object  
 `/objrx` - `/objry` - `/objrz` - set rotation angles of the selected object
+`/objrreset` - reset rotation angles of the selected object
 
 **Textures:**  
 `/txdset` *[layer ID]* *[texture ID]* - set material of the selected object  
 `/txdreset` *[layer ID]* - reset material of the selected object  
 `/txdcolor` *[layer ID]* *[hex code]* - set color of the selected object  
 `/txdcreset` *[layer ID]* - reset color of the selected object
+`/tcopy` *[layer ID]* - copy text/texture of the selected object
+`/tpaste` *[layer ID]* - paste text/texture on the selected object
+`/treset` *[layer ID]* - reset text/texture of the selected object
+`/tcopyall` - copy text and textures of the selected object from all layers
+`/tpasteall` - paste text and textures on all layers of the selected object
+`/tresetall` - reset text and textures of the selected object from all layers
+`/tclear` - clear text and textures clipboard
 
 **Vehicles:**  
 `/newveh` - create a vehicle  
@@ -216,7 +224,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/settime` - set time  
 `/setgravity` - set gravity
 
-**ATTENTION!** Some features works only with [ColAndreas](http://forum.sa-mp.com/showthread.php?t=586068) plugin!
+**ATTENTION!** Some features works only with [ColAndreas](https://github.com/Pottus/ColAndreas) plugin!
 
 ## Installation:
 1. Download "creator.pwn" on the links below
