@@ -71,20 +71,20 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/oobjattach` *[object ID]* - attach the selected object to object  
 `/ovehattach` *[vehicle ID]* - attach the selected object to vehicle  
 `/objx` - `/objy` - `/objz` - set position of the selected object  
-`/objrx` - `/objry` - `/objrz` - set rotation angles of the selected object
+`/objrx` - `/objry` - `/objrz` - set rotation angles of the selected object  
 `/objrreset` - reset rotation angles of the selected object
 
 **Textures:**  
 `/txdset` *[layer ID]* *[texture ID]* - set material of the selected object  
 `/txdreset` *[layer ID]* - reset material of the selected object  
 `/txdcolor` *[layer ID]* *[hex code]* - set color of the selected object  
-`/txdcreset` *[layer ID]* - reset color of the selected object
-`/tcopy` *[layer ID]* - copy text/texture of the selected object
-`/tpaste` *[layer ID]* - paste text/texture on the selected object
-`/treset` *[layer ID]* - reset text/texture of the selected object
-`/tcopyall` - copy text and textures of the selected object from all layers
-`/tpasteall` - paste text and textures on all layers of the selected object
-`/tresetall` - reset text and textures of the selected object from all layers
+`/txdcreset` *[layer ID]* - reset color of the selected object  
+`/tcopy` *[layer ID]* - copy text/texture of the selected object  
+`/tpaste` *[layer ID]* - paste text/texture on the selected object  
+`/treset` *[layer ID]* - reset text/texture of the selected object  
+`/tcopyall` - copy text and textures of the selected object from all layers  
+`/tpasteall` - paste text and textures on all layers of the selected object  
+`/tresetall` - reset text and textures of the selected object from all layers  
 `/tclear` - clear text and textures clipboard
 
 **Vehicles:**  
