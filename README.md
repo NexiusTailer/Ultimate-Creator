@@ -95,7 +95,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/gotoveh` - teleport to the selected vehicle  
 `/getveh` - teleport the selected vehicle to yourself  
 `/vehrepair` - repair the selected vehicle  
-`/vehx` - /vehy - /vehz - set position of the selected vehicle  
+`/vehx` - `/vehy` - `/vehz` - set position of the selected vehicle  
 `/vehrz` - set rotation angle of the selected vehicle  
 `/vehrtime` - set respawn time of the selected vehicle  
 `/vehcolor` - set colors of the selected vehicle
@@ -127,7 +127,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/gotopick` - teleport to the selected pickup  
 `/getpick` - teleport the selected pickup to yourself  
 `/picktype` - set type of the selected pickup  
-`/pickx` - /picky - /pickz - set position of the selected pickup  
+`/pickx` - `/picky` - `/pickz` - set position of the selected pickup  
 `/pickvw` - set virtual world of the selected pickup
 
 **Checkpoints:**  
@@ -183,7 +183,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/labcolor` - set color of the selected 3D text  
 `/lplattach` *[player ID]* - attach the selected 3D text to player  
 `/lvehattach` *[vehicle ID]* - attach the selected 3D text to vehicle  
-`/labx` - /laby - /labz - set position of the selected 3D text  
+`/labx` - `/laby` - `/labz` - set position of the selected 3D text  
 `/labdd` - set draw distance of the selected 3D text  
 `/labvw` - set virtual world of the selected 3D text  
 `/lablos` - set visibility through walls of the selected 3D text
