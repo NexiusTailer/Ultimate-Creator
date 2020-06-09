@@ -18,6 +18,8 @@ Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map icons, Gangzones, 
   Ability to tune all created vehicles and set animations for any created actors
 * **Editing attached objects and 3D texts (since v1.2.0)**  
   Ability to edit attached objects and 3D texts to vehicles, players and other objects
+* **Duplicate search (since v1.4.2)**  
+  The function of searching for duplicate elements created on the same coordinates
 * **Copying default objects**  
   You can copy default map objects by simply clicking on them
 * **Deleting default objects (since v1.3.0)**  
