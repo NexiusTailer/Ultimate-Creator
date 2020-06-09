@@ -1,4 +1,4 @@
-[Download latest release (v1.4.1)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.4.1)
+[Download latest release (v1.4.2)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.4.2)
 
 # [Ultimate-Creator](http://forum.sa-mp.com/showthread.php?t=620522)
 
@@ -56,6 +56,8 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 **Map management:**  
 `/newmap` - create a new map  
 `/loadmap` - load an existing map  
+`/loadover` - load map over the current one  
+`/renamemap` - change name of the current map  
 `/savemap` - save the current map  
 `/delmap` - delete map
 
