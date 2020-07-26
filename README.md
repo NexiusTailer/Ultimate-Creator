@@ -67,9 +67,12 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/newobj` - create an object  
 `/delobj` - delete the selected object  
 `/cobj` - copy the selected object  
+`/caobj` - copy the selected attached object  
 `/selobj` *[object ID]* - select an object by ID  
 `/gotoobj` - teleport to the selected object  
 `/getobj` - teleport the selected object to yourself  
+`/stickobj` - stick selected object to surface  
+`/inclineobj` - stick selected object to surface with incline  
 `/objtext` - text editor on the selected object  
 `/oplattach` *[player ID]* - attach the selected object to player  
 `/oobjattach` *[object ID]* - attach the selected object to object  
@@ -98,6 +101,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/selveh` *[vehicle ID]* - select a vehicle by ID  
 `/gotoveh` - teleport to the selected vehicle  
 `/getveh` - teleport the selected vehicle to yourself  
+`/stickveh` - stick selected vehicle to surface  
 `/vehrepair` - repair the selected vehicle  
 `/vehx` - `/vehy` - `/vehz` - set position of the selected vehicle  
 `/vehrz` - set rotation angle of the selected vehicle  
@@ -118,6 +122,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/selact` *[actor ID]* - select an actor by ID  
 `/gotoact` - teleport to the selected actor  
 `/getact` - teleport the selected actor to yourself  
+`/stickact` - stick selected actor to surface  
 `/actanim` - set animation to the selected actor  
 `/actclear` - reset the animation to the selected actor  
 `/actx` - `/acty` - `/actz` - set position of the selected actor  
@@ -130,6 +135,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/selpick` *[pickup ID]* - select a pickup by ID  
 `/gotopick` - teleport to the selected pickup  
 `/getpick` - teleport the selected pickup to yourself  
+`/stickpick` - stick selected pickup to surface  
 `/picktype` - set type of the selected pickup  
 `/pickx` - `/picky` - `/pickz` - set position of the selected pickup  
 `/pickvw` - set virtual world of the selected pickup
@@ -180,9 +186,11 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/newlab` - create a 3D text  
 `/dellab` - delete the selected 3D text  
 `/clab` - copy the selected 3D text  
+`/calab` - copy the selected attached 3D text  
 `/sellab` *[label ID]* - select a 3D text by ID  
 `/gotolab` - teleport to the selected 3D text  
 `/getlab` - teleport the selected 3D text to yourself  
+`/sticklab` - stick selected 3D text to surface  
 `/labtext` - set text to the selected 3D text  
 `/labcolor` - set color of the selected 3D text  
 `/lplattach` *[player ID]* - attach the selected 3D text to player  
