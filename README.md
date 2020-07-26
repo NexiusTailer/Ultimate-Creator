@@ -1,4 +1,4 @@
-[Download latest release (v1.4.2)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.4.2)
+[Download latest release (v1.4.3)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.4.3)
 
 # [Ultimate-Creator](http://forum.sa-mp.com/showthread.php?t=620522)
 
@@ -40,7 +40,7 @@ Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map icons, Gangzones, 
 
 LAlt `(KEY_WALK)` - Slow moving/movement  
 LShift `(KEY_JUMP)` - Acceleration of moving/movement  
-LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` - Objects mapping in view of the surface rotate  
+LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` - Objects mapping considering surface incline  
 LMB `(KEY_FIRE)` - Select an object/vehicle/actor...  
 * W, A, S, D - Movement of the selected object/vehicle/actor...  
 * LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` + W, A, S, D - Movement along the Z-axis of the selected object/vehicle/actor...  
