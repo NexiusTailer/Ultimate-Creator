@@ -34,7 +34,7 @@ Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map icons, Gangzones, 
 4. You can open the main menu by pressing the Enter key.
 5. Next, select items depending on what do you want to do.
 
-All your maps will be saved in "scriptfiles" folder with the extension that you specify in its name (if you didn't specify an extension, the map will be saved in .txt format)
+All your maps will be saved in "scriptfiles" folder with the extension that you specified in its name (if you didn't specify an extension, the map will be saved in .txt format)
 
 *Some keyboard shortcuts that will be useful:*
 
