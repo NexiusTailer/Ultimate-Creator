@@ -254,7 +254,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 ## Related works:
 Using these scripts you can also extend the functionality and simplify the process of creating your projects
 
-[Gammix's Textdraw Editor](http://forum.sa-mp.com/showthread.php?t=642981)  
+[Gammix's Textdraw Editor](https://github.com/Agneese-Saini/SA-MP/blob/master/filterscripts/TDEditor.pwn)  
 [iPLEOMAX's TextDraw Editor](http://forum.sa-mp.com/showthread.php?t=376758)  
 [Tube Connector 1.10](http://forum.sa-mp.com/showthread.php?t=578958)  
 [Map Mover 2.1](https://github.com/adri1samp/MAP-MOVER)  
