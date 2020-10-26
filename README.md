@@ -44,163 +44,163 @@ LAlt `(KEY_WALK)` - Slow moving/movement
 LShift `(KEY_JUMP)` - Acceleration of moving/movement  
 LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` - Objects mapping considering surface incline  
 LMB `(KEY_FIRE)` - Select an object/vehicle/actor...  
-* W, A, S, D - Movement of the selected object/vehicle/actor...  
-* LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` + W, A, S, D - Movement along the Z-axis of the selected object/vehicle/actor...  
-* LCtrl `(KEY_FIRE)` + W, A, S, D - Changing the rotation angle of the selected object/vehicle/actor...  
-* LCtrl `(KEY_FIRE)` + LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` + W, A, S, D - Changing the rotation angle along the X-axis of the selected object/vehicle/actor...  
+* W, A, S, D - Movement of selected object/vehicle/actor...  
+* LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` + W, A, S, D - Movement along the Z-axis of selected object/vehicle/actor...  
+* LCtrl `(KEY_FIRE)` + W, A, S, D - Changing the rotation angle of selected object/vehicle/actor...  
+* LCtrl `(KEY_FIRE)` + LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` + W, A, S, D - Changing the rotation angle along the X-axis of selected object/vehicle/actor...  
 
 RMB `(KEY_HANDBRAKE)` - Moving an object/vehicle/actor... by mouse  
 Space `(KEY_SPRINT)` - Remove selection/movement of an object/vehicle/actor...  
 C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...  
-* LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` + C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an attached object/3D text  
+* LShift `(KEY_JUMP)` + LAlt `(KEY_WALK)` + C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy attached object/3D text  
 
 \ `(KEY_ACTION)` + LMB `(KEY_FIRE)` - Delete an object/vehicle/actor...  
 
 ## Available commands:
 **Map management:**  
-`/newmap` - create a new map  
-`/loadmap` - load an existing map  
+`/newmap` - create new map  
+`/loadmap` - load existing map  
 `/loadover` - load map over the current one  
 `/renamemap` - change name of the current map  
 `/savemap` - save the current map  
 `/delmap` - delete map
 
 **Objects:**  
-`/newobj` - create an object  
-`/delobj` - delete the selected object  
-`/cobj` - copy the selected object  
-`/caobj` - copy the selected attached object  
-`/selobj` *[object ID]* - select an object by ID  
-`/gotoobj` - teleport to the selected object  
-`/getobj` - teleport the selected object to yourself  
+`/newobj` - create object  
+`/delobj` - delete selected object  
+`/cobj` - copy selected object  
+`/caobj` - copy selected attached object  
+`/selobj` *[object ID]* - select object by ID  
+`/gotoobj` - teleport to selected object  
+`/getobj` - teleport selected object to yourself  
 `/stickobj` - stick selected object to surface  
 `/inclineobj` - stick selected object to surface with incline  
-`/objtext` - text editor on the selected object  
-`/oplattach` *[player ID]* - attach the selected object to player  
-`/oobjattach` *[object ID]* - attach the selected object to object  
-`/ovehattach` *[vehicle ID]* - attach the selected object to vehicle  
-`/objx` - `/objy` - `/objz` - set position of the selected object  
-`/objrx` - `/objry` - `/objrz` - set rotation angles of the selected object  
-`/objrreset` - reset rotation angles of the selected object
+`/objtext` - text editor on selected object  
+`/oplattach` *[player ID]* - attach selected object to player  
+`/oobjattach` *[object ID]* - attach selected object to object  
+`/ovehattach` *[vehicle ID]* - attach selected object to vehicle  
+`/objx` - `/objy` - `/objz` - set position of selected object  
+`/objrx` - `/objry` - `/objrz` - set rotation angles of selected object  
+`/objrreset` - reset rotation angles of selected object
 
 **Textures:**  
-`/txdset` *[layer ID]* *[texture ID]* - set material of the selected object  
-`/txdreset` *[layer ID]* - reset material of the selected object  
-`/txdcolor` *[layer ID]* *[hex code]* - set color of the selected object  
-`/txdcreset` *[layer ID]* - reset color of the selected object  
-`/tcopy` *[layer ID]* - copy text/texture of the selected object  
-`/tpaste` *[layer ID]* - paste text/texture on the selected object  
-`/treset` *[layer ID]* - reset text/texture of the selected object  
-`/tcopyall` - copy text and textures of the selected object from all layers  
-`/tpasteall` - paste text and textures on all layers of the selected object  
-`/tresetall` - reset text and textures of the selected object from all layers  
+`/txdset` *[layer ID]* *[texture ID]* - set material of selected object  
+`/txdreset` *[layer ID]* - reset material of selected object  
+`/txdcolor` *[layer ID]* *[hex code]* - set color of selected object  
+`/txdcreset` *[layer ID]* - reset color of selected object  
+`/tcopy` *[layer ID]* - copy text/texture of selected object  
+`/tpaste` *[layer ID]* - paste text/texture on selected object  
+`/treset` *[layer ID]* - reset text/texture of selected object  
+`/tcopyall` - copy text and textures of selected object from all layers  
+`/tpasteall` - paste text and textures on all layers of selected object  
+`/tresetall` - reset text and textures of selected object from all layers  
 `/tclear` - clear text and textures clipboard
 
 **Vehicles:**  
-`/newveh` - create a vehicle  
-`/delveh` - delete the selected vehicle  
-`/cveh` - copy the selected vehicle  
-`/selveh` *[vehicle ID]* - select a vehicle by ID  
-`/gotoveh` - teleport to the selected vehicle  
-`/getveh` - teleport the selected vehicle to yourself  
+`/newveh` - create vehicle  
+`/delveh` - delete selected vehicle  
+`/cveh` - copy selected vehicle  
+`/selveh` *[vehicle ID]* - select vehicle by ID  
+`/gotoveh` - teleport to selected vehicle  
+`/getveh` - teleport selected vehicle to yourself  
 `/stickveh` - stick selected vehicle to surface  
-`/vehrepair` - repair the selected vehicle  
-`/vehx` - `/vehy` - `/vehz` - set position of the selected vehicle  
-`/vehrz` - set rotation angle of the selected vehicle  
-`/vehrtime` - set respawn time of the selected vehicle  
-`/vehcolor` - set colors of the selected vehicle
+`/vehrepair` - repair selected vehicle  
+`/vehx` - `/vehy` - `/vehz` - set position of selected vehicle  
+`/vehrz` - set rotation angle of selected vehicle  
+`/vehrtime` - set respawn time of selected vehicle  
+`/vehcolor` - set colors of selected vehicle
 
 **Tuning:**  
-`/compadd` - add component on the selected vehicle  
-`/complist` - viewing and deleting components on the selected vehicle  
-`/compremoveall` - remove all components from the selected vehicle  
+`/compadd` - add component on selected vehicle  
+`/complist` - viewing and deleting components on selected vehicle  
+`/compremoveall` - remove all components from selected vehicle  
 `/paintjob` - set paintjob (for certain vehicles)  
-`/pjobremove` - remove paintjob from the selected vehicle
+`/pjobremove` - remove paintjob from selected vehicle
 
 **Actors:**  
-`/newact` - create an actor  
-`/delact` - delete the selected actor  
-`/cact` - copy the selected actor  
-`/selact` *[actor ID]* - select an actor by ID  
-`/gotoact` - teleport to the selected actor  
-`/getact` - teleport the selected actor to yourself  
+`/newact` - create actor  
+`/delact` - delete selected actor  
+`/cact` - copy selected actor  
+`/selact` *[actor ID]* - select actor by ID  
+`/gotoact` - teleport to selected actor  
+`/getact` - teleport selected actor to yourself  
 `/stickact` - stick selected actor to surface  
-`/actanim` - set animation to the selected actor  
-`/actclear` - reset the animation to the selected actor  
-`/actx` - `/acty` - `/actz` - set position of the selected actor  
-`/actrz` - set rotation angle of the selected actor
+`/actanim` - set animation to selected actor  
+`/actclear` - reset the animation to selected actor  
+`/actx` - `/acty` - `/actz` - set position of selected actor  
+`/actrz` - set rotation angle of selected actor
 
 **Pickups:**  
-`/newpick` - create a pickup  
-`/delpick` - delete the selected pickup  
-`/cpick` - copy the selected pickup  
-`/selpick` *[pickup ID]* - select a pickup by ID  
-`/gotopick` - teleport to the selected pickup  
-`/getpick` - teleport the selected pickup to yourself  
+`/newpick` - create pickup  
+`/delpick` - delete selected pickup  
+`/cpick` - copy selected pickup  
+`/selpick` *[pickup ID]* - select pickup by ID  
+`/gotopick` - teleport to selected pickup  
+`/getpick` - teleport selected pickup to yourself  
 `/stickpick` - stick selected pickup to surface  
-`/picktype` - set type of the selected pickup  
-`/pickx` - `/picky` - `/pickz` - set position of the selected pickup  
-`/pickvw` - set virtual world of the selected pickup
+`/picktype` - set type of selected pickup  
+`/pickx` - `/picky` - `/pickz` - set position of selected pickup  
+`/pickvw` - set virtual world of selected pickup
 
 **Checkpoints:**  
-`/newcp` - create a checkpoint  
-`/delcp` - delete the checkpoint  
-`/selcp` - select the checkpoint  
-`/gotocp` - teleport to the checkpoint  
-`/getcp` - teleport the checkpoint to yourself  
-`/cpx` - `/cpy` - set position of the checkpoint  
-`/cpsize` - set size of the checkpoint
+`/newcp` - create checkpoint  
+`/delcp` - delete checkpoint  
+`/selcp` - select checkpoint  
+`/gotocp` - teleport to checkpoint  
+`/getcp` - teleport checkpoint to yourself  
+`/cpx` - `/cpy` - set position of checkpoint  
+`/cpsize` - set size of checkpoint
 
 **Race checkpoints:**  
-`/newrcp` - create a race checkpoint  
-`/delrcp` - delete the race checkpoint  
-`/selrcp` - select the race checkpoint  
-`/gotorcp` - teleport to the race checkpoint  
-`/getrcp` - teleport the race checkpoint to yourself  
-`/rcptype` - set type of the race checkpoint  
-`/rcpx` - `/rcpy` - `/rcpz` - set position of the race checkpoint  
-`/rcpnextx` - `/rcpnexty` - `/rcpnextz` - arrow pointer's position of the race checkpoint  
-`/rcpsize` - set size of the race checkpoint
+`/newrcp` - create race checkpoint  
+`/delrcp` - delete race checkpoint  
+`/selrcp` - select race checkpoint  
+`/gotorcp` - teleport to race checkpoint  
+`/getrcp` - teleport race checkpoint to yourself  
+`/rcptype` - set type of race checkpoint  
+`/rcpx` - `/rcpy` - `/rcpz` - set position of race checkpoint  
+`/rcpnextx` - `/rcpnexty` - `/rcpnextz` - arrow pointer's position of race checkpoint  
+`/rcpsize` - set size of race checkpoint
 
 **Map icons:**  
-`/newicon` - create a map icon  
-`/delicon` - delete the selected map icon  
-`/cicon` - copy the selected map icon  
-`/selicon` *[map icon ID]* - select a map icon by ID  
-`/gotoicon` - teleport to the selected map icon  
-`/geticon` - teleport the selected map icon to yourself  
-`/iconx` - `/icony` - `/iconz` - set position of the selected map icon  
-`/iconcolor` - set color of the selected map icon  
-`/iconstyle` - set style of the selected map icon
+`/newicon` - create map icon  
+`/delicon` - delete selected map icon  
+`/cicon` - copy selected map icon  
+`/selicon` *[map icon ID]* - select map icon by ID  
+`/gotoicon` - teleport to selected map icon  
+`/geticon` - teleport selected map icon to yourself  
+`/iconx` - `/icony` - `/iconz` - set position of selected map icon  
+`/iconcolor` - set color of selected map icon  
+`/iconstyle` - set style of selected map icon
 
 **Gangzones:**  
-`/newzone` - create a gangzone  
-`/delzone` - delete the selected gangzone  
-`/czone` - copy the selected gangzone  
-`/selzone` *[gangzone ID]* - select a gangzone by ID (size changing)  
-`/holdzone` *[gangzone ID]* - select a gangzone by ID (movement)  
-`/gotozone` - teleport to the selected gangzone  
-`/getzone` - teleport the selected gangzone to yourself  
-`/zoneminx` - `/zoneminy` - `/zonemaxx` - `/zonemaxy` - set position of the selected gangzone  
-`/zonecolor` - set color of the selected gangzone
+`/newzone` - create gangzone  
+`/delzone` - delete selected gangzone  
+`/czone` - copy selected gangzone  
+`/selzone` *[gangzone ID]* - select gangzone by ID (size changing)  
+`/holdzone` *[gangzone ID]* - select gangzone by ID (movement)  
+`/gotozone` - teleport to selected gangzone  
+`/getzone` - teleport selected gangzone to yourself  
+`/zoneminx` - `/zoneminy` - `/zonemaxx` - `/zonemaxy` - set position of selected gangzone  
+`/zonecolor` - set color of selected gangzone
 
 **3D texts:**  
-`/newlab` - create a 3D text  
-`/dellab` - delete the selected 3D text  
-`/clab` - copy the selected 3D text  
-`/calab` - copy the selected attached 3D text  
-`/sellab` *[label ID]* - select a 3D text by ID  
-`/gotolab` - teleport to the selected 3D text  
-`/getlab` - teleport the selected 3D text to yourself  
+`/newlab` - create 3D text  
+`/dellab` - delete selected 3D text  
+`/clab` - copy selected 3D text  
+`/calab` - copy selected attached 3D text  
+`/sellab` *[label ID]* - select 3D text by ID  
+`/gotolab` - teleport to selected 3D text  
+`/getlab` - teleport selected 3D text to yourself  
 `/sticklab` - stick selected 3D text to surface  
-`/labtext` - set text to the selected 3D text  
-`/labcolor` - set color of the selected 3D text  
-`/lplattach` *[player ID]* - attach the selected 3D text to player  
-`/lvehattach` *[vehicle ID]* - attach the selected 3D text to vehicle  
-`/labx` - `/laby` - `/labz` - set position of the selected 3D text  
-`/labdd` - set draw distance of the selected 3D text  
-`/labvw` - set virtual world of the selected 3D text  
-`/lablos` - set visibility through walls of the selected 3D text
+`/labtext` - set text to selected 3D text  
+`/labcolor` - set color of selected 3D text  
+`/lplattach` *[player ID]* - attach selected 3D text to player  
+`/lvehattach` *[vehicle ID]* - attach selected 3D text to vehicle  
+`/labx` - `/laby` - `/labz` - set position of selected 3D text  
+`/labdd` - set draw distance of selected 3D text  
+`/labvw` - set virtual world of selected 3D text  
+`/lablos` - set visibility through walls of selected 3D text
 
 **Moving around the map:**  
 `/setpos` - teleport to the coordinates  
