@@ -1,4 +1,4 @@
-[Download latest release (v1.4.3)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.4.3)
+[Download latest release (v1.4.4)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.4.4)
 
 # Ultimate Creator - Advanced map editor
 
