@@ -263,7 +263,7 @@ Using these scripts you can also extend the functionality and simplify the proce
 ## Thanks:
 Batka1337, Vitalik_Gonsor, TheHero, Apec, Magic_York, f0Re3t - help with testing  
 Crayder - some help with ColAndreas  
-Vip_Uzer - some advices
+Vip_Uzer, DANGER_Hidden - some advices
 
 Special thanks to the huge number of authors whose ideas/developments were included in this script.
 
