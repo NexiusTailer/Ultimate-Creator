@@ -268,5 +268,3 @@ Vip_Uzer, DANGER_Hidden - some advices
 Special thanks to the huge number of authors whose ideas/developments were included in this script.
 
 I will be glad to hear any ideas and suggestions.
-
-Enjoy using! :)
