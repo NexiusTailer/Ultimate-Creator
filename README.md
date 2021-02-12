@@ -1,5 +1,3 @@
-[Download latest release (v1.4.4)](https://github.com/NexiusTailer/Ultimate-Creator/tree/master/v1.4.4)
-
 # Ultimate Creator - Advanced map editor
 
 It is an advanced object, vehicle, actor editor (full list below), which can work right in the game!  
