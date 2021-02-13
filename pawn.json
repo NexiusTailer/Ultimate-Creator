@@ -1,8 +1,7 @@
 {
 	"user": "NexiusTailer",
 	"repo": "Ultimate-Creator",
-	"builds":
-	[
+	"builds": [
 		{
 			"name": "English",
 			"entry": "v1.4.4/English/creator.pwn",
