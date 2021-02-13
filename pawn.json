@@ -5,7 +5,7 @@
 	[
 		{
 			"name": "English",
-			"entry": "v1.4.4/English/creator.pwn",
+			"input": "v1.4.4/English/creator.pwn",
 			"output": "v1.4.4/English/creator.amx",
 			"compiler":
 			{
@@ -14,7 +14,7 @@
 		},
 		{
 			"name": "Russian",
-			"entry": "v1.4.4/Russian/creator.pwn",
+			"input": "v1.4.4/Russian/creator.pwn",
 			"output": "v1.4.4/Russian/creator.amx",
 			"compiler":
 			{
