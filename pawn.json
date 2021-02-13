@@ -1,12 +1,19 @@
 {
 	"user": "NexiusTailer",
 	"repo": "Ultimate-Creator",
+	"dependencies":
+	[
+		"Open-GTO/foreach",
+		"IllidanS4/YSF",
+		"samp-incognito/samp-streamer-plugin",
+		"Pottus/ColAndreas"
+	],
 	"builds":
 	[
 		{
 			"name": "English",
 			"input": "v1.4.4/English/creator.pwn",
-			"output": "v1.4.4/English/creator.amx",
+			"output": "../../filterscripts/creator.amx",
 			"compiler":
 			{
 				"version": "3.10.8"
@@ -15,11 +22,19 @@
 		{
 			"name": "Russian",
 			"input": "v1.4.4/Russian/creator.pwn",
-			"output": "v1.4.4/Russian/creator.amx",
+			"output": "../../filterscripts/creator.amx",
 			"compiler":
 			{
 				"version": "3.10.8"
 			}
 		}
-	]
+	],
+	"runtime":
+	{
+		"filterscripts": ["creator"],
+		"onfoot_rate": 40,
+		"incar_rate": 40,
+		"weapon_rate": 40,
+		"stream_distance": 300.0
+	}
 }
