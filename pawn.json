@@ -28,13 +28,5 @@
 				"version": "3.10.8"
 			}
 		}
-	],
-	"runtime":
-	{
-		"filterscripts": ["creator"],
-		"onfoot_rate": 40,
-		"incar_rate": 40,
-		"weapon_rate": 40,
-		"stream_distance": 300.0
-	}
+	]
 }
