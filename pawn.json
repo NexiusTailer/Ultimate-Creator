@@ -1,6 +1,25 @@
 {
 	"user": "NexiusTailer",
 	"repo": "Ultimate-Creator",
-	"entry": "v1.4.4/English/creator.pwn",
-	"output": "v1.4.4/English/creator.amx"
+	"builds":
+	[
+		{
+			"name": "English",
+			"entry": "v1.4.4/English/creator.pwn",
+			"output": "v1.4.4/English/creator.amx",
+			"compiler":
+			{
+				"version": "3.10.8"
+			}
+		},
+		{
+			"name": "Russian",
+			"entry": "v1.4.4/Russian/creator.pwn",
+			"output": "v1.4.4/Russian/creator.amx",
+			"compiler":
+			{
+				"version": "3.10.8"
+			}
+		}
+	]
 }
