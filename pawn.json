@@ -10,7 +10,7 @@
 	"builds":
 	[
 		{
-			"name": "English",
+			"name": "english",
 			"input": "v1.4.4/English/creator.pwn",
 			"output": "../../filterscripts/creator.amx",
 			"compiler":
@@ -19,7 +19,7 @@
 			}
 		},
 		{
-			"name": "Russian",
+			"name": "russian",
 			"input": "v1.4.4/Russian/creator.pwn",
 			"output": "../../filterscripts/creator.amx",
 			"compiler":
