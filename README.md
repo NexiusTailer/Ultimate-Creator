@@ -239,15 +239,9 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 **ATTENTION!** Some features works only with [ColAndreas](https://github.com/Pottus/ColAndreas) plugin!
 
 ## Installation:
-1. Download "creator.pwn" on the links below
-2. Copy this file to "filterscripts" folder
-3. Add the ColAndreas plugin (if you want to use all available functions)  
- 3.1. Also download "ColAndreasWizard.exe" from the ColAndreas repository and create a file named "ColAndreas.cadb"  
- 3.2. Create the folder "colandreas" in the "scriptfiles" folder and move here this created file
-4. Open "creator.pwn" and compile it
-5. Open server.cfg file and add "creator" in the "filterscripts" line after a space
-6. Keep it open and also add "ColAndreas" in the "plugins" line after a space  
- 6.1. If you run the server on a hosting (linux), you should specify the plugin extension: "ColAndreas.so"
+1. Download "Plug&Play" archive from the releases section
+2. Unzip it to any path convenient for you
+3. Open the "start.bat" and press "Play" in the appeared window
 
 ## Related works:
 Using these scripts you can also extend the functionality and simplify the process of creating your projects
