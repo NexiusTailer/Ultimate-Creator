@@ -248,9 +248,7 @@ Using these scripts you can also extend the functionality and simplify the proce
 
 [Gammix's Textdraw Editor](https://github.com/Agneese-Saini/SA-MP/blob/master/filterscripts/TDEditor.pwn)  
 [iPLEOMAX's TextDraw Editor](http://forum.sa-mp.com/showthread.php?t=376758)  
-[Tube Connector 1.10](http://forum.sa-mp.com/showthread.php?t=578958)  
-[Map Mover 2.1](https://github.com/adri1samp/MAP-MOVER)  
-[Hold Studio](http://forum.sa-mp.com/showthread.php?t=182317)
+[Map Mover 2.1](https://github.com/adri1samp/MAP-MOVER)
 
 ## Thanks:
 Batka1337, Vitalik_Gonsor, TheHero, Apec, Magic_York, f0Re3t - help with testing  
