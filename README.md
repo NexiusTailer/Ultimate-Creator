@@ -239,7 +239,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 **ATTENTION!** Some features works only with [ColAndreas](https://github.com/Pottus/ColAndreas) plugin!
 
 ## Installation:
-1. Download "Plug&Play" archive from the Releases section
+1. Download "Plug&Play" archive from the [Releases](https://github.com/NexiusTailer/Ultimate-Creator/releases) section
 2. Unzip it to any path convenient for you
 3. Open the "start.bat" and press "Play" in the appeared window
 
