@@ -36,7 +36,7 @@ All your maps will be saved in "scriptfiles" folder with the extension that you 
 
 *Some keyboard shortcuts that will be useful:*
 
-![https://i.imgur.com/viLJVfj.png](https://i.imgur.com/viLJVfj.png)
+![](https://i.imgur.com/viLJVfj.png)
 
 LAlt `(KEY_WALK)` - Slow moving/movement  
 LShift `(KEY_JUMP)` - Acceleration of moving/movement  
