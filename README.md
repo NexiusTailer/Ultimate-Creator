@@ -243,6 +243,13 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 2. Unzip it to any path convenient for you
 3. Open the "start.bat" and press "Play" in the appeared window
 
+## Pictures:
+![](https://i.imgur.com/6FovoD2.gif) ![](https://i.imgur.com/sHUchzF.gif) ![](https://i.imgur.com/v4JJ2QJ.gif) ![](https://i.imgur.com/l1ocYk0.gif)
+
+## Videos:
+https://youtube.com/watch?v=4GCBDS3r-fc  
+https://youtube.com/watch?v=CGYh62aCGHc&list=PLBBuSTiHoK4wQO11RNnVOcl4DIVcay-68
+
 ## Related works:
 Using these scripts you can also extend the functionality and simplify the process of creating your projects
 
