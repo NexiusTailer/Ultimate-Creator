@@ -1,4 +1,4 @@
-//Ultimate Creator by Nexius v1.4.4
+//Ultimate Creator by Nexius v1.4.5
 
 #define FILTERSCRIPT
 
@@ -44,7 +44,7 @@
 //#define ONLY_FOR_RCON_ADMINS
 //#define CREATOR_DEBUG
 
-#define CREATOR_VERSION				"1.4.4"
+#define CREATOR_VERSION				"1.4.5"
 
 #define DEFAULT_COLOR				-1
 
@@ -177,6 +177,7 @@
 #define BUFFER_CLEARED					"Буфер обмена текста и текстур очищен"
 #define INCORRECT_PLAYER_ID_ERROR		"Введите правильный ID игрока!"
 #define PLAYER_IS_NOT_SPAWNED_ERROR		"Данный игрок не заспавнен!"
+#define STREAMER_COMPATIBILITY_ERROR	"Данная функция недоступна, если используется Streamer Plugin!"
 #define OBJECT_ATTACHED_TO_PLAYER		"Объект id %d прикреплён к игроку id %d"
 #define INCORRECT_OBJECT_ID_ERROR		"Введите правильный ID объекта!"
 #define UNKNOWN_OBJECT_ID_ERROR			"Данный объект создан не через редактор!"
@@ -13455,8 +13456,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								ObjectsInfo[clickedid][oAttachedObjectID] != INVALID_OBJECT_ID ||
 								ObjectsInfo[clickedid][oAttachedVehicleID] != INVALID_VEHICLE_ID) goto edit_object_case_12;
 								edit_object_case_13:
-								CreatorInfo[playerid][ucCalledFromCmd] = false;
-								ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_PLAYER);
+								#if defined AttachDynamicObjectToPlayer
+									SendClientMessage(playerid, DEFAULT_COLOR, STREAMER_COMPATIBILITY_ERROR);
+								#else
+									CreatorInfo[playerid][ucCalledFromCmd] = false;
+									ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_PLAYER);
+								#endif
 							}
 							case 12:
 							{
@@ -17220,8 +17225,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								if(LabelsInfo[clickedid][lAttachedPlayerID] != INVALID_PLAYER_ID ||
 								LabelsInfo[clickedid][lAttachedVehicleID] != INVALID_VEHICLE_ID) goto edit_label_case_8;
 								edit_label_case_9:
-								CreatorInfo[playerid][ucCalledFromCmd] = false;
-								ShowCreatorDialog(playerid, DIALOG_ATTACH_LAB_TO_PLAYER);
+								#if defined AttachDynamicObjectToPlayer
+									SendClientMessage(playerid, DEFAULT_COLOR, STREAMER_COMPATIBILITY_ERROR);
+								#else
+									CreatorInfo[playerid][ucCalledFromCmd] = false;
+									ShowCreatorDialog(playerid, DIALOG_ATTACH_LAB_TO_PLAYER);
+								#endif
 							}
 							case 9:
 							{
@@ -20962,32 +20971,36 @@ fpublic cmd_oplattach(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
 	if(isnull(MapName)) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
-	new selectedid = CreatorInfo[playerid][ucSelectedObj];
-	if(selectedid == INVALID_OBJECT_ID)
-	{
-		selectedid = CreatorInfo[playerid][ucHoldingObj];
-		if(selectedid == INVALID_OBJECT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_OBJECTS_ERROR);
-	}
-	if(!IsNumeric(params))
-	{
-		CreatorInfo[playerid][ucClickedObj] = selectedid;
-		CreatorInfo[playerid][ucCalledFromCmd] = true;
-		ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_PLAYER);
-	}
-	else
-	{
-		new pid = strval(params);
-		if(!IsPlayerConnected(pid)) return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_PLAYER_ID_ERROR);
-		if(!(PLAYER_STATE_ONFOOT <= GetPlayerState(pid) <= PLAYER_STATE_PASSENGER)) return SendClientMessage(playerid, DEFAULT_COLOR, PLAYER_IS_NOT_SPAWNED_ERROR);
-		#if defined AttachDynamicObjectToPlayer
-			AttachDynamicObjectToPlayer(selectedid, pid, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-		#else
-			AttachObjectToPlayer(selectedid, pid, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-		#endif
-		static strtmp[145];
-		format(strtmp, sizeof strtmp, OBJECT_ATTACHED_TO_PLAYER, selectedid, pid);
-		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
-	}
+	#if defined AttachDynamicObjectToPlayer
+		SendClientMessage(playerid, DEFAULT_COLOR, STREAMER_COMPATIBILITY_ERROR);
+	#else
+		new selectedid = CreatorInfo[playerid][ucSelectedObj];
+		if(selectedid == INVALID_OBJECT_ID)
+		{
+			selectedid = CreatorInfo[playerid][ucHoldingObj];
+			if(selectedid == INVALID_OBJECT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_OBJECTS_ERROR);
+		}
+		if(!IsNumeric(params))
+		{
+			CreatorInfo[playerid][ucClickedObj] = selectedid;
+			CreatorInfo[playerid][ucCalledFromCmd] = true;
+			ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_PLAYER);
+		}
+		else
+		{
+			new pid = strval(params);
+			if(!IsPlayerConnected(pid)) return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_PLAYER_ID_ERROR);
+			if(!(PLAYER_STATE_ONFOOT <= GetPlayerState(pid) <= PLAYER_STATE_PASSENGER)) return SendClientMessage(playerid, DEFAULT_COLOR, PLAYER_IS_NOT_SPAWNED_ERROR);
+			#if defined AttachDynamicObjectToPlayer
+				AttachDynamicObjectToPlayer(selectedid, pid, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+			#else
+				AttachObjectToPlayer(selectedid, pid, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+			#endif
+			static strtmp[145];
+			format(strtmp, sizeof strtmp, OBJECT_ATTACHED_TO_PLAYER, selectedid, pid);
+			SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+		}
+	#endif
 	return 1;
 }
 
@@ -25930,35 +25943,39 @@ fpublic cmd_lplattach(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
 	if(isnull(MapName)) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
-	new selectedid = CreatorInfo[playerid][ucSelectedLab];
-	if(selectedid == INVALID_3DTEXT_ID)
-	{
-		selectedid = CreatorInfo[playerid][ucHoldingLab];
-		if(selectedid == INVALID_3DTEXT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_LABELS_ERROR);
-	}
-	if(!IsNumeric(params))
-	{
-		CreatorInfo[playerid][ucClickedLab] = selectedid;
-		CreatorInfo[playerid][ucCalledFromCmd] = true;
-		ShowCreatorDialog(playerid, DIALOG_ATTACH_LAB_TO_PLAYER);
-	}
-	else
-	{
-		new pid = strval(params);
-		if(!IsPlayerConnected(pid)) return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_PLAYER_ID_ERROR);
-		if(!(PLAYER_STATE_ONFOOT <= GetPlayerState(pid) <= PLAYER_STATE_PASSENGER)) return SendClientMessage(playerid, DEFAULT_COLOR, PLAYER_IS_NOT_SPAWNED_ERROR);
-		#if defined Streamer_SetIntData\
-			&& defined Streamer_SetItemPos\
-			&& defined Streamer_Update
-			AttachDyn3DTextToPlayer(selectedid, pid, 0.0, 0.0, 0.0);
-			Streamer_Update(playerid);
-		#else
-			Attach3DTextLabelToPlayer(selectedid, pid, 0.0, 0.0, 0.0);
-		#endif
-		static strtmp[145];
-		format(strtmp, sizeof strtmp, LABEL_ATTACHED_TO_PLAYER, selectedid, pid);
-		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
-	}
+	#if defined AttachDynamicObjectToPlayer
+		SendClientMessage(playerid, DEFAULT_COLOR, STREAMER_COMPATIBILITY_ERROR);
+	#else
+		new selectedid = CreatorInfo[playerid][ucSelectedLab];
+		if(selectedid == INVALID_3DTEXT_ID)
+		{
+			selectedid = CreatorInfo[playerid][ucHoldingLab];
+			if(selectedid == INVALID_3DTEXT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_LABELS_ERROR);
+		}
+		if(!IsNumeric(params))
+		{
+			CreatorInfo[playerid][ucClickedLab] = selectedid;
+			CreatorInfo[playerid][ucCalledFromCmd] = true;
+			ShowCreatorDialog(playerid, DIALOG_ATTACH_LAB_TO_PLAYER);
+		}
+		else
+		{
+			new pid = strval(params);
+			if(!IsPlayerConnected(pid)) return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_PLAYER_ID_ERROR);
+			if(!(PLAYER_STATE_ONFOOT <= GetPlayerState(pid) <= PLAYER_STATE_PASSENGER)) return SendClientMessage(playerid, DEFAULT_COLOR, PLAYER_IS_NOT_SPAWNED_ERROR);
+			#if defined Streamer_SetIntData\
+				&& defined Streamer_SetItemPos\
+				&& defined Streamer_Update
+				AttachDyn3DTextToPlayer(selectedid, pid, 0.0, 0.0, 0.0);
+				Streamer_Update(playerid);
+			#else
+				Attach3DTextLabelToPlayer(selectedid, pid, 0.0, 0.0, 0.0);
+			#endif
+			static strtmp[145];
+			format(strtmp, sizeof strtmp, LABEL_ATTACHED_TO_PLAYER, selectedid, pid);
+			SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+		}
+	#endif
 	return 1;
 }
 
@@ -30898,7 +30915,8 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				if((i = strfind(strtmp, "CreateObject(", true)) != -1 && oc < MAX_UC_OBJECTS)
 				{
 					strtmp2[0] = EOS;
-					if(i > 0) strmid(strtmp2, strtmp, 0, i - 1);
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 13);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					#if defined CreateDynamicObject
@@ -30927,7 +30945,8 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				else if((i = strfind(strtmp, "CreateDynamicObject(", true)) != -1 && oc < MAX_UC_OBJECTS)
 				{
 					strtmp2[0] = EOS;
-					if(i > 0) strmid(strtmp2, strtmp, 0, i - 1);
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 20);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					#if defined CreateDynamicObject
@@ -30956,7 +30975,8 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				else if((i = strfind(strtmp, "CreateDynamicObjectEx(", true)) != -1 && oc < MAX_UC_OBJECTS)
 				{
 					strtmp2[0] = EOS;
-					if(i > 0) strmid(strtmp2, strtmp, 0, i - 1);
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 22);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					#if defined CreateDynamicObject
@@ -30984,6 +31004,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "SetObjectMaterial(", true)) != -1 && 0 < oc < MAX_UC_OBJECTS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 18);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					if((pos = strfindchar(found[3], '\"')) != -1) strdel(found[3], 0, pos + 1);
@@ -31011,6 +31034,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "SetDynamicObjectMaterial(", true)) != -1 && 0 < oc < MAX_UC_OBJECTS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 25);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					if((pos = strfindchar(found[3], '\"')) != -1) strdel(found[3], 0, pos + 1);
@@ -31038,6 +31064,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "SetObjectMaterialText(", true)) != -1 && 0 < oc < MAX_UC_OBJECTS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 22);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					if((pos = strfindchar(found[1], '\"')) != -1) strdel(found[1], 0, pos + 1);
@@ -31076,6 +31105,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "SetDynamicObjectMaterialText(", true)) != -1 && 0 < oc < MAX_UC_OBJECTS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 29);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					if((pos = strfindchar(found[2], '\"')) != -1) strdel(found[2], 0, pos + 1);
@@ -31114,6 +31146,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "AttachObjectToPlayer(", true)) != -1 && 0 < oc < MAX_UC_OBJECTS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 21);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					pos = strval(found[1]);
@@ -31135,6 +31170,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "AttachDynamicObjectToPlayer(", true)) != -1 && 0 < oc < MAX_UC_OBJECTS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 28);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					pos = strval(found[1]);
@@ -31156,6 +31194,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "AttachObjectToObject(", true)) != -1)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 21);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					trimspaces(found[1]);
@@ -31180,6 +31221,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "AttachDynamicObjectToObject(", true)) != -1)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 28);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					trimspaces(found[1]);
@@ -31204,6 +31248,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "RemoveBuildingForPlayer(", true)) != -1 && rbc < MAX_UC_REMOVED_OBJECTS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 24);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					rbc = RemoveBuilding(strval(found[1]), floatstr(found[2]), floatstr(found[3]), floatstr(found[4]), floatstr(found[5]));
@@ -31216,7 +31263,8 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				else if((i = strfind(strtmp, "CreateVehicle(", true)) != -1 && vc < MAX_VEHICLES)
 				{
 					strtmp2[0] = EOS;
-					if(i > 0) strmid(strtmp2, strtmp, 0, i - 1);
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 14);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					pos = strval(found[0]);
@@ -31240,7 +31288,8 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				else if((i = strfind(strtmp, "AddStaticVehicle(", true)) != -1 && vc < MAX_VEHICLES)
 				{
 					strtmp2[0] = EOS;
-					if(i > 0) strmid(strtmp2, strtmp, 0, i - 1);
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 17);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					pos = strval(found[0]);
@@ -31264,7 +31313,8 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				else if((i = strfind(strtmp, "AddStaticVehicleEx(", true)) != -1 && vc < MAX_VEHICLES)
 				{
 					strtmp2[0] = EOS;
-					if(i > 0) strmid(strtmp2, strtmp, 0, i - 1);
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 19);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					pos = strval(found[0]);
@@ -31287,6 +31337,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "AttachObjectToVehicle(", true)) != -1)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 22);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					trimspaces(found[1]);
@@ -31309,6 +31362,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "AttachDynamicObjectToVehicle(", true)) != -1)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 29);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					trimspaces(found[1]);
@@ -31331,6 +31387,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "AddVehicleComponent(", true)) != -1 && 0 < vc < MAX_VEHICLES)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 20);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					AddVehicleComponent(vc, strval(found[1]));
@@ -31342,6 +31401,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "ChangeVehiclePaintjob(", true)) != -1 && 0 < vc < MAX_VEHICLES)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 22);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					ChangeVehiclePaintjob(vc, strval(found[1]));
@@ -31353,6 +31415,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "CreateActor(", true)) != -1 && ac < MAX_UC_ACTORS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 12);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					#if defined CreateDynamicActor
@@ -31377,6 +31442,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "CreateDynamicActor(", true)) != -1 && ac < MAX_UC_ACTORS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 19);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					#if defined CreateDynamicActor
@@ -31401,6 +31469,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "CreateDynamicActorEx(", true)) != -1 && ac < MAX_UC_ACTORS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 21);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					#if defined CreateDynamicActor
@@ -31425,6 +31496,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "ApplyActorAnimation(", true)) != -1 && -1 < ac < MAX_UC_ACTORS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 20);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					if((pos = strfindchar(found[1], '\"')) != -1) strdel(found[1], 0, pos + 1);
@@ -31449,6 +31523,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "ApplyDynamicActorAnimation(", true)) != -1 && -1 < ac < MAX_UC_ACTORS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 27);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					if((pos = strfindchar(found[1], '\"')) != -1) strdel(found[1], 0, pos + 1);
@@ -31473,6 +31550,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "CreatePickup(", true)) != -1 && 0 <= pc < MAX_UC_PICKUPS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 13);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					#if defined CreateDynamicPickup
@@ -31497,6 +31577,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "AddStaticPickup(", true)) != -1 && 0 <= pc < MAX_UC_PICKUPS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 16);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					#if defined CreateDynamicPickup
@@ -31521,6 +31604,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "CreateDynamicPickup(", true)) != -1 && 0 <= pc < MAX_UC_PICKUPS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 20);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					if(!found[5][0] || strfindchar(found[5], '_') != -1) pos = -1;
@@ -31547,6 +31633,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "SetPlayerCheckpoint(", true)) != -1 && cc < 1)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					cc = 1;
 					strdel(strtmp, 0, i + 20);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
@@ -31559,6 +31648,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "CreateDynamicCP(", true)) != -1 && cc < 1)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					cc = 1;
 					strdel(strtmp, 0, i + 16);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
@@ -31571,6 +31663,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "CreateDynamicCPEx(", true)) != -1 && cc < 1)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					cc = 1;
 					strdel(strtmp, 0, i + 18);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
@@ -31583,6 +31678,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "SetPlayerRaceCheckpoint(", true)) != -1 && rcc < 1)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					rcc = 1;
 					strdel(strtmp, 0, i + 24);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
@@ -31595,6 +31693,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "CreateDynamicRaceCP(", true)) != -1 && rcc < 1)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					rcc = 1;
 					strdel(strtmp, 0, i + 20);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
@@ -31607,6 +31708,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "CreateDynamicRaceCPEx(", true)) != -1 && rcc < 1)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					rcc = 1;
 					strdel(strtmp, 0, i + 22);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
@@ -31619,6 +31723,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "SetPlayerMapIcon(", true)) != -1 && ic < MAX_UC_MAPICONS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 17);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					#if defined CreateDynamicMapIcon
@@ -31643,6 +31750,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "CreateDynamicMapIcon(", true)) != -1 && ic < MAX_UC_MAPICONS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 21);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					#if defined CreateDynamicMapIcon
@@ -31667,6 +31777,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "CreateDynamicMapIconEx(", true)) != -1 && ic < MAX_UC_MAPICONS)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 23);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					#if defined CreateDynamicMapIcon
@@ -31691,6 +31804,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "GangZoneCreate(", true)) != -1 && 0 <= gc < MAX_GANG_ZONES)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 15);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					gc = GangZoneCreate(floatstr(found[0]), floatstr(found[1]), floatstr(found[2]), floatstr(found[3]));
@@ -31703,6 +31819,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "GangZoneShowForAll(", true)) != -1 && 0 <= gc < MAX_GANG_ZONES)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 19);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					trimspaces(found[1]);
@@ -31719,7 +31838,8 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				else if((i = strfind(strtmp, "Create3DTextLabel(", true)) != -1 && lc < MAX_UC_3DTEXT_GLOBAL)
 				{
 					strtmp2[0] = EOS;
-					if(i > 0) strmid(strtmp2, strtmp, 0, i - 1);
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 18);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					if((pos = strfindchar(found[0], '\"')) != -1) strdel(found[0], 0, pos + 1);
@@ -31757,7 +31877,8 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				else if((i = strfind(strtmp, "CreateDynamic3DTextLabel(", true)) != -1 && lc < MAX_UC_3DTEXT_GLOBAL)
 				{
 					strtmp2[0] = EOS;
-					if(i > 0) strmid(strtmp2, strtmp, 0, i - 1);
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 25);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					if((pos = strfindchar(found[0], '\"')) != -1) strdel(found[0], 0, pos + 1);
@@ -31795,6 +31916,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "Attach3DTextLabelToPlayer(", true)) != -1 && lc < MAX_UC_3DTEXT_GLOBAL)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 26);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					pos = strval(found[1]);
@@ -31818,6 +31942,9 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 				else if((i = strfind(strtmp, "Attach3DTextLabelToVehicle(", true)) != -1)
 				{
+					strtmp2[0] = EOS;
+					if(i > 0) strmid(strtmp2, strtmp, 0, i);
+					if(strfind(strtmp2, "//") != -1) continue;
 					strdel(strtmp, 0, i + 27);
 					split(strtmp, found, ',', sizeof found, sizeof found[]);
 					trimspaces(found[1]);
@@ -31937,12 +32064,23 @@ IsEmptyString(const string[])
 
 IsNumeric(const string[])
 {
-	if(isnull(string) || (string[0] == '-' || string[0] == '+') && !string[1]) return 0;
-	for(new i, l = strlen(string); i < l; ++i)
+	new ret;
+	for(new i, c, l = strlen(string); i < l; ++i)
 	{
-		if(!(string[i] == '.' || '0' <= string[i] <= '9' || i == 0 && (string[0] == '-' || string[0] == '+'))) return 0;
+		if('0' <= string[i] <= '9') ret = 1;
+		else if(string[i] == '.')
+		{
+			if(ret)
+			{
+				c++;
+				if(c > 1) return 0;
+				ret = 0;
+			}
+			else return 0;
+		}
+		else if(i != 0 || string[0] != '-') return 0;
 	}
-	return 1;
+	return ret;
 }
 
 split(const source[], destination[][], delim, destsize, destlen)
