@@ -258,6 +258,7 @@ Using these scripts you can also extend the functionality and simplify the proce
 [Map Mover 2.1](https://github.com/adri1samp/MAP-MOVER)
 
 ## Thanks:
+El-SpaceX - Portuguese (Brazilian) translation
 Batka1337, Vitalik_Gonsor, TheHero, Apec, Magic_York, f0Re3t - help with testing  
 Vip_Uzer, DANGER_Hidden, continue - some advices  
 Crayder - some help with ColAndreas
