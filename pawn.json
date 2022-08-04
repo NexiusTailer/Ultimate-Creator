@@ -3,7 +3,7 @@
 	"repo": "Ultimate-Creator",
 	"dependencies":
 	[
-		"Open-GTO/foreach",
+		"karimcambridge/samp-foreach",
 		"IllidanS4/YSF",
 		"samp-incognito/samp-streamer-plugin"
 	],
