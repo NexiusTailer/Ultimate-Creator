@@ -3,9 +3,9 @@
 	"repo": "Ultimate-Creator",
 	"dependencies":
 	[
-		"karimcambridge/samp-foreach",
 		"IllidanS4/YSF",
-		"samp-incognito/samp-streamer-plugin"
+		"samp-incognito/samp-streamer-plugin",
+		"karimcambridge/samp-foreach"
 	],
 	"builds":
 	[
