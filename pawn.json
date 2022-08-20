@@ -11,7 +11,7 @@
 	[
 		{
 			"name": "english",
-			"input": "v1.4.5/English/creator.pwn",
+			"input": "v1.4.6/English/creator.pwn",
 			"output": "../../filterscripts/creator.amx",
 			"compiler":
 			{
@@ -20,7 +20,7 @@
 		},
 		{
 			"name": "russian",
-			"input": "v1.4.5/Russian/creator.pwn",
+			"input": "v1.4.6/Russian/creator.pwn",
 			"output": "../../filterscripts/creator.amx",
 			"compiler":
 			{
@@ -29,7 +29,7 @@
 		},
 		{
 			"name": "portuguese",
-			"input": "v1.4.5/PT-BR/creator.pwn",
+			"input": "v1.4.6/PT-BR/creator.pwn",
 			"output": "../../filterscripts/creator.amx",
 			"compiler":
 			{
