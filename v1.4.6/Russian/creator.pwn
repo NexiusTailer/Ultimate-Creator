@@ -1,4 +1,4 @@
-//Ultimate Creator by Nexius v1.4.5
+//Ultimate Creator by Nexius v1.4.6
 
 #define FILTERSCRIPT
 
@@ -44,7 +44,7 @@
 //#define ONLY_FOR_RCON_ADMINS
 //#define CREATOR_DEBUG
 
-#define CREATOR_VERSION				"1.4.5"
+#define CREATOR_VERSION				"1.4.6"
 
 #define DEFAULT_COLOR				-1
 
@@ -52,6 +52,7 @@
 #define MAX_TEXTURES_PER_OBJECT		16
 #define MAX_CAR_MOD_TYPES			14
 #define MAX_ITEMS_PER_PAGE			50
+#define MAX_MAPS_PER_PAGE			30
 
 #define MAX_MAPNAME_LENGTH			64
 #define MAX_LABEL_TEXT_LENGTH		64
@@ -74,803 +75,804 @@
 #define DELAY_DOUBLE_CLICK_LEFT		500
 #define DELAY_LAST_CAM_MOVE			100
 #define DELAY_CALL_MAIN_MENU		300
+#define DELAY_ANIM_REAPPLYING		800
 
-#define MAP_DOES_NOT_EXIST_ERROR		"Vocк precisa criar um mapa!"
-#define MAP_DOES_NOT_EXIST_SAVE_ERROR	"Vocк precisa criar um mapa para salvб-lo!"
-#define MAP_SAVED						"%s salvou o mapa %s"
-#define SAVE_MAP_ERROR					"Um erro ocorreu ao salvar o mapa!"
-#define ENTER_MAP_NAME_TO_SAVE			"Digite o nome do mapa que deseja salvar:"
-#define ENTER_MAP_NAME_ERROR			"Vocк precisa digitar o nome do mapa!"
-#define MAP_CREATED						"%s criou um novo mapa"
-#define MAP_OPENED						"%s abriu o mapa %s"
-#define MAP_OPENED_OVER					"%s abriu o mapa %s sobre o atual"
-#define MAP_RENAMED						"%s renomeou o mapa %s para %s"
-#define MAP_RENAMED_BLANK				"%s renomeou o mapa para %s"
-#define FILE_NOT_FOUND_ERROR			"Arquivo nгo encontrado!"
-#define INCORRECT_FILE_NAME_ERROR		"Digite um nome de arquivo vбlido!"
-#define INCORRECT_MAP_NAME_ERROR		"Digite um nome de mapa vбlido!"
-#define MAP_DELETED						"%s removeu o mapa %s"
-#define COLANDREAS_COMPATIBILITY_ERROR	"Este recurso sу estб disponнvel com o plugin ColAndreas!"
-#define SHOW_FOUNDED_MATCHES			"Exibindo %d primeiros jogos"
-#define NO_MATCHES_FOUND				"Sem fуsforos encontrados"
-#define ENTER_OBJECT_NAME				"Digite o ID ou o nome do modelo de objeto:"
-#define INCORRECT_OBJ_MODEL_ERROR		"Digite o ID vбlido ou o nome do modelo de objeto!"
-#define OBJECT_CREATED					"Objeto id %d criado"
-#define LIMIT_ERROR						"Vocк chegou ao limite!"
-#define ENTER_VEHICLE_NAME				"Digite o ID ou o nome do modelo do veнculo:"
-#define INCORRECT_VEH_MODEL_ERROR		"Digite o Y vбlido ou o nome do modelo do veнculo!"
-#define VEHICLE_CREATED					"Veнculo id %d criado"
-#define ENTER_SKIN_NAME					"Digite a ID ou o nome da pele do ator"
-#define INCORRECT_SKIN_ID_ERROR			"Digite o ID vбlido ou nome da pele do ator!"
-#define ACTOR_CREATED					"Ator id %d criado"
-#define ENTER_PICKUP_NAME				"Digite o ID ou o nome do modelo de pickup:"
-#define INCORRECT_PICKUP_MODEL_ERROR	"Digite o ID vбlido ou nome do modelo de um pickup!"
-#define PICKUP_CREATED					"Pickup id %d criado"
-#define CP_CREATED						"Checkpoint id %d criado"
-#define RCP_TYPE_NORMAL					"Normal"
-#define RCP_TYPE_FINISH					"Terminar"
-#define RCP_TYPE_NOTHING				"Nada"
-#define RCP_TYPE_AIR_NORMAL				"Ar normal"
-#define RCP_TYPE_AIR_FINISH				"Air finish"
-#define RCP_TYPE_AIR_ROTATE				"Ar: gira"
-#define RCP_TYPE_AIR_RESIZE				"Ar: aumenta, diminui e desaparecer"
-#define RCP_TYPE_AIR_SWINGS_DOWNUP		"Ar: balanзa para baixo e para cima"
-#define RCP_TYPE_AIR_SWINGS_UPDOWN		"Ar: balanзa para cima e para baixo"
-#define RCP_CREATED						"Checkpoint de corrida id %d criado"
-#define ENTER_ICON_NAME					"Digite o ID ou o nome do нcone do mapa:"
-#define INVALID_MAP_ICONS_WARNING		"ID 1, 2, 4 e 56 pode levar а queda do jogo, se vocк habilitou a lenda do mapa!"
-#define INCORRECT_ICON_ID_ERROR			"Digite o ID ou nome vбlido do нcone do mapa!"
-#define UNKNOWN_ICON_ID_ERROR			"Este нcone de mapa nгo й criado no editor!"
-#define NO_SELECTED_ICONS_ERROR			"Vocк nгo selecionou nenhum нcone de mapa!"
-#define ICON_CREATED					"Нcone do mapa id %d criado"
-#define ZONE_CREATED					"Gangzone id %d criado"
-#define INCORRECT_LABEL_NAME_ERROR		"Digite o texto que serб exibido no texto 3D!"
-#define ENTER_TEXT						"Digite o texto:"
-#define LABEL_CREATED					"Texto 3D id %d criado"
-#define TELEPORTED_TO_OBJECT			"Vocк mudou-se para o objeto id %d"
-#define OBJECT_IS_ATTACHED_ERROR		"Mover-se nгo й possнvel, o objeto й anexado!"
-#define TELEPORTED_OBJECT				"Vocк mudou o objeto id %d para si mesmo"
-#define OBJECT_IS_NOT_ATTACHED_ERROR	"Copiar nгo й possнvel, o objeto nгo estб anexado!"
-#define NO_SURFACE_FOUND_ERROR			"Nenhuma superfнcie disponнvel encontrada!"
-#define OBJECT_FOUND_SURFACE			"Vocк mudou o objeto id %d para a superfнcie mais prуxima"
-#define OBJECT_FOUND_INCLINED_SURFACE	"Vocк moveu o objeto id %d para a superfнcie mais prуxima com inclinaзгo"
-#define OBJECT_COPIED					"Objeto id %d copiado"
-#define OBJECT_DELETED					"Objeto id %d deletado"
-#define OBJECT_REMOVED					"Modelo id %d excluнdo"
-#define TEXTURE_RESET					"A textura do objeto id %d reset (camada %d)"
-#define OBJECT_COLOR_RESET				"A cor do objeto id %d reset (camada %d)"
-#define ENTER_TEXTURE_NAME				"Digite o ID ou o nome da textura:"
-#define INCORRECT_TEXTURE_ID_ERROR		"Digite o ID vбlido ou nome da textura!"
-#define TEXTURE_CHANGED					"A textura do objeto id %d mudou para %d (camada %d)"
-#define INCORRECT_OBJECT_COLOR_ERROR	"Digite a cor vбlida do objeto!"
-#define ENTER_OBJECT_COLOR				"Digite a cor do objeto no formato ARGB:"
-#define OBJECT_COLOR_CHANGED			"Vocк definiu a cor 0x%08x para o objeto id %d (camada %d)"
-#define INCORRECT_ALPHA_ERROR			"Digite o valor alfa vбlido!"
-#define ENTER_ALPHA						"Digite o valor alfa de 0 a 255:"
-#define OBJECT_ALPHA_CHANGED			"O alfa do objeto id %d mudou para %d (camada %d)"
-#define INCORRECT_LAYER_ID_ERROR		"Digite o ID de camada vбlido (materialindex)!"
-#define OBJECT_TEXT_RESET				"O texto do objeto id %d reset (camada %d)"
-#define INCORRECT_OBJECT_TEXT_ERROR		"Digite o texto a ser exibido no objeto!"
-#define OBJECT_TEXT_CHANGED				"O texto do objeto id %d alterado (camada %d)"
-#define OBJECT_TEXT_SIZE_CHANGED		"Tamanho do texto do objeto id %d alterado para %d (camada %d)"
-#define INCORRECT_FONT_NAME_ERROR		"Digite o nome da fonte de texto que serб exibida no objeto!"
-#define ENTER_FONT_NAME					"Digite o nome da fonte:"
-#define FONT_CHANGED					"Fonte de texto do objeto id %d alterado (camada %d)"
-#define INCORRECT_FONT_SIZE_ERROR		"Digite o tamanho vбlido da fonte!"
-#define ENTER_FONT_SIZE					"Digite o tamanho da fonte de 0 a 255:"
-#define FONT_SIZE_CHANGED				"Tamanho da fonte de texto do id %d do objeto %d alterado para %d (camada %d)"
-#define OBJECT_TEXT_BOLD_CHANGED		"Texto em negrito do objeto id %d definido como %d (camada %d)"
-#define INCORRECT_FONT_COLOR_ERROR		"Digite a cor da fonte vбlida do objeto!"
-#define ENTER_FONT_COLOR				"Digite a cor da fonte no formato ARGB:"
-#define FONT_COLOR_CHANGED				"Vocк definiu a cor 0x%08x no texto do objeto id %d (camada %d)"
-#define FONT_ALPHA_CHANGED				"Texto alfa do objeto id %d alterado para %d (camada %d)"
-#define INCORRECT_BACK_COLOR_ERROR		"Digite a cor de fundo vбlida do objeto!"
-#define ENTER_BACK_COLOR				"Digite a cor de fundo no formato ARGB:"
-#define BACK_COLOR_CHANGED				"Vocк definiu a cor de fundo 0x%08x para objeto id %d (camada %d)"
-#define ALIGNMENT_CHANGED				"Alinhamento de texto do objeto id %d alterado para %d (camada %d)"
-#define TEXT_TEXTURE_COPIED				"O texto/textura do objeto id %d copiado (camada %d)"
-#define TEXT_TEXTURE_PASTED				"O texto/textura colado no objeto id %d (camada %d)"
-#define TEXT_TEXTURE_RESET				"O texto/textura do objeto id %d reset (camada %d)"
-#define TEXTURES_PASTED					"O texto e texturas colados no objeto id %d"
-#define TEXTURES_COPIED					"O texto e texturas do objeto id %d copiado"
-#define TEXTURES_RESET					"O texto e as texturas do objeto id %d foram redefinidos"
-#define BUFFER_CLEARED					"Texto e texturas de prancheta limpa"
-#define INCORRECT_PLAYER_ID_ERROR		"Digite o ID do jogador vбlido!"
-#define PLAYER_IS_NOT_SPAWNED_ERROR		"Este jogador nгo й gerado!"
-#define STREAMER_COMPATIBILITY_ERROR	"Este recurso nгo estarб disponнvel se o Plugin streamer for usado!"
-#define OBJECT_ATTACHED_TO_PLAYER		"Objeto id %d ligado ao id do jogador %d"
-#define INCORRECT_OBJECT_ID_ERROR		"Digite o ID de objeto vбlido!"
-#define UNKNOWN_OBJECT_ID_ERROR			"Este objeto nгo й criado no editor!"
-#define OBJECT_ATTACHED_TO_OBJECT		"Objeto id %d anexado ao objeto id %d"
-#define INCORRECT_VEHICLE_ID_ERROR		"Digite o 800 88) ou nгo."
-#define UNKNOWN_VEHICLE_ID_ERROR		"Este veнculo nгo й criado no editor!"
-#define OBJECT_ATTACHED_TO_VEHICLE		"Objeto id %d ligado ao id do veнculo %d"
-#define INCORRECT_COORD_X_ERROR			"Digite a coordenada X vбlida!"
-#define OBJECT_TELEPORTED_TO_X			"Vocк mudou o objeto id %d para X coordenada: %.4f"
-#define INCORRECT_COORD_Y_ERROR			"Digite a coordenada Y vбlida!"
-#define OBJECT_TELEPORTED_TO_Y			"Vocк mudou o objeto id %d para Y coordenar: %.4f"
-#define INCORRECT_COORD_Z_ERROR			"Digite a coordenada Z vбlida!"
-#define OBJECT_TELEPORTED_TO_Z			"Vocк mudou o objeto id %d para z coordenada: %.4f"
-#define INCORRECT_ROT_X_ERROR			"Digite a rotaзгo vбlida da coordenada X!"
-#define OBJECT_TELEPORTED_TO_RX			"Vocк moveu o objeto id %d para x rotaзгo coordenada: %.4f"
-#define INCORRECT_ROT_Y_ERROR			"Digite a rotaзгo vбlida da coordenada Y!"
-#define OBJECT_TELEPORTED_TO_RY			"Vocк mudou o objeto id %d para Y rotaзгo coordenada: %.4f"
-#define INCORRECT_ROT_Z_ERROR			"Digite a rotaзгo vбlida da coordenada Z!"
-#define OBJECT_TELEPORTED_TO_RZ			"Vocк mudou o objeto id %d para z rotaзгo coordenada: %.4f"
-#define OBJECT_ROT_RESET				"Vocк redefiniu a rotaзгo do objeto id %d"
-#define NO_SELECTED_OBJECTS_ERROR		"Vocк nгo selecionou nenhum objeto!"
-#define EMPTY_BUFFER_ERROR				"A prancheta estб vazia para esta operaзгo!"
-#define TELEPORTED_TO_VEHICLE			"Vocк mudou para identificaзгo de veнculo %d"
-#define TELEPORTED_VEHICLE				"Vocк mudou o veнculo id %d para si mesmo"
-#define VEHICLE_FOUND_SURFACE			"Vocк mudou o veнculo id %d para a superfнcie mais prуxima"
-#define VEHICLE_COPIED					"Veнculo id %d copiado"
-#define VEHICLE_DELETED					"Veiculo id %d excluнdo"
-#define VEHICLE_REPAIRED				"Veiculo id %d reparado"
-#define PAINTJOB_REMOVED				"Paintjob removido do veнculo id %d"
-#define ALL_COMPONENTS_REMOVED			"Todos os componentes removidos do id do veнculo %d"
-#define ENTER_COMPONENT_NAME			"Digite o ID ou o nome do componente:"
-#define INCORRECT_COMPONENT_ID_ERROR	"Digite o ID ou nome do componente vбlido!"
-#define INCOMPATIBLE_COMPONENT_ID_ERROR	"Este componente nгo й compatнvel com o veнculo selecionado!"
-#define COMPONENT_ADDED					"Identificaзгo de componente %d adicionada ao id do veнculo %d"
-#define ENTER_PAINTJOB_ID				"Digite o ID do trabalho de pintura:"
-#define PAINTJOB_NOW					"Paintjob agora:"
-#define INCORRECT_PAINTJOB_ID_ERROR		"Digite o ID vбlido do trabalho de pintura!"
-#define INCOMPATIBLE_PAINTJOB_ID_ERROR	"Este trabalho de pintura й incompatнvel com o veнculo selecionado!"
-#define PAINTJOB_CHANGED				"Paintjob id %d adicionado ao veнculo id %d"
-#define COMPONENT_REMOVED				"Identificaзгo de componente %d removida do id do veнculo %d"
-#define VEHICLE_TELEPORTED_TO_X			"Vocк mudou o veнculo id %d para X coordenada: %.4f"
-#define VEHICLE_TELEPORTED_TO_Y			"Vocк mudou o veнculo id %d para Y coordenada: %.4f"
-#define VEHICLE_TELEPORTED_TO_Z			"Vocк mudou o veнculo de identificaзгo %d para Z coordenada: %.4f"
-#define VEHICLE_TELEPORTED_TO_RZ		"Vocк mudou o veнculo id %d para Z rotaзгo coordenada: %.4f"
-#define INCORRECT_RESPAWN_TIME_ERROR	"Digite o tempo de respawn vбlido!"
-#define RESPAWN_TIME_CHANGED			"Vocк definiu o tempo de reespaiaзгo %d s para o veнculo id %d"
-#define INCORRECT_COLOR_1_ERROR			"Digite a cor vбlida 1!"
-#define COLOR_1_CHANGED					"Vocк definiu o veнculo id %d cor 1 para: %d"
-#define INCORRECT_COLOR_2_ERROR			"Digite a cor vбlida 2!"
-#define COLOR_2_CHANGED					"Vocк definiu o veнculo id %d cor 2 para: %d"
-#define NO_SELECTED_VEHICLES_ERROR		"Vocк nгo selecionou nenhum veнculo!"
-#define TELEPORTED_TO_ACTOR				"Vocк mudou para ator id %d"
-#define TELEPORTED_ACTOR				"Vocк mudou o ator id %d para si mesmo"
-#define ACTOR_FOUND_SURFACE				"Vocк mudou o id do ator %d para a superfнcie mais prуxima"
-#define ACTOR_COPIED					"Ator id %d copiado"
-#define ACTOR_DELETED					"Ator id %d deletado"
-#define INCORRECT_ANIMATION_ID_ERROR	"Digite o ID ou nome da animaзгo vбlidos!"
-#define ACTOR_ANIM_CHANGED				"A animaзгo do ator id %d mudou para %d"
-#define ACTOR_ANIM_CLEANED				"A animaзгo do ator id %d limpo"
-#define ACTOR_TELEPORTED_TO_X			"Vocк mudou o id do ator %d para X coordenada: %.4f"
-#define ACTOR_TELEPORTED_TO_Y			"Vocк mudou a identidade do ator %d para Y coordenar: %.4f"
-#define ACTOR_TELEPORTED_TO_Z			"Vocк mudou a identidade do ator %d para z coordenada: %.4f"
-#define ACTOR_TELEPORTED_TO_RZ			"Vocк mudou a id do ator %d para z rotaзгo coordenada: %.4f"
-#define INCORRECT_ACTOR_ID_ERROR		"Digite a identificaзгo do ator vбlido!"
-#define UNKNOWN_ACTOR_ID_ERROR			"Este ator nгo й criado no editor!"
-#define NO_SELECTED_ACTORS_ERROR		"Vocк nгo escolheu nenhum ator!"
-#define TELEPORTED_TO_PICKUP			"Vocк mudou para pickup id %d"
-#define TELEPORTED_PICKUP				"Vocк mudou o pickup %d para vocк mesmo"
-#define PICKUP_FOUND_SURFACE			"Vocк mudou o id de pickup %d para a superfнcie mais prуxima"
-#define PICKUP_COPIED					"Pickup id %d copiado"
-#define PICKUP_DELETED					"Pickup id %d excluнdo"
-#define INCORRECT_PICKUP_TYPE_ERROR		"Digite o tipo vбlido da pickup!"
-#define PICKUP_TYPE_CHANGED				"Vocк definiu tipo %d para pegar id %d"
-#define PICKUP_TELEPORTED_TO_X			"Vocк mudou o id de pickup %d para X coordenada: %.4f"
-#define PICKUP_TELEPORTED_TO_Y			"Vocк mudou o id de pickup %d para Y coordenar: %.4f"
-#define PICKUP_TELEPORTED_TO_Z			"Vocк mudou a pickupea %d para z coordenada: %.4f"
-#define INCORRECT_VW_ERROR				"Digite o ID vбlido do mundo virtual!"
-#define PICKUP_VW_CHANGED				"Vocк definiu mundo virtual %d para pegar id %d"
-#define INCORRECT_PICKUP_ID_ERROR		"Digite o ID de um pickup vбlido!"
-#define UNKNOWN_PICKUP_ID_ERROR			"Esse pickup nгo foi criado pelo editor!"
-#define NO_SELECTED_PICKUPS_ERROR		"Vocк nгo selecionou nenhuma pickup!"
-#define TELEPORTED_TO_CP				"Vocк mudou-se para checkpoint id %d"
-#define TELEPORTED_CP					"Vocк mudou o ponto de verificaзгo id %d para si mesmo"
-#define CP_DELETED						"Checkpoint id %d deletado"
-#define CP_TELEPORTED_TO_X				"Vocк mudou o ponto de verificaзгo id %d para X coordenada: %.4f"
-#define CP_TELEPORTED_TO_Y				"Vocк mudou o ponto de verificaзгo %d para Y coordenar: %.4f"
-#define INCORRECT_SIZE_ERROR			"Digite o tamanho vбlido!"
-#define CP_SIZE_CHANGED					"Vocк definiu tamanho %.1f para checkpoint id %d"
-#define NO_CPS_CREATED_ERROR			"Nгo hб postos de controle criados no momento!"
-#define TELEPORTED_TO_RCP				"Vocк mudou-se para o checkpoint de corrida id %d"
-#define TELEPORTED_RCP					"Vocк mudou o ponto de verificaзгo de corrida id %d para vocк mesmo"
-#define RCP_DELETED						"ID de checkpoint de corrida %d excluнdo"
-#define RCP_TYPE_CHANGED				"Vocк definiu tipo %d para corrida checkpoint id %d"
-#define RCP_TELEPORTED_TO_X				"Vocк mudou o ponto de verificaзгo de corrida id %d para X coordenada: %.4f"
-#define RCP_TELEPORTED_TO_Y				"Vocк mudou o ponto de verificaзгo de corrida id %d para Y coordenar: %.4f"
-#define RCP_TELEPORTED_TO_Z				"Vocк mudou o checkpoint de corrida id %d para z coordenada: %.4f"
-#define INCORRECT_NEXTX_ERROR			"Digite a coordenada X vбlida do prуximo ponto para o qual serб girado o ponteiro!"
-#define RCP_NEXTX_CHANGED				"NextX do ponto de verificaзгo de corrida id %d definido para %.4f"
-#define INCORRECT_NEXTY_ERROR			"Digite a coordenada Y vбlida do prуximo ponto para o qual serб girado o ponteiro!"
-#define RCP_NEXTY_CHANGED				"NextY of race checkpoint id %d set to %.4f"
-#define INCORRECT_NEXTZ_ERROR			"Digite a coordenada Z vбlida do prуximo ponto para o qual serб girado o ponteiro!"
-#define RCP_NEXTZ_CHANGED				"NextZ of race checkpoint id %d set to %.4f"
-#define RCP_SIZE_CHANGED				"Vocк definiu tamanho %.1f para corrida checkpoint id %d"
-#define INCORRECT_RCP_TYPE_ERROR		"Digite o tipo vбlido de verificaзгo de corrida!"
-#define NO_RCPS_CREATED_ERROR			"Nгo hб postos de controle de corrida criados no momento!"
-#define TELEPORTED_TO_MAPICON			"Vocк mudou para mapear o нcone id %d"
-#define TELEPORTED_MAPICON				"Vocк mudou o нcone do mapa id %d para vocк mesmo"
-#define MAPICON_COPIED					"Нcone do mapa id %d copiado"
-#define MAPICON_DELETED					"Нcone do mapa id %d deletado"
-#define MAPICON_TELEPORTED_TO_X			"Vocк mudou o нcone do mapa id %d para X coordenada: %.4f"
-#define MAPICON_TELEPORTED_TO_Y			"Vocк mudou o нcone do mapa id %d para Y coordenar: %.4f"
-#define MAPICON_TELEPORTED_TO_Z			"Vocк mudou o нcone do mapa id %d para Z coordenada: %.4f"
-#define INCORRECT_ICON_COLOR_ERROR		"Digite a cor vбlida do нcone do mapa!"
-#define MAPICON_COLOR_CHANGED			"Vocк definiu a cor 0x%08x para mapear o нcone id %d"
-#define MAPICON_ALPHA_CHANGED			"O alfa do нcone do mapa id %d mudou para %d"
-#define INCORRECT_ICON_STYLE_ERROR		"Digite o estilo de exibiзгo vбlido do нcone do mapa!"
-#define MAPICON_STYLE_CHANGED			"Vocк definiu o estilo de exibiзгo %d para mapear o нcone id %d"
-#define TELEPORTED_TO_GANGZONE			"Vocк mudou-se para gangzone id %d"
-#define TELEPORTED_GANGZONE				"Vocк mudou gangzone id %d para vocк mesmo"
-#define GANGZONE_COPIED					"Gangzone id %d copiado"
-#define GANGZONE_DELETED				"Gangzone id %d excluнdo"
-#define INCORRECT_COORD_MINX_ERROR		"Digite a coordenada vбlida min X!"
-#define GANGZONE_MINX_CHANGED			"Vocк definiu min X coordenada para gangzone id %d: %.4f"
-#define INCORRECT_COORD_MINY_ERROR		"Digite a coordenada vбlida min Y!"
-#define GANGZONE_MINY_CHANGED			"Vocк definiu min Y coordenada para gangzone id %d: %.4f"
-#define INCORRECT_COORD_MAXX_ERROR		"Digite a coordenada mбxima X vбlida!"
-#define GANGZONE_MAXX_CHANGED			"Vocк definiu a coordenada max X para gangzone id %d: %.4f"
-#define INCORRECT_COORD_MAXY_ERROR		"Digite a coordenada mбxima Y vбlida!"
-#define GANGZONE_MAXY_CHANGED			"Vocк definiu a coordenada max Y para gangzone id %d: %.4f"
-#define INCORRECT_ZONE_COLOR_ERROR		"Digite a cor de gangzone vбlida!"
-#define GANGZONE_COLOR_CHANGED			"Vocк definiu a cor 0x%08x para gangzone id %d"
-#define GANGZONE_ALPHA_CHANGED			"O alfa do gangzone id %d mudou para %d"
-#define INCORRECT_ZONE_ID_ERROR			"Digite a identificaзгo de gangzone vбlida!"
-#define UNKNOWN_ZONE_ID_ERROR			"Essa gangzone nгo й criada no editor!"
-#define NO_SELECTED_ZONES_ERROR			"Vocк nгo selecionou nenhuma gangzone!"
-#define TELEPORTED_TO_LABEL				"Vocк mudou para o texto 3D id %d"
-#define LABEL_IS_ATTACHED_ERROR			"Mover-se nгo й possнvel, texto 3D й anexado!"
-#define TELEPORTED_LABEL				"Vocк mudou o texto 3D id %d para vocк mesmo"
-#define LABEL_IS_NOT_ATTACHED_ERROR		"Copiar nгo й possнvel, texto 3D nгo й anexado!"
-#define LABEL_FOUND_SURFACE				"Vocк mudou o id de texto 3D %d para a superfнcie mais prуxima"
-#define LABEL_COPIED					"ID de texto 3D %d copiado"
-#define LABEL_DELETED					"ID de texto 3D %d excluнdo"
-#define LABEL_TEXT_CHANGED				"O texto do texto 3D id %d alterado"
-#define INCORRECT_LABEL_COLOR_ERROR		"Digite a cor de texto 3D vбlida!"
-#define LABEL_COLOR_CHANGED				"Vocк definiu a cor 0x%08x para o id de texto 3D %d"
-#define LABEL_ALPHA_CHANGED				"O alfa do texto 3D id %d alterado para %d"
-#define LABEL_ATTACHED_TO_PLAYER		"Texto 3D id %d anexado ao player id %d"
-#define LABEL_ATTACHED_TO_VEHICLE		"Texto 3D id %d anexado ao id do veнculo %d"
-#define LABEL_TELEPORTED_TO_X			"Vocк mudou o id de texto 3D %d para x coordenada: %.4f"
-#define LABEL_TELEPORTED_TO_Y			"Vocк mudou o texto 3D id %d para Y coordenada: %.4f"
-#define LABEL_TELEPORTED_TO_Z			"Vocк mudou o texto 3D %d para z coordenada: %.4f"
-#define INCORRECT_LABEL_DD_ERROR		"Digite a distвncia de saque vбlida!"
-#define LABEL_DD_CHANGED				"Vocк definiu distвncia de sorteio %.4f a texto 3D id %d"
-#define LABEL_VW_CHANGED				"Vocк definiu mundo virtual %d a texto 3D id %d"
-#define LABEL_LOS_ENABLED				"Visibilidade atravйs de paredes de texto 3D id %d ativado"
-#define LABEL_LOS_DISABLED				"Visibilidade atravйs de paredes de texto 3D id %d desativado"
-#define INCORRECT_LABEL_ID_ERROR		"Digite o ID de texto 3D vбlido!"
-#define UNKNOWN_LABEL_ID_ERROR			"Este texto 3D nгo й criado no editor!"
-#define NO_SELECTED_LABELS_ERROR		"Vocк nгo selecionou nenhum texto 3D!"
-#define NO_DUPLICATES_FOUND				"Nenhuma duplicaзгo encontrada"
-#define INCORRECT_COORDS_ERROR			"Digite as coordenadas vбlidas!"
-#define TELEPORTED_TO_COORDS			"Vocк passou para coordenadas %.4f, %.4f, %.4f"
-#define INCORRECT_INTERIOR_ID_ERROR		"Digite o ID vбlido do interior!"
-#define TELEPORTED_TO_INTERIOR			"Vocк mudou para o interior id %d"
-#define TELEPORTED_TO_VW				"Vocк mudou para o mundo virtual id %d"
-#define INCORRECT_MAP_MARKER_ERROR		"Coloque o marcador no mapa!"
-#define TELEPORTED_TO_DEFAULT_INT		"Vocк mudou para o interior de %s"
-#define INCORRECT_CAM_SPEED_ERROR		"Digite a velocidade da cвmera vбlida!"
-#define CAM_SPEED_SLOW_CHANGED			"%s mudou a velocidade da cвmera (Alt) para %.1f"
-#define CAM_SPEED_FAST_CHANGED			"%s mudou a velocidade da cвmera (Shift) para %.1f"
-#define CAM_SPEED_CHANGED				"%s mudou a velocidade da cвmera para %.1f"
-#define INCORRECT_CAM_DIST_ERROR		"Insira a distвncia vбlida da cвmera!"
-#define CAM_DIST_CHANGED				"%s mudou a distвncia da cвmera para %.1f"
-#define INCORRECT_ZONE_DIST_ERROR		"Insira a distвncia vбlida do movimento gangzone!"
-#define ZONE_DIST_SHORT_CHANGED			"%s mudou a distвncia do movimento gangzone (Alt) para %.1f"
-#define ZONE_DIST_LONG_CHANGED			"%s mudou a distвncia do movimento gangzone (Shift) para %.1f"
-#define ZONE_DIST_CHANGED				"%s mudou a distвncia do movimento gangzone para %.1f"
-#define INCORRECT_ICON_DIST_ERROR		"Digite a distвncia vбlida do movimento do нcone do mapa!"
-#define ICON_DIST_SHORT_CHANGED			"%s mudou a distвncia do movimento do нcone do mapa (Alt) para %.1f"
-#define ICON_DIST_LONG_CHANGED			"%s mudou a distвncia do movimento do нcone do mapa (Shift) para %.1f"
-#define ICON_DIST_CHANGED				"%s mudou a distвncia do movimento do нcone do mapa para %.1f"
-#define INCORRECT_DIST_ERROR			"Insira a distвncia vбlida do movimento!"
-#define DIST_SHORT_CHANGED				"%s mudou a distвncia de movimento (Alt) para %.1f"
-#define DIST_LONG_CHANGED				"%s mudou a distвncia de movimento (Shift) para %.1f"
-#define DIST_CHANGED					"%s mudou a distвncia de movimento para %.1f"
-#define INCORRECT_ROT_SPEED_ERROR		"Digite a velocidade de rotaзгo vбlida!"
-#define ROT_SPEED_SLOW_CHANGED			"%s mudou a velocidade de rotaзгo (Alt) para %.1f"
-#define ROT_SPEED_FAST_CHANGED			"%s mudou a velocidade de rotaзгo (Shift) para %.1f"
-#define ROT_SPEED_CHANGED				"%s mudou a velocidade de rotaзгo para %.1f"
-#define INTERFACE_VISIBILITY_ENABLED	"%s habilitou a visibilidade da interface"
-#define INTERFACE_VISIBILITY_DISABLED	"%s tem visibilidade de interface desativada"
-#define INCORRECT_WEATHER_ID_ERROR		"Digite a identificaзгo vбlida do tempo!"
-#define WEATHER_ID_CHANGED				"%s definiu o tempo para id %d"
-#define TIME_CHANGED					"%s definiu o tempo para %s"
-#define INCORRECT_GRAVITY_ERROR			"Digite o valor vбlido da gravidade!"
-#define GRAVITY_CHANGED					"%s definiu o valor da gravidade para %f"
-#define NOT_RCON_ADMIN_ERROR			"Vocк nгo й administrador da Rcon!"
-#define NOT_IN_FLYMODE_ERROR			"Vocк nгo estб no modo de ediзгo!"
-#define MAP_MANAGEMENT					"Gerenciamento de mapas"
-#define OK_BUTTON						"Ok"
-#define DELETE_BUTTON					"Deletar"
-#define CANCEL_BUTTON					"Cancelar"
-#define NEW_MAP							"Novo mapa"
-#define OPEN_MAP						"Mapa aberto"
-#define OPEN_MAP_OVER					"Mapa aberto sobre a corrente"
-#define SAVE_MAP						"Salvar mapa"
-#define SAVE_MAP_AS						"Salvar mapa como"
-#define DELETE_MAP						"Excluir mapa"
-#define BACK_BUTTON						"De Volta"
-#define NEW_MAP_WARNING					"Tem certeza de que quer criar um novo mapa?"
-#define NEW_MAP_WARNING_2				"Todos os objetos no mapa antigo serгo excluнdos."
-#define OPEN_MAP_WARNING				"Tem certeza que quer abrir o mapa?"
-#define OPEN_MAP_OVER_WARNING			"Tem certeza de que quer abrir o mapa sobre o atual?"
-#define OPEN_MAP_OVER_WARNING_2			"Todos os objetos previamente criados nгo serгo excluнdos."
-#define ENTER_MAP_NAME					"Digite o nome do mapa..."
-#define ENTER_MAP_NAME_TO_OPEN			"Digite o nome do mapa que deseja abrir:"
-#define ENTER_MAP_NAME_TO_DELETE		"Digite o nome do mapa que deseja excluir:"
-#define CREATE							"Criar"
-#define EDIT							"Editar"
-#define DUPLICATES						"Encontrar duplicaзхes"
-#define TELEPORT_INTO					"Mover para"
-#define COPY_DEFAULT_OBJECTS			"Copiar objetos de mapa padrгo"
-#define DELETE_DEFAULT_OBJECTS			"Remover objetos de mapa padrгo"
-#define EDIT_SETTINGS					"Configuraзхes do editor"
-#define MAP_SETTINGS					"Configuraзхes do mapa"
-#define KEY_INSTRUCTION					"Instruзхes do teclado"
-#define CMD_INSTRUCTION					"Instruзхes de comandos"
-#define CREATE_OBJECT					"Criar objeto"
-#define CREATE_VEHICLE					"Criar veнculo"
-#define CREATE_ACTOR					"Criar ator"
-#define CREATE_PICKUP					"Criar pickup"
-#define CREATE_CP						"Criar ponto de verificaзгo"
-#define CREATE_RCP						"Criar ponto de verificaзгo de corrida"
-#define CREATE_ICON						"Criar нcone de mapa"
-#define CREATE_ZONE						"Criar gangzone"
-#define CREATE_LABEL					"Criar texto 3D"
-#define OBJECT							"Objeto"
-#define VEHICLE							"Veiculo"
-#define COMPONENT						"Componente"
-#define ACTOR							"Ator"
-#define PICKUP							"Pickup"
+#define MAP_DOES_NOT_EXIST_ERROR		"Вам необходимо создать какую-либо карту!"
+#define MAP_DOES_NOT_EXIST_SAVE_ERROR	"Вам необходимо создать какую-либо карту для её сохранения!"
+#define MAP_SAVED						"%s сохранил карту %s"
+#define SAVE_MAP_ERROR					"При сохранении карты произошла ошибка!"
+#define ENTER_MAP_NAME_TO_SAVE			"Введите название карты, которую хотите сохранить:"
+#define ENTER_MAP_NAME_ERROR			"Вам необходимо ввести название карты!"
+#define MAP_CREATED						"%s создал новую карту"
+#define MAP_OPENED						"%s открыл карту %s"
+#define MAP_OPENED_OVER					"%s открыл карту %s поверх текущей"
+#define MAP_RENAMED						"%s переименовал карту %s в %s"
+#define MAP_RENAMED_BLANK				"%s переименовал карту в %s"
+#define FILE_NOT_FOUND_ERROR			"Файл не найден!"
+#define INCORRECT_FILE_NAME_ERROR		"Введите корректное имя файла!"
+#define INCORRECT_MAP_NAME_ERROR		"Введите корректное название карты!"
+#define MAP_DELETED						"%s удалил карту %s"
+#define COLANDREAS_COMPATIBILITY_ERROR	"Данная функция доступна только после подключения ColAndreas!"
+#define SHOW_FOUNDED_MATCHES			"Показано %d первых совпадений"
+#define NO_MATCHES_FOUND				"Совпадений не найдено"
+#define ENTER_OBJECT_NAME				"Введите ID или название модели объекта:"
+#define INCORRECT_OBJ_MODEL_ERROR		"Введите правильный ID или название модели объекта!"
+#define OBJECT_CREATED					"Объект id %d создан"
+#define LIMIT_ERROR						"Вы достигли лимита!"
+#define ENTER_VEHICLE_NAME				"Введите ID или название модели транспорта:"
+#define INCORRECT_VEH_MODEL_ERROR		"Введите правильный ID или название модели транспорта!"
+#define VEHICLE_CREATED					"Транспорт id %d создан"
+#define ENTER_SKIN_NAME					"Введите ID или название скина актёра:"
+#define INCORRECT_SKIN_ID_ERROR			"Введите правильный ID или название скина актёра!"
+#define ACTOR_CREATED					"Актёр id %d создан"
+#define ENTER_PICKUP_NAME				"Введите ID или название модели пикапа:"
+#define INCORRECT_PICKUP_MODEL_ERROR	"Введите правильный ID или название модели пикапа!"
+#define PICKUP_CREATED					"Пикап id %d создан"
+#define CP_CREATED						"Checkpoint id %d создан"
+#define RCP_TYPE_NORMAL					"Обычный"
+#define RCP_TYPE_FINISH					"Финиш"
+#define RCP_TYPE_NOTHING				"Без указателя"
+#define RCP_TYPE_AIR_NORMAL				"Воздушный обычный"
+#define RCP_TYPE_AIR_FINISH				"Воздушный финиш"
+#define RCP_TYPE_AIR_ROTATE				"Воздушный: поворачивается"
+#define RCP_TYPE_AIR_RESIZE				"Воздушный: увеличивается, уменьшается и исчезает"
+#define RCP_TYPE_AIR_SWINGS_DOWNUP		"Воздушный: качается вниз-вверх"
+#define RCP_TYPE_AIR_SWINGS_UPDOWN		"Воздушный: качается вверх-вниз"
+#define RCP_CREATED						"Race checkpoint id %d создан"
+#define ENTER_ICON_NAME					"Введите ID или название map иконки:"
+#define INVALID_MAP_ICONS_WARNING		"ID 1, 2, 4 и 56 могут привести к крашу игры, если у вас включена легенда карты!"
+#define INCORRECT_ICON_ID_ERROR			"Введите правильный ID или название map иконки!"
+#define UNKNOWN_ICON_ID_ERROR			"Данная map иконка создана не через редактор!"
+#define NO_SELECTED_ICONS_ERROR			"Вы не выделили ни одной map иконки!"
+#define ICON_CREATED					"Map иконка id %d создана"
+#define ZONE_CREATED					"Gang зона id %d создана"
+#define INCORRECT_LABEL_NAME_ERROR		"Введите текст, который будет отображать 3D текст!"
+#define ENTER_TEXT						"Введите текст:"
+#define LABEL_CREATED					"3D текст id %d создан"
+#define TELEPORTED_TO_OBJECT			"Вы переместились к объекту id %d"
+#define OBJECT_IS_ATTACHED_ERROR		"Перемещение невозможно, объект прикреплён!"
+#define TELEPORTED_OBJECT				"Вы переместили объект id %d к себе"
+#define OBJECT_IS_NOT_ATTACHED_ERROR	"Копирование невозможно, объект не прикреплён!"
+#define NO_SURFACE_FOUND_ERROR			"Доступная поверхность не найдена!"
+#define OBJECT_FOUND_SURFACE			"Вы переместили объект id %d на ближайшую поверхность"
+#define OBJECT_FOUND_INCLINED_SURFACE	"Вы переместили объект id %d на ближайшую поверхность с наклоном"
+#define OBJECT_COPIED					"Объект id %d скопирован"
+#define OBJECT_DELETED					"Объект id %d удалён"
+#define OBJECT_REMOVED					"Модель id %d удалена"
+#define TEXTURE_RESET					"Текстура объекта id %d сброшена (слой %d)"
+#define OBJECT_COLOR_RESET				"Цвет объекта id %d сброшен (слой %d)"
+#define ENTER_TEXTURE_NAME				"Введите ID или название текстуры:"
+#define INCORRECT_TEXTURE_ID_ERROR		"Введите правильный ID или название текстуры!"
+#define TEXTURE_CHANGED					"Текстура объекта id %d изменена на %d (слой %d)"
+#define INCORRECT_OBJECT_COLOR_ERROR	"Введите правильный цвет объекта!"
+#define ENTER_OBJECT_COLOR				"Введите цвет объекта в формате ARGB:"
+#define OBJECT_COLOR_CHANGED			"Вы установили цвет 0x%08x объекту id %d (слой %d)"
+#define INCORRECT_ALPHA_ERROR			"Введите правильное значение прозрачности!"
+#define ENTER_ALPHA						"Введите значение прозрачности (alpha) от 0 до 255:"
+#define OBJECT_ALPHA_CHANGED			"Прозрачность объекта id %d изменена на %d (слой %d)"
+#define INCORRECT_LAYER_ID_ERROR		"Введите правильный ID слоя (materialindex)!"
+#define OBJECT_TEXT_RESET				"Текст объекта id %d сброшен (слой %d)"
+#define INCORRECT_OBJECT_TEXT_ERROR		"Введите текст, который будет отображаться на объекте!"
+#define OBJECT_TEXT_CHANGED				"Текст объекта id %d изменён (слой %d)"
+#define OBJECT_TEXT_SIZE_CHANGED		"Размер текста объекта id %d изменён на %d (слой %d)"
+#define INCORRECT_FONT_NAME_ERROR		"Введите название шрифта, которым будет написан текст на объекте!"
+#define ENTER_FONT_NAME					"Введите название шрифта:"
+#define FONT_CHANGED					"Шрифт текста объекта id %d изменён (слой %d)"
+#define INCORRECT_FONT_SIZE_ERROR		"Введите правильный размер шрифта!"
+#define ENTER_FONT_SIZE					"Введите размер шрифта от 0 до 255:"
+#define FONT_SIZE_CHANGED				"Размер шрифта текста объекта id %d изменён на %d (слой %d)"
+#define OBJECT_TEXT_BOLD_CHANGED		"Жирность текста объекта id %d установлена на %d (слой %d)"
+#define INCORRECT_FONT_COLOR_ERROR		"Введите правильный цвет шрифта объекта!"
+#define ENTER_FONT_COLOR				"Введите цвет шрифта в формате ARGB:"
+#define FONT_COLOR_CHANGED				"Вы установили цвет 0x%08x тексту объекта id %d (слой %d)"
+#define FONT_ALPHA_CHANGED				"Прозрачность текста объекта id %d изменена на %d (слой %d)"
+#define INCORRECT_BACK_COLOR_ERROR		"Введите правильный цвет фона объекта!"
+#define ENTER_BACK_COLOR				"Введите цвет фона в формате ARGB:"
+#define BACK_COLOR_CHANGED				"Вы установили цвет 0x%08x фону объекта id %d (слой %d)"
+#define ALIGNMENT_CHANGED				"Выравнивание текста объекта id %d изменено на %d (слой %d)"
+#define TEXT_TEXTURE_COPIED				"Текст/текстура объекта id %d скопирована (слой %d)"
+#define TEXT_TEXTURE_PASTED				"Текст/текстура вставлена на объект id %d (слой %d)"
+#define TEXT_TEXTURE_RESET				"Текст/текстура объекта id %d сброшена (слой %d)"
+#define TEXTURES_PASTED					"Текст и текстуры вставлены на объект id %d"
+#define TEXTURES_COPIED					"Текст и текстуры объекта id %d скопированы"
+#define TEXTURES_RESET					"Текст и текстуры объекта id %d сброшены"
+#define BUFFER_CLEARED					"Буфер обмена текста и текстур очищен"
+#define INCORRECT_PLAYER_ID_ERROR		"Введите правильный ID игрока!"
+#define PLAYER_IS_NOT_SPAWNED_ERROR		"Данный игрок не заспавнен!"
+#define STREAMER_COMPATIBILITY_ERROR	"Данная функция недоступна, если используется Streamer Plugin!"
+#define OBJECT_ATTACHED_TO_PLAYER		"Объект id %d прикреплён к игроку id %d"
+#define INCORRECT_OBJECT_ID_ERROR		"Введите правильный ID объекта!"
+#define UNKNOWN_OBJECT_ID_ERROR			"Данный объект создан не через редактор!"
+#define OBJECT_ATTACHED_TO_OBJECT		"Объект id %d прикреплён к объекту id %d"
+#define INCORRECT_VEHICLE_ID_ERROR		"Введите правильный ID транспорта!"
+#define UNKNOWN_VEHICLE_ID_ERROR		"Данный транспорт создан не через редактор!"
+#define OBJECT_ATTACHED_TO_VEHICLE		"Объект id %d прикреплён к транспорту id %d"
+#define INCORRECT_COORD_X_ERROR			"Введите правильную координату X!"
+#define OBJECT_TELEPORTED_TO_X			"Вы переместили объект id %d на координату X: %.4f"
+#define INCORRECT_COORD_Y_ERROR			"Введите правильную координату Y!"
+#define OBJECT_TELEPORTED_TO_Y			"Вы переместили объект id %d на координату Y: %.4f"
+#define INCORRECT_COORD_Z_ERROR			"Введите правильную координату Z!"
+#define OBJECT_TELEPORTED_TO_Z			"Вы переместили объект id %d на координату Z: %.4f"
+#define INCORRECT_ROT_X_ERROR			"Введите правильную координату вращения X!"
+#define OBJECT_TELEPORTED_TO_RX			"Вы установили объекту id %d координату вращения X: %.4f"
+#define INCORRECT_ROT_Y_ERROR			"Введите правильную координату вращения Y!"
+#define OBJECT_TELEPORTED_TO_RY			"Вы установили объекту id %d координату вращения Y: %.4f"
+#define INCORRECT_ROT_Z_ERROR			"Введите правильную координату вращения Z!"
+#define OBJECT_TELEPORTED_TO_RZ			"Вы установили объекту id %d координату вращения Z: %.4f"
+#define OBJECT_ROT_RESET				"Вы сбросили вращение объекту id %d"
+#define NO_SELECTED_OBJECTS_ERROR		"Вы не выделили ни одного объекта!"
+#define EMPTY_BUFFER_ERROR				"Буфер обмена пуст для данной операции!"
+#define TELEPORTED_TO_VEHICLE			"Вы переместились к транспорту id %d"
+#define TELEPORTED_VEHICLE				"Вы переместили транспорт id %d к себе"
+#define VEHICLE_FOUND_SURFACE			"Вы переместили транспорт id %d на ближайшую поверхность"
+#define VEHICLE_COPIED					"Транспорт id %d скопирован"
+#define VEHICLE_DELETED					"Транспорт id %d удалён"
+#define VEHICLE_REPAIRED				"Транспорт id %d отремонтирован"
+#define PAINTJOB_REMOVED				"Покрасочная работа с транспорта id %d удалена"
+#define ALL_COMPONENTS_REMOVED			"Все компоненты с транспорта id %d удалены"
+#define ENTER_COMPONENT_NAME			"Введите ID или название компонента:"
+#define INCORRECT_COMPONENT_ID_ERROR	"Введите правильный ID или название компонента!"
+#define INCOMPATIBLE_COMPONENT_ID_ERROR	"Данный компонент не совместим с выбранным транспортом!"
+#define COMPONENT_ADDED					"Компонент id %d добавлен на транспорт id %d"
+#define ENTER_PAINTJOB_ID				"Введите ID покрасочной работы:"
+#define PAINTJOB_NOW					"Покрасочная работа сейчас:"
+#define INCORRECT_PAINTJOB_ID_ERROR		"Введите правильный ID покрасочной работы!"
+#define INCOMPATIBLE_PAINTJOB_ID_ERROR	"Данная покрасочная работа несовместима с выбранным транспортом!"
+#define PAINTJOB_CHANGED				"Покрасочная работа id %d добавлена на транспорт id %d"
+#define COMPONENT_REMOVED				"Компонент id %d удалён с транспорта id %d"
+#define VEHICLE_TELEPORTED_TO_X			"Вы переместили транспорт id %d на координату X: %.4f"
+#define VEHICLE_TELEPORTED_TO_Y			"Вы переместили транспорт id %d на координату Y: %.4f"
+#define VEHICLE_TELEPORTED_TO_Z			"Вы переместили транспорт id %d на координату Z: %.4f"
+#define VEHICLE_TELEPORTED_TO_RZ		"Вы установили транспорту id %d координату вращения Z: %.4f"
+#define INCORRECT_RESPAWN_TIME_ERROR	"Введите правильное время респавна!"
+#define RESPAWN_TIME_CHANGED			"Вы установили время респавна %d с транспорту id %d"
+#define INCORRECT_COLOR_1_ERROR			"Введите правильный цвет 1!"
+#define COLOR_1_CHANGED					"Вы установили транспорту id %d цвет 1: %d"
+#define INCORRECT_COLOR_2_ERROR			"Введите правильный цвет 2!"
+#define COLOR_2_CHANGED					"Вы установили транспорту id %d цвет 2: %d"
+#define NO_SELECTED_VEHICLES_ERROR		"Вы не выделили ни один транспорт!"
+#define TELEPORTED_TO_ACTOR				"Вы переместились к актёру id %d"
+#define TELEPORTED_ACTOR				"Вы переместили актёра id %d к себе"
+#define ACTOR_FOUND_SURFACE				"Вы переместили актёра id %d на ближайшую поверхность"
+#define ACTOR_COPIED					"Актёр id %d скопирован"
+#define ACTOR_DELETED					"Актёр id %d удалён"
+#define INCORRECT_ANIMATION_ID_ERROR	"Введите правильный ID или название анимации!"
+#define ACTOR_ANIM_CHANGED				"Анимация актёра id %d изменена на %d"
+#define ACTOR_ANIM_CLEANED				"Анимация актёра id %d очищена"
+#define ACTOR_TELEPORTED_TO_X			"Вы переместили актёра id %d на координату X: %.4f"
+#define ACTOR_TELEPORTED_TO_Y			"Вы переместили актёра id %d на координату Y: %.4f"
+#define ACTOR_TELEPORTED_TO_Z			"Вы переместили актёра id %d на координату Z: %.4f"
+#define ACTOR_TELEPORTED_TO_RZ			"Вы установили актёру id %d координату вращения Z: %.4f"
+#define INCORRECT_ACTOR_ID_ERROR		"Введите правильный ID актёра!"
+#define UNKNOWN_ACTOR_ID_ERROR			"Данный актёр создан не через редактор!"
+#define NO_SELECTED_ACTORS_ERROR		"Вы не выделили ни одного актёра!"
+#define TELEPORTED_TO_PICKUP			"Вы переместились к пикапу id %d"
+#define TELEPORTED_PICKUP				"Вы переместили пикап id %d к себе"
+#define PICKUP_FOUND_SURFACE			"Вы переместили пикап id %d на ближайшую поверхность"
+#define PICKUP_COPIED					"Пикап id %d скопирован"
+#define PICKUP_DELETED					"Пикап id %d удалён"
+#define INCORRECT_PICKUP_TYPE_ERROR		"Введите правильный тип пикапа!"
+#define PICKUP_TYPE_CHANGED				"Вы установили тип %d пикапу id %d"
+#define PICKUP_TELEPORTED_TO_X			"Вы переместили пикап id %d на координату X: %.4f"
+#define PICKUP_TELEPORTED_TO_Y			"Вы переместили пикап id %d на координату Y: %.4f"
+#define PICKUP_TELEPORTED_TO_Z			"Вы переместили пикап id %d на координату Z: %.4f"
+#define INCORRECT_VW_ERROR				"Введите правильный ID виртуального мира!"
+#define PICKUP_VW_CHANGED				"Вы установили виртуальный мир %d пикапу id %d"
+#define INCORRECT_PICKUP_ID_ERROR		"Введите правильный ID пикапа!"
+#define UNKNOWN_PICKUP_ID_ERROR			"Данный пикап создан не через редактор!"
+#define NO_SELECTED_PICKUPS_ERROR		"Вы не выделили ни одного пикапа!"
+#define TELEPORTED_TO_CP				"Вы переместились к checkpoint'у id %d"
+#define TELEPORTED_CP					"Вы переместили checkpoint id %d к себе"
+#define CP_DELETED						"Checkpoint id %d удалён"
+#define CP_TELEPORTED_TO_X				"Вы переместили checkpoint id %d на координату X: %.4f"
+#define CP_TELEPORTED_TO_Y				"Вы переместили checkpoint id %d на координату Y: %.4f"
+#define INCORRECT_SIZE_ERROR			"Введите правильный размер!"
+#define CP_SIZE_CHANGED					"Вы установили размер %.1f checkpoint'у id %d"
+#define NO_CPS_CREATED_ERROR			"В данный момент не создано ни одного checkpoint'а!"
+#define TELEPORTED_TO_RCP				"Вы переместились к race checkpoint'у id %d"
+#define TELEPORTED_RCP					"Вы переместили race checkpoint id %d к себе"
+#define RCP_DELETED						"Race checkpoint id %d удалён"
+#define RCP_TYPE_CHANGED				"Вы установили тип %d race checkpoint'у id %d"
+#define RCP_TELEPORTED_TO_X				"Вы переместили race checkpoint id %d на координату X: %.4f"
+#define RCP_TELEPORTED_TO_Y				"Вы переместили race checkpoint id %d на координату Y: %.4f"
+#define RCP_TELEPORTED_TO_Z				"Вы переместили race checkpoint id %d на координату Z: %.4f"
+#define INCORRECT_NEXTX_ERROR			"Введите правильную координату X следующей точки, на которую будет повёрнут указатель!"
+#define RCP_NEXTX_CHANGED				"NextX для race checkpoint'а id %d установлена на %.4f"
+#define INCORRECT_NEXTY_ERROR			"Введите правильную координату Y следующей точки, на которую будет повёрнут указатель!"
+#define RCP_NEXTY_CHANGED				"NextY для race checkpoint'а id %d установлена на %.4f"
+#define INCORRECT_NEXTZ_ERROR			"Введите правильную координату Z следующей точки, на которую будет повёрнут указатель!"
+#define RCP_NEXTZ_CHANGED				"NextZ для race checkpoint'а id %d установлена на %.4f"
+#define RCP_SIZE_CHANGED				"Вы установили размер %.1f race checkpoint'у id %d"
+#define INCORRECT_RCP_TYPE_ERROR		"Введите правильный тип race checkpoint'а!"
+#define NO_RCPS_CREATED_ERROR			"В данный момент не создано ни одного race checkpoint'а!"
+#define TELEPORTED_TO_MAPICON			"Вы переместились к map иконке id %d"
+#define TELEPORTED_MAPICON				"Вы переместили map иконку id %d к себе"
+#define MAPICON_COPIED					"Map иконка id %d скопирована"
+#define MAPICON_DELETED					"Map иконка id %d удалена"
+#define MAPICON_TELEPORTED_TO_X			"Вы переместили map иконку id %d на координату X: %.4f"
+#define MAPICON_TELEPORTED_TO_Y			"Вы переместили map иконку id %d на координату Y: %.4f"
+#define MAPICON_TELEPORTED_TO_Z			"Вы переместили map иконку id %d на координату Z: %.4f"
+#define INCORRECT_ICON_COLOR_ERROR		"Введите правильный цвет map иконки!"
+#define MAPICON_COLOR_CHANGED			"Вы установили цвет 0x%08x map иконке id %d"
+#define MAPICON_ALPHA_CHANGED			"Прозрачность map иконки id %d изменена на %d"
+#define INCORRECT_ICON_STYLE_ERROR		"Введите правильный стиль отображения map иконки!"
+#define MAPICON_STYLE_CHANGED			"Вы установили стиль отображения %d map иконке id %d"
+#define TELEPORTED_TO_GANGZONE			"Вы переместились к gang зоне id %d"
+#define TELEPORTED_GANGZONE				"Вы переместили gang зону id %d к себе"
+#define GANGZONE_COPIED					"Gang зона id %d скопирована"
+#define GANGZONE_DELETED				"Gang зона id %d удалена"
+#define INCORRECT_COORD_MINX_ERROR		"Введите правильную координату min X!"
+#define GANGZONE_MINX_CHANGED			"Вы установили gang зоне id %d координату min X: %.4f"
+#define INCORRECT_COORD_MINY_ERROR		"Введите правильную координату min Y!"
+#define GANGZONE_MINY_CHANGED			"Вы установили gang зоне id %d координату min Y: %.4f"
+#define INCORRECT_COORD_MAXX_ERROR		"Введите правильную координату max X!"
+#define GANGZONE_MAXX_CHANGED			"Вы установили gang зоне id %d координату max X: %.4f"
+#define INCORRECT_COORD_MAXY_ERROR		"Введите правильную координату max Y!"
+#define GANGZONE_MAXY_CHANGED			"Вы установили gang зоне id %d координату max Y: %.4f"
+#define INCORRECT_ZONE_COLOR_ERROR		"Введите правильный цвет gang зоны!"
+#define GANGZONE_COLOR_CHANGED			"Вы установили цвет 0x%08x gang зоне id %d"
+#define GANGZONE_ALPHA_CHANGED			"Прозрачность gang зоны id %d изменена на %d"
+#define INCORRECT_ZONE_ID_ERROR			"Введите правильный ID gang зоны!"
+#define UNKNOWN_ZONE_ID_ERROR			"Данная gang зона создана не через редактор!"
+#define NO_SELECTED_ZONES_ERROR			"Вы не выделили ни одной gang зоны!"
+#define TELEPORTED_TO_LABEL				"Вы переместились к 3D тексту id %d"
+#define LABEL_IS_ATTACHED_ERROR			"Перемещение невозможно, 3D текст прикреплён!"
+#define TELEPORTED_LABEL				"Вы переместили 3D текст id %d к себе"
+#define LABEL_IS_NOT_ATTACHED_ERROR		"Копирование невозможно, 3D текст не прикреплён!"
+#define LABEL_FOUND_SURFACE				"Вы переместили 3D текст id %d на ближайшую поверхность"
+#define LABEL_COPIED					"3D текст id %d скопирован"
+#define LABEL_DELETED					"3D текст id %d удалён"
+#define LABEL_TEXT_CHANGED				"Текст 3D текста id %d изменён"
+#define INCORRECT_LABEL_COLOR_ERROR		"Введите правильный цвет 3D текста!"
+#define LABEL_COLOR_CHANGED				"Вы установили цвет 0x%08x 3D тексту id %d"
+#define LABEL_ALPHA_CHANGED				"Прозрачность 3D текста id %d изменена на %d"
+#define LABEL_ATTACHED_TO_PLAYER		"3D текст id %d прикреплён к игроку id %d"
+#define LABEL_ATTACHED_TO_VEHICLE		"3D текст id %d прикреплён к транспорту id %d"
+#define LABEL_TELEPORTED_TO_X			"Вы переместили 3D текст id %d на координату X: %.4f"
+#define LABEL_TELEPORTED_TO_Y			"Вы переместили 3D текст id %d на координату Y: %.4f"
+#define LABEL_TELEPORTED_TO_Z			"Вы переместили 3D текст id %d на координату Z: %.4f"
+#define INCORRECT_LABEL_DD_ERROR		"Введите правильную дистанцию прорисовки!"
+#define LABEL_DD_CHANGED				"Вы установили дистанцию прорисовки %.4f 3D тексту id %d"
+#define LABEL_VW_CHANGED				"Вы установили виртуальный мир %d 3D тексту id %d"
+#define LABEL_LOS_ENABLED				"Видимость сквозь стены 3D текста id %d включена"
+#define LABEL_LOS_DISABLED				"Видимость сквозь стены 3D текста id %d отключена"
+#define INCORRECT_LABEL_ID_ERROR		"Введите правильный ID 3D текста!"
+#define UNKNOWN_LABEL_ID_ERROR			"Данный 3D текст создан не через редактор!"
+#define NO_SELECTED_LABELS_ERROR		"Вы не выделили ни одного 3D текста!"
+#define NO_DUPLICATES_FOUND				"Ни одного дубликата не найдено"
+#define INCORRECT_COORDS_ERROR			"Введите правильные координаты!"
+#define TELEPORTED_TO_COORDS			"Вы переместились на координаты %.4f, %.4f, %.4f"
+#define INCORRECT_INTERIOR_ID_ERROR		"Введите правильный ID интерьера!"
+#define TELEPORTED_TO_INTERIOR			"Вы переместились в интерьер id %d"
+#define TELEPORTED_TO_VW				"Вы переместились в виртуальный мир id %d"
+#define INCORRECT_MAP_MARKER_ERROR		"Установите метку на карте!"
+#define TELEPORTED_TO_DEFAULT_INT		"Вы переместились в интерьер %s"
+#define INCORRECT_CAM_SPEED_ERROR		"Введите правильную скорость полёта камеры!"
+#define CAM_SPEED_SLOW_CHANGED			"%s изменил скорость полёта камеры (Alt) на %.1f"
+#define CAM_SPEED_FAST_CHANGED			"%s изменил скорость полёта камеры (Shift) на %.1f"
+#define CAM_SPEED_CHANGED				"%s изменил скорость полёта камеры на %.1f"
+#define INCORRECT_CAM_DIST_ERROR		"Введите правильную дистанцию от камеры!"
+#define CAM_DIST_CHANGED				"%s изменил дистанцию от камеры на %.1f"
+#define INCORRECT_ZONE_DIST_ERROR		"Введите правильную дистанцию перемещения gang зоны!"
+#define ZONE_DIST_SHORT_CHANGED			"%s изменил дистанцию перемещения gang зоны (Alt) на %.1f"
+#define ZONE_DIST_LONG_CHANGED			"%s изменил дистанцию перемещения gang зоны (Shift) на %.1f"
+#define ZONE_DIST_CHANGED				"%s изменил дистанцию перемещения gang зоны на %.1f"
+#define INCORRECT_ICON_DIST_ERROR		"Введите правильную дистанцию перемещения map иконки!"
+#define ICON_DIST_SHORT_CHANGED			"%s изменил дистанцию перемещения map иконки (Alt) на %.1f"
+#define ICON_DIST_LONG_CHANGED			"%s изменил дистанцию перемещения map иконки (Shift) на %.1f"
+#define ICON_DIST_CHANGED				"%s изменил дистанцию перемещения map иконки на %.1f"
+#define INCORRECT_DIST_ERROR			"Введите правильную дистанцию перемещения!"
+#define DIST_SHORT_CHANGED				"%s изменил дистанцию перемещения (Alt) на %.1f"
+#define DIST_LONG_CHANGED				"%s изменил дистанцию перемещения (Shift) на %.1f"
+#define DIST_CHANGED					"%s изменил дистанцию перемещения на %.1f"
+#define INCORRECT_ROT_SPEED_ERROR		"Введите правильную скорость вращения!"
+#define ROT_SPEED_SLOW_CHANGED			"%s изменил скорость вращения (Alt) на %.1f"
+#define ROT_SPEED_FAST_CHANGED			"%s изменил скорость вращения (Shift) на %.1f"
+#define ROT_SPEED_CHANGED				"%s изменил скорость вращения на %.1f"
+#define INTERFACE_VISIBILITY_ENABLED	"%s включил видимость интерфейса"
+#define INTERFACE_VISIBILITY_DISABLED	"%s отключил видимость интерфейса"
+#define INCORRECT_WEATHER_ID_ERROR		"Введите правильный ID погоды!"
+#define WEATHER_ID_CHANGED				"%s изменил погоду на id %d"
+#define TIME_CHANGED					"%s установил время на %d:00"
+#define INCORRECT_GRAVITY_ERROR			"Введите правильное значение гравитации!"
+#define GRAVITY_CHANGED					"%s установил значение гравитации на %f"
+#define NOT_RCON_ADMIN_ERROR			"Вы не являетесь RCon админом!"
+#define NOT_IN_FLYMODE_ERROR			"Вы не в режиме редактирования!"
+#define MAP_MANAGEMENT					"Управление картами"
+#define OK_BUTTON						"Ок"
+#define DELETE_BUTTON					"Удалить"
+#define CANCEL_BUTTON					"Отмена"
+#define NEW_MAP							"Новая карта"
+#define OPEN_MAP						"Открыть карту"
+#define OPEN_MAP_OVER					"Открыть карту поверх текущей"
+#define SAVE_MAP						"Сохранить карту"
+#define SAVE_MAP_AS						"Сохранить карту как"
+#define DELETE_MAP						"Удалить карту"
+#define BACK_BUTTON						"Назад"
+#define NEW_MAP_WARNING					"Вы действительно хотите создать новую карту?"
+#define NEW_MAP_WARNING_2				"Все объекты старой карты будут удалены."
+#define OPEN_MAP_WARNING				"Вы действительно хотите открыть карту?"
+#define OPEN_MAP_OVER_WARNING			"Вы действительно хотите открыть карту поверх текущей?"
+#define OPEN_MAP_OVER_WARNING_2			"Все ранее созданные объекты не будут удалены."
+#define ENTER_MAP_NAME					"Ввести название карты..."
+#define ENTER_MAP_NAME_TO_OPEN			"Введите название карты, которую хотите открыть:"
+#define ENTER_MAP_NAME_TO_DELETE		"Введите название карты, которую хотите удалить:"
+#define CREATE							"Создать"
+#define EDIT							"Редактировать"
+#define DUPLICATES						"Найти дубликаты"
+#define TELEPORT_INTO					"Переместиться в"
+#define COPY_DEFAULT_OBJECTS			"Скопировать стандартные объекты"
+#define DELETE_DEFAULT_OBJECTS			"Удалить стандартные объекты"
+#define EDIT_SETTINGS					"Настройки редактора"
+#define MAP_SETTINGS					"Настройки карты"
+#define KEY_INSTRUCTION					"Инструкция по клавишам"
+#define CMD_INSTRUCTION					"Инструкция по командам"
+#define CREATE_OBJECT					"Создать объект"
+#define CREATE_VEHICLE					"Создать транспорт"
+#define CREATE_ACTOR					"Создать актёра"
+#define CREATE_PICKUP					"Создать пикап"
+#define CREATE_CP						"Создать checkpoint"
+#define CREATE_RCP						"Создать race checkpoint"
+#define CREATE_ICON						"Создать map иконку"
+#define CREATE_ZONE						"Создать gang зону"
+#define CREATE_LABEL					"Создать 3D текст"
+#define OBJECT							"Объект"
+#define VEHICLE							"Транспорт"
+#define COMPONENT						"Компонент"
+#define ACTOR							"Актёр"
+#define PICKUP							"Пикап"
 #define CHECKPOINT						"Checkpoint"
-#define RACECP							"Checkpoint de corrida"
-#define MAPICON							"Нcone do mapa"
-#define GANGZONE						"Gangzone"
-#define LABEL							"Texto 3D"
-#define NEXT_ITEM						"Prуximo"
-#define PREV_ITEM						"Voltar"
-#define EMPTY_MAP_ERROR					"Atualmente nada foi criado!"
-#define EDIT_OBJECT						"Editar objeto"
-#define SELECT_OBJECT					"Selecionar objeto"
-#define TELEPORT_TO_OBJECT				"Mover para objeto"
-#define TELEPORT_OBJECT					"Mover objeto para vocк"
-#define COPY_ATTACHED_OBJECT			"Copiar objeto anexado"
-#define COPY_OBJECT						"Copiar objeto"
-#define DELETE_OBJECT					"Excluir objeto"
-#define STICK_TO_SURFACE				"Aderir а superfнcie"
-#define STICK_TO_INCLINED_SURFACE		"Aderir а superfнcie com inclinaзгo"
-#define EDIT_MATERIAL					"Substituiзгo de texturas"
-#define EDIT_MATERIAL_TEXT				"Substituiзгo de texturas com texto"
-#define PASTE_TEXTURES					"Colar texto e texturas"
-#define COPY_TEXTURES					"Copiar texto e texturas"
-#define RESET_TEXTURES					"Redefinir texto e texturas"
-#define ATTACH_TO_PLAYER				"Anexar ao jogador"
-#define ATTACH_TO_OBJECT				"Anexar ao objeto"
-#define ATTACH_TO_VEHICLE				"Anexar ao veнculo"
-#define COORD_X							"Coordenada do eixo X"
-#define COORD_Y							"Coordenada do eixo Y"
-#define COORD_Z							"Coordenada do eixo Z"
-#define ROT_X							"Rotaзгo do eixo X"
-#define ROT_Y							"Rotaзгo do eixo Y"
-#define ROT_Z							"Rotaзгo do eixo Z"
-#define ROT_RESET						"Redefinir rotaзгo"
-#define LAYER							"Camada"
-#define RESET_TEXTURE					"Redefinir textura"
-#define RESET_OBJECT_COLOR				"Redefinir a cor do objeto"
-#define COPY_TEXTURE					"Copiar textura e cor"
-#define OBJECT_TEXTURE					"Textura do objeto:"
-#define OBJECT_COLOR					"Cor do objeto:"
-#define EDIT_TEXTURE					"Alterar textura (camada %d)"
-#define EDIT_OBJECT_COLOR				"Mudar a cor do objeto (camada %d)"
-#define ENTER_LAYER_ID					"Digite o ID da camada (materialindex) de 0 a 15:"
-#define RESET_TEXT						"Redefinir texto"
-#define COPY_TEXT						"Copiar texto"
-#define OBJECT_TEXT						"Texto do objeto:"
-#define OBJECT_TEXT_SIZE				"Tamanho do texto:"
-#define TEXT_FONT						"Fonte:"
-#define FONT_SIZE						"Tamanho da fonte:"
-#define BOLD							"Negrito:"
-#define FONT_COLOR						"Cor da fonte:"
-#define BACK_COLOR						"Cor de fundo:"
-#define ALIGNMENT						"Alinhamento:"
-#define EDIT_TEXT						"Alterar texto"
-#define EDIT_OBJECT_TEXT_SIZE			"Alterar o tamanho do texto"
-#define EDIT_FONT						"Alterar fonte"
-#define CHOOSE_FROM_EXIST_FONTS			"Escolha entre fontes disponнveis"
-#define ENTER_FONT						"Digite o nome da fonte"
-#define CHOOSE_FONT						"Escolha a fonte"
-#define EDIT_FONT_SIZE					"Alterar o tamanho da fonte"
-#define EDIT_OBJECT_TEXT_BOLD			"Colocar/Tirar fonte em negrito"
-#define ENABLE_BOLD						"Tornar o texto ousado"
-#define DISABLE_BOLD					"Remova em negrito do texto"
-#define EDIT_OBJECT_FONT_COLOR			"Alterar a cor da fonte"
-#define EDIT_OBJECT_BACK_COLOR			"Mudar a cor de fundo"
-#define EDIT_OBJECT_TEXT_ALIGNMENT		"Alinhamento de mudanзas"
-#define ALIGNMENT_LEFT					"Esquerda"
-#define ALIGNMENT_CENTER				"Centro"
-#define ALIGNMENT_RIGHT					"Certo"
-#define ENTER_PLAYER_ID					"Digite o ID do jogador:"
-#define ENTER_OBJECT_ID					"Digite o ID do objeto ao qual deseja anexar um objeto:"
-#define ENTER_VEHICLE_ID				"Digite a identificaзгo do veнculo:"
-#define COORDS_NOW						"Coordenadas agora:"
-#define ENTER_COORD_X					"Digite a coordenada X"
-#define ENTER_COORD_Y					"Digite a coordenada Y"
-#define ENTER_COORD_Z					"Digite a coordenada Z"
-#define ENTER_ROT_X						"Digite a coordenada X da rotaзгo"
-#define ENTER_ROT_Y						"Digite a coordenada Y da rotaзгo"
-#define ENTER_ROT_Z						"Digite a coordenada Z da rotaзгo"
-#define COORD_NOW						"Coordenar agora:"
-#define EDIT_VEHICLE					"Editar veнculo"
-#define SELECT_VEHICLE					"Veнculo Seleto"
-#define TELEPORT_TO_VEHICLE				"Mover-se para o veнculo"
-#define TELEPORT_VEHICLE				"Mova o veнculo para si mesmo"
-#define COPY_VEHICLE					"Veнculo de cуpia"
-#define DELETE_VEHICLE					"Excluir veнculo"
-#define REPAIR_VEHICLE					"Veнculo de Reparo"
-#define TUNE_VEHICLE					"Sintonizaзгo veicular"
-#define RESPAWN_TIME					"Tempo respawn"
-#define COLOR_1							"Cor 1"
-#define COLOR_2							"Cor 2"
-#define ADD_COMPONENT					"Adicionar componente"
-#define CHANGE_PAINTJOB					"Mudar o trabalho de pintura"
-#define REMOVE_COMPONENT				"Exibir e remover componentes"
-#define REMOVE_PAINTJOB					"Remova o trabalho de pintura"
-#define REMOVE_ALL_COMPONENTS			"Remova todos os componentes"
-#define NO_COMPONENTS_ERROR				"O veнculo nгo tem nenhum componente!"
-#define ENTER_RESPAWN_TIME				"Digite o tempo de respawn (em segundos), apуs o qual o veнculo aparecerб"
-#define RESPAWN_TIME_NOW				"Time now: %d s"
-#define ENTER_COLOR_1					"Digite a cor 1"
-#define ENTER_COLOR_2					"Digite a cor 2"
-#define COLOR_NOW						"Cor agora:"
-#define EDIT_ACTOR						"Editar ator"
-#define SELECT_ACTOR					"Selecionar ator"
-#define TELEPORT_TO_ACTOR				"Mover-se para ator"
-#define TELEPORT_ACTOR					"Mova ator para si mesmo"
-#define COPY_ACTOR						"Copiar ator"
-#define DELETE_ACTOR					"Deletar ator"
-#define SET_ACTOR_ANIM					"Setar animaзгo"
-#define ENTER_ANIMATION_NAME			"Digite o ID ou o nome da animaзгo:"
-#define CLEAR_ACTOR_ANIM				"Animaзгo clara"
-#define EDIT_PICKUP						"Editar pickup"
-#define SELECT_PICKUP					"Selecionar pickup"
-#define TELEPORT_TO_PICKUP				"Mover-se para pickup"
-#define TELEPORT_PICKUP					"Mova o pickup para si mesmo"
-#define COPY_PICKUP						"Copiar pickup"
-#define DELETE_PICKUP					"Excluir pickup"
-#define EDIT_PICKUP_TYPE				"Mudar tipo de pickup"
-#define EDIT_VW							"Mundo virtual"
-#define ENTER_PICKUP_TYPE				"Digite o tipo do pickup"
-#define TYPE_NOW						"Digite agora:"
-#define ENTER_VW_ID						"Digite o ID do mundo virtual"
-#define VW_NOW							"Mundo virtual agora:"
-#define EDIT_CHECKPOINT					"Editar checkpoint"
-#define SELECT_CHECKPOINT				"Selecionar checkpoint"
-#define TELEPORT_TO_CHECKPOINT			"Mover-se para o checkpoint"
-#define TELEPORT_CHECKPOINT				"Mova o ponto de verificaзгo para si mesmo"
-#define DELETE_CHECKPOINT				"Excluir checkpoint"
-#define EDIT_SIZE						"Tamanho da mudanзa"
-#define ENTER_SIZE						"Digite o tamanho"
-#define SIZE_NOW						"Tamanho agora:"
-#define EDIT_RACECP						"Editar ponto de verificaзгo de corrida"
-#define SELECT_RACECP					"Selecionar ponto de verificaзгo de corrida"
-#define TELEPORT_TO_RACECP				"Mover-se para o ponto de verificaзгo da corrida"
-#define TELEPORT_RACECP					"Mova o ponto de verificaзгo da corrida para vocк mesmo"
-#define DELETE_RACECP					"Excluir ponto de verificaзгo de corrida"
-#define EDIT_TYPE						"Tipo de mudanзa"
-#define COORD_NEXTX						"Coordenada NextX"
-#define COORD_NEXTY						"Coordenada NextY"
-#define COORD_NEXTZ						"Coordenada NextZ"
-#define EDIT_MAPICON					"Editar нcone do mapa"
-#define SELECT_MAPICON					"Selecione o нcone do mapa"
-#define TELEPORT_TO_MAPICON				"Mover-se para mapear нcone"
-#define TELEPORT_MAPICON				"Mova o нcone do mapa para vocк mesmo"
-#define COPY_MAPICON					"Copiar нcone do mapa"
-#define DELETE_MAPICON					"Excluir нcone do mapa"
-#define EDIT_COLOR						"Mudar de cor"
-#define CHOOSE_FROM_EXIST_COLORS		"Escolha entre as cores disponнveis"
-#define ENTER_RGBA_COLOR				"Entrar no formato RGBA"
-#define ENTER_ARGB_COLOR				"Entre no formato ARGB"
-#define CHANGE_ALPHA					"Mudar alfa"
-#define CHOOSE_COLOR					"Escolha cor"
-#define WHITE_COLOR						"Branco"
-#define BLACK_COLOR						"Preto"
-#define YELLOW_COLOR					"Amarelo"
-#define GREEN_COLOR						"Verde"
-#define RED_COLOR						"Vermelho"
-#define PINK_COLOR						"Rosa"
-#define ORANGE_COLOR					"Laranja"
-#define BROWN_COLOR						"Brown"
-#define PURPLE_COLOR					"Roxo"
-#define LIGHT_BLUE_COLOR				"Azul claro"
-#define DARK_BLUE_COLOR					"Azul Escuro"
-#define EDIT_STYLE						"Estilo de exibiзгo"
-#define ENTER_MAPICON_COLOR				"Digite a cor do нcone do mapa (somente para ID 0):"
-#define MAPICON_STYLE_NOW				"Estilo de exibiзгo agora:"
-#define MAPICON_STYLE_LOCAL				"Mostar somente perto"
-#define MAPICON_STYLE_GLOBAL			"Mostar sempre"
-#define MAPICON_STYLE_LOCAL_CP			"Mostar apenas perto (com o ponto de verificaзгo)"
-#define MAPICON_STYLE_GLOBAL_CP			"Mostar sempre (com o checkpoint)"
-#define EDIT_GANGZONE					"Editar gangzone"
-#define EDIT_ZONE_SIZE					"Editar o tamanho da gangzone"
-#define EDIT_ZONE_POS					"Editar posiзгo gangzone"
-#define TELEPORT_TO_ZONE				"Mover-se para gangzone"
-#define TELEPORT_ZONE					"Mover a gangzone para si mesmo"
-#define COPY_ZONE						"Copiar gangzone"
-#define DELETE_ZONE						"Deletar gangzone"
-#define COORD_MINX						"Min X coordenada"
-#define COORD_MINY						"Min Y coordenada"
-#define COORD_MAXX						"Max X coordenada"
-#define COORD_MAXY						"Max Y coordenada"
-#define ENTER_COORD_MINX				"Digite a coordenada min X:"
-#define ENTER_COORD_MINY				"Digite a coordenada min Y:"
-#define ENTER_COORD_MAXX				"Digite a coordenada X mбxima:"
-#define ENTER_COORD_MAXY				"Digite a coordenada Y mбxima:"
-#define ENTER_GANGZONE_COLOR			"Digite a cor do gangzone:"
-#define EDIT_LABEL						"Editar texto 3D"
-#define SELECT_LABEL					"Selecione texto 3D"
-#define TELEPORT_TO_LABEL				"Mover-se para texto 3D"
-#define TELEPORT_LABEL					"Mova texto 3D para si mesmo"
-#define COPY_ATTACHED_LABEL				"Copiar texto 3D anexado"
-#define COPY_LABEL						"Copiar texto 3D"
-#define DELETE_LABEL					"Excluir texto 3D"
-#define LABEL_DD						"Distвncia de sorteio"
-#define LABEL_LOS						"Visibilidade atravйs das paredes"
-#define LABEL_TEXT_NOW					"O texto do texto 3D agora:"
-#define ENTER_LABEL_COLOR				"Digite a cor do texto 3D:"
-#define ENTER_LABEL_DD					"Digite a distвncia de saque na qual vocк pode ver o texto 3D"
-#define LABEL_DD_NOW					"Desenhe distвncia agora:"
-#define LABEL_LOS_NOW					"Visibilidade agora:"
-#define ENABLE_LABEL_LOS				"Ativar a visibilidade atravйs das paredes"
-#define DISABLE_LABEL_LOS				"Desativar a visibilidade atravйs das paredes"
-#define ENABLED							"ativado"
-#define DISABLED						"desativado"
-#define DUPLICATE_OF_ID					"duplicata de id %d"
-#define TELEPORT_TO_COORDS				"Mover-se para coordenadas"
-#define TELEPORT_TO_INT					"Mover-se para o interior"
-#define TELEPORT_TO_VW					"Mover-se para o mundo virtual"
-#define TELEPORT_TO_MAP_MARKER			"Mover-se para o marcador de mapa"
-#define TELEPORT_TO_DEFAULT_INTS		"Mover-se para interiores padrгo"
-#define ENTER_COORDS					"Digite as coordenadas (X, Y, Z):"
-#define ENTER_INTERIOR					"Entre no interior"
-#define INTERIOR_NOW					"Interior agora:"
-#define CHOOSE_INTERIOR					"Escolha interior"
-#define REMOVE_OBJECTS_WARNING			"Tem certeza de que deseja excluir objetos padrгo?"
-#define REMOVE_OBJECTS_WARNING_2		"Vocк sу pode restaurб-los depois de criar um novo mapa e reconectar-se ao servidor."
-#define EDIT_CAM_SPEED					"Mudar a velocidade da cвmera"
-#define EDIT_CAM_SPEED_SLOW				"Alterar a velocidade da cвmera (Alt)"
-#define EDIT_CAM_SPEED_FAST				"Mudar a velocidade da cвmera (Shift)"
-#define EDIT_CAM_SPEED_NORMAL			"Mudar a velocidade da cвmera"
-#define EDIT_CAM_DIST					"Mudar a distвncia da cвmera"
-#define EDIT_MOVE_DIST					"Mudar distвncia de movimento"
-#define EDIT_MOVE_DIST_ZONE				"Mude a distвncia do movimento gangzone"
-#define EDIT_MOVE_DIST_Z_SHORT			"Mude a distвncia do movimento gangzone (Alt)"
-#define EDIT_MOVE_DIST_Z_LONG			"Mudar a distвncia do movimento gangzone (Shift)"
-#define EDIT_MOVE_DIST_Z_NORMAL			"Mude a distвncia do movimento gangzone"
-#define EDIT_MOVE_DIST_ICON				"Alterar a distвncia de movimento do нcone do mapa"
-#define EDIT_MOVE_DIST_I_SHORT			"Alterar a distвncia de movimento do нcone do mapa (Alt)"
-#define EDIT_MOVE_DIST_I_LONG			"Alterar a distвncia de movimento do нcone do mapa (Shift)"
-#define EDIT_MOVE_DIST_I_NORMAL			"Alterar a distвncia de movimento do нcone do mapa"
-#define EDIT_MOVE_DIST_OTHER			"Mude a distвncia de movimento de outras coisas"
-#define EDIT_MOVE_DIST_SHORT			"Mudar a distвncia de movimento (Alt)"
-#define EDIT_MOVE_DIST_LONG				"Mudar a distвncia de movimento (Shift)"
-#define EDIT_MOVE_DIST_NORMAL			"Mudar distвncia de movimento"
-#define EDIT_ROT_SPEED					"Mudar a velocidade de rotaзгo"
-#define EDIT_ROT_SPEED_SLOW				"Mudar a velocidade de rotaзгo (Alt)"
-#define EDIT_ROT_SPEED_FAST				"Mudar a velocidade de rotaзгo (Shift)"
-#define EDIT_ROT_SPEED_NORMAL			"Mudar a velocidade de rotaзгo"
-#define EDIT_INTERFACE_VISIBILITY		"Alterar a visibilidade da interface"
-#define ENTER_CAM_SPEED_SLOW			"Digite a velocidade da cвmera (Alt)"
-#define ENTER_CAM_SPEED_FAST			"Digite a velocidade da cвmera (Shift)"
-#define ENTER_CAM_SPEED					"Entre na velocidade da cвmera"
-#define CAM_SPEED_NOW					"Velocidade da cвmera agora:"
-#define ENTER_CAM_DIST					"Entre a distвncia da cвmera"
-#define CAM_DIST_NOW					"Distвncia da cвmera agora:"
-#define ENTER_ZONE_DIST_SHORT			"Entrem na distвncia do movimento gangzone (Alt)"
-#define ENTER_ZONE_DIST_LONG			"Entrem na distвncia do movimento gangzone (Shift)"
-#define ENTER_ZONE_DIST					"Entrem na distвncia do movimento gangzone"
-#define ZONE_DIST_NOW					"Gangzone movement distance now:"
-#define ENTER_ICON_DIST_SHORT			"Entre na distвncia do movimento do нcone do mapa (Alt)"
-#define ENTER_ICON_DIST_LONG			"Digite a distвncia do movimento do нcone do mapa (Shift)"
-#define ENTER_ICON_DIST					"Entre na distвncia do movimento do нcone do mapa"
-#define ICON_DIST_NOW					"Mapear a distвncia de movimento do нcone agora:"
-#define ENTER_DIST_SHORT				"Entre na distвncia do movimento (Alt)"
-#define ENTER_DIST_LONG					"Entre na distвncia do movimento (Shift)"
-#define ENTER_DIST						"Entrem na distвncia do movimento"
-#define DIST_NOW						"Distвncia do movimento agora:"
-#define ENTER_ROT_SPEED_SLOW			"Digite a velocidade de rotaзгo (Alt)"
-#define ENTER_ROT_SPEED_FAST			"Digite a velocidade de rotaзгo (Shift)"
-#define ENTER_ROT_SPEED					"Digite a velocidade de rotaзгo"
-#define ROT_SPEED_NOW					"Velocidade de rotaзгo agora:"
-#define ENABLE_INTERFACE_VISIBILITY		"Habilitar a visibilidade da interface"
-#define DISABLE_INTERFACE_VISIBILITY	"Desativar a visibilidade da interface"
-#define INTERFACE_VISIBILITY_NOW		"Visibilidade da interface agora:"
-#define EDIT_WEATHER					"Set weather"
-#define EDIT_WORLDTIME					"Hora definida"
-#define EDIT_GRAVITY					"Definir a gravidade"
-#define ENTER_WEATHER_ID				"Digite a ID do tempo"
-#define WEATHER_NOW						"Tempo atual."
-#define WORLDTIME_NOW					"Tempo Atual:"
-#define ENTER_GRAVITY_VALUE				"Digite o valor da gravidade"
-#define GRAVITY_NOW						"Gravidade atual:"
-#define KEY_INSTRUCTION_STRING_1		"LAlt (KEY_WALK) - Movimento/movimento lento"
-#define KEY_INSTRUCTION_STRING_2		"LShift (KEY_JUMP) - Aceleraзгo do movimento/movimento"
-#define KEY_INSTRUCTION_STRING_3		"LShift (KEY_JUMP) + LAlt (KEY_WALK) - Mapeamento de objetos considerando inclinaзгo da superfнcie"
-#define KEY_INSTRUCTION_STRING_4		"LMB (KEY_FIRE) - Selecione um objeto/veнculo/ator..."
-#define KEY_INSTRUCTION_STRING_5		"* W, A, S, D - Movimento de objeto/veнculo/ator selecionados..."
-#define KEY_INSTRUCTION_STRING_6		"* LShift (KEY_JUMP) + LAlt (KEY_WALK) + W, A, S, D - Movimento no eixo Z do objeto/veнculo/ator selecionados..."
-#define KEY_INSTRUCTION_STRING_7		"* LCtrl (KEY_FIRE) + W, A, S, D - Alterando o вngulo de rotaзгo do objeto/veнculo/ator selecionados..."
-#define KEY_INSTRUCTION_STRING_8		"* LCtrl (KEY_FIRE) + LShift (KEY_JUMP) + LAlt (KEY_WALK) + W, A, S, D - Alterando o вngulo de rotaзгo ao longo do eixo X do objeto/veнculo/ator selecionados..."
-#define KEY_INSTRUCTION_STRING_9		"RMB (KEY_HANDBRAKE) - Movendo um objeto/veнculo/ator... por rato"
-#define KEY_INSTRUCTION_STRING_10		"Espaзo (KEY_SPRINT) - Remova a seleзгo/movimento de um objeto/veнculo/ator..."
-#define KEY_INSTRUCTION_STRING_11		"C (KEY_CROUCH) + LMB (KEY_FIRE) - Copiar um objeto/veнculo/ator..."
-#define KEY_INSTRUCTION_STRING_12		"* LShift (KEY_JUMP) + LAlt (KEY_WALK) + C (KEY_CROUCH) + LMB (KEY_FIRE) - Copiar objeto anexado/texto 3D"
-#define KEY_INSTRUCTION_STRING_13		"\\ (KEY_ACTION) + LMB (KEY_FIRE) - Excluir um objeto/veнculo/ator..."
-#define CMD_INSTRUCTION_CAPTION_1		"Gerenciamento de mapas"
-#define CMD_INSTRUCTION_STRING_1_1		"/newmap - criar novo mapa"
-#define CMD_INSTRUCTION_STRING_1_2		"/loadmap - carregamento de mapa existente"
-#define CMD_INSTRUCTION_STRING_1_3		"/loadover - mapa de carga sobre o atual"
-#define CMD_INSTRUCTION_STRING_1_4		"/renamemap - alterar o nome do mapa atual"
-#define CMD_INSTRUCTION_STRING_1_5		"/savemap - salve o mapa atual"
-#define CMD_INSTRUCTION_STRING_1_6		"/delmap - mapa de exclusгo"
-#define CMD_INSTRUCTION_CAPTION_2		"Objetos"
-#define CMD_INSTRUCTION_STRING_2_1		"/newobj - criar objeto"
-#define CMD_INSTRUCTION_STRING_2_2		"/delobj - excluir objeto selecionado"
-#define CMD_INSTRUCTION_STRING_2_3		"/cobj - copiar objeto selecionado"
-#define CMD_INSTRUCTION_STRING_2_4		"/caobj - cуpia do objeto anexado selecionado"
-#define CMD_INSTRUCTION_STRING_2_5		"/selobj [ID do objeto] - selecione objeto por ID"
-#define CMD_INSTRUCTION_STRING_2_6		"/gotoobj - teletransporte para objeto selecionado"
-#define CMD_INSTRUCTION_STRING_2_7		"/getobj - teletransporte objeto selecionado para si mesmo"
-#define CMD_INSTRUCTION_STRING_2_8		"/stickobj - colocar objeto selecionado na superfнcie"
-#define CMD_INSTRUCTION_STRING_2_9		"/inclineobj - colocar objeto selecionado para superfнcie com inclinaзгo"
-#define CMD_INSTRUCTION_STRING_2_10		"/objtext - editor de texto sobre objeto selecionado"
-#define CMD_INSTRUCTION_STRING_2_11		"/oplattach [ID do jogador] - conecte objeto selecionado ao jogador"
-#define CMD_INSTRUCTION_STRING_2_12		"/oobjattach [ID do objeto] - anexar objeto selecionado ao objeto"
-#define CMD_INSTRUCTION_STRING_2_13		"/ovehattach [ID do veнculo] - anexar objeto selecionado ao veнculo"
-#define CMD_INSTRUCTION_STRING_2_14		"/objx - /objy - /objz - definir posiзгo do objeto selecionado"
-#define CMD_INSTRUCTION_STRING_2_15		"/objrx - /objry - /objrz - definir вngulos de rotaзгo do objeto selecionado"
-#define CMD_INSTRUCTION_STRING_2_16		"/objrreset - вngulos de rotaзгo de reset do objeto selecionado"
-#define CMD_INSTRUCTION_CAPTION_3		"Texturas"
-#define CMD_INSTRUCTION_STRING_3_1		"/txdset [ID de camada] [ID de textura] - definir material do objeto selecionado"
-#define CMD_INSTRUCTION_STRING_3_2		"/txdreset [ID de camada] - material de redefiniзгo do objeto selecionado"
-#define CMD_INSTRUCTION_STRING_3_3		"/txdcolor [cуdigo de hexais] - definir a cor do objeto selecionado"
-#define CMD_INSTRUCTION_STRING_3_4		"/txdcreset [ID de camada] - redefinir a cor do objeto selecionado"
-#define CMD_INSTRUCTION_STRING_3_5		"/tcopy [ID de camada] - copiar texto/textura do objeto selecionado"
-#define CMD_INSTRUCTION_STRING_3_6		"/tpaste [ID de camada] - colar texto/textura no objeto selecionado"
-#define CMD_INSTRUCTION_STRING_3_7		"/treset [ID de camada] - redefinir texto/textura do objeto selecionado"
-#define CMD_INSTRUCTION_STRING_3_8		"/tcopyall - copiar texto e texturas de objeto selecionado de todas as camadas"
-#define CMD_INSTRUCTION_STRING_3_9		"/tpasteall - colar texto e texturas em todas as camadas de objeto selecionado"
-#define CMD_INSTRUCTION_STRING_3_10		"/tresetall - redefinir texto e texturas de objeto selecionado de todas as camadas"
-#define CMD_INSTRUCTION_STRING_3_11		"/tclear - texto claro e texturas бrea de transferкncia"
-#define CMD_INSTRUCTION_CAPTION_4		"Veнculos"
-#define CMD_INSTRUCTION_STRING_4_1		"/newveh - criar veнculo"
-#define CMD_INSTRUCTION_STRING_4_2		"/delveh - excluir veнculo selecionado"
-#define CMD_INSTRUCTION_STRING_4_3		"/cveh - copiar veнculo selecionado"
-#define CMD_INSTRUCTION_STRING_4_4		"/selveh [ID do veнculo] - selecione veнculo por ID"
-#define CMD_INSTRUCTION_STRING_4_5		"/gotoveh - teletransporte para veнculo selecionado"
-#define CMD_INSTRUCTION_STRING_4_6		"/getveh - teletransporte veнculo selecionado para si mesmo"
-#define CMD_INSTRUCTION_STRING_4_7		"/stickveh - stick selected veнculo а superfнcie"
-#define CMD_INSTRUCTION_STRING_4_8		"/vehrepair - reparar veнculo selecionado"
-#define CMD_INSTRUCTION_STRING_4_9		"/vehx - /vehy - /vehz - definir posiзгo do veнculo selecionado"
-#define CMD_INSTRUCTION_STRING_4_10		"/vehrz - definir вngulo de rotaзгo do veнculo selecionado"
-#define CMD_INSTRUCTION_STRING_4_11		"/vehrtime - definir o tempo de respawn do veнculo selecionado"
-#define CMD_INSTRUCTION_STRING_4_12		"/vehcolor - definir cores do veнculo selecionado"
-#define CMD_INSTRUCTION_CAPTION_5		"Componentes"
-#define CMD_INSTRUCTION_STRING_5_1		"/compadd - adicione componente no veнculo selecionado"
-#define CMD_INSTRUCTION_STRING_5_2		"/complist - visualizaзгo e exclusгo de componentes no veнculo selecionado"
-#define CMD_INSTRUCTION_STRING_5_3		"/compremoveall - remova todos os componentes do veнculo selecionado"
-#define CMD_INSTRUCTION_STRING_5_4		"/paintjob - set paintjob (para determinados veнculos)"
-#define CMD_INSTRUCTION_STRING_5_5		"/pjobremove - remova o trabalho de pintura do veнculo selecionado"
-#define CMD_INSTRUCTION_CAPTION_6		"Atores"
-#define CMD_INSTRUCTION_STRING_6_1		"/newact - criar ator"
-#define CMD_INSTRUCTION_STRING_6_2		"/delact - excluir o ator selecionado"
-#define CMD_INSTRUCTION_STRING_6_3		"/cacto - ator selecionado de cуpia"
-#define CMD_INSTRUCTION_STRING_6_4		"/selact [actor ID] - ator selecionado por ID"
-#define CMD_INSTRUCTION_STRING_6_5		"/gotoact - teletransporte para ator selecionado"
-#define CMD_INSTRUCTION_STRING_6_6		"/getact - teletransporte ator selecionado para si mesmo"
-#define CMD_INSTRUCTION_STRING_6_7		"/stickact - stick ator selecionado para a superfнcie"
-#define CMD_INSTRUCTION_STRING_6_8		"/actanim - definir animaзгo para ator selecionado"
-#define CMD_INSTRUCTION_STRING_6_9		"/actclear - redefinir a animaзгo para ator selecionado"
-#define CMD_INSTRUCTION_STRING_6_10		"/actx - /acty - /actz - definir posiзгo do ator selecionado"
-#define CMD_INSTRUCTION_STRING_6_11		"/actrz - setar вngulo de rotaзгo do ator selecionado"
-#define CMD_INSTRUCTION_CAPTION_7		"Pickups"
-#define CMD_INSTRUCTION_STRING_7_1		"/newpick - criar pickup"
-#define CMD_INSTRUCTION_STRING_7_2		"/delpick - excluir o pickup selecionado"
-#define CMD_INSTRUCTION_STRING_7_3		"/cpick - cуpia de pickup selecionada"
-#define CMD_INSTRUCTION_STRING_7_4		"/selpick [pickup ID] - selecione o pickup por ID"
-#define CMD_INSTRUCTION_STRING_7_5		"/gotopick - teletransporte para pickup selecionada"
-#define CMD_INSTRUCTION_STRING_7_6		"/getpick - teletransporte selecionado para si mesmo"
-#define CMD_INSTRUCTION_STRING_7_7		"/stickpick - stick selected pickup to surface"
-#define CMD_INSTRUCTION_STRING_7_8		"/picktype - definir tipo de pickup selecionado"
-#define CMD_INSTRUCTION_STRING_7_9		"/pickx - /picky - /pickz - definir a posiзгo da pickup selecionado"
-#define CMD_INSTRUCTION_STRING_7_10		"/pickvw - definir o mundo virtual da pickup selecionado"
-#define CMD_INSTRUCTION_CAPTION_8		"Checkpoints"
-#define CMD_INSTRUCTION_STRING_8_1		"/newcp - criar ponto de verificaзгo"
-#define CMD_INSTRUCTION_STRING_8_2		"/delcp - deletar checkpoint"
-#define CMD_INSTRUCTION_STRING_8_3		"/selcp - selecionar checkpoint"
-#define CMD_INSTRUCTION_STRING_8_4		"/gotocp - teletransporte para checkpoint"
-#define CMD_INSTRUCTION_STRING_8_5		"/getcp - teletransporte checkpoint para si mesmo"
-#define CMD_INSTRUCTION_STRING_8_6		"/cpx - /cpy - definir posiзгo de checkpoint"
-#define CMD_INSTRUCTION_STRING_8_7		"/cpsize - tamanho definido de checkpoint"
-#define CMD_INSTRUCTION_CAPTION_9		"Pontos de verificaзгo de corrida"
-#define CMD_INSTRUCTION_STRING_9_1		"/newrcp - criar ponto de verificaзгo de corrida"
-#define CMD_INSTRUCTION_STRING_9_2		"/delrcp - excluir o ponto de verificaзгo da corrida"
-#define CMD_INSTRUCTION_STRING_9_3		"/selrcp - selecionar ponto de verificaзгo de corrida"
-#define CMD_INSTRUCTION_STRING_9_4		"/gotorcp - teletransporte para verificaзгo de corrida"
-#define CMD_INSTRUCTION_STRING_9_5		"/getrcp - teleporte de corrida para si mesmo"
-#define CMD_INSTRUCTION_STRING_9_6		"/rcptype - definir tipo de ponto de verificaзгo de corrida"
-#define CMD_INSTRUCTION_STRING_9_7		"/rcpx - /rcpy - /rcpz - definir posiзгo de checkpoint de corrida"
-#define CMD_INSTRUCTION_STRING_9_8		"/rcpnextx - /rcpnexty - /rcpnextz - posiзгo do ponteiro de seta do ponto de verificaзгo de corrida"
-#define CMD_INSTRUCTION_STRING_9_9		"/rcpsize - tamanho definido do ponto de verificaзгo de corrida"
-#define CMD_INSTRUCTION_CAPTION_10		"Нcones do mapa"
-#define CMD_INSTRUCTION_STRING_10_1		"/newicon - criar um нcone de mapa"
-#define CMD_INSTRUCTION_STRING_10_2		"/delicon - excluir o нcone do mapa selecionado"
-#define CMD_INSTRUCTION_STRING_10_3		"/cicon - copiar нcone de mapa selecionado"
-#define CMD_INSTRUCTION_STRING_10_4		"/selicon [нcone do mapa ID] - selecione нcone de mapa por ID"
-#define CMD_INSTRUCTION_STRING_10_5		"/gotoicon - teletransporte para нcone de mapa selecionado"
-#define CMD_INSTRUCTION_STRING_10_6		"/geticon - teletransporte o нcone de mapa selecionado para si mesmo"
-#define CMD_INSTRUCTION_STRING_10_7		"/iconx - /icony - /iconz - definir a posiзгo do нcone do mapa selecionado"
-#define CMD_INSTRUCTION_STRING_10_8		"/iconcolor - definir a cor do нcone do mapa selecionado"
-#define CMD_INSTRUCTION_STRING_10_9		"/iconstyle - defenir o estilo do нcone do mapa selecionado"
-#define CMD_INSTRUCTION_CAPTION_11		"Gangzones"
-#define CMD_INSTRUCTION_STRING_11_1		"/newzone - criar uma gangzone"
-#define CMD_INSTRUCTION_STRING_11_2		"/delzone - excluir gangzone selecionada"
-#define CMD_INSTRUCTION_STRING_11_3		"/czone - copiar gangzone selecionada"
-#define CMD_INSTRUCTION_STRING_11_4		"/selzone [gangzone ID] - selecione gangzone por ID (mudanзa de tamanho)"
-#define CMD_INSTRUCTION_STRING_11_5		"/holdzone [gangzone ID] - selecione gangzone por ID (movimento)"
-#define CMD_INSTRUCTION_STRING_11_6		"/gotozone - teletransporta-se para gangzone selecionada"
-#define CMD_INSTRUCTION_STRING_11_7		"/getzone - teletransporte a gangzone selecionada para si mesmo"
-#define CMD_INSTRUCTION_STRING_11_8		"/zoneminx - /zoneminy - /zonemaxx - /zonemaxy - definir posiзгo da gangzone selecionada"
-#define CMD_INSTRUCTION_STRING_11_9		"/zonecolor - definir a cor da gangzone selecionada"
-#define CMD_INSTRUCTION_CAPTION_12		"Textos 3D"
-#define CMD_INSTRUCTION_STRING_12_1		"/newlab - criar um texto 3D"
-#define CMD_INSTRUCTION_STRING_12_2		"/dellab - excluir texto 3D selecionado"
-#define CMD_INSTRUCTION_STRING_12_3		"/clab - copiar texto 3D selecionado"
-#define CMD_INSTRUCTION_STRING_12_4		"/calab - copiar texto 3D anexado selecionado"
-#define CMD_INSTRUCTION_STRING_12_5		"/sellab [Label ID] - selecione texto 3D por ID"
-#define CMD_INSTRUCTION_STRING_12_6		"/gotolab - teletransporte para texto 3D selecionado"
-#define CMD_INSTRUCTION_STRING_12_7		"/getlab - teletransporte selecionado texto 3D para si mesmo"
-#define CMD_INSTRUCTION_STRING_12_8		"/sticklab - stick selected texto 3D to surface"
-#define CMD_INSTRUCTION_STRING_12_9		"/labtext - defina texto para texto 3D selecionado"
-#define CMD_INSTRUCTION_STRING_12_10	"/labcolor - definir a cor do texto 3D selecionado"
-#define CMD_INSTRUCTION_STRING_12_11	"/lplattach [player ID] - anexe texto 3D selecionado ao jogador"
-#define CMD_INSTRUCTION_STRING_12_12	"/lvehattach [ID do veнculo] - anexar texto 3D selecionado ao veнculo"
-#define CMD_INSTRUCTION_STRING_12_13	"/labx - /laby - /labz - definir posiзгo do texto 3D selecionado"
-#define CMD_INSTRUCTION_STRING_12_14	"/labdd - set draw distance of selected texto 3D"
-#define CMD_INSTRUCTION_STRING_12_15	"/labvw - definir o mundo virtual do texto 3D selecionado"
-#define CMD_INSTRUCTION_STRING_12_16	"/lablos - defina visibilidade atravйs de paredes de texto 3D selecionado"
-#define CMD_INSTRUCTION_CAPTION_13		"Movendo-se ao redor do mapa"
-#define CMD_INSTRUCTION_STRING_13_1		"/setpos - teletransporte para as coordenadas"
-#define CMD_INSTRUCTION_STRING_13_2		"/setint - configuraзгo interior por ID"
-#define CMD_INSTRUCTION_STRING_13_3		"/costura - configuraзгo do mundo virtual por ID"
-#define CMD_INSTRUCTION_STRING_13_4		"/maptp - teletransporte para o ъltimo marcador de mapa"
-#define CMD_INSTRUCTION_STRING_13_5		"/gotoint - teletransporte para interiores padrгo"
-#define CMD_INSTRUCTION_CAPTION_14		"Objetos padrгo"
-#define CMD_INSTRUCTION_STRING_14_1		"/copiarobjetos - copiar o modo objetos padrгo"
-#define CMD_INSTRUCTION_STRING_14_2		"/remobjects - excluir o modo objetos padrгo"
-#define CMD_INSTRUCTION_CAPTION_15		"Configuraзхes do editor"
-#define CMD_INSTRUCTION_STRING_15_1		"/camspeed - mudar a velocidade da cвmera"
-#define CMD_INSTRUCTION_STRING_15_2		"/camspeedslow - altere a velocidade da cвmera (Alt)"
-#define CMD_INSTRUCTION_STRING_15_3		"/camspeedfast - altere a velocidade da cвmera (Shift)"
-#define CMD_INSTRUCTION_STRING_15_4		"/camdist - mudar a distвncia da cвmera"
-#define CMD_INSTRUCTION_STRING_15_5		"/movedist - mudar distвncia de movimento"
-#define CMD_INSTRUCTION_STRING_15_6		"/movedistshort - mudar a distвncia de movimento (Alt)"
-#define CMD_INSTRUCTION_STRING_15_7		"/movedistlong - mudar a distвncia de movimento (Shift)"
-#define CMD_INSTRUCTION_STRING_15_8		"/movedistgz - mudar a distвncia do movimento gangzone"
-#define CMD_INSTRUCTION_STRING_15_9		"/movedistgzshort - mudar a distвncia do movimento gangzone (Alt)"
-#define CMD_INSTRUCTION_STRING_15_10	"/movedistgzlong - mudar a distвncia do movimento gangzone (Shift)"
-#define CMD_INSTRUCTION_STRING_15_11	"/movedisti - altere a distвncia de movimento do нcone do mapa"
-#define CMD_INSTRUCTION_STRING_15_12	"/movedistishort - alterar a distвncia de movimento do нcone do mapa (Alt)"
-#define CMD_INSTRUCTION_STRING_15_13	"/movedistilong - alterar a distвncia de movimento do нcone do mapa (Shift)"
-#define CMD_INSTRUCTION_STRING_15_14	"/rotspeed - velocidade de rotaзгo de mudanзa"
-#define CMD_INSTRUCTION_STRING_15_15	"/rotspeedslow - velocidade de rotaзгo de mudanзa (Alt)"
-#define CMD_INSTRUCTION_STRING_15_16	"/rotspeedfast - velocidade de rotaзгo de mudanзa (Shift)"
-#define CMD_INSTRUCTION_STRING_15_17	"/showgui - mostrar interface"
-#define CMD_INSTRUCTION_STRING_15_18	"/hidegui - ocultar interface"
-#define CMD_INSTRUCTION_CAPTION_16		"Configuraзхes do mapa"
-#define CMD_INSTRUCTION_STRING_16_1		"/setweather - definir o clima"
-#define CMD_INSTRUCTION_STRING_16_2		"/settime - definir o tempo"
-#define CMD_INSTRUCTION_STRING_16_3		"/setgravity - definir a gravidade"
-#define EDIT_LOG_IN_MSG					"%s entrou no modo de ediзгo"
-#define EDIT_LOG_OUT_MSG				"%s saiu do modo de ediзгo"
-#define REMOVE_OBJECTS_MODE_WARNING		"Para sair do modo 'excluir objetos padrгo', pressione a tecla espaзo (KEY_SPRINT)"
-#define REMOVED_OBJECTS_WARNING			"Para restaurar objetos excluнdos, vocк precisa se reconectar ao servidor"
+#define RACECP							"Race checkpoint"
+#define MAPICON							"Map иконка"
+#define GANGZONE						"Gang зона"
+#define LABEL							"3D текст"
+#define NEXT_ITEM						"Далее"
+#define PREV_ITEM						"Назад"
+#define EMPTY_MAP_ERROR					"На данный момент ничего не создано!"
+#define EDIT_OBJECT						"Редактировать объект"
+#define SELECT_OBJECT					"Выделить объект"
+#define TELEPORT_TO_OBJECT				"Переместиться к объекту"
+#define TELEPORT_OBJECT					"Переместить объект к себе"
+#define COPY_ATTACHED_OBJECT			"Скопировать прикреплённый объект"
+#define COPY_OBJECT						"Скопировать объект"
+#define DELETE_OBJECT					"Удалить объект"
+#define STICK_TO_SURFACE				"Приклеить к поверхности"
+#define STICK_TO_INCLINED_SURFACE		"Приклеить к поверхности с наклоном"
+#define EDIT_MATERIAL					"Замена текстур"
+#define EDIT_MATERIAL_TEXT				"Замена текстур с текстом"
+#define PASTE_TEXTURES					"Вставить текст и текстуры"
+#define COPY_TEXTURES					"Копировать текст и текстуры"
+#define RESET_TEXTURES					"Сбросить текст и текстуры"
+#define ATTACH_TO_PLAYER				"Прикрепить к игроку"
+#define ATTACH_TO_OBJECT				"Прикрепить к объекту"
+#define ATTACH_TO_VEHICLE				"Прикрепить к транспорту"
+#define COORD_X							"Координаты по оси X"
+#define COORD_Y							"Координаты по оси Y"
+#define COORD_Z							"Координаты по оси Z"
+#define ROT_X							"Вращение по оси X"
+#define ROT_Y							"Вращение по оси Y"
+#define ROT_Z							"Вращение по оси Z"
+#define ROT_RESET						"Сбросить вращение"
+#define LAYER							"Слой"
+#define RESET_TEXTURE					"Сбросить текстуру"
+#define RESET_OBJECT_COLOR				"Сбросить цвет объекта"
+#define COPY_TEXTURE					"Скопировать текстуру и цвет"
+#define OBJECT_TEXTURE					"Текстура объекта:"
+#define OBJECT_COLOR					"Цвет объекта:"
+#define EDIT_TEXTURE					"Изменить текстуру (слой %d)"
+#define EDIT_OBJECT_COLOR				"Изменить цвет объекта (слой %d)"
+#define ENTER_LAYER_ID					"Введите номер слоя (materialindex) от 0 до 15:"
+#define RESET_TEXT						"Сбросить текст"
+#define COPY_TEXT						"Скопировать текст"
+#define OBJECT_TEXT						"Текст объекта:"
+#define OBJECT_TEXT_SIZE				"Размер текста:"
+#define TEXT_FONT						"Шрифт:"
+#define FONT_SIZE						"Размер шрифта:"
+#define BOLD							"Жирный:"
+#define FONT_COLOR						"Цвет шрифта:"
+#define BACK_COLOR						"Цвет фона:"
+#define ALIGNMENT						"Выравнивание:"
+#define EDIT_TEXT						"Изменить текст"
+#define EDIT_OBJECT_TEXT_SIZE			"Изменить размер текста"
+#define EDIT_FONT						"Изменить шрифт"
+#define CHOOSE_FROM_EXIST_FONTS			"Выбрать из готовых шрифтов"
+#define ENTER_FONT						"Ввести название шрифта"
+#define CHOOSE_FONT						"Выбрать шрифт"
+#define EDIT_FONT_SIZE					"Изменить размер шрифта"
+#define EDIT_OBJECT_TEXT_BOLD			"Изменить жирность шрифта"
+#define ENABLE_BOLD						"Сделать текст жирным"
+#define DISABLE_BOLD					"Снять жирность с текста"
+#define EDIT_OBJECT_FONT_COLOR			"Изменить цвет шрифта"
+#define EDIT_OBJECT_BACK_COLOR			"Изменить цвет фона"
+#define EDIT_OBJECT_TEXT_ALIGNMENT		"Изменить выравнивание"
+#define ALIGNMENT_LEFT					"По левому краю"
+#define ALIGNMENT_CENTER				"По центру"
+#define ALIGNMENT_RIGHT					"По правому краю"
+#define ENTER_PLAYER_ID					"Введите ID игрока:"
+#define ENTER_OBJECT_ID					"Введите ID объекта, к которому хотите прикрепить объект:"
+#define ENTER_VEHICLE_ID				"Введите ID транспорта:"
+#define COORDS_NOW						"Координаты сейчас:"
+#define ENTER_COORD_X					"Введите координату X"
+#define ENTER_COORD_Y					"Введите координату Y"
+#define ENTER_COORD_Z					"Введите координату Z"
+#define ENTER_ROT_X						"Введите координату вращения X"
+#define ENTER_ROT_Y						"Введите координату вращения Y"
+#define ENTER_ROT_Z						"Введите координату вращения Z"
+#define COORD_NOW						"Координата сейчас:"
+#define EDIT_VEHICLE					"Редактировать транспорт"
+#define SELECT_VEHICLE					"Выделить транспорт"
+#define TELEPORT_TO_VEHICLE				"Переместиться к транспорту"
+#define TELEPORT_VEHICLE				"Переместить транспорт к себе"
+#define COPY_VEHICLE					"Скопировать транспорт"
+#define DELETE_VEHICLE					"Удалить транспорт"
+#define REPAIR_VEHICLE					"Отремонтировать транспорт"
+#define TUNE_VEHICLE					"Тюнинг транспорта"
+#define RESPAWN_TIME					"Время респавна"
+#define COLOR_1							"Цвет 1"
+#define COLOR_2							"Цвет 2"
+#define ADD_COMPONENT					"Добавить компонент"
+#define CHANGE_PAINTJOB					"Изменить покрасочную работу"
+#define REMOVE_COMPONENT				"Просмотр и удаление компонентов"
+#define REMOVE_PAINTJOB					"Удалить покрасочную работу"
+#define REMOVE_ALL_COMPONENTS			"Удалить все компоненты"
+#define NO_COMPONENTS_ERROR				"На транспорт не установлено никаких компонентов!"
+#define ENTER_RESPAWN_TIME				"Введите время респавна (в секундах), через которое будет появляться транспорт"
+#define RESPAWN_TIME_NOW				"Время сейчас: %d с"
+#define ENTER_COLOR_1					"Введите цвет 1"
+#define ENTER_COLOR_2					"Введите цвет 2"
+#define COLOR_NOW						"Цвет сейчас:"
+#define EDIT_ACTOR						"Редактировать актёра"
+#define SELECT_ACTOR					"Выделить актёра"
+#define TELEPORT_TO_ACTOR				"Переместиться к актёру"
+#define TELEPORT_ACTOR					"Переместить актёра к себе"
+#define COPY_ACTOR						"Скопировать актёра"
+#define DELETE_ACTOR					"Удалить актёра"
+#define SET_ACTOR_ANIM					"Установить анимацию"
+#define ENTER_ANIMATION_NAME			"Введите ID или название анимации:"
+#define CLEAR_ACTOR_ANIM				"Очистить анимацию"
+#define EDIT_PICKUP						"Редактировать пикап"
+#define SELECT_PICKUP					"Выделить пикап"
+#define TELEPORT_TO_PICKUP				"Переместиться к пикапу"
+#define TELEPORT_PICKUP					"Переместить пикап к себе"
+#define COPY_PICKUP						"Скопировать пикап"
+#define DELETE_PICKUP					"Удалить пикап"
+#define EDIT_PICKUP_TYPE				"Изменить тип пикапа"
+#define EDIT_VW							"Виртуальный мир"
+#define ENTER_PICKUP_TYPE				"Введите тип пикапа"
+#define TYPE_NOW						"Тип сейчас:"
+#define ENTER_VW_ID						"Введите ID виртуального мира"
+#define VW_NOW							"Виртуальный мир сейчас:"
+#define EDIT_CHECKPOINT					"Редактировать checkpoint"
+#define SELECT_CHECKPOINT				"Выделить checkpoint"
+#define TELEPORT_TO_CHECKPOINT			"Переместиться к checkpoint'у"
+#define TELEPORT_CHECKPOINT				"Переместить checkpoint к себе"
+#define DELETE_CHECKPOINT				"Удалить checkpoint"
+#define EDIT_SIZE						"Изменить размер"
+#define ENTER_SIZE						"Введите размер"
+#define SIZE_NOW						"Размер сейчас:"
+#define EDIT_RACECP						"Редактировать race checkpoint"
+#define SELECT_RACECP					"Выделить race checkpoint"
+#define TELEPORT_TO_RACECP				"Переместиться к race checkpoint'у"
+#define TELEPORT_RACECP					"Переместить race checkpoint к себе"
+#define DELETE_RACECP					"Удалить race checkpoint"
+#define EDIT_TYPE						"Изменить тип"
+#define COORD_NEXTX						"Координата NextX"
+#define COORD_NEXTY						"Координата NextY"
+#define COORD_NEXTZ						"Координата NextZ"
+#define EDIT_MAPICON					"Редактировать map иконку"
+#define SELECT_MAPICON					"Выделить map иконку"
+#define TELEPORT_TO_MAPICON				"Переместиться к map иконке"
+#define TELEPORT_MAPICON				"Переместить map иконку к себе"
+#define COPY_MAPICON					"Скопировать map иконку"
+#define DELETE_MAPICON					"Удалить map иконку"
+#define EDIT_COLOR						"Изменить цвет"
+#define CHOOSE_FROM_EXIST_COLORS		"Выбрать из готовых цветов"
+#define ENTER_RGBA_COLOR				"Ввести в формате RGBA"
+#define ENTER_ARGB_COLOR				"Ввести в формате ARGB"
+#define CHANGE_ALPHA					"Изменить прозрачность"
+#define CHOOSE_COLOR					"Выбрать цвет"
+#define WHITE_COLOR						"Белый"
+#define BLACK_COLOR						"Чёрный"
+#define YELLOW_COLOR					"Жёлтый"
+#define GREEN_COLOR						"Зелёный"
+#define RED_COLOR						"Красный"
+#define PINK_COLOR						"Розовый"
+#define ORANGE_COLOR					"Оранжевый"
+#define BROWN_COLOR						"Коричневый"
+#define PURPLE_COLOR					"Фиолетовый"
+#define LIGHT_BLUE_COLOR				"Голубой"
+#define DARK_BLUE_COLOR					"Синий"
+#define EDIT_STYLE						"Стиль отображения"
+#define ENTER_MAPICON_COLOR				"Введите цвет map иконки (только для ID 0):"
+#define MAPICON_STYLE_NOW				"Стиль отображения сейчас:"
+#define MAPICON_STYLE_LOCAL				"Показывать только вблизи"
+#define MAPICON_STYLE_GLOBAL			"Показывать всегда"
+#define MAPICON_STYLE_LOCAL_CP			"Показывать только вблизи (с чекпоинтом)"
+#define MAPICON_STYLE_GLOBAL_CP			"Показывать всегда (с чекпоинтом)"
+#define EDIT_GANGZONE					"Редактировать gang зону"
+#define EDIT_ZONE_SIZE					"Изменить размер gang зоны"
+#define EDIT_ZONE_POS					"Изменить позицию gang зоны"
+#define TELEPORT_TO_ZONE				"Переместиться к gang зоне"
+#define TELEPORT_ZONE					"Переместить gang зону к себе"
+#define COPY_ZONE						"Скопировать gang зону"
+#define DELETE_ZONE						"Удалить gang зону"
+#define COORD_MINX						"Координата min X"
+#define COORD_MINY						"Координата min Y"
+#define COORD_MAXX						"Координата max X"
+#define COORD_MAXY						"Координата max Y"
+#define ENTER_COORD_MINX				"Введите координату min X:"
+#define ENTER_COORD_MINY				"Введите координату min Y:"
+#define ENTER_COORD_MAXX				"Введите координату max X:"
+#define ENTER_COORD_MAXY				"Введите координату max Y:"
+#define ENTER_GANGZONE_COLOR			"Введите цвет gang зоны:"
+#define EDIT_LABEL						"Редактировать 3D текст"
+#define SELECT_LABEL					"Выделить 3D текст"
+#define TELEPORT_TO_LABEL				"Переместиться к 3D тексту"
+#define TELEPORT_LABEL					"Переместить 3D текст к себе"
+#define COPY_ATTACHED_LABEL				"Скопировать прикреплённый 3D текст"
+#define COPY_LABEL						"Скопировать 3D текст"
+#define DELETE_LABEL					"Удалить 3D текст"
+#define LABEL_DD						"Дистанция прорисовки"
+#define LABEL_LOS						"Видимость сквозь стены"
+#define LABEL_TEXT_NOW					"Текст 3D текста сейчас:"
+#define ENTER_LABEL_COLOR				"Введите цвет 3D текста"
+#define ENTER_LABEL_DD					"Введите дистанцию прорисовки, на которой будет отображаться 3D текст"
+#define LABEL_DD_NOW					"Дистанция прорисовки сейчас:"
+#define LABEL_LOS_NOW					"Видимость сейчас:"
+#define ENABLE_LABEL_LOS				"Включить видимость сквозь стены"
+#define DISABLE_LABEL_LOS				"Отключить видимость сквозь стены"
+#define ENABLED							"включена"
+#define DISABLED						"отключена"
+#define DUPLICATE_OF_ID					"дубликат id'а %d"
+#define TELEPORT_TO_COORDS				"Переместиться на координаты"
+#define TELEPORT_TO_INT					"Переместиться в интерьер"
+#define TELEPORT_TO_VW					"Переместиться в виртуальный мир"
+#define TELEPORT_TO_MAP_MARKER			"Переместиться по метке на карте"
+#define TELEPORT_TO_DEFAULT_INTS		"Переместиться в стандартные интерьеры"
+#define ENTER_COORDS					"Введите координаты (X, Y, Z):"
+#define ENTER_INTERIOR					"Введите интерьер:"
+#define INTERIOR_NOW					"Интерьер сейчас:"
+#define CHOOSE_INTERIOR					"Выбрать интерьер"
+#define REMOVE_OBJECTS_WARNING			"Вы действительно хотите перейти в режим удаления стандартных объектов?"
+#define REMOVE_OBJECTS_WARNING_2		"Восстановить их можно будет только после создания новой карты и перезахода на сервер."
+#define EDIT_CAM_SPEED					"Изменить скорость полёта камеры"
+#define EDIT_CAM_SPEED_SLOW				"Изменить скорость полёта камеры (Alt)"
+#define EDIT_CAM_SPEED_FAST				"Изменить скорость полёта камеры (Shift)"
+#define EDIT_CAM_SPEED_NORMAL			"Изменить скорость полёта камеры"
+#define EDIT_CAM_DIST					"Изменить расстояние от камеры"
+#define EDIT_MOVE_DIST					"Изменить дистанцию перемещения"
+#define EDIT_MOVE_DIST_ZONE				"Изменить дистанцию перемещения gang зоны"
+#define EDIT_MOVE_DIST_Z_SHORT			"Изменить дистанцию перемещения gang зоны (Alt)"
+#define EDIT_MOVE_DIST_Z_LONG			"Изменить дистанцию перемещения gang зоны (Shift)"
+#define EDIT_MOVE_DIST_Z_NORMAL			"Изменить дистанцию перемещения gang зоны"
+#define EDIT_MOVE_DIST_ICON				"Изменить дистанцию перемещения map иконки"
+#define EDIT_MOVE_DIST_I_SHORT			"Изменить дистанцию перемещения map иконки (Alt)"
+#define EDIT_MOVE_DIST_I_LONG			"Изменить дистанцию перемещения map иконки (Shift)"
+#define EDIT_MOVE_DIST_I_NORMAL			"Изменить дистанцию перемещения map иконки"
+#define EDIT_MOVE_DIST_OTHER			"Изменить дистанцию перемещения остального"
+#define EDIT_MOVE_DIST_SHORT			"Изменить дистанцию перемещения (Alt)"
+#define EDIT_MOVE_DIST_LONG				"Изменить дистанцию перемещения (Shift)"
+#define EDIT_MOVE_DIST_NORMAL			"Изменить дистанцию перемещения"
+#define EDIT_ROT_SPEED					"Изменить скорость вращения"
+#define EDIT_ROT_SPEED_SLOW				"Изменить скорость вращения (Alt)"
+#define EDIT_ROT_SPEED_FAST				"Изменить скорость вращения (Shift)"
+#define EDIT_ROT_SPEED_NORMAL			"Изменить скорость вращения"
+#define EDIT_INTERFACE_VISIBILITY		"Изменить видимость интерфейса"
+#define ENTER_CAM_SPEED_SLOW			"Введите скорость полёта камеры (Alt)"
+#define ENTER_CAM_SPEED_FAST			"Введите скорость полёта камеры (Shift)"
+#define ENTER_CAM_SPEED					"Введите скорость полёта камеры"
+#define CAM_SPEED_NOW					"Скорость полёта камеры сейчас:"
+#define ENTER_CAM_DIST					"Введите расстояние от камеры"
+#define CAM_DIST_NOW					"Расстояние от камеры сейчас:"
+#define ENTER_ZONE_DIST_SHORT			"Введите дистанцию перемещения gang зоны (Alt)"
+#define ENTER_ZONE_DIST_LONG			"Введите дистанцию перемещения gang зоны (Shift)"
+#define ENTER_ZONE_DIST					"Введите дистанцию перемещения gang зоны"
+#define ZONE_DIST_NOW					"Дистанция перемещения gang зоны сейчас:"
+#define ENTER_ICON_DIST_SHORT			"Введите дистанцию перемещения map иконки (Alt)"
+#define ENTER_ICON_DIST_LONG			"Введите дистанцию перемещения map иконки (Shift)"
+#define ENTER_ICON_DIST					"Введите дистанцию перемещения map иконки"
+#define ICON_DIST_NOW					"Дистанция перемещения map иконки сейчас:"
+#define ENTER_DIST_SHORT				"Введите дистанцию перемещения (Alt)"
+#define ENTER_DIST_LONG					"Введите дистанцию перемещения (Shift)"
+#define ENTER_DIST						"Введите дистанцию перемещения"
+#define DIST_NOW						"Дистанция перемещения сейчас:"
+#define ENTER_ROT_SPEED_SLOW			"Введите скорость вращения (Alt)"
+#define ENTER_ROT_SPEED_FAST			"Введите скорость вращения (Shift)"
+#define ENTER_ROT_SPEED					"Введите скорость вращения"
+#define ROT_SPEED_NOW					"Скорость вращения сейчас:"
+#define ENABLE_INTERFACE_VISIBILITY		"Включить видимость интерфейса"
+#define DISABLE_INTERFACE_VISIBILITY	"Отключить видимость интерфейса"
+#define INTERFACE_VISIBILITY_NOW		"Видимость интерфейса сейчас:"
+#define EDIT_WEATHER					"Установить погоду"
+#define EDIT_WORLDTIME					"Установить время"
+#define EDIT_GRAVITY					"Установить гравитацию"
+#define ENTER_WEATHER_ID				"Введите ID погоды"
+#define WEATHER_NOW						"Погода сейчас:"
+#define WORLDTIME_NOW					"Время сейчас:"
+#define ENTER_GRAVITY_VALUE				"Введите значение гравитации"
+#define GRAVITY_NOW						"Гравитация сейчас:"
+#define KEY_INSTRUCTION_STRING_1		"LAlt (KEY_WALK) - Замедление перемещения/движения"
+#define KEY_INSTRUCTION_STRING_2		"LShift (KEY_JUMP) - Ускорение перемещения/движения"
+#define KEY_INSTRUCTION_STRING_3		"LShift (KEY_JUMP) + LAlt (KEY_WALK) - Размещение объектов с учетом наклона поверхности"
+#define KEY_INSTRUCTION_STRING_4		"ЛКМ (KEY_FIRE) - Выделение объекта/транспорта/актера..."
+#define KEY_INSTRUCTION_STRING_5		"* W, A, S, D - Перемещение выделенного объекта/транспорта/актера..."
+#define KEY_INSTRUCTION_STRING_6		"* LShift (KEY_JUMP) + LAlt (KEY_WALK) + W, A, S, D - Перемещение выделенного объекта/транспорта/актера... по оси Z"
+#define KEY_INSTRUCTION_STRING_7		"* LCtrl (KEY_FIRE) + W, A, S, D - Изменение угла поворота выделенного объекта/транспорта/актера..."
+#define KEY_INSTRUCTION_STRING_8		"* LCtrl (KEY_FIRE) + LShift (KEY_JUMP) + LAlt (KEY_WALK) + W, A, S, D - Изменение угла поворота выделенного объекта/транспорта/актера... по оси X"
+#define KEY_INSTRUCTION_STRING_9		"ПКМ (KEY_HANDBRAKE) - Перемещение объекта/транспорта/актера... с помощью мыши"
+#define KEY_INSTRUCTION_STRING_10		"Пробел (KEY_SPRINT) - Сбросить выделение/перемещение объекта/транспорта/актера..."
+#define KEY_INSTRUCTION_STRING_11		"C (KEY_CROUCH) + ЛКМ (KEY_FIRE) - Копирование объекта/транспорта/актера..."
+#define KEY_INSTRUCTION_STRING_12		"* LShift (KEY_JUMP) + LAlt (KEY_WALK) + C (KEY_CROUCH) + ЛКМ (KEY_FIRE) - Копирование приаттаченного объекта/3D текста"
+#define KEY_INSTRUCTION_STRING_13		"\\ (KEY_ACTION) + ЛКМ (KEY_FIRE) - Удаление объекта/транспорта/актера..."
+#define CMD_INSTRUCTION_CAPTION_1		"Управление картами"
+#define CMD_INSTRUCTION_STRING_1_1		"/newmap - создать новую карту"
+#define CMD_INSTRUCTION_STRING_1_2		"/loadmap - загрузить существующую карту"
+#define CMD_INSTRUCTION_STRING_1_3		"/loadover - загрузить карту поверх текущей"
+#define CMD_INSTRUCTION_STRING_1_4		"/renamemap - изменить название текущей карты"
+#define CMD_INSTRUCTION_STRING_1_5		"/savemap - сохранить текущую карту"
+#define CMD_INSTRUCTION_STRING_1_6		"/delmap - удалить карту"
+#define CMD_INSTRUCTION_CAPTION_2		"Объекты"
+#define CMD_INSTRUCTION_STRING_2_1		"/newobj - создать объект"
+#define CMD_INSTRUCTION_STRING_2_2		"/delobj - удалить выделенный объект"
+#define CMD_INSTRUCTION_STRING_2_3		"/cobj - скопировать выделенный объект"
+#define CMD_INSTRUCTION_STRING_2_4		"/caobj - скопировать выделенный прикреплённый объект"
+#define CMD_INSTRUCTION_STRING_2_5		"/selobj [ID объекта] - выделение объекта по ID'у"
+#define CMD_INSTRUCTION_STRING_2_6		"/gotoobj - телепортироваться к выделенному объекту"
+#define CMD_INSTRUCTION_STRING_2_7		"/getobj - телепортировать выделенный объект к себе"
+#define CMD_INSTRUCTION_STRING_2_8		"/stickobj - приклеить выделенный объект к поверхности"
+#define CMD_INSTRUCTION_STRING_2_9		"/inclineobj - приклеить выделенный объект к поверхности с наклоном"
+#define CMD_INSTRUCTION_STRING_2_10		"/objtext - редактор текста на выделенном объекте"
+#define CMD_INSTRUCTION_STRING_2_11		"/oplattach [ID игрока] - привязать выделенный объект к игроку"
+#define CMD_INSTRUCTION_STRING_2_12		"/oobjattach [ID объекта] - привязать выделенный объект к объекту"
+#define CMD_INSTRUCTION_STRING_2_13		"/ovehattach [ID транспорта] - привязать выделенный объект к транспорту"
+#define CMD_INSTRUCTION_STRING_2_14		"/objx - /objy - /objz - установить позицию для выделенного объекта"
+#define CMD_INSTRUCTION_STRING_2_15		"/objrx - /objry - /objrz - установить углы вращения для выделенного объекта"
+#define CMD_INSTRUCTION_STRING_2_16		"/objrreset - сбросить вращение выделенного объекта"
+#define CMD_INSTRUCTION_CAPTION_3		"Текстуры"
+#define CMD_INSTRUCTION_STRING_3_1		"/txdset [ID слоя] [ID текстуры] - установить материал для выделенного объекта"
+#define CMD_INSTRUCTION_STRING_3_2		"/txdreset [ID слоя] - сбросить материал для выделенного объекта"
+#define CMD_INSTRUCTION_STRING_3_3		"/txdcolor [ID слоя] [код цвета] - поставить цвет для выделенного объекта"
+#define CMD_INSTRUCTION_STRING_3_4		"/txdcreset [ID слоя] - сбросить цвет для выделенного объекта"
+#define CMD_INSTRUCTION_STRING_3_5		"/tcopy [ID слоя] - скопировать текст/текстуру на выделенном объекте"
+#define CMD_INSTRUCTION_STRING_3_6		"/tpaste [ID слоя] - вставить текст/текстуру на выделенном объекте"
+#define CMD_INSTRUCTION_STRING_3_7		"/treset [ID слоя] - сбросить текст/текстуру на выделенном объекте"
+#define CMD_INSTRUCTION_STRING_3_8		"/tcopyall - скопировать текст и текстуры выделенного объекта со всех слоёв"
+#define CMD_INSTRUCTION_STRING_3_9		"/tpasteall - вставить текст и текстуры на все слои выделенного объекта"
+#define CMD_INSTRUCTION_STRING_3_10		"/tresetall - сбросить текст и текстуры выделенного объекта со всех слоёв"
+#define CMD_INSTRUCTION_STRING_3_11		"/tclear - очистить буфер обмена текста и текстур"
+#define CMD_INSTRUCTION_CAPTION_4		"Транспорт"
+#define CMD_INSTRUCTION_STRING_4_1		"/newveh - создать транспорт"
+#define CMD_INSTRUCTION_STRING_4_2		"/delveh - удалить выделенный транспорт"
+#define CMD_INSTRUCTION_STRING_4_3		"/cveh - скопировать выделенный транспорт"
+#define CMD_INSTRUCTION_STRING_4_4		"/selveh [ID транспорта] - выделение транспорта по ID'у"
+#define CMD_INSTRUCTION_STRING_4_5		"/gotoveh - телепортироваться к выделенному транспорту"
+#define CMD_INSTRUCTION_STRING_4_6		"/getveh - телепортировать выделенный транспорт к себе"
+#define CMD_INSTRUCTION_STRING_4_7		"/stickveh - приклеить выделенный транспорт к поверхности"
+#define CMD_INSTRUCTION_STRING_4_8		"/vehrepair - отремонтировать выделенный транспорт"
+#define CMD_INSTRUCTION_STRING_4_9		"/vehx - /vehy - /vehz - установить позицию для выделенного транспорта"
+#define CMD_INSTRUCTION_STRING_4_10		"/vehrz - установить угол поворота для выделенного транспорта"
+#define CMD_INSTRUCTION_STRING_4_11		"/vehrtime - установить время респавна для выделенного транспорта"
+#define CMD_INSTRUCTION_STRING_4_12		"/vehcolor - установить цвета для выделенного транспорта"
+#define CMD_INSTRUCTION_CAPTION_5		"Тюнинг"
+#define CMD_INSTRUCTION_STRING_5_1		"/compadd - добавить тюнинг-компонент на выделенный транспорт"
+#define CMD_INSTRUCTION_STRING_5_2		"/complist - просмотр и удаление тюнинг-компонентов на выделенном транспорте"
+#define CMD_INSTRUCTION_STRING_5_3		"/compremoveall - удалить все тюнинг-компоненты с выделенного транспорта"
+#define CMD_INSTRUCTION_STRING_5_4		"/paintjob - установить покрасочную работу (для определённого транспорта)"
+#define CMD_INSTRUCTION_STRING_5_5		"/pjobremove - удалить покрасочную работу на выделенном транспорте"
+#define CMD_INSTRUCTION_CAPTION_6		"Актёры"
+#define CMD_INSTRUCTION_STRING_6_1		"/newact - создать актёра"
+#define CMD_INSTRUCTION_STRING_6_2		"/delact - удалить выделенного актёра"
+#define CMD_INSTRUCTION_STRING_6_3		"/cact - скопировать выделенного актёра"
+#define CMD_INSTRUCTION_STRING_6_4		"/selact [ID актёра] - выделение актёра по ID'у"
+#define CMD_INSTRUCTION_STRING_6_5		"/gotoact - телепортироваться к выделенному актёру"
+#define CMD_INSTRUCTION_STRING_6_6		"/getact - телепортировать выделенного актёра к себе"
+#define CMD_INSTRUCTION_STRING_6_7		"/stickact - приклеить выделенного актёра к поверхности"
+#define CMD_INSTRUCTION_STRING_6_8		"/actanim - установить анимацию для выделенного актёра"
+#define CMD_INSTRUCTION_STRING_6_9		"/actclear - сбросить анимацию для выделенного актёра"
+#define CMD_INSTRUCTION_STRING_6_10		"/actx - /acty - /actz - установить позицию для выделенного актёра"
+#define CMD_INSTRUCTION_STRING_6_11		"/actrz - установить угол поворота для выделенного актёра"
+#define CMD_INSTRUCTION_CAPTION_7		"Пикапы"
+#define CMD_INSTRUCTION_STRING_7_1		"/newpick - создать пикап"
+#define CMD_INSTRUCTION_STRING_7_2		"/delpick - удалить выделенный пикап"
+#define CMD_INSTRUCTION_STRING_7_3		"/cpick - скопировать выделенный пикап"
+#define CMD_INSTRUCTION_STRING_7_4		"/selpick [ID пикапа] - выделение пикапа по ID'у"
+#define CMD_INSTRUCTION_STRING_7_5		"/gotopick - телепортироваться к выделенному пикапу"
+#define CMD_INSTRUCTION_STRING_7_6		"/getpick - телепортировать выделенный пикап к себе"
+#define CMD_INSTRUCTION_STRING_7_7		"/stickpick - приклеить выделенный пикап к поверхности"
+#define CMD_INSTRUCTION_STRING_7_8		"/picktype - установить тип для выделенного пикапа"
+#define CMD_INSTRUCTION_STRING_7_9		"/pickx - /picky - /pickz - установить позицию для выделенного пикапа"
+#define CMD_INSTRUCTION_STRING_7_10		"/pickvw - установить виртуальный мир для выделенного пикапа"
+#define CMD_INSTRUCTION_CAPTION_8		"Checkpoint'ы"
+#define CMD_INSTRUCTION_STRING_8_1		"/newcp - создать checkpoint"
+#define CMD_INSTRUCTION_STRING_8_2		"/delcp - удалить checkpoint"
+#define CMD_INSTRUCTION_STRING_8_3		"/selcp - выделение checkpoint'а"
+#define CMD_INSTRUCTION_STRING_8_4		"/gotocp - телепортироваться к checkpoint'у"
+#define CMD_INSTRUCTION_STRING_8_5		"/getcp - телепортировать checkpoint к себе"
+#define CMD_INSTRUCTION_STRING_8_6		"/cpx - /cpy - установить позицию для checkpoint'а"
+#define CMD_INSTRUCTION_STRING_8_7		"/cpsize - установить размер для checkpoint'а"
+#define CMD_INSTRUCTION_CAPTION_9		"Race checkpoint'ы"
+#define CMD_INSTRUCTION_STRING_9_1		"/newrcp - создать race checkpoint"
+#define CMD_INSTRUCTION_STRING_9_2		"/delrcp - удалить race checkpoint"
+#define CMD_INSTRUCTION_STRING_9_3		"/selrcp - выделение race checkpoint'а"
+#define CMD_INSTRUCTION_STRING_9_4		"/gotorcp - телепортироваться к race checkpoint'у"
+#define CMD_INSTRUCTION_STRING_9_5		"/getrcp - телепортировать race checkpoint к себе"
+#define CMD_INSTRUCTION_STRING_9_6		"/rcptype - установить тип для race checkpoint'а"
+#define CMD_INSTRUCTION_STRING_9_7		"/rcpx - /rcpy - /rcpz - установить позицию для race checkpoint'а"
+#define CMD_INSTRUCTION_STRING_9_8		"/rcpnextx - /rcpnexty - /rcpnextz - позиция для указателя стрелки race checkpoint'а"
+#define CMD_INSTRUCTION_STRING_9_9		"/rcpsize - установить размер для race checkpoint'а"
+#define CMD_INSTRUCTION_CAPTION_10		"Map иконки"
+#define CMD_INSTRUCTION_STRING_10_1		"/newicon - создать map иконку"
+#define CMD_INSTRUCTION_STRING_10_2		"/delicon - удалить выделенную map иконку"
+#define CMD_INSTRUCTION_STRING_10_3		"/cicon - скопировать выделенную map иконку"
+#define CMD_INSTRUCTION_STRING_10_4		"/selicon [ID map иконки] - выделение map иконки по ID'у"
+#define CMD_INSTRUCTION_STRING_10_5		"/gotoicon - телепортироваться к выделенной map иконке"
+#define CMD_INSTRUCTION_STRING_10_6		"/geticon - телепортировать выделенную map иконку к себе"
+#define CMD_INSTRUCTION_STRING_10_7		"/iconx - /icony - /iconz - установить позицию для выделенной map иконки"
+#define CMD_INSTRUCTION_STRING_10_8		"/iconcolor - установить цвет для выделенной map иконки"
+#define CMD_INSTRUCTION_STRING_10_9		"/iconstyle - установить стиль для выделенной map иконки"
+#define CMD_INSTRUCTION_CAPTION_11		"Gang зоны"
+#define CMD_INSTRUCTION_STRING_11_1		"/newzone - создать gang зону"
+#define CMD_INSTRUCTION_STRING_11_2		"/delzone - удалить выделенную gang зону"
+#define CMD_INSTRUCTION_STRING_11_3		"/czone - скопировать выделенную gang зону"
+#define CMD_INSTRUCTION_STRING_11_4		"/selzone [ID gang зоны] - выделение gang зоны по ID'у (изменение размера)"
+#define CMD_INSTRUCTION_STRING_11_5		"/holdzone [ID gang зоны] - выделение gang зоны по ID'у (перемещение)"
+#define CMD_INSTRUCTION_STRING_11_6		"/gotozone - телепортироваться к выделенной gang зоне"
+#define CMD_INSTRUCTION_STRING_11_7		"/getzone - телепортировать выделенную gang зону к себе"
+#define CMD_INSTRUCTION_STRING_11_8		"/zoneminx - /zoneminy - /zonemaxx - /zonemaxy - установить позицию для выделенной gang зоны"
+#define CMD_INSTRUCTION_STRING_11_9		"/zonecolor - установить цвет для выделенной gang зоны"
+#define CMD_INSTRUCTION_CAPTION_12		"3D тексты"
+#define CMD_INSTRUCTION_STRING_12_1		"/newlab - создать 3D текст"
+#define CMD_INSTRUCTION_STRING_12_2		"/dellab - удалить выделенный 3D текст"
+#define CMD_INSTRUCTION_STRING_12_3		"/clab - скопировать выделенный 3D текст"
+#define CMD_INSTRUCTION_STRING_12_4		"/calab - скопировать выделенный прикреплённый 3D текст"
+#define CMD_INSTRUCTION_STRING_12_5		"/sellab [ID 3D текста] - выделение 3D текста по ID'у"
+#define CMD_INSTRUCTION_STRING_12_6		"/gotolab - телепортироваться к выделенному 3D тексту"
+#define CMD_INSTRUCTION_STRING_12_7		"/getlab - телепортировать выделенный 3D текст к себе"
+#define CMD_INSTRUCTION_STRING_12_8		"/sticklab - приклеить выделенный 3D текст к поверхности"
+#define CMD_INSTRUCTION_STRING_12_9		"/labtext - задать текст для выделенного 3D текста"
+#define CMD_INSTRUCTION_STRING_12_10	"/labcolor - установить цвет для выделенного 3D текста"
+#define CMD_INSTRUCTION_STRING_12_11	"/lplattach [ID игрока] - привязать выделенный 3D текст к игроку"
+#define CMD_INSTRUCTION_STRING_12_12	"/lvehattach [ID транспорта] - привязать выделенный 3D текст к транспорту"
+#define CMD_INSTRUCTION_STRING_12_13	"/labx - /laby - /labz - установить позицию для выделенного 3D текста"
+#define CMD_INSTRUCTION_STRING_12_14	"/labdd - установить дистанцию прорисовки для выделенного 3D текста"
+#define CMD_INSTRUCTION_STRING_12_15	"/labvw - установить виртуальный мир для выделенного 3D текста"
+#define CMD_INSTRUCTION_STRING_12_16	"/lablos - установить видимость сквозь стены для выделенного 3D текста"
+#define CMD_INSTRUCTION_CAPTION_13		"Перемещение по карте"
+#define CMD_INSTRUCTION_STRING_13_1		"/setpos - телепортироваться по координатам"
+#define CMD_INSTRUCTION_STRING_13_2		"/setint - установка интерьера по ID'у"
+#define CMD_INSTRUCTION_STRING_13_3		"/setvw - установка виртуального мира по ID'у"
+#define CMD_INSTRUCTION_STRING_13_4		"/maptp - телепортация по последней метке на карте"
+#define CMD_INSTRUCTION_STRING_13_5		"/gotoint - телепортация в стандартные интерьеры"
+#define CMD_INSTRUCTION_CAPTION_14		"Стандартные объекты"
+#define CMD_INSTRUCTION_STRING_14_1		"/copyobjects - режим копирования стандартных объектов"
+#define CMD_INSTRUCTION_STRING_14_2		"/remobjects - режим удаления стандартных объектов"
+#define CMD_INSTRUCTION_CAPTION_15		"Настройки редактора"
+#define CMD_INSTRUCTION_STRING_15_1		"/camspeed - изменить скорость полёта камеры"
+#define CMD_INSTRUCTION_STRING_15_2		"/camspeedslow - изменить скорость полёта камеры (Alt)"
+#define CMD_INSTRUCTION_STRING_15_3		"/camspeedfast - изменить скорость полёта камеры (Shift)"
+#define CMD_INSTRUCTION_STRING_15_4		"/camdist - изменить расстояние от камеры"
+#define CMD_INSTRUCTION_STRING_15_5		"/movedist - изменить дистанцию перемещения"
+#define CMD_INSTRUCTION_STRING_15_6		"/movedistshort - изменить дистанцию перемещения (Alt)"
+#define CMD_INSTRUCTION_STRING_15_7		"/movedistlong - изменить дистанцию перемещения (Shift)"
+#define CMD_INSTRUCTION_STRING_15_8		"/movedistgz - изменить дистанцию перемещения gang зоны"
+#define CMD_INSTRUCTION_STRING_15_9		"/movedistgzshort - изменить дистанцию перемещения gang зоны (Alt)"
+#define CMD_INSTRUCTION_STRING_15_10	"/movedistgzlong - изменить дистанцию перемещения gang зоны (Shift)"
+#define CMD_INSTRUCTION_STRING_15_11	"/movedisti - изменить дистанцию перемещения map иконки"
+#define CMD_INSTRUCTION_STRING_15_12	"/movedistishort - изменить дистанцию перемещения map иконки (Alt)"
+#define CMD_INSTRUCTION_STRING_15_13	"/movedistilong - изменить дистанцию перемещения map иконки (Shift)"
+#define CMD_INSTRUCTION_STRING_15_14	"/rotspeed - изменить скорость вращения"
+#define CMD_INSTRUCTION_STRING_15_15	"/rotspeedslow - изменить скорость вращения (Alt)"
+#define CMD_INSTRUCTION_STRING_15_16	"/rotspeedfast - изменить скорость вращения (Shift)"
+#define CMD_INSTRUCTION_STRING_15_17	"/showgui - показать интерфейс"
+#define CMD_INSTRUCTION_STRING_15_18	"/hidegui - скрыть интерфейс"
+#define CMD_INSTRUCTION_CAPTION_16		"Настройки карты"
+#define CMD_INSTRUCTION_STRING_16_1		"/setweather - установить погоду"
+#define CMD_INSTRUCTION_STRING_16_2		"/settime - установить время"
+#define CMD_INSTRUCTION_STRING_16_3		"/setgravity - установить гравитацию"
+#define EDIT_LOG_IN_MSG					"%s вошёл в режим редактирования"
+#define EDIT_LOG_OUT_MSG				"%s вышел из режима редактирования"
+#define REMOVE_OBJECTS_MODE_WARNING		"Чтобы выйти из режима удаления стандартных объектов, нажмите пробел (KEY_SPRINT)"
+#define REMOVED_OBJECTS_WARNING			"Чтобы восстановить удалённые объекты, требуется перезайти на сервер"
 
 #define DIALOG_CHOOSE_MAP					16384
 #define DIALOG_NEW_MAP						16385
@@ -8135,7 +8137,8 @@ enum ucInfo
 	ucLrOld,
 	ucUdOld,
 	ucMode,
-	ucPage,
+	ucLoadPage,
+	ucEditPage,
 	ucLastMove,
 	ucBufferMode,
 	ucHoldingObj,
@@ -8277,7 +8280,7 @@ RemoveBuilding(modelid, Float:fX, Float:fY, Float:fZ, Float:fRadius)
 	if(objectid > 0 && objectid != INVALID_OBJECT_ID)
 	{
 		ObjectsInfo[objectid][oCreated] = true;
-		#if defined COLANDREAS || defined COLANDREAS_VERSION
+		#if defined CA_CreateObject
 			ObjectsInfo[objectid][oIndex] = CA_CreateObject(modelid, x, y, z, rx, ry, rz, true);
 		#endif
 		ObjectsCount++;
@@ -8392,15 +8395,14 @@ RemoveBuilding(modelid, Float:fX, Float:fY, Float:fZ, Float:fRadius)
 #endif
 
 #if defined SetDynamicObjectMaterialText
-	uc_SetDynamicObjectMaterialText(objectid, materialindex, const text[], materialsize = OBJECT_MATERIAL_SIZE_256x128, const fontface[] = "Arial", fontsize = 24, bold = 1, fontcolor = 0xFFFFFFFF, backcolor = 0, textalignment = 0)
+	uc_SetDynamicObjectMaterialText(objectid, materialindex, text[], materialsize = OBJECT_MATERIAL_SIZE_256x128, fontface[] = "Arial", fontsize = 24, bold = 1, fontcolor = 0xFFFFFFFF, backcolor = 0, textalignment = 0)
 	{
-		if(!SetDynamicObjectMaterialText(objectid, materialindex, text, materialsize, fontface, fontsize, bold, fontcolor, backcolor, textalignment)) return 0;
+		if(IsValidDynamicObject(objectid) && ObjectsInfo[objectid][oCreated])
 #else
 	uc_SetObjectMaterialText(objectid, text[], materialindex = 0, materialsize = OBJECT_MATERIAL_SIZE_256x128, fontface[] = "Arial", fontsize = 24, bold = 1, fontcolor = 0xFFFFFFFF, backcolor = 0, textalignment = 0)
 	{
-		if(!SetObjectMaterialText(objectid, text, materialindex, materialsize, fontface, fontsize, bold, fontcolor, backcolor, textalignment)) return 0;
+		if(IsValidObject(objectid) && ObjectsInfo[objectid][oCreated])
 #endif
-	if(ObjectsInfo[objectid][oCreated])
 	{
 		materialindex %= 16;
 		if(ObjectsInfo[objectid][oTextureid][materialindex] >= 0 || ObjectsInfo[objectid][oMaterialColor][materialindex])
@@ -8410,6 +8412,7 @@ RemoveBuilding(modelid, Float:fX, Float:fY, Float:fZ, Float:fRadius)
 		}
 		ObjectsInfo[objectid][oTextIndex] = materialindex;
 		strcpy(ObjectsInfo[objectid][oText], text, MAX_OBJECT_TEXT_LENGTH);
+		if(strfind(text, "\\n") != -1) unescctrlchar(text, '\n');
 		strcpy(ObjectsInfo[objectid][oFont], fontface, MAX_FONT_NAME_LENGTH);
 		ObjectsInfo[objectid][oTextAlignment] = textalignment;
 		ObjectsInfo[objectid][oTextSize] = materialsize;
@@ -8418,7 +8421,11 @@ RemoveBuilding(modelid, Float:fX, Float:fY, Float:fZ, Float:fRadius)
 		ObjectsInfo[objectid][oFontSize] = fontsize;
 		ObjectsInfo[objectid][oBold] = bold;
 	}
-	return 1;
+	#if defined SetDynamicObjectMaterialText
+		return SetDynamicObjectMaterialText(objectid, materialindex, text, materialsize, fontface, fontsize, bold, fontcolor, backcolor, textalignment);
+	#else
+		return SetObjectMaterialText(objectid, text, materialindex, materialsize, fontface, fontsize, bold, fontcolor, backcolor, textalignment);
+	#endif
 }
 
 #if defined SetDynamicObjectMaterialText
@@ -8456,7 +8463,7 @@ RemoveBuilding(modelid, Float:fX, Float:fY, Float:fZ, Float:fRadius)
 		if(IsValidObject(objectid) && IsPlayerConnected(playerid) && ObjectsInfo[objectid][oCreated])
 #endif
 	{
-		#if defined COLANDREAS || defined COLANDREAS_VERSION
+		#if defined CA_DestroyObject
 			CA_DestroyObject(ObjectsInfo[objectid][oIndex]);
 		#endif
 		ObjectsInfo[objectid][oAttachedPlayerID] = playerid;
@@ -8503,7 +8510,7 @@ RemoveBuilding(modelid, Float:fX, Float:fY, Float:fZ, Float:fRadius)
 		if(IsValidObject(objectid) && IsValidObject(attachtoid) && ObjectsInfo[objectid][oCreated])
 #endif
 	{
-		#if defined COLANDREAS || defined COLANDREAS_VERSION
+		#if defined CA_DestroyObject
 			CA_DestroyObject(ObjectsInfo[objectid][oIndex]);
 		#endif
 		ObjectsInfo[objectid][oAttachedObjectID] = attachtoid;
@@ -8559,7 +8566,7 @@ RemoveBuilding(modelid, Float:fX, Float:fY, Float:fZ, Float:fRadius)
 		if(IsValidObject(objectid) && GetVehicleModel(vehicleid) > 0 && ObjectsInfo[objectid][oCreated])
 #endif
 	{
-		#if defined COLANDREAS || defined COLANDREAS_VERSION
+		#if defined CA_DestroyObject
 			CA_DestroyObject(ObjectsInfo[objectid][oIndex]);
 		#endif
 		ObjectsInfo[objectid][oAttachedVehicleID] = vehicleid;
@@ -8611,7 +8618,7 @@ RemoveBuilding(modelid, Float:fX, Float:fY, Float:fZ, Float:fRadius)
 		if(IsValidObject(objectid) && ObjectsInfo[objectid][oCreated])
 #endif
 	{
-		#if defined COLANDREAS || defined COLANDREAS_VERSION
+		#if defined CA_SetObjectPos
 			if(withcol) CA_SetObjectPos(ObjectsInfo[objectid][oIndex], x, y, z);
 		#else
 			#pragma unused withcol
@@ -8653,7 +8660,7 @@ RemoveBuilding(modelid, Float:fX, Float:fY, Float:fZ, Float:fRadius)
 		if(IsValidObject(objectid) && ObjectsInfo[objectid][oCreated])
 #endif
 	{
-		#if defined COLANDREAS || defined COLANDREAS_VERSION
+		#if defined CA_SetObjectRot
 			if(withcol) CA_SetObjectRot(ObjectsInfo[objectid][oIndex], rx, ry, rz);
 		#else
 			#pragma unused withcol
@@ -8701,7 +8708,7 @@ RemoveBuilding(modelid, Float:fX, Float:fY, Float:fZ, Float:fRadius)
 		if(IsValidObject(objectid) && ObjectsInfo[objectid][oCreated])
 #endif
 	{
-		#if defined COLANDREAS || defined COLANDREAS_VERSION
+		#if defined CA_DestroyObject
 			CA_DestroyObject(ObjectsInfo[objectid][oIndex]);
 		#endif
 		for(new i = sizeof(ObjectsInfo) - 1; i >= 1; --i)
@@ -9039,14 +9046,9 @@ uc_DestroyVehicle(vehicleid)
 #endif
 #define DestroyVehicle uc_DestroyVehicle
 
-CopyVehicle(vehicleid, modelid)
+CopyVehicle(vehicleid, modelid, Float:x, Float:y, Float:z, Float:rz)
 {
-	new
-		Float:veh_x, Float:veh_y,
-		Float:veh_z, Float:veh_rz;
-	GetVehiclePos(vehicleid, veh_x, veh_y, veh_z);
-	GetVehicleZAngle(vehicleid, veh_rz);
-	new cveh = CreateVehicle(modelid, veh_x, veh_y, veh_z, veh_rz, VehiclesInfo[vehicleid][vColor1], VehiclesInfo[vehicleid][vColor2], VehiclesInfo[vehicleid][vRespawnDelay]);
+	new cveh = CreateVehicle(modelid, x, y, z, rz, VehiclesInfo[vehicleid][vColor1], VehiclesInfo[vehicleid][vColor2], VehiclesInfo[vehicleid][vRespawnDelay]);
 	if(cveh > 0 && cveh != INVALID_VEHICLE_ID)
 	{
 		new
@@ -9058,6 +9060,15 @@ CopyVehicle(vehicleid, modelid)
 			for(i = MAX_CAR_MOD_TYPES - 1; i >= 0; --i)
 			{
 				if(VehiclesInfo[vehicleid][vComponents][i] > 0) AddVehicleComponent(cveh, VehiclesInfo[vehicleid][vComponents][i]);
+			}
+		}
+		else
+		{
+			new componentid;
+			for(i = MAX_CAR_MOD_TYPES - 1; i >= 0; --i)
+			{
+				componentid = GetVehicleComponentInSlot(vehicleid, i);
+				if(componentid > 0) AddVehicleComponent(cveh, componentid);
 			}
 		}
 		for(i = sizeof(ObjectsInfo) - 1; i >= 1; --i)
@@ -9553,7 +9564,7 @@ SetCheckpoint(Float:x, Float:y, Float:z, Float:size)
 {
 	CheckpointCount = 1;
 	CheckpointInfo[cpCreated] = true;
-	#if defined COLANDREAS || defined COLANDREAS_VERSION
+	#if defined CA_RayCastLine
 		if(!CA_RayCastLine(x, y, z + 500.0, x, y, z - 500.0, CheckpointInfo[cpX], CheckpointInfo[cpY], CheckpointInfo[cpZ])) CheckpointInfo[cpZ] = z;
 	#else
 		CheckpointInfo[cpZ] = z;
@@ -10150,18 +10161,24 @@ UpdateGangZoneColor(zone, color)
 }
 
 #if defined CreateDynamic3DTextLabel
-uc_CreateDynamic3DTextLabel(const text[], color, Float:x, Float:y, Float:z, Float:drawdistance, attachedplayer = INVALID_PLAYER_ID, attachedvehicle = INVALID_VEHICLE_ID, testlos = 0, worldid = -1, interiorid = -1, playerid = -1, Float:streamdistance = 200.0, areaid = -1, priority = 0)
-{
-	if(isnull(text)) return INVALID_STREAMER_ID;
+	uc_CreateDynamic3DTextLabel(text[], color, Float:x, Float:y, Float:z, Float:drawdistance, attachedplayer = INVALID_PLAYER_ID, attachedvehicle = INVALID_VEHICLE_ID, testlos = 0, worldid = -1, interiorid = -1, playerid = -1, Float:streamdistance = 200.0, areaid = -1, priority = 0)
+	{
+		if(isnull(text)) return INVALID_STREAMER_ID;
+#else
+	uc_Create3DTextLabel(text[], color, Float:x, Float:y, Float:z, Float:drawdistance, worldid, testlos)
+	{
+		if(isnull(text)) return INVALID_3DTEXT_ID;
+#endif
+	new strtmp[MAX_LABEL_TEXT_LENGTH];
+	strcpy(strtmp, text, MAX_LABEL_TEXT_LENGTH);
+	if(strfind(text, "\\n") != -1) unescctrlchar(text, '\n');
+	#if defined CreateDynamic3DTextLabel
 	new label = _:CreateDynamic3DTextLabel(text, color, x, y, z, drawdistance, attachedplayer, attachedvehicle, testlos, worldid, interiorid, playerid, streamdistance, areaid, priority);
 	if(label != INVALID_STREAMER_ID && label < MAX_UC_3DTEXT_GLOBAL)
-#else
-uc_Create3DTextLabel(text[], color, Float:x, Float:y, Float:z, Float:drawdistance, worldid, testlos)
-{
-	if(isnull(text)) return INVALID_3DTEXT_ID;
+	#else
 	new label = _:Create3DTextLabel(text, color, x, y, z, drawdistance, worldid, testlos);
 	if(label != INVALID_3DTEXT_ID && label < MAX_UC_3DTEXT_GLOBAL)
-#endif
+	#endif
 	{
 		LabelsCount++;
 		LabelsInfo[label][lCreated] = true;
@@ -10185,7 +10202,7 @@ uc_Create3DTextLabel(text[], color, Float:x, Float:y, Float:z, Float:drawdistanc
 			LabelsInfo[label][lSilentObj] = original_CreateObject(1239, x, y, z, 0.0, 0.0, 0.0);
 			original_SetObjectMaterial(LabelsInfo[label][lSilentObj], 0, 0, "none", "none", 0);
 		#endif
-		strcpy(LabelsInfo[label][lText], text, MAX_LABEL_TEXT_LENGTH);
+		strcpy(LabelsInfo[label][lText], strtmp, MAX_LABEL_TEXT_LENGTH);
 		LabelsInfo[label][lVirtualWorld] = worldid;
 		#if defined foreach
 		foreach(new i : Player)
@@ -10537,7 +10554,7 @@ Update3DTextLabelLOS(label, testLOS)
 	return 0;
 }
 
-#if defined COLANDREAS || defined COLANDREAS_VERSION
+#if defined CA_RemoveBuilding
 	RemoveUnusedCollisions()
 	{
 		CA_RemoveBuilding(6000, 2410.9531, 2362.2422, 9.8203, 0.5);
@@ -10593,7 +10610,8 @@ Update3DTextLabelLOS(label, testLOS)
 
 public OnFilterScriptInit()
 {
-	#if defined COLANDREAS || defined COLANDREAS_VERSION
+	#if defined CA_Init\
+		&& defined CA_RemoveBuilding
 		RemoveUnusedCollisions();
 		CA_Init();
 	#endif
@@ -10632,7 +10650,7 @@ public OnFilterScriptInit()
 		ResetPlayerHoldingItems(i);
 	}
 	print("\n\t-------------------------");
-	printf("Ultimate Creator v%s do Nexius carregado!", CREATOR_VERSION);
+	printf("Ultimate Creator v%s by Nexius loaded!", CREATOR_VERSION);
 	print("\t-------------------------\n");
 	return 1;
 }
@@ -10662,7 +10680,7 @@ public OnFilterScriptExit()
 		PlayerTextDrawDestroy(i, CreatorInfo[i][ucHoldInfo]);
 	}
 	print("\n\t-------------------------");
-	printf("Ultimate Creator v%s do Nexius descarregado!", CREATOR_VERSION);
+	printf("Ultimate Creator v%s by Nexius unloaded!", CREATOR_VERSION);
 	print("\t-------------------------\n");
 	return 1;
 }
@@ -10736,9 +10754,10 @@ public OnPlayerDisconnect(playerid, reason)
 public OnPlayerSpawn(playerid)
 {
 	CreatorInfo[playerid][ucMode] = 0;
-	CreatorInfo[playerid][ucPage] = 0;
 	CreatorInfo[playerid][ucLrOld] = 0;
 	CreatorInfo[playerid][ucUdOld] = 0;
+	CreatorInfo[playerid][ucLoadPage] = 0;
+	CreatorInfo[playerid][ucEditPage] = 0;
 	CreatorInfo[playerid][ucBufferMode] = 0;
 	CreatorInfo[playerid][ucAccelMul] = 0.0;
 	CreatorInfo[playerid][ucCameraMode] = false;
@@ -11254,7 +11273,7 @@ public OnPlayerUpdate(playerid)
 		if(CreatorInfo[playerid][ucHoldingObj] != INVALID_OBJECT_ID)
 		{
 			new
-				#if defined COLANDREAS || defined COLANDREAS_VERSION
+				#if defined CA_RayCastLineAngle
 					Float:cX, Float:cY, Float:cZ,
 					Float:rX, Float:rY, Float:rZ,
 					Float:minZ, Float:tmp,
@@ -11262,14 +11281,15 @@ public OnPlayerUpdate(playerid)
 				Float:obj_x, Float:obj_y, Float:obj_z, Float:dist;
 			GetPlayerCameraPos(playerid, PX, PY, PZ);
 			GetPlayerCameraFrontVector(playerid, VX, VY, VZ);
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_GetModelBoundingSphere
 				CA_GetModelBoundingSphere(ObjectsInfo[CreatorInfo[playerid][ucHoldingObj]][oModelid], tmp, tmp, tmp, dist);
 			#endif
 			dist += DIST_FROM_CAMERA;
 			obj_x = PX + floatmul(VX, dist);
 			obj_y = PY + floatmul(VY, dist);
 			obj_z = PZ + floatmul(VZ, dist);
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLineAngle\
+				&& defined CA_GetModelBoundingBox
 				if(CA_RayCastLineAngle(PX, PY, PZ, obj_x, obj_y, obj_z, cX, cY, cZ, rX, rY, rZ))
 				{
 					CA_GetModelBoundingBox(ObjectsInfo[CreatorInfo[playerid][ucHoldingObj]][oModelid], tmp, tmp, minZ, tmp, tmp, tmp);
@@ -11295,14 +11315,15 @@ public OnPlayerUpdate(playerid)
 				#else
 					SetObjectPos(CreatorInfo[playerid][ucHoldingObj], obj_x, obj_y, obj_z);
 				#endif
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLineAngle\
+				&& defined CA_GetModelBoundingBox
 				}
 			#endif
 		}
 		else if(CreatorInfo[playerid][ucHoldingVeh] != INVALID_VEHICLE_ID)
 		{
 			new
-				#if defined COLANDREAS || defined COLANDREAS_VERSION
+				#if defined CA_RayCastLine
 					Float:vfX, Float:vfY, Float:vfZ,
 				#endif
 				Float:veh_x, Float:veh_y, Float:veh_z;
@@ -11311,7 +11332,7 @@ public OnPlayerUpdate(playerid)
 			veh_x = PX + floatmul(VX, DIST_FROM_CAMERA);
 			veh_y = PY + floatmul(VY, DIST_FROM_CAMERA);
 			veh_z = PZ + floatmul(VZ, DIST_FROM_CAMERA);
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLine
 				if(CA_RayCastLine(PX, PY, PZ, veh_x, veh_y, veh_z, vfX, vfY, vfZ))
 				{
 					GetVehicleModelInfo(VehiclesInfo[CreatorInfo[playerid][ucHoldingVeh]][vModelid], VEHICLE_MODEL_INFO_SIZE, veh_x, veh_y, veh_z);
@@ -11321,14 +11342,14 @@ public OnPlayerUpdate(playerid)
 				{
 			#endif
 				SetVehiclePos(CreatorInfo[playerid][ucHoldingVeh], veh_x, veh_y, veh_z);
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLine
 				}
 			#endif
 		}
 		else if(CreatorInfo[playerid][ucHoldingAct] != INVALID_ACTOR_ID)
 		{
 			new
-				#if defined COLANDREAS || defined COLANDREAS_VERSION
+				#if defined CA_RayCastLine
 					Float:vfX, Float:vfY, Float:vfZ,
 				#endif
 				Float:act_x, Float:act_y, Float:act_z;
@@ -11337,7 +11358,7 @@ public OnPlayerUpdate(playerid)
 			act_x = PX + floatmul(VX, DIST_FROM_CAMERA);
 			act_y = PY + floatmul(VY, DIST_FROM_CAMERA);
 			act_z = PZ + floatmul(VZ, DIST_FROM_CAMERA);
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLine
 				if(CA_RayCastLine(PX, PY, PZ, act_x, act_y, act_z, vfX, vfY, vfZ))
 				{
 					#if defined SetDynamicActorPos
@@ -11354,14 +11375,14 @@ public OnPlayerUpdate(playerid)
 				#else
 					SetActorPos(CreatorInfo[playerid][ucHoldingAct], act_x, act_y, act_z);
 				#endif
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLine
 				}
 			#endif
 		}
 		else if(CreatorInfo[playerid][ucHoldingPick] != 65535)
 		{
 			new
-				#if defined COLANDREAS || defined COLANDREAS_VERSION
+				#if defined CA_RayCastLine
 					Float:vfX, Float:vfY, Float:vfZ,
 				#endif
 				Float:pick_x, Float:pick_y, Float:pick_z;
@@ -11370,7 +11391,7 @@ public OnPlayerUpdate(playerid)
 			pick_x = PX + floatmul(VX, DIST_FROM_CAMERA);
 			pick_y = PY + floatmul(VY, DIST_FROM_CAMERA);
 			pick_z = PZ + floatmul(VZ, DIST_FROM_CAMERA);
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLine
 				if(CA_RayCastLine(PX, PY, PZ, pick_x, pick_y, pick_z, vfX, vfY, vfZ))
 				{
 					UpdatePickupPos(CreatorInfo[playerid][ucHoldingPick], vfX, vfY, vfZ + 1.0);
@@ -11385,14 +11406,14 @@ public OnPlayerUpdate(playerid)
 				#if defined Streamer_Update
 					Streamer_Update(playerid);
 				#endif
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLine
 				}
 			#endif
 		}
 		else if(CreatorInfo[playerid][ucHoldingCp] != 65535)
 		{
 			new
-				#if defined COLANDREAS || defined COLANDREAS_VERSION
+				#if defined CA_RayCastLine
 					Float:vfX, Float:vfY, Float:vfZ,
 				#endif
 				Float:cp_x, Float:cp_y, Float:cp_z;
@@ -11401,7 +11422,7 @@ public OnPlayerUpdate(playerid)
 			cp_x = PX + floatmul(VX, DIST_FROM_CAMERA);
 			cp_y = PY + floatmul(VY, DIST_FROM_CAMERA);
 			cp_z = PZ + floatmul(VZ, DIST_FROM_CAMERA);
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLine
 				if(CA_RayCastLine(PX, PY, PZ, cp_x, cp_y, cp_z, vfX, vfY, vfZ))
 				{
 					UpdateCpPos(vfX, vfY, vfZ);
@@ -11416,14 +11437,14 @@ public OnPlayerUpdate(playerid)
 				#if defined Streamer_Update
 					Streamer_Update(playerid);
 				#endif
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLine
 				}
 			#endif
 		}
 		else if(CreatorInfo[playerid][ucHoldingRcp] != 65535)
 		{
 			new
-				#if defined COLANDREAS || defined COLANDREAS_VERSION
+				#if defined CA_RayCastLine
 					Float:vfX, Float:vfY, Float:vfZ,
 				#endif
 				Float:rcp_x, Float:rcp_y, Float:rcp_z;
@@ -11432,7 +11453,7 @@ public OnPlayerUpdate(playerid)
 			rcp_x = PX + floatmul(VX, DIST_FROM_CAMERA);
 			rcp_y = PY + floatmul(VY, DIST_FROM_CAMERA);
 			rcp_z = PZ + floatmul(VZ, DIST_FROM_CAMERA);
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLine
 				if(CA_RayCastLine(PX, PY, PZ, rcp_x, rcp_y, rcp_z, vfX, vfY, vfZ))
 				{
 					UpdateRcpPos(vfX, vfY, vfZ);
@@ -11447,14 +11468,14 @@ public OnPlayerUpdate(playerid)
 				#if defined Streamer_Update
 					Streamer_Update(playerid);
 				#endif
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLine
 				}
 			#endif
 		}
 		else if(CreatorInfo[playerid][ucHoldingLab] != INVALID_3DTEXT_ID)
 		{
 			new
-				#if defined COLANDREAS || defined COLANDREAS_VERSION
+				#if defined CA_RayCastLine
 					Float:vfX, Float:vfY, Float:vfZ,
 				#endif
 				Float:lab_x, Float:lab_y, Float:lab_z;
@@ -11463,7 +11484,7 @@ public OnPlayerUpdate(playerid)
 			lab_x = PX + floatmul(VX, DIST_FROM_CAMERA);
 			lab_y = PY + floatmul(VY, DIST_FROM_CAMERA);
 			lab_z = PZ + floatmul(VZ, DIST_FROM_CAMERA);
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLine
 				if(CA_RayCastLine(PX, PY, PZ, lab_x, lab_y, lab_z, vfX, vfY, vfZ))
 				{
 					Update3DTextLabelPos(CreatorInfo[playerid][ucHoldingLab], vfX, vfY, vfZ + 1.0);
@@ -11478,7 +11499,7 @@ public OnPlayerUpdate(playerid)
 				#if defined Streamer_Update
 					Streamer_Update(playerid);
 				#endif
-			#if defined COLANDREAS || defined COLANDREAS_VERSION
+			#if defined CA_RayCastLine
 				}
 			#endif
 		}
@@ -11529,11 +11550,11 @@ public OnPlayerUpdate(playerid)
 			if(INTERFACE_VISIBILITY)
 			{
 				#if defined CreateDynamicObject
-					if(keys & KEY_FIRE) format(strtmp, sizeof strtmp, "Dyn objeto %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ObjectsInfo[CreatorInfo[playerid][ucSelectedObj]][oModelid], CreatorInfo[playerid][ucSelectedObj], VX, VY, VZ);
-					else format(strtmp, sizeof strtmp, "Dyn objeto %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ObjectsInfo[CreatorInfo[playerid][ucSelectedObj]][oModelid], CreatorInfo[playerid][ucSelectedObj], PX, PY, PZ);
+					if(keys & KEY_FIRE) format(strtmp, sizeof strtmp, "Dyn object %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ObjectsInfo[CreatorInfo[playerid][ucSelectedObj]][oModelid], CreatorInfo[playerid][ucSelectedObj], VX, VY, VZ);
+					else format(strtmp, sizeof strtmp, "Dyn object %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ObjectsInfo[CreatorInfo[playerid][ucSelectedObj]][oModelid], CreatorInfo[playerid][ucSelectedObj], PX, PY, PZ);
 				#else
-					if(keys & KEY_FIRE) format(strtmp, sizeof strtmp, "Objeto %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ObjectsInfo[CreatorInfo[playerid][ucSelectedObj]][oModelid], CreatorInfo[playerid][ucSelectedObj], VX, VY, VZ);
-					else format(strtmp, sizeof strtmp, "Objeto %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ObjectsInfo[CreatorInfo[playerid][ucSelectedObj]][oModelid], CreatorInfo[playerid][ucSelectedObj], PX, PY, PZ);
+					if(keys & KEY_FIRE) format(strtmp, sizeof strtmp, "Object %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ObjectsInfo[CreatorInfo[playerid][ucSelectedObj]][oModelid], CreatorInfo[playerid][ucSelectedObj], VX, VY, VZ);
+					else format(strtmp, sizeof strtmp, "Object %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ObjectsInfo[CreatorInfo[playerid][ucSelectedObj]][oModelid], CreatorInfo[playerid][ucSelectedObj], PX, PY, PZ);
 				#endif
 				PlayerTextDrawSetString(playerid, CreatorInfo[playerid][ucHoldInfo], strtmp);
 				PlayerTextDrawSetShadow(playerid, CreatorInfo[playerid][ucAimPoint], 0);
@@ -11548,12 +11569,29 @@ public OnPlayerUpdate(playerid)
 			GetVehiclePos(CreatorInfo[playerid][ucSelectedVeh], PX, PY, PZ);
 			GetVehicleZAngle(CreatorInfo[playerid][ucSelectedVeh], VZ);
 			GetSelectedVehicleNextPos(keys, lr, ud, GetPlayerCameraFacingAngle(playerid), PX, PY, PZ, VZ);
-			SetVehiclePos(CreatorInfo[playerid][ucSelectedVeh], PX, PY, PZ);
-			SetVehicleZAngle(CreatorInfo[playerid][ucSelectedVeh], VZ);
+			if(keys & KEY_FIRE && lr != 0)
+			{
+				new selveh = CopyVehicle(CreatorInfo[playerid][ucSelectedVeh], VehiclesInfo[CreatorInfo[playerid][ucSelectedVeh]][vModelid], PX, PY, PZ, VZ);
+				if(selveh > 0 && selveh != INVALID_VEHICLE_ID)
+				{
+					DestroyVehicle(CreatorInfo[playerid][ucSelectedVeh]);
+					CreatorInfo[playerid][ucSelectedVeh] = selveh;
+				}
+				else
+				{
+					SetVehiclePos(CreatorInfo[playerid][ucSelectedVeh], PX, PY, PZ);
+					SetVehicleZAngle(CreatorInfo[playerid][ucSelectedVeh], VZ);
+				}
+			}
+			else
+			{
+				SetVehiclePos(CreatorInfo[playerid][ucSelectedVeh], PX, PY, PZ);
+				SetVehicleZAngle(CreatorInfo[playerid][ucSelectedVeh], VZ);
+			}
 			if(INTERFACE_VISIBILITY)
 			{
-				if(keys & KEY_FIRE) format(strtmp, sizeof strtmp, "Veiculo %d (id %d)~n~z: %.4f", VehiclesInfo[CreatorInfo[playerid][ucSelectedVeh]][vModelid], CreatorInfo[playerid][ucSelectedVeh], VZ);
-				else format(strtmp, sizeof strtmp, "Veiculo %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", VehiclesInfo[CreatorInfo[playerid][ucSelectedVeh]][vModelid], CreatorInfo[playerid][ucSelectedVeh], PX, PY, PZ);
+				if(keys & KEY_FIRE) format(strtmp, sizeof strtmp, "Vehicle %d (id %d)~n~z: %.4f", VehiclesInfo[CreatorInfo[playerid][ucSelectedVeh]][vModelid], CreatorInfo[playerid][ucSelectedVeh], VZ);
+				else format(strtmp, sizeof strtmp, "Vehicle %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", VehiclesInfo[CreatorInfo[playerid][ucSelectedVeh]][vModelid], CreatorInfo[playerid][ucSelectedVeh], PX, PY, PZ);
 				PlayerTextDrawSetString(playerid, CreatorInfo[playerid][ucHoldInfo], strtmp);
 				PlayerTextDrawSetShadow(playerid, CreatorInfo[playerid][ucAimPoint], 0);
 				PlayerTextDrawSetOutline(playerid, CreatorInfo[playerid][ucAimPoint], 1);
@@ -11582,18 +11620,35 @@ public OnPlayerUpdate(playerid)
 					SetDynamicActorFacingAngle(CreatorInfo[playerid][ucSelectedAct], VZ);
 					Streamer_Update(playerid);
 				#else
-					SetActorPos(CreatorInfo[playerid][ucSelectedAct], PX, PY, PZ);
-					SetActorFacingAngle(CreatorInfo[playerid][ucSelectedAct], VZ);
+					if(keys & KEY_FIRE && lr != 0)
+					{
+						new selact = CopyActor(CreatorInfo[playerid][ucSelectedAct], ActorsInfo[CreatorInfo[playerid][ucSelectedAct]][aModelid], PX, PY, PZ, VZ);
+						if(selact != INVALID_ACTOR_ID && selact < MAX_UC_ACTORS)
+						{
+							DestroyActor(CreatorInfo[playerid][ucSelectedAct]);
+							CreatorInfo[playerid][ucSelectedAct] = selact;
+						}
+						else
+						{
+							SetActorPos(CreatorInfo[playerid][ucSelectedAct], PX, PY, PZ);
+							SetActorFacingAngle(CreatorInfo[playerid][ucSelectedAct], VZ);
+						}
+					}
+					else
+					{
+						SetActorPos(CreatorInfo[playerid][ucSelectedAct], PX, PY, PZ);
+						SetActorFacingAngle(CreatorInfo[playerid][ucSelectedAct], VZ);
+					}
 				#endif
 			}
 			if(INTERFACE_VISIBILITY)
 			{
 				#if defined CreateDynamicActor
-					if(keys & KEY_FIRE) format(strtmp, sizeof strtmp, "Dyn ator %d (id %d)~n~z: %.4f", ActorsInfo[CreatorInfo[playerid][ucSelectedAct]][aModelid], CreatorInfo[playerid][ucSelectedAct], VZ);
-					else format(strtmp, sizeof strtmp, "Dyn ator %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ActorsInfo[CreatorInfo[playerid][ucSelectedAct]][aModelid], CreatorInfo[playerid][ucSelectedAct], PX, PY, PZ);
+					if(keys & KEY_FIRE) format(strtmp, sizeof strtmp, "Dyn actor %d (id %d)~n~z: %.4f", ActorsInfo[CreatorInfo[playerid][ucSelectedAct]][aModelid], CreatorInfo[playerid][ucSelectedAct], VZ);
+					else format(strtmp, sizeof strtmp, "Dyn actor %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ActorsInfo[CreatorInfo[playerid][ucSelectedAct]][aModelid], CreatorInfo[playerid][ucSelectedAct], PX, PY, PZ);
 				#else
-					if(keys & KEY_FIRE) format(strtmp, sizeof strtmp, "Ator %d (id %d)~n~z: %.4f", ActorsInfo[CreatorInfo[playerid][ucSelectedAct]][aModelid], CreatorInfo[playerid][ucSelectedAct], VZ);
-					else format(strtmp, sizeof strtmp, "Ator %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ActorsInfo[CreatorInfo[playerid][ucSelectedAct]][aModelid], CreatorInfo[playerid][ucSelectedAct], PX, PY, PZ);
+					if(keys & KEY_FIRE) format(strtmp, sizeof strtmp, "Actor %d (id %d)~n~z: %.4f", ActorsInfo[CreatorInfo[playerid][ucSelectedAct]][aModelid], CreatorInfo[playerid][ucSelectedAct], VZ);
+					else format(strtmp, sizeof strtmp, "Actor %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ActorsInfo[CreatorInfo[playerid][ucSelectedAct]][aModelid], CreatorInfo[playerid][ucSelectedAct], PX, PY, PZ);
 				#endif
 				PlayerTextDrawSetString(playerid, CreatorInfo[playerid][ucHoldInfo], strtmp);
 				PlayerTextDrawSetShadow(playerid, CreatorInfo[playerid][ucAimPoint], 0);
@@ -11670,7 +11725,7 @@ public OnPlayerUpdate(playerid)
 			}
 			if(INTERFACE_VISIBILITY)
 			{
-				format(strtmp, sizeof strtmp, "Checkpoint de corrida (id %d)~n~x: %.4f, y: %.4f, z: %.4f", CreatorInfo[playerid][ucSelectedRcp], PX, PY, PZ);
+				format(strtmp, sizeof strtmp, "Race checkpoint (id %d)~n~x: %.4f, y: %.4f, z: %.4f", CreatorInfo[playerid][ucSelectedRcp], PX, PY, PZ);
 				PlayerTextDrawSetString(playerid, CreatorInfo[playerid][ucHoldInfo], strtmp);
 				PlayerTextDrawSetShadow(playerid, CreatorInfo[playerid][ucAimPoint], 0);
 				PlayerTextDrawSetOutline(playerid, CreatorInfo[playerid][ucAimPoint], 1);
@@ -11692,9 +11747,9 @@ public OnPlayerUpdate(playerid)
 			if(INTERFACE_VISIBILITY)
 			{
 				#if defined CreateDynamicMapIcon
-					format(strtmp, sizeof strtmp, "Dyn icone do mapa %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", IconsInfo[CreatorInfo[playerid][ucSelectedIco]][iType], CreatorInfo[playerid][ucSelectedIco], PX, PY, PZ);
+					format(strtmp, sizeof strtmp, "Dyn map icon %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", IconsInfo[CreatorInfo[playerid][ucSelectedIco]][iType], CreatorInfo[playerid][ucSelectedIco], PX, PY, PZ);
 				#else
-					format(strtmp, sizeof strtmp, "Нcone do mapa %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", IconsInfo[CreatorInfo[playerid][ucSelectedIco]][iType], CreatorInfo[playerid][ucSelectedIco], PX, PY, PZ);
+					format(strtmp, sizeof strtmp, "Map icon %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", IconsInfo[CreatorInfo[playerid][ucSelectedIco]][iType], CreatorInfo[playerid][ucSelectedIco], PX, PY, PZ);
 				#endif
 				PlayerTextDrawSetString(playerid, CreatorInfo[playerid][ucHoldInfo], strtmp);
 				PlayerTextDrawSetShadow(playerid, CreatorInfo[playerid][ucAimPoint], 0);
@@ -11782,9 +11837,9 @@ public OnPlayerUpdate(playerid)
 			if(INTERFACE_VISIBILITY)
 			{
 				#if defined CreateDynamic3DTextLabel
-					format(strtmp, sizeof strtmp, "Dyn texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", CreatorInfo[playerid][ucSelectedLab], PX, PY, PZ);
+					format(strtmp, sizeof strtmp, "Dyn 3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", CreatorInfo[playerid][ucSelectedLab], PX, PY, PZ);
 				#else
-					format(strtmp, sizeof strtmp, "Texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", CreatorInfo[playerid][ucSelectedLab], PX, PY, PZ);
+					format(strtmp, sizeof strtmp, "3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", CreatorInfo[playerid][ucSelectedLab], PX, PY, PZ);
 				#endif
 				PlayerTextDrawSetString(playerid, CreatorInfo[playerid][ucHoldInfo], strtmp);
 				PlayerTextDrawSetShadow(playerid, CreatorInfo[playerid][ucAimPoint], 0);
@@ -11843,19 +11898,19 @@ public OnPlayerUpdate(playerid)
 							{
 								#if defined CreateDynamic3DTextLabel
 									if(LabelsInfo[lid][lAttachedPlayerID] != INVALID_PLAYER_ID || LabelsInfo[lid][lAttachedVehicleID] != INVALID_VEHICLE_ID)
-										format(strtmp, sizeof strtmp, "Dyn texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, LabelsInfo[lid][lX], LabelsInfo[lid][lY], LabelsInfo[lid][lZ]);
-									else format(strtmp, sizeof strtmp, "Dyn texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, PX, PY, PZ);
+										format(strtmp, sizeof strtmp, "Dyn 3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, LabelsInfo[lid][lX], LabelsInfo[lid][lY], LabelsInfo[lid][lZ]);
+									else format(strtmp, sizeof strtmp, "Dyn 3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, PX, PY, PZ);
 								#else
 									if(LabelsInfo[lid][lAttachedPlayerID] != INVALID_PLAYER_ID || LabelsInfo[lid][lAttachedVehicleID] != INVALID_VEHICLE_ID)
-										format(strtmp, sizeof strtmp, "Texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, LabelsInfo[lid][lX], LabelsInfo[lid][lY], LabelsInfo[lid][lZ]);
-									else format(strtmp, sizeof strtmp, "Texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, PX, PY, PZ);
+										format(strtmp, sizeof strtmp, "3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, LabelsInfo[lid][lX], LabelsInfo[lid][lY], LabelsInfo[lid][lZ]);
+									else format(strtmp, sizeof strtmp, "3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, PX, PY, PZ);
 								#endif
 							}
 							else if(CheckpointInfo[cpCreated] && CheckpointInfo[cpSilentObj] == obj) format(strtmp, sizeof strtmp, "Checkpoint (id %d)~n~x: %.4f, y: %.4f, z: %.4f", 1, PX, PY, PZ);
-							else if(RaceCpInfo[rcpCreated] && RaceCpInfo[rcpSilentObj] == obj) format(strtmp, sizeof strtmp, "Checkpoint de corrida (id %d)~n~x: %.4f, y: %.4f, z: %.4f", 1, PX, PY, PZ);
+							else if(RaceCpInfo[rcpCreated] && RaceCpInfo[rcpSilentObj] == obj) format(strtmp, sizeof strtmp, "Race checkpoint (id %d)~n~x: %.4f, y: %.4f, z: %.4f", 1, PX, PY, PZ);
 							else if(ObjectsInfo[obj][oAttachedPlayerID] != INVALID_PLAYER_ID || ObjectsInfo[obj][oAttachedObjectID] != INVALID_OBJECT_ID || ObjectsInfo[obj][oAttachedVehicleID] != INVALID_VEHICLE_ID)
-								format(strtmp, sizeof strtmp, "Objeto %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ObjectsInfo[obj][oModelid], obj, ObjectsInfo[obj][oX], ObjectsInfo[obj][oY], ObjectsInfo[obj][oZ]);
-							else format(strtmp, sizeof strtmp, "Objeto %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", GetObjectModel(obj), obj, PX, PY, PZ);
+								format(strtmp, sizeof strtmp, "Object %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ObjectsInfo[obj][oModelid], obj, ObjectsInfo[obj][oX], ObjectsInfo[obj][oY], ObjectsInfo[obj][oZ]);
+							else format(strtmp, sizeof strtmp, "Object %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", GetObjectModel(obj), obj, PX, PY, PZ);
 						}
 						PlayerTextDrawSetString(playerid, CreatorInfo[playerid][ucHoldInfo], strtmp);
 						PlayerTextDrawSetOutline(playerid, CreatorInfo[playerid][ucAimPoint], 0);
@@ -11901,16 +11956,16 @@ public OnPlayerUpdate(playerid)
 							{
 								#if defined CreateDynamic3DTextLabel
 									if(LabelsInfo[lid][lAttachedPlayerID] != INVALID_PLAYER_ID || LabelsInfo[lid][lAttachedVehicleID] != INVALID_VEHICLE_ID)
-										format(strtmp, sizeof strtmp, "Dyn texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, LabelsInfo[lid][lX], LabelsInfo[lid][lY], LabelsInfo[lid][lZ]);
-									else format(strtmp, sizeof strtmp, "Dyn texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, PX, PY, PZ);
+										format(strtmp, sizeof strtmp, "Dyn 3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, LabelsInfo[lid][lX], LabelsInfo[lid][lY], LabelsInfo[lid][lZ]);
+									else format(strtmp, sizeof strtmp, "Dyn 3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, PX, PY, PZ);
 								#else
 									if(LabelsInfo[lid][lAttachedPlayerID] != INVALID_PLAYER_ID || LabelsInfo[lid][lAttachedVehicleID] != INVALID_VEHICLE_ID)
-										format(strtmp, sizeof strtmp, "Texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, LabelsInfo[lid][lX], LabelsInfo[lid][lY], LabelsInfo[lid][lZ]);
-									else format(strtmp, sizeof strtmp, "Texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, PX, PY, PZ);
+										format(strtmp, sizeof strtmp, "3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, LabelsInfo[lid][lX], LabelsInfo[lid][lY], LabelsInfo[lid][lZ]);
+									else format(strtmp, sizeof strtmp, "3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, PX, PY, PZ);
 								#endif
 							}
 							else if(CheckpointInfo[cpCreated] && CheckpointInfo[cpSilentObj] == obj) format(strtmp, sizeof strtmp, "Checkpoint (id %d)~n~x: %.4f, y: %.4f, z: %.4f", 1, PX, PY, PZ);
-							else if(RaceCpInfo[rcpCreated] && RaceCpInfo[rcpSilentObj] == obj) format(strtmp, sizeof strtmp, "Checkpoint de corrida (id %d)~n~x: %.4f, y: %.4f, z: %.4f", 1, PX, PY, PZ);
+							else if(RaceCpInfo[rcpCreated] && RaceCpInfo[rcpSilentObj] == obj) format(strtmp, sizeof strtmp, "Race checkpoint (id %d)~n~x: %.4f, y: %.4f, z: %.4f", 1, PX, PY, PZ);
 							else if(ObjectsInfo[obj][oAttachedPlayerID] != INVALID_PLAYER_ID || ObjectsInfo[obj][oAttachedObjectID] != INVALID_OBJECT_ID || ObjectsInfo[obj][oAttachedVehicleID] != INVALID_VEHICLE_ID)
 								format(strtmp, sizeof strtmp, "Player object %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ObjectsInfo[obj][oModelid], obj, ObjectsInfo[obj][oX], ObjectsInfo[obj][oY], ObjectsInfo[obj][oZ]);
 							else format(strtmp, sizeof strtmp, "Player object %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", GetPlayerObjectModel(playerid, obj), obj, PX, PY, PZ);
@@ -11958,19 +12013,19 @@ public OnPlayerUpdate(playerid)
 								{
 									#if defined CreateDynamic3DTextLabel
 										if(LabelsInfo[lid][lAttachedPlayerID] != INVALID_PLAYER_ID || LabelsInfo[lid][lAttachedVehicleID] != INVALID_VEHICLE_ID)
-											format(strtmp, sizeof strtmp, "Dyn texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, LabelsInfo[lid][lX], LabelsInfo[lid][lY], LabelsInfo[lid][lZ]);
-										else format(strtmp, sizeof strtmp, "Dyn texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, PX, PY, PZ);
+											format(strtmp, sizeof strtmp, "Dyn 3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, LabelsInfo[lid][lX], LabelsInfo[lid][lY], LabelsInfo[lid][lZ]);
+										else format(strtmp, sizeof strtmp, "Dyn 3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, PX, PY, PZ);
 									#else
 										if(LabelsInfo[lid][lAttachedPlayerID] != INVALID_PLAYER_ID || LabelsInfo[lid][lAttachedVehicleID] != INVALID_VEHICLE_ID)
-											format(strtmp, sizeof strtmp, "Texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, LabelsInfo[lid][lX], LabelsInfo[lid][lY], LabelsInfo[lid][lZ]);
-										else format(strtmp, sizeof strtmp, "Texto 3D (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, PX, PY, PZ);
+											format(strtmp, sizeof strtmp, "3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, LabelsInfo[lid][lX], LabelsInfo[lid][lY], LabelsInfo[lid][lZ]);
+										else format(strtmp, sizeof strtmp, "3D text (id %d)~n~x: %.4f, y: %.4f, z: %.4f", lid, PX, PY, PZ);
 									#endif
 								}
 								else if(CheckpointInfo[cpCreated] && CheckpointInfo[cpSilentObj] == obj2) format(strtmp, sizeof strtmp, "Checkpoint (id %d)~n~x: %.4f, y: %.4f, z: %.4f", 1, PX, PY, PZ);
-								else if(RaceCpInfo[rcpCreated] && RaceCpInfo[rcpSilentObj] == obj2) format(strtmp, sizeof strtmp, "Checkpoint de corrida (id %d)~n~x: %.4f, y: %.4f, z: %.4f", 1, PX, PY, PZ);
+								else if(RaceCpInfo[rcpCreated] && RaceCpInfo[rcpSilentObj] == obj2) format(strtmp, sizeof strtmp, "Race checkpoint (id %d)~n~x: %.4f, y: %.4f, z: %.4f", 1, PX, PY, PZ);
 								else if(ObjectsInfo[obj2][oAttachedPlayerID] != INVALID_PLAYER_ID || ObjectsInfo[obj2][oAttachedObjectID] != INVALID_OBJECT_ID || ObjectsInfo[obj2][oAttachedVehicleID] != INVALID_VEHICLE_ID)
-									format(strtmp, sizeof strtmp, "Dyn objeto %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ObjectsInfo[obj2][oModelid], obj2, ObjectsInfo[obj2][oX], ObjectsInfo[obj2][oY], ObjectsInfo[obj2][oZ]);
-								else format(strtmp, sizeof strtmp, "Dyn objeto %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", GetDynamicObjectModel(obj2), obj2, PX, PY, PZ);
+									format(strtmp, sizeof strtmp, "Dyn object %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", ObjectsInfo[obj2][oModelid], obj2, ObjectsInfo[obj2][oX], ObjectsInfo[obj2][oY], ObjectsInfo[obj2][oZ]);
+								else format(strtmp, sizeof strtmp, "Dyn object %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", GetDynamicObjectModel(obj2), obj2, PX, PY, PZ);
 							}
 							PlayerTextDrawSetString(playerid, CreatorInfo[playerid][ucHoldInfo], strtmp);
 							PlayerTextDrawSetOutline(playerid, CreatorInfo[playerid][ucAimPoint], 0);
@@ -11984,7 +12039,7 @@ public OnPlayerUpdate(playerid)
 				else if(veh != INVALID_VEHICLE_ID)
 				{
 					GetVehiclePos(veh, PX, PY, PZ);
-					format(strtmp, sizeof strtmp, "Veiculo %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", GetVehicleModel(veh), veh, PX, PY, PZ);
+					format(strtmp, sizeof strtmp, "Vehicle %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", GetVehicleModel(veh), veh, PX, PY, PZ);
 					PlayerTextDrawSetString(playerid, CreatorInfo[playerid][ucHoldInfo], strtmp);
 					PlayerTextDrawSetOutline(playerid, CreatorInfo[playerid][ucAimPoint], 0);
 					PlayerTextDrawSetShadow(playerid, CreatorInfo[playerid][ucAimPoint], 1);
@@ -12015,7 +12070,7 @@ public OnPlayerUpdate(playerid)
 						else if(IsValidDynamicActor(act2))
 						{
 							GetDynamicActorPos(act2, PX, PY, PZ);
-							format(strtmp, sizeof strtmp, "Dyn ator %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", GetDynamicActorModel(act2), act2, PX, PY, PZ);
+							format(strtmp, sizeof strtmp, "Dyn actor %d (id %d)~n~x: %.4f, y: %.4f, z: %.4f", GetDynamicActorModel(act2), act2, PX, PY, PZ);
 							PlayerTextDrawSetString(playerid, CreatorInfo[playerid][ucHoldInfo], strtmp);
 							PlayerTextDrawSetOutline(playerid, CreatorInfo[playerid][ucAimPoint], 0);
 							PlayerTextDrawSetShadow(playerid, CreatorInfo[playerid][ucAimPoint], 1);
@@ -12027,7 +12082,7 @@ public OnPlayerUpdate(playerid)
 				}
 				else
 				{
-					#if defined COLANDREAS || defined COLANDREAS_VERSION
+					#if defined CA_RayCastLine
 						if(CreatorInfo[playerid][ucCopyDefObj] || CreatorInfo[playerid][ucDelDefObj])
 						{
 							new
@@ -12074,7 +12129,7 @@ public OnPlayerUpdate(playerid)
 						PlayerTextDrawSetShadow(playerid, CreatorInfo[playerid][ucAimPoint], 1);
 						PlayerTextDrawColor(playerid, CreatorInfo[playerid][ucAimPoint], 0xD0D0D0FF);
 						PlayerTextDrawShow(playerid, CreatorInfo[playerid][ucAimPoint]);
-					#if defined COLANDREAS || defined COLANDREAS_VERSION
+					#if defined CA_RayCastLine
 						}
 					#endif
 				}
@@ -12091,7 +12146,6 @@ public OnPlayerUpdate(playerid)
 			}
 			CreatorInfo[playerid][ucUdOld] = ud;
 			CreatorInfo[playerid][ucLrOld] = lr;
-			return 0;
 		}
 	}
 	return 1;
@@ -12227,6 +12281,16 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			{
 				if(response)
 				{
+					if(!strcmp(inputtext, NEXT_ITEM" >>"))
+					{
+						CreatorInfo[playerid][ucLoadPage]++;
+						return ShowCreatorDialog(playerid, DIALOG_OPEN_MAP);
+					}
+					if(!strcmp(inputtext, "<< "PREV_ITEM) && CreatorInfo[playerid][ucLoadPage] > 0)
+					{
+						CreatorInfo[playerid][ucLoadPage]--;
+						return ShowCreatorDialog(playerid, DIALOG_OPEN_MAP);
+					}
 					if(!strcmp(inputtext, ENTER_MAP_NAME)) return ShowCreatorDialog(playerid, DIALOG_OPEN_MAP, .versatile = true);
 					static strtmp[MAX_MAPNAME_LENGTH];
 					strcpy2(strtmp, inputtext, sizeof strtmp);
@@ -12242,6 +12306,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						SendMessageToCreators(DEFAULT_COLOR, strtmp2);
 						if(loaded == 2) SendMessageToCreators(DEFAULT_COLOR, REMOVED_OBJECTS_WARNING);
 						strcpy2(MapName, inputtext, sizeof MapName);
+						CreatorInfo[playerid][ucLoadPage] = 0;
 						#if defined Streamer_Update
 							Streamer_Update(playerid);
 						#endif
@@ -12259,6 +12324,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				else
 				{
+					CreatorInfo[playerid][ucLoadPage] = 0;
 					if(listitem < 0 && IsMapListFileCreated("ucmaps.lst")) ShowCreatorDialog(playerid, DIALOG_OPEN_MAP);
 					else if(!CreatorInfo[playerid][ucCalledFromCmd]) ShowCreatorDialog(playerid, DIALOG_CHOOSE_MAP);
 				}
@@ -12274,6 +12340,16 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			{
 				if(response)
 				{
+					if(!strcmp(inputtext, NEXT_ITEM" >>"))
+					{
+						CreatorInfo[playerid][ucLoadPage]++;
+						return ShowCreatorDialog(playerid, DIALOG_OPEN_MAP_OVER);
+					}
+					if(!strcmp(inputtext, "<< "PREV_ITEM) && CreatorInfo[playerid][ucLoadPage] > 0)
+					{
+						CreatorInfo[playerid][ucLoadPage]--;
+						return ShowCreatorDialog(playerid, DIALOG_OPEN_MAP_OVER);
+					}
 					if(!strcmp(inputtext, ENTER_MAP_NAME)) return ShowCreatorDialog(playerid, DIALOG_OPEN_MAP_OVER, .versatile = true);
 					static strtmp[MAX_MAPNAME_LENGTH];
 					strcpy2(strtmp, inputtext, sizeof strtmp);
@@ -12287,6 +12363,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						GetPlayerName(playerid, pname, sizeof pname);
 						format(strtmp2, sizeof strtmp2, MAP_OPENED_OVER, pname, strtmp);
 						SendMessageToCreators(DEFAULT_COLOR, strtmp2);
+						CreatorInfo[playerid][ucLoadPage] = 0;
 						#if defined Streamer_Update
 							Streamer_Update(playerid);
 						#endif
@@ -12304,6 +12381,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				else
 				{
+					CreatorInfo[playerid][ucLoadPage] = 0;
 					if(listitem < 0 && IsMapListFileCreated("ucmaps.lst")) ShowCreatorDialog(playerid, DIALOG_OPEN_MAP_OVER);
 					else if(!CreatorInfo[playerid][ucCalledFromCmd]) ShowCreatorDialog(playerid, DIALOG_CHOOSE_MAP);
 				}
@@ -12338,6 +12416,16 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			{
 				if(response)
 				{
+					if(!strcmp(inputtext, NEXT_ITEM" >>"))
+					{
+						CreatorInfo[playerid][ucLoadPage]++;
+						return ShowCreatorDialog(playerid, DIALOG_DELETE_MAP);
+					}
+					if(!strcmp(inputtext, "<< "PREV_ITEM) && CreatorInfo[playerid][ucLoadPage] > 0)
+					{
+						CreatorInfo[playerid][ucLoadPage]--;
+						return ShowCreatorDialog(playerid, DIALOG_DELETE_MAP);
+					}
 					if(!strcmp(inputtext, ENTER_MAP_NAME)) return ShowCreatorDialog(playerid, DIALOG_DELETE_MAP, .versatile = true);
 					static strtmp[MAX_MAPNAME_LENGTH];
 					strcpy2(strtmp, inputtext, sizeof strtmp);
@@ -12348,6 +12436,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						GetPlayerName(playerid, pname, sizeof pname);
 						format(strtmp2, sizeof strtmp2, MAP_DELETED, pname, strtmp);
 						SendMessageToCreators(DEFAULT_COLOR, strtmp2);
+						CreatorInfo[playerid][ucLoadPage] = 0;
 					}
 					else
 					{
@@ -12358,6 +12447,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				else
 				{
+					CreatorInfo[playerid][ucLoadPage] = 0;
 					if(listitem < 0 && IsMapListFileCreated("ucmaps.lst")) ShowCreatorDialog(playerid, DIALOG_DELETE_MAP);
 					else if(!CreatorInfo[playerid][ucCalledFromCmd]) ShowCreatorDialog(playerid, DIALOG_CHOOSE_MAP);
 				}
@@ -12375,7 +12465,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						case 3: ShowCreatorDialog(playerid, DIALOG_TELEPORT_INTO);
 						case 4:
 						{
-							#if defined COLANDREAS || defined COLANDREAS_VERSION
+							#if defined CA_RayCastLine\
+								&& defined CA_RayCastLineEx\
+								&& defined CA_RayCastLineAngleEx
 								ResetPlayerHoldingItems(playerid);
 								ResetPlayerSelectedItems(playerid);
 								CreatorInfo[playerid][ucDelDefObj] = false;
@@ -12386,7 +12478,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						}
 						case 5:
 						{
-							#if defined COLANDREAS || defined COLANDREAS_VERSION
+							#if defined CA_RayCastLine\
+								&& defined CA_RayCastLineEx\
+								&& defined CA_RayCastLineAngleEx
 								CreatorInfo[playerid][ucCalledFromCmd] = false;
 								ShowCreatorDialog(playerid, DIALOG_REMOVE_OBJECTS_WARN);
 							#else
@@ -12509,7 +12603,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						new c;
 						static strtmp2[128], strtmp[128 + MAX_MATCHES_COUNT + (MAX_OBJECT_NAME_LENGTH * MAX_MATCHES_COUNT)];
 						strtmp[0] = EOS;
-						strcat(strtmp, "ID\tNome\n\n");
+						strcat(strtmp, "ID\tName\n\n");
 						for(new i, tmpid[6]; i < sizeof ObjectsArray; ++i)
 						{
 							if(strfind(ObjectsArray[i][oName], inputtext, true) != -1)
@@ -12575,7 +12669,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						new c;
 						static strtmp2[128], strtmp[128 + MAX_MATCHES_COUNT + (MAX_VEHICLE_NAME_LENGTH * MAX_MATCHES_COUNT)];
 						strtmp[0] = EOS;
-						strcat(strtmp, "ID\tNome\n\n");
+						strcat(strtmp, "ID\tName\n\n");
 						for(new i, tmpid[6]; i < sizeof VehicleNames; ++i)
 						{
 							if(strfind(VehicleNames[i], inputtext, true) != -1)
@@ -12635,7 +12729,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						new c;
 						static strtmp2[128], strtmp[128 + MAX_MATCHES_COUNT + (MAX_SKIN_MODEL_NAME_LENGTH * MAX_MATCHES_COUNT)];
 						strtmp[0] = EOS;
-						strcat(strtmp, "ID\tNome\n\n");
+						strcat(strtmp, "ID\tName\n\n");
 						for(new i, tmpid[6]; i < sizeof SkinModelNames; ++i)
 						{
 							if(strfind(SkinModelNames[i], inputtext, true) != -1)
@@ -12702,7 +12796,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						new c;
 						static strtmp2[128], strtmp[128 + MAX_MATCHES_COUNT + (MAX_OBJECT_NAME_LENGTH * MAX_MATCHES_COUNT)];
 						strtmp[0] = EOS;
-						strcat(strtmp, "ID\tNome\n\n");
+						strcat(strtmp, "ID\tName\n\n");
 						for(new i, tmpid[6]; i < sizeof ObjectsArray; ++i)
 						{
 							if(strfind(ObjectsArray[i][oName], inputtext, true) != -1)
@@ -12799,7 +12893,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						new c;
 						static strtmp2[128], strtmp[128 + MAX_MATCHES_COUNT + (MAX_ICON_NAME_LENGTH * MAX_MATCHES_COUNT)];
 						strtmp[0] = EOS;
-						strcat(strtmp, "ID\tNome\n\n");
+						strcat(strtmp, "ID\tName\n\n");
 						for(new i, tmpid[6]; i < sizeof MapIconNames; ++i)
 						{
 							if(strfind(MapIconNames[i], inputtext, true) != -1)
@@ -12902,21 +12996,21 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				CreatorInfo[playerid][ucEditDialog] = false;
 				if(response)
 				{
-					if(CreatorInfo[playerid][ucPage] > 0 && listitem >= MAX_ITEMS_PER_PAGE + 1 ||
-					CreatorInfo[playerid][ucPage] == 0 && listitem >= MAX_ITEMS_PER_PAGE)
+					if(CreatorInfo[playerid][ucEditPage] > 0 && listitem >= MAX_ITEMS_PER_PAGE + 1 ||
+					CreatorInfo[playerid][ucEditPage] == 0 && listitem >= MAX_ITEMS_PER_PAGE)
 					{
-						CreatorInfo[playerid][ucPage]++;
+						CreatorInfo[playerid][ucEditPage]++;
 						ShowCreatorDialog(playerid, DIALOG_EDIT);
 						return 1;
 					}
-					if(CreatorInfo[playerid][ucPage] > 0 && listitem == 0)
+					if(CreatorInfo[playerid][ucEditPage] > 0 && listitem == 0)
 					{
-						CreatorInfo[playerid][ucPage]--;
+						CreatorInfo[playerid][ucEditPage]--;
 						ShowCreatorDialog(playerid, DIALOG_EDIT);
 						return 1;
 					}
-					new i, c = -1, d, tmp, item = (CreatorInfo[playerid][ucPage] > 0 ? listitem - 1 : listitem);
-					tmp = ((CreatorInfo[playerid][ucPage] + 1) * MAX_ITEMS_PER_PAGE) - MAX_ITEMS_PER_PAGE;
+					new i, c = -1, d, tmp, item = (CreatorInfo[playerid][ucEditPage] > 0 ? listitem - 1 : listitem);
+					tmp = ((CreatorInfo[playerid][ucEditPage] + 1) * MAX_ITEMS_PER_PAGE) - MAX_ITEMS_PER_PAGE;
 					for(i = 1; i < sizeof ObjectsInfo; ++i)
 					{
 						if(!ObjectsInfo[i][oCreated]) continue;
@@ -13048,7 +13142,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				else
 				{
-					CreatorInfo[playerid][ucPage] = 0;
+					CreatorInfo[playerid][ucEditPage] = 0;
 					ShowCreatorDialog(playerid, DIALOG_MAIN);
 				}
 				return 1;
@@ -13074,7 +13168,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								#if defined CREATOR_DEBUG
 									if(CreatorInfo[playerid][ucCalledFromList])
 									{
-										format(strtmp, sizeof strtmp, "[Objeto %d] %0.4f, %0.4f, %0.4f", ObjectsInfo[clickedid][oModelid], ObjectsInfo[clickedid][oX], ObjectsInfo[clickedid][oY], ObjectsInfo[clickedid][oZ]);
+										format(strtmp, sizeof strtmp, "[Object %d | ID %d] %0.4f, %0.4f, %0.4f", ObjectsInfo[clickedid][oModelid], clickedid, ObjectsInfo[clickedid][oX], ObjectsInfo[clickedid][oY], ObjectsInfo[clickedid][oZ]);
 										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 									}
 								#endif
@@ -13240,7 +13334,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								edit_object_case_6:
 								if(ObjectsInfo[clickedid][oCreated])
 								{
-									#if defined COLANDREAS || defined COLANDREAS_VERSION
+									#if defined CA_RayCastLine\
+										&& defined CA_SetObjectPos\
+										&& defined CA_GetModelBoundingBox
 										if(ObjectsInfo[clickedid][oAttachedPlayerID] != INVALID_PLAYER_ID ||
 										ObjectsInfo[clickedid][oAttachedObjectID] != INVALID_OBJECT_ID ||
 										ObjectsInfo[clickedid][oAttachedVehicleID] != INVALID_VEHICLE_ID)
@@ -13288,7 +13384,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								edit_object_case_7:
 								if(ObjectsInfo[clickedid][oCreated])
 								{
-									#if defined COLANDREAS || defined COLANDREAS_VERSION
+									#if defined CA_RayCastLineAngle\
+										&& defined CA_SetObjectPos\
+										&& defined CA_GetModelBoundingBox
 										if(ObjectsInfo[clickedid][oAttachedPlayerID] != INVALID_PLAYER_ID ||
 										ObjectsInfo[clickedid][oAttachedObjectID] != INVALID_OBJECT_ID ||
 										ObjectsInfo[clickedid][oAttachedVehicleID] != INVALID_VEHICLE_ID)
@@ -14920,7 +15018,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								#if defined CREATOR_DEBUG
 									if(CreatorInfo[playerid][ucCalledFromList])
 									{
-										format(strtmp, sizeof strtmp, "[Veiculo %d] %0.4f, %0.4f, %0.4f", VehiclesInfo[clickedid][vModelid], VehiclesInfo[clickedid][vX], VehiclesInfo[clickedid][vY], VehiclesInfo[clickedid][vZ]);
+										GetVehiclePos(clickedid, VehiclesInfo[clickedid][vX], VehiclesInfo[clickedid][vY], VehiclesInfo[clickedid][vZ]);
+										format(strtmp, sizeof strtmp, "[Vehicle %d | ID %d] %0.4f, %0.4f, %0.4f", VehiclesInfo[clickedid][vModelid], clickedid, VehiclesInfo[clickedid][vX], VehiclesInfo[clickedid][vY], VehiclesInfo[clickedid][vZ]);
 										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 									}
 								#endif
@@ -14951,7 +15050,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 							{
 								if(VehiclesInfo[clickedid][vCreated])
 								{
-									new cveh = CopyVehicle(clickedid, VehiclesInfo[clickedid][vModelid]);
+									new
+										Float:veh_x, Float:veh_y,
+										Float:veh_z, Float:veh_rz;
+									GetVehiclePos(clickedid, veh_x, veh_y, veh_z);
+									GetVehicleZAngle(clickedid, veh_rz);
+									new cveh = CopyVehicle(clickedid, VehiclesInfo[clickedid][vModelid], veh_x, veh_y, veh_z, veh_rz);
 									if(cveh > 0 && cveh != INVALID_VEHICLE_ID)
 									{
 										ResetPlayerHoldingItems(playerid);
@@ -14979,7 +15083,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 							{
 								if(VehiclesInfo[clickedid][vCreated])
 								{
-									#if defined COLANDREAS || defined COLANDREAS_VERSION
+									#if defined CA_RayCastLine
 										new
 											Float:posX, Float:posY, Float:posZ,
 											Float:veh_z, Float:tmp;
@@ -15116,7 +15220,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 							new c;
 							static strtmp2[128], strtmp[128 + MAX_MATCHES_COUNT + (MAX_COMPONENT_NAME_LENGTH * MAX_MATCHES_COUNT)];
 							strtmp[0] = EOS;
-							strcat(strtmp, "ID\tNome\n\n");
+							strcat(strtmp, "ID\tName\n\n");
 							for(new i, tmpid[6]; i < sizeof ComponentNames; ++i)
 							{
 								if(strfind(ComponentNames[i], inputtext, true) != -1 && IsComponentCompatible(modelid, i + 1000))
@@ -15284,8 +15388,16 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 							return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_ROT_Z_ERROR);
 						}
 						static strtmp[145];
-						new Float:rZ = floatstr(inputtext);
-						SetVehicleZAngle(clickedid, rZ);
+						new Float:X, Float:Y, Float:Z, Float:rZ = floatstr(inputtext);
+						GetVehiclePos(clickedid, X, Y, Z);
+						new clickveh = CopyVehicle(clickedid, VehiclesInfo[clickedid][vModelid], X, Y, Z, rZ);
+						if(clickveh > 0 && clickveh != INVALID_VEHICLE_ID)
+						{
+							DestroyVehicle(clickedid);
+							CreatorInfo[playerid][ucClickedVeh] = clickveh;
+							clickedid = clickveh;
+						}
+						else SetVehicleZAngle(clickedid, rZ);
 						format(strtmp, sizeof strtmp, VEHICLE_TELEPORTED_TO_RZ, clickedid, rZ);
 						SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 					}
@@ -15381,7 +15493,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								#if defined CREATOR_DEBUG
 									if(CreatorInfo[playerid][ucCalledFromList])
 									{
-										format(strtmp, sizeof strtmp, "[Ator %d] %0.4f, %0.4f, %0.4f", ActorsInfo[clickedid][aModelid], ActorsInfo[clickedid][aX], ActorsInfo[clickedid][aY], ActorsInfo[clickedid][aZ]);
+										#if defined GetDynamicActorPos
+											GetDynamicActorPos(clickedid, ActorsInfo[clickedid][aX], ActorsInfo[clickedid][aY], ActorsInfo[clickedid][aZ]);
+										#else
+											GetActorPos(clickedid, ActorsInfo[clickedid][aX], ActorsInfo[clickedid][aY], ActorsInfo[clickedid][aZ]);
+										#endif
+										format(strtmp, sizeof strtmp, "[Actor %d | ID %d] %0.4f, %0.4f, %0.4f", ActorsInfo[clickedid][aModelid], clickedid, ActorsInfo[clickedid][aX], ActorsInfo[clickedid][aY], ActorsInfo[clickedid][aZ]);
 										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 									}
 								#endif
@@ -15464,7 +15581,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 							{
 								if(ActorsInfo[clickedid][aCreated])
 								{
-									#if defined COLANDREAS || defined COLANDREAS_VERSION
+									#if defined CA_RayCastLine
 										new Float:posX, Float:posY, Float:posZ;
 										#if defined GetDynamicActorPos
 											GetDynamicActorPos(clickedid, posX, posY, posZ);
@@ -15553,7 +15670,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 							new c;
 							static strtmp2[128], strtmp[128 + MAX_MATCHES_COUNT + (36 * MAX_MATCHES_COUNT)];
 							strtmp[0] = EOS;
-							strcat(strtmp, "ID\tLib\t\t\tNome\n\n");
+							strcat(strtmp, "ID\tLib\t\t\tName\n\n");
 							for(new i, tmpid[6]; i < sizeof AnimationsArray; ++i)
 							{
 								if(strfind(AnimationsArray[i][aLibName], inputtext, true) != -1 || strfind(AnimationsArray[i][aAnimName], inputtext, true) != -1)
@@ -15584,7 +15701,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 							ApplyActorAnimation(clickedid, AnimationsArray[animid][aLibName], AnimationsArray[animid][aAnimName], 4.1, 1, 0, 0, 0, 0);
 						#endif
 						static strtmp[145];
-						SetTimerEx("ReApplyActorAnimation", 800, 0, "i", clickedid);
+						SetTimerEx("ReApplyActorAnimation", DELAY_ANIM_REAPPLYING, 0, "i", clickedid);
 						format(strtmp, sizeof strtmp, ACTOR_ANIM_CHANGED, clickedid, animid);
 						SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 					}
@@ -15735,7 +15852,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								#if defined CREATOR_DEBUG
 									if(CreatorInfo[playerid][ucCalledFromList])
 									{
-										format(strtmp, sizeof strtmp, "[Pickup %d] %0.4f, %0.4f, %0.4f", PickupsInfo[clickedid][pModelid], PickupsInfo[clickedid][pX], PickupsInfo[clickedid][pY], PickupsInfo[clickedid][pZ]);
+										format(strtmp, sizeof strtmp, "[Pickup %d | ID %d] %0.4f, %0.4f, %0.4f", PickupsInfo[clickedid][pModelid], clickedid, PickupsInfo[clickedid][pX], PickupsInfo[clickedid][pY], PickupsInfo[clickedid][pZ]);
 										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 									}
 								#endif
@@ -15806,7 +15923,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 							{
 								if(PickupsInfo[clickedid][pCreated])
 								{
-									#if defined COLANDREAS || defined COLANDREAS_VERSION
+									#if defined CA_RayCastLine
 										new
 											Float:posX = PickupsInfo[clickedid][pX],
 											Float:posY = PickupsInfo[clickedid][pY],
@@ -16154,7 +16271,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								#if defined CREATOR_DEBUG
 									if(CreatorInfo[playerid][ucCalledFromList])
 									{
-										format(strtmp, sizeof strtmp, "[Checkpoint de corrida] %0.4f, %0.4f, %0.4f", RaceCpInfo[rcpX], RaceCpInfo[rcpY], RaceCpInfo[rcpZ]);
+										format(strtmp, sizeof strtmp, "[Race checkpoint] %0.4f, %0.4f, %0.4f", RaceCpInfo[rcpX], RaceCpInfo[rcpY], RaceCpInfo[rcpZ]);
 										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 									}
 								#endif
@@ -16438,7 +16555,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								#if defined CREATOR_DEBUG
 									if(CreatorInfo[playerid][ucCalledFromList])
 									{
-										format(strtmp, sizeof strtmp, "[Нcone do mapa %d] %0.4f, %0.4f, %0.4f", IconsInfo[clickedid][iType], IconsInfo[clickedid][iX], IconsInfo[clickedid][iY], IconsInfo[clickedid][iZ]);
+										format(strtmp, sizeof strtmp, "[Map icon %d | ID %d] %0.4f, %0.4f, %0.4f", IconsInfo[clickedid][iType], clickedid, IconsInfo[clickedid][iX], IconsInfo[clickedid][iY], IconsInfo[clickedid][iZ]);
 										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 									}
 								#endif
@@ -16736,7 +16853,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								#if defined CREATOR_DEBUG
 									if(CreatorInfo[playerid][ucCalledFromList])
 									{
-										format(strtmp, sizeof strtmp, "[Gangzone] %0.4f, %0.4f, %0.4f, %0.4f", ZonesInfo[clickedid][gMinX], ZonesInfo[clickedid][gMinY], ZonesInfo[clickedid][gMaxX], ZonesInfo[clickedid][gMaxY]);
+										format(strtmp, sizeof strtmp, "[Gangzone | ID %d] %0.4f, %0.4f, %0.4f, %0.4f", clickedid, ZonesInfo[clickedid][gMinX], ZonesInfo[clickedid][gMinY], ZonesInfo[clickedid][gMaxX], ZonesInfo[clickedid][gMaxY]);
 										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 									}
 								#endif
@@ -16751,7 +16868,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								#if defined CREATOR_DEBUG
 									if(CreatorInfo[playerid][ucCalledFromList])
 									{
-										format(strtmp, sizeof strtmp, "[Gangzone] %0.4f, %0.4f, %0.4f, %0.4f", ZonesInfo[clickedid][gMinX], ZonesInfo[clickedid][gMinY], ZonesInfo[clickedid][gMaxX], ZonesInfo[clickedid][gMaxY]);
+										format(strtmp, sizeof strtmp, "[Gangzone | ID %d] %0.4f, %0.4f, %0.4f, %0.4f", clickedid, ZonesInfo[clickedid][gMinX], ZonesInfo[clickedid][gMinY], ZonesInfo[clickedid][gMaxX], ZonesInfo[clickedid][gMaxY]);
 										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 									}
 								#endif
@@ -16763,7 +16880,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 									new Float:posX, Float:posY, Float:posZ, Float:temp;
 									GetCenterOfGangZone(ZonesInfo[clickedid][gMinX], ZonesInfo[clickedid][gMinY],
 									ZonesInfo[clickedid][gMaxX], ZonesInfo[clickedid][gMaxY], posX, posY);
-									#if defined COLANDREAS || defined COLANDREAS_VERSION
+									#if defined CA_RayCastLine
 										if(!CA_RayCastLine(posX, posY, 700.0, posX, posY, -1000.0, temp, temp, posZ))
 											GetPlayerObjectPos(playerid, CreatorInfo[playerid][ucFlyObject], temp, temp, posZ);
 										else posZ += 3.0;
@@ -17051,7 +17168,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								#if defined CREATOR_DEBUG
 									if(CreatorInfo[playerid][ucCalledFromList])
 									{
-										format(strtmp, sizeof strtmp, "{ffffff}[Texto 3D '%s{ffffff}'] %0.4f, %0.4f, %0.4f", LabelsInfo[clickedid][lText], LabelsInfo[clickedid][lX], LabelsInfo[clickedid][lY], LabelsInfo[clickedid][lZ]);
+										format(strtmp, sizeof strtmp, "{ffffff}[3D text '%s{ffffff}' | ID %d] %0.4f, %0.4f, %0.4f", LabelsInfo[clickedid][lText], clickedid, LabelsInfo[clickedid][lX], LabelsInfo[clickedid][lY], LabelsInfo[clickedid][lZ]);
 										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 									}
 								#endif
@@ -17177,7 +17294,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								edit_label_case_6:
 								if(LabelsInfo[clickedid][lCreated])
 								{
-									#if defined COLANDREAS || defined COLANDREAS_VERSION
+									#if defined CA_RayCastLine
 										if(LabelsInfo[clickedid][lAttachedPlayerID] != INVALID_PLAYER_ID ||
 										LabelsInfo[clickedid][lAttachedVehicleID] != INVALID_VEHICLE_ID)
 										{
@@ -17869,7 +17986,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_MAP_MARKER_ERROR);
 							}
 							new Float:posZ;
-							#if defined COLANDREAS || defined COLANDREAS_VERSION
+							#if defined CA_RayCastLine
 								new Float:temp;
 								if(!CA_RayCastLine(CreatorInfo[playerid][ucClickMapX], CreatorInfo[playerid][ucClickMapY], 700.0, CreatorInfo[playerid][ucClickMapX], CreatorInfo[playerid][ucClickMapY], -1000.0, temp, temp, posZ))
 									posZ = CreatorInfo[playerid][ucClickMapZ];
@@ -18479,18 +18596,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			{
 				if(response)
 				{
-					new time = listitem;
-					static strtmp2[145], strtmp3[16], pname[MAX_PLAYER_NAME + 1];
-					if(time > 11)
-					{
-						if(time != 12) time -= 12;
-						format(strtmp3, sizeof strtmp3, "%d:00 PM", time);
-					}
-					else if(time == 0) strtmp3 = "12:00 AM";
-					else format(strtmp3, sizeof strtmp3, "%d:00 AM", time);
 					SetWorldTime(listitem);
+					static strtmp2[145], pname[MAX_PLAYER_NAME + 1];
 					GetPlayerName(playerid, pname, sizeof pname);
-					format(strtmp2, sizeof strtmp2, TIME_CHANGED, pname, strtmp3);
+					format(strtmp2, sizeof strtmp2, TIME_CHANGED, pname, listitem);
 					SendMessageToCreators(DEFAULT_COLOR, strtmp2);
 				}
 				else if(!CreatorInfo[playerid][ucCalledFromCmd]) ShowCreatorDialog(playerid, DIALOG_SETTINGS);
@@ -18983,7 +19092,12 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 						}
 						else if(veh != INVALID_VEHICLE_ID)
 						{
-							new cveh = CopyVehicle(veh, GetVehicleModel(veh));
+							new
+								Float:veh_x, Float:veh_y,
+								Float:veh_z, Float:veh_rz;
+							GetVehiclePos(veh, veh_x, veh_y, veh_z);
+							GetVehicleZAngle(veh, veh_rz);
+							new cveh = CopyVehicle(veh, GetVehicleModel(veh), veh_x, veh_y, veh_z, veh_rz);
 							if(cveh > 0 && cveh != INVALID_VEHICLE_ID)
 							{
 								CreatorInfo[playerid][ucDelDefObj] = false;
@@ -19264,64 +19378,62 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 							CreatorInfo[playerid][ucSelectedAct] = act;
 							FlyModeStopMovie(playerid);
 						}
-						#if defined COLANDREAS || defined COLANDREAS_VERSION
-							else
+						#if defined CA_RayCastLineEx\
+							&& defined CA_RayCastLineAngleEx
+							else if(CreatorInfo[playerid][ucCopyDefObj])
 							{
-								if(CreatorInfo[playerid][ucCopyDefObj])
+								new
+									Float:PX, Float:PY, Float:PZ,
+									Float:VX, Float:VY, Float:VZ,
+									Float:vfX, Float:vfY, Float:vfZ,
+									Float:rx, Float:ry, Float:rz,
+									Float:dobj_x, Float:dobj_y, Float:dobj_z, dmodel;
+								GetPlayerCameraPos(playerid, PX, PY, PZ);
+								GetPlayerCameraFrontVector(playerid, VX, VY, VZ);
+								dobj_x = PX + floatmul(VX, DIST_FROM_CAMERA * 10.0);
+								dobj_y = PY + floatmul(VY, DIST_FROM_CAMERA * 10.0);
+								dobj_z = PZ + floatmul(VZ, DIST_FROM_CAMERA * 10.0);
+								dmodel = CA_RayCastLineAngleEx(PX, PY, PZ, dobj_x, dobj_y, dobj_z, vfX, vfY, vfZ, rx, ry, rz, VX, VY, VZ, rx, ry, rz);
+								if(dmodel && dmodel != 20000)
 								{
-									new
-										Float:PX, Float:PY, Float:PZ,
-										Float:VX, Float:VY, Float:VZ,
-										Float:vfX, Float:vfY, Float:vfZ,
-										Float:rx, Float:ry, Float:rz,
-										Float:dobj_x, Float:dobj_y, Float:dobj_z, dmodel;
-									GetPlayerCameraPos(playerid, PX, PY, PZ);
-									GetPlayerCameraFrontVector(playerid, VX, VY, VZ);
-									dobj_x = PX + floatmul(VX, DIST_FROM_CAMERA * 10.0);
-									dobj_y = PY + floatmul(VY, DIST_FROM_CAMERA * 10.0);
-									dobj_z = PZ + floatmul(VZ, DIST_FROM_CAMERA * 10.0);
-									dmodel = CA_RayCastLineAngleEx(PX, PY, PZ, dobj_x, dobj_y, dobj_z, vfX, vfY, vfZ, rx, ry, rz, VX, VY, VZ, rx, ry, rz);
-									if(dmodel && dmodel != 20000)
+									#if defined CreateDynamicObject\
+										&& defined Streamer_Update
+										new cobj = CreateDynamicObject(dmodel, vfX, vfY, vfZ, rx, ry, rz);
+										Streamer_Update(playerid);
+									#else
+										new cobj = CreateObject(dmodel, vfX, vfY, vfZ, rx, ry, rz);
+									#endif
+									if(cobj > 0 && cobj != INVALID_OBJECT_ID && cobj < MAX_UC_OBJECTS)
 									{
-										#if defined CreateDynamicObject\
-											&& defined Streamer_Update
-											new cobj = CreateDynamicObject(dmodel, vfX, vfY, vfZ, rx, ry, rz);
-											Streamer_Update(playerid);
-										#else
-											new cobj = CreateObject(dmodel, vfX, vfY, vfZ, rx, ry, rz);
-										#endif
-										if(cobj > 0 && cobj != INVALID_OBJECT_ID && cobj < MAX_UC_OBJECTS)
-										{
-											format(strtmp, sizeof strtmp, OBJECT_CREATED, cobj);
-											SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
-											CreatorInfo[playerid][ucHoldingObj] = cobj;
-										}
-										else SendClientMessage(playerid, DEFAULT_COLOR, LIMIT_ERROR);
+										format(strtmp, sizeof strtmp, OBJECT_CREATED, cobj);
+										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+										CreatorInfo[playerid][ucHoldingObj] = cobj;
 									}
+									else SendClientMessage(playerid, DEFAULT_COLOR, LIMIT_ERROR);
 								}
-								else if(CreatorInfo[playerid][ucDelDefObj])
+							}
+							else if(CreatorInfo[playerid][ucDelDefObj])
+							{
+								new
+									Float:PX, Float:PY, Float:PZ,
+									Float:VX, Float:VY, Float:VZ,
+									Float:rx, Float:ry, Float:rz, Float:rw,
+									Float:dobj_x, Float:dobj_y, Float:dobj_z, dmodel;
+								GetPlayerCameraPos(playerid, PX, PY, PZ);
+								GetPlayerCameraFrontVector(playerid, VX, VY, VZ);
+								dobj_x = PX + floatmul(VX, DIST_FROM_CAMERA * 10.0);
+								dobj_y = PY + floatmul(VY, DIST_FROM_CAMERA * 10.0);
+								dobj_z = PZ + floatmul(VZ, DIST_FROM_CAMERA * 10.0);
+								dmodel = CA_RayCastLineEx(PX, PY, PZ, dobj_x, dobj_y, dobj_z, VX, VY, VZ, rx, ry, rz, rw, VX, VY, VZ);
+								if(dmodel && dmodel != 20000)
 								{
-									new
-										Float:PX, Float:PY, Float:PZ,
-										Float:VX, Float:VY, Float:VZ,
-										Float:rx, Float:ry, Float:rz, Float:rw,
-										Float:dobj_x, Float:dobj_y, Float:dobj_z, dmodel;
-									GetPlayerCameraPos(playerid, PX, PY, PZ);
-									GetPlayerCameraFrontVector(playerid, VX, VY, VZ);
-									dobj_x = PX + floatmul(VX, DIST_FROM_CAMERA * 10.0);
-									dobj_y = PY + floatmul(VY, DIST_FROM_CAMERA * 10.0);
-									dobj_z = PZ + floatmul(VZ, DIST_FROM_CAMERA * 10.0);
-									dmodel = CA_RayCastLineEx(PX, PY, PZ, dobj_x, dobj_y, dobj_z, VX, VY, VZ, rx, ry, rz, rw, VX, VY, VZ);
-									if(dmodel && dmodel != 20000)
+									if(RemoveCount < MAX_UC_REMOVED_OBJECTS)
 									{
-										if(RemoveCount < MAX_UC_REMOVED_OBJECTS)
-										{
-											format(strtmp, sizeof strtmp, OBJECT_REMOVED, dmodel);
-											SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
-											RemoveBuilding(-1, VX, VY, VZ, 0.25);
-										}
-										else SendClientMessage(playerid, DEFAULT_COLOR, LIMIT_ERROR);
+										format(strtmp, sizeof strtmp, OBJECT_REMOVED, dmodel);
+										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+										RemoveBuilding(-1, VX, VY, VZ, 0.25);
 									}
+									else SendClientMessage(playerid, DEFAULT_COLOR, LIMIT_ERROR);
 								}
 							}
 						#endif
@@ -19726,7 +19838,12 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 						}
 						else if(veh != INVALID_VEHICLE_ID)
 						{
-							new cveh = CopyVehicle(veh, GetVehicleModel(veh));
+							new
+								Float:veh_x, Float:veh_y,
+								Float:veh_z, Float:veh_rz;
+							GetVehiclePos(veh, veh_x, veh_y, veh_z);
+							GetVehicleZAngle(veh, veh_rz);
+							new cveh = CopyVehicle(veh, GetVehicleModel(veh), veh_x, veh_y, veh_z, veh_rz);
 							if(cveh > 0 && cveh != INVALID_VEHICLE_ID)
 							{
 								CreatorInfo[playerid][ucDelDefObj] = false;
@@ -19930,64 +20047,62 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 							CreatorInfo[playerid][ucDelDefObj] = false;
 							CreatorInfo[playerid][ucHoldingAct] = act;
 						}
-						#if defined COLANDREAS || defined COLANDREAS_VERSION
-							else
+						#if defined CA_RayCastLineEx\
+							&& defined CA_RayCastLineAngleEx
+							else if(CreatorInfo[playerid][ucCopyDefObj])
 							{
-								if(CreatorInfo[playerid][ucCopyDefObj])
+								new
+									Float:PX, Float:PY, Float:PZ,
+									Float:VX, Float:VY, Float:VZ,
+									Float:vfX, Float:vfY, Float:vfZ,
+									Float:rx, Float:ry, Float:rz,
+									Float:dobj_x, Float:dobj_y, Float:dobj_z, dmodel;
+								GetPlayerCameraPos(playerid, PX, PY, PZ);
+								GetPlayerCameraFrontVector(playerid, VX, VY, VZ);
+								dobj_x = PX + floatmul(VX, DIST_FROM_CAMERA * 10.0);
+								dobj_y = PY + floatmul(VY, DIST_FROM_CAMERA * 10.0);
+								dobj_z = PZ + floatmul(VZ, DIST_FROM_CAMERA * 10.0);
+								dmodel = CA_RayCastLineAngleEx(PX, PY, PZ, dobj_x, dobj_y, dobj_z, vfX, vfY, vfZ, rx, ry, rz, VX, VY, VZ, rx, ry, rz);
+								if(dmodel && dmodel != 20000)
 								{
-									new
-										Float:PX, Float:PY, Float:PZ,
-										Float:VX, Float:VY, Float:VZ,
-										Float:vfX, Float:vfY, Float:vfZ,
-										Float:rx, Float:ry, Float:rz,
-										Float:dobj_x, Float:dobj_y, Float:dobj_z, dmodel;
-									GetPlayerCameraPos(playerid, PX, PY, PZ);
-									GetPlayerCameraFrontVector(playerid, VX, VY, VZ);
-									dobj_x = PX + floatmul(VX, DIST_FROM_CAMERA * 10.0);
-									dobj_y = PY + floatmul(VY, DIST_FROM_CAMERA * 10.0);
-									dobj_z = PZ + floatmul(VZ, DIST_FROM_CAMERA * 10.0);
-									dmodel = CA_RayCastLineAngleEx(PX, PY, PZ, dobj_x, dobj_y, dobj_z, vfX, vfY, vfZ, rx, ry, rz, VX, VY, VZ, rx, ry, rz);
-									if(dmodel && dmodel != 20000)
+									#if defined CreateDynamicObject\
+										&& defined Streamer_Update
+										new cobj = CreateDynamicObject(dmodel, vfX, vfY, vfZ, rx, ry, rz);
+										Streamer_Update(playerid);
+									#else
+										new cobj = CreateObject(dmodel, vfX, vfY, vfZ, rx, ry, rz);
+									#endif
+									if(cobj > 0 && cobj != INVALID_OBJECT_ID && cobj < MAX_UC_OBJECTS)
 									{
-										#if defined CreateDynamicObject\
-											&& defined Streamer_Update
-											new cobj = CreateDynamicObject(dmodel, vfX, vfY, vfZ, rx, ry, rz);
-											Streamer_Update(playerid);
-										#else
-											new cobj = CreateObject(dmodel, vfX, vfY, vfZ, rx, ry, rz);
-										#endif
-										if(cobj > 0 && cobj != INVALID_OBJECT_ID && cobj < MAX_UC_OBJECTS)
-										{
-											format(strtmp, sizeof strtmp, OBJECT_CREATED, cobj);
-											SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
-											CreatorInfo[playerid][ucHoldingObj] = cobj;
-										}
-										else SendClientMessage(playerid, DEFAULT_COLOR, LIMIT_ERROR);
+										format(strtmp, sizeof strtmp, OBJECT_CREATED, cobj);
+										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+										CreatorInfo[playerid][ucHoldingObj] = cobj;
 									}
+									else SendClientMessage(playerid, DEFAULT_COLOR, LIMIT_ERROR);
 								}
-								else if(CreatorInfo[playerid][ucDelDefObj])
+							}
+							else if(CreatorInfo[playerid][ucDelDefObj])
+							{
+								new
+									Float:PX, Float:PY, Float:PZ,
+									Float:VX, Float:VY, Float:VZ,
+									Float:rx, Float:ry, Float:rz, Float:rw,
+									Float:dobj_x, Float:dobj_y, Float:dobj_z, dmodel;
+								GetPlayerCameraPos(playerid, PX, PY, PZ);
+								GetPlayerCameraFrontVector(playerid, VX, VY, VZ);
+								dobj_x = PX + floatmul(VX, DIST_FROM_CAMERA * 10.0);
+								dobj_y = PY + floatmul(VY, DIST_FROM_CAMERA * 10.0);
+								dobj_z = PZ + floatmul(VZ, DIST_FROM_CAMERA * 10.0);
+								dmodel = CA_RayCastLineEx(PX, PY, PZ, dobj_x, dobj_y, dobj_z, VX, VY, VZ, rx, ry, rz, rw, VX, VY, VZ);
+								if(dmodel && dmodel != 20000)
 								{
-									new
-										Float:PX, Float:PY, Float:PZ,
-										Float:VX, Float:VY, Float:VZ,
-										Float:rx, Float:ry, Float:rz, Float:rw,
-										Float:dobj_x, Float:dobj_y, Float:dobj_z, dmodel;
-									GetPlayerCameraPos(playerid, PX, PY, PZ);
-									GetPlayerCameraFrontVector(playerid, VX, VY, VZ);
-									dobj_x = PX + floatmul(VX, DIST_FROM_CAMERA * 10.0);
-									dobj_y = PY + floatmul(VY, DIST_FROM_CAMERA * 10.0);
-									dobj_z = PZ + floatmul(VZ, DIST_FROM_CAMERA * 10.0);
-									dmodel = CA_RayCastLineEx(PX, PY, PZ, dobj_x, dobj_y, dobj_z, VX, VY, VZ, rx, ry, rz, rw, VX, VY, VZ);
-									if(dmodel && dmodel != 20000)
+									if(RemoveCount < MAX_UC_REMOVED_OBJECTS)
 									{
-										if(RemoveCount < MAX_UC_REMOVED_OBJECTS)
-										{
-											format(strtmp, sizeof strtmp, OBJECT_REMOVED, dmodel);
-											SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
-											RemoveBuilding(-1, VX, VY, VZ, 0.25);
-										}
-										else SendClientMessage(playerid, DEFAULT_COLOR, LIMIT_ERROR);
+										format(strtmp, sizeof strtmp, OBJECT_REMOVED, dmodel);
+										SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+										RemoveBuilding(-1, VX, VY, VZ, 0.25);
 									}
+									else SendClientMessage(playerid, DEFAULT_COLOR, LIMIT_ERROR);
 								}
 							}
 						#endif
@@ -20309,7 +20424,7 @@ fpublic cmd_newobj(playerid, const params[])
 			new c;
 			static strtmp2[128], strtmp[128 + MAX_MATCHES_COUNT + (MAX_OBJECT_NAME_LENGTH * MAX_MATCHES_COUNT)];
 			strtmp[0] = EOS;
-			strcat(strtmp, "ID\tNome\n\n");
+			strcat(strtmp, "ID\tName\n\n");
 			for(new i, tmpid[6]; i < sizeof ObjectsArray; ++i)
 			{
 				if(strfind(ObjectsArray[i][oName], params, true) != -1)
@@ -20622,7 +20737,7 @@ fpublic cmd_selobj(playerid, const params[])
 	CreatorInfo[playerid][ucSelectedObj] = selectedid;
 	#if defined CREATOR_DEBUG
 		static strtmp[145];
-		format(strtmp, sizeof strtmp, "[Objeto %d] %0.4f, %0.4f, %0.4f", ObjectsInfo[selectedid][oModelid], ObjectsInfo[selectedid][oX], ObjectsInfo[selectedid][oY], ObjectsInfo[selectedid][oZ]);
+		format(strtmp, sizeof strtmp, "[Object %d | ID %d] %0.4f, %0.4f, %0.4f", ObjectsInfo[selectedid][oModelid], selectedid, ObjectsInfo[selectedid][oX], ObjectsInfo[selectedid][oY], ObjectsInfo[selectedid][oZ]);
 		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 	#endif
 	return 1;
@@ -20781,7 +20896,9 @@ fpublic cmd_stickobj(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
 	if(isnull(MapName)) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
-	#if defined COLANDREAS || defined COLANDREAS_VERSION
+	#if defined CA_RayCastLine\
+		&& defined CA_SetObjectPos\
+		&& defined CA_GetModelBoundingBox
 		new selectedid;
 		if(isnull(params))
 		{
@@ -20854,7 +20971,9 @@ fpublic cmd_inclineobj(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
 	if(isnull(MapName)) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
-	#if defined COLANDREAS || defined COLANDREAS_VERSION
+	#if defined CA_RayCastLineAngle\
+		&& defined CA_SetObjectPos\
+		&& defined CA_GetModelBoundingBox
 		new selectedid;
 		if(isnull(params))
 		{
@@ -22143,7 +22262,7 @@ fpublic cmd_newveh(playerid, const params[])
 			new c;
 			static strtmp2[128], strtmp[128 + MAX_MATCHES_COUNT + (MAX_VEHICLE_NAME_LENGTH * MAX_MATCHES_COUNT)];
 			strtmp[0] = EOS;
-			strcat(strtmp, "ID\tNome\n\n");
+			strcat(strtmp, "ID\tName\n\n");
 			for(new i, tmpid[6]; i < sizeof VehicleNames; ++i)
 			{
 				if(strfind(VehicleNames[i], params, true) != -1)
@@ -22262,7 +22381,12 @@ fpublic cmd_cveh(playerid, const params[])
 		selectedid = strval(params);
 		if(!IsNumeric(params) || GetVehicleModel(selectedid) <= 0) return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_VEHICLE_ID_ERROR);
 	}
-	new cveh = CopyVehicle(selectedid, GetVehicleModel(selectedid));
+	new
+		Float:veh_x, Float:veh_y,
+		Float:veh_z, Float:veh_rz;
+	GetVehiclePos(selectedid, veh_x, veh_y, veh_z);
+	GetVehicleZAngle(selectedid, veh_rz);
+	new cveh = CopyVehicle(selectedid, GetVehicleModel(selectedid), veh_x, veh_y, veh_z, veh_rz);
 	if(cveh > 0 && cveh != INVALID_VEHICLE_ID)
 	{
 		static strtmp[145];
@@ -22302,7 +22426,8 @@ fpublic cmd_selveh(playerid, const params[])
 	CreatorInfo[playerid][ucSelectedVeh] = selectedid;
 	#if defined CREATOR_DEBUG
 		static strtmp[145];
-		format(strtmp, sizeof strtmp, "[Veiculo %d] %0.4f, %0.4f, %0.4f", VehiclesInfo[selectedid][vModelid], VehiclesInfo[selectedid][vX], VehiclesInfo[selectedid][vY], VehiclesInfo[selectedid][vZ]);
+		GetVehiclePos(selectedid, VehiclesInfo[selectedid][vX], VehiclesInfo[selectedid][vY], VehiclesInfo[selectedid][vZ]);
+		format(strtmp, sizeof strtmp, "[Vehicle %d | ID %d] %0.4f, %0.4f, %0.4f", VehiclesInfo[selectedid][vModelid], selectedid, VehiclesInfo[selectedid][vX], VehiclesInfo[selectedid][vY], VehiclesInfo[selectedid][vZ]);
 		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 	#endif
 	return 1;
@@ -22378,7 +22503,7 @@ fpublic cmd_stickveh(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
 	if(isnull(MapName)) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
-	#if defined COLANDREAS || defined COLANDREAS_VERSION
+	#if defined CA_RayCastLine
 		new selectedid;
 		if(isnull(params))
 		{
@@ -22568,8 +22693,17 @@ fpublic cmd_vehrz(playerid, const params[])
 	else
 	{
 		static strtmp[145];
-		new Float:rZ = floatstr(params);
-		SetVehicleZAngle(selectedid, rZ);
+		new Float:X, Float:Y, Float:Z, Float:rZ = floatstr(params);
+		GetVehiclePos(selectedid, X, Y, Z);
+		new selveh = CopyVehicle(selectedid, VehiclesInfo[selectedid][vModelid], X, Y, Z, rZ);
+		if(selveh > 0 && selveh != INVALID_VEHICLE_ID)
+		{
+			if(CreatorInfo[playerid][ucSelectedVeh] == selectedid) CreatorInfo[playerid][ucSelectedVeh] = selveh;
+			if(CreatorInfo[playerid][ucHoldingVeh] == selectedid) CreatorInfo[playerid][ucHoldingVeh] = selveh;
+			DestroyVehicle(selectedid);
+			selectedid = selveh;
+		}
+		else SetVehicleZAngle(selectedid, rZ);
 		format(strtmp, sizeof strtmp, VEHICLE_TELEPORTED_TO_RZ, selectedid, rZ);
 		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 	}
@@ -22681,7 +22815,7 @@ fpublic cmd_compadd(playerid, const params[])
 			new c;
 			static strtmp2[128], strtmp[128 + MAX_MATCHES_COUNT + (MAX_COMPONENT_NAME_LENGTH * MAX_MATCHES_COUNT)];
 			strtmp[0] = EOS;
-			strcat(strtmp, "ID\tNome\n\n");
+			strcat(strtmp, "ID\tName\n\n");
 			for(new i, tmpid[6]; i < sizeof ComponentNames; ++i)
 			{
 				if(strfind(ComponentNames[i], params, true) != -1 && IsComponentCompatible(modelid, i + 1000))
@@ -22852,7 +22986,7 @@ fpublic cmd_newact(playerid, const params[])
 			new c;
 			static strtmp2[128], strtmp[128 + MAX_MATCHES_COUNT + (MAX_SKIN_MODEL_NAME_LENGTH * MAX_MATCHES_COUNT)];
 			strtmp[0] = EOS;
-			strcat(strtmp, "ID\tNome\n\n");
+			strcat(strtmp, "ID\tName\n\n");
 			for(new i, tmpid[6]; i < sizeof SkinModelNames; ++i)
 			{
 				if(strfind(SkinModelNames[i], params, true) != -1)
@@ -23076,7 +23210,12 @@ fpublic cmd_selact(playerid, const params[])
 	CreatorInfo[playerid][ucSelectedAct] = selectedid;
 	#if defined CREATOR_DEBUG
 		static strtmp[145];
-		format(strtmp, sizeof strtmp, "[Ator %d] %0.4f, %0.4f, %0.4f", ActorsInfo[selectedid][aModelid], ActorsInfo[selectedid][aX], ActorsInfo[selectedid][aY], ActorsInfo[selectedid][aZ]);
+		#if defined GetDynamicActorPos
+			GetDynamicActorPos(selectedid, ActorsInfo[selectedid][aX], ActorsInfo[selectedid][aY], ActorsInfo[selectedid][aZ]);
+		#else
+			GetActorPos(selectedid, ActorsInfo[selectedid][aX], ActorsInfo[selectedid][aY], ActorsInfo[selectedid][aZ]);
+		#endif
+		format(strtmp, sizeof strtmp, "[Actor %d | ID %d] %0.4f, %0.4f, %0.4f", ActorsInfo[selectedid][aModelid], selectedid, ActorsInfo[selectedid][aX], ActorsInfo[selectedid][aY], ActorsInfo[selectedid][aZ]);
 		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 	#endif
 	return 1;
@@ -23195,7 +23334,7 @@ fpublic cmd_stickact(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
 	if(isnull(MapName)) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
-	#if defined COLANDREAS || defined COLANDREAS_VERSION
+	#if defined CA_RayCastLine
 		new selectedid;
 		if(isnull(params))
 		{
@@ -23305,7 +23444,7 @@ fpublic cmd_actanim(playerid, const params[])
 			ApplyActorAnimation(selectedid, AnimationsArray[animid][aLibName], AnimationsArray[animid][aAnimName], 4.1, 1, 0, 0, 0, 0);
 		#endif
 		static strtmp[145];
-		SetTimerEx("ReApplyActorAnimation", 800, 0, "i", selectedid);
+		SetTimerEx("ReApplyActorAnimation", DELAY_ANIM_REAPPLYING, 0, "i", selectedid);
 		format(strtmp, sizeof strtmp, ACTOR_ANIM_CHANGED, selectedid, animid);
 		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 	}
@@ -23535,7 +23674,7 @@ fpublic cmd_newpick(playerid, const params[])
 			new c;
 			static strtmp2[128], strtmp[128 + MAX_MATCHES_COUNT + (MAX_OBJECT_NAME_LENGTH * MAX_MATCHES_COUNT)];
 			strtmp[0] = EOS;
-			strcat(strtmp, "ID\tNome\n\n");
+			strcat(strtmp, "ID\tName\n\n");
 			for(new i, tmpid[6]; i < sizeof ObjectsArray; ++i)
 			{
 				if(strfind(ObjectsArray[i][oName], params, true) != -1)
@@ -23738,7 +23877,7 @@ fpublic cmd_selpick(playerid, const params[])
 	CreatorInfo[playerid][ucSelectedPick] = selectedid;
 	#if defined CREATOR_DEBUG
 		static strtmp[145];
-		format(strtmp, sizeof strtmp, "[Pickup %d] %0.4f, %0.4f, %0.4f", PickupsInfo[selectedid][pModelid], PickupsInfo[selectedid][pX], PickupsInfo[selectedid][pY], PickupsInfo[selectedid][pZ]);
+		format(strtmp, sizeof strtmp, "[Pickup %d | ID %d] %0.4f, %0.4f, %0.4f", PickupsInfo[selectedid][pModelid], selectedid, PickupsInfo[selectedid][pX], PickupsInfo[selectedid][pY], PickupsInfo[selectedid][pZ]);
 		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 	#endif
 	return 1;
@@ -23829,7 +23968,7 @@ fpublic cmd_stickpick(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
 	if(isnull(MapName)) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
-	#if defined COLANDREAS || defined COLANDREAS_VERSION
+	#if defined CA_RayCastLine
 		new selectedid;
 		if(isnull(params))
 		{
@@ -24329,7 +24468,7 @@ fpublic cmd_selrcp(playerid, const params[])
 		CreatorInfo[playerid][ucSelectedRcp] = 1;
 		#if defined CREATOR_DEBUG
 			static strtmp[145];
-			format(strtmp, sizeof strtmp, "[Checkpoint de corrida] %0.4f, %0.4f, %0.4f", RaceCpInfo[rcpX], RaceCpInfo[rcpY], RaceCpInfo[rcpZ]);
+			format(strtmp, sizeof strtmp, "[Race checkpoint] %0.4f, %0.4f, %0.4f", RaceCpInfo[rcpX], RaceCpInfo[rcpY], RaceCpInfo[rcpZ]);
 			SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 		#endif
 	}
@@ -24631,7 +24770,7 @@ fpublic cmd_newicon(playerid, const params[])
 			new c;
 			static strtmp2[128], strtmp[128 + MAX_MATCHES_COUNT + (MAX_ICON_NAME_LENGTH * MAX_MATCHES_COUNT)];
 			strtmp[0] = EOS;
-			strcat(strtmp, "ID\tNome\n\n");
+			strcat(strtmp, "ID\tName\n\n");
 			for(new i, tmpid[6]; i < sizeof MapIconNames; ++i)
 			{
 				if(strfind(MapIconNames[i], params, true) != -1)
@@ -24834,7 +24973,7 @@ fpublic cmd_selicon(playerid, const params[])
 	CreatorInfo[playerid][ucSelectedIco] = selectedid;
 	#if defined CREATOR_DEBUG
 		static strtmp[145];
-		format(strtmp, sizeof strtmp, "[Нcone do mapa %d] %0.4f, %0.4f, %0.4f", IconsInfo[selectedid][iType], IconsInfo[selectedid][iX], IconsInfo[selectedid][iY], IconsInfo[selectedid][iZ]);
+		format(strtmp, sizeof strtmp, "[Map icon %d | ID %d] %0.4f, %0.4f, %0.4f", IconsInfo[selectedid][iType], selectedid, IconsInfo[selectedid][iX], IconsInfo[selectedid][iY], IconsInfo[selectedid][iZ]);
 		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 	#endif
 	return 1;
@@ -25185,7 +25324,7 @@ fpublic cmd_selzone(playerid, const params[])
 	CreatorInfo[playerid][ucSelectedGzn] = selectedid;
 	#if defined CREATOR_DEBUG
 		static strtmp[145];
-		format(strtmp, sizeof strtmp, "[Gangzone] %0.4f, %0.4f, %0.4f, %0.4f", ZonesInfo[selectedid][gMinX], ZonesInfo[selectedid][gMinY], ZonesInfo[selectedid][gMaxX], ZonesInfo[selectedid][gMaxY]);
+		format(strtmp, sizeof strtmp, "[Gangzone | ID %d] %0.4f, %0.4f, %0.4f, %0.4f", selectedid, ZonesInfo[selectedid][gMinX], ZonesInfo[selectedid][gMinY], ZonesInfo[selectedid][gMaxX], ZonesInfo[selectedid][gMaxY]);
 		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 	#endif
 	return 1;
@@ -25207,7 +25346,7 @@ fpublic cmd_holdzone(playerid, const params[])
 	CreatorInfo[playerid][ucHoldingGzn] = selectedid;
 	#if defined CREATOR_DEBUG
 		static strtmp[145];
-		format(strtmp, sizeof strtmp, "[Gangzone] %0.4f, %0.4f, %0.4f, %0.4f", ZonesInfo[selectedid][gMinX], ZonesInfo[selectedid][gMinY], ZonesInfo[selectedid][gMaxX], ZonesInfo[selectedid][gMaxY]);
+		format(strtmp, sizeof strtmp, "[Gangzone | ID %d] %0.4f, %0.4f, %0.4f, %0.4f", selectedid, ZonesInfo[selectedid][gMinX], ZonesInfo[selectedid][gMinY], ZonesInfo[selectedid][gMaxX], ZonesInfo[selectedid][gMaxY]);
 		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 	#endif
 	return 1;
@@ -25240,7 +25379,7 @@ fpublic cmd_gotozone(playerid, const params[])
 		new Float:posX, Float:posY, Float:posZ, Float:temp;
 		GetCenterOfGangZone(ZonesInfo[selectedid][gMinX], ZonesInfo[selectedid][gMinY],
 		ZonesInfo[selectedid][gMaxX], ZonesInfo[selectedid][gMaxY], posX, posY);
-		#if defined COLANDREAS || defined COLANDREAS_VERSION
+		#if defined CA_RayCastLine
 			if(!CA_RayCastLine(posX, posY, 700.0, posX, posY, -1000.0, temp, temp, posZ))
 				GetPlayerObjectPos(playerid, CreatorInfo[playerid][ucFlyObject], temp, temp, posZ);
 			else posZ += 3.0;
@@ -25711,7 +25850,7 @@ fpublic cmd_sellab(playerid, const params[])
 	CreatorInfo[playerid][ucSelectedLab] = selectedid;
 	#if defined CREATOR_DEBUG
 		static strtmp[145];
-		format(strtmp, sizeof strtmp, "{ffffff}[Texto 3D '%s{ffffff}'] %0.4f, %0.4f, %0.4f", LabelsInfo[selectedid][lText], LabelsInfo[selectedid][lX], LabelsInfo[selectedid][lY], LabelsInfo[selectedid][lZ]);
+		format(strtmp, sizeof strtmp, "{ffffff}[3D text '%s{ffffff}' | ID %d] %0.4f, %0.4f, %0.4f", LabelsInfo[selectedid][lText], selectedid, LabelsInfo[selectedid][lX], LabelsInfo[selectedid][lY], LabelsInfo[selectedid][lZ]);
 		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
 	#endif
 	return 1;
@@ -25823,7 +25962,7 @@ fpublic cmd_sticklab(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
 	if(isnull(MapName)) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
-	#if defined COLANDREAS || defined COLANDREAS_VERSION
+	#if defined CA_RayCastLine
 		new selectedid;
 		if(isnull(params))
 		{
@@ -26354,7 +26493,7 @@ fpublic cmd_maptp(playerid, const params[])
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
 	if(!CreatorInfo[playerid][ucClickMapX] && !CreatorInfo[playerid][ucClickMapY] && !CreatorInfo[playerid][ucClickMapZ]) return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_MAP_MARKER_ERROR);
 	new Float:posZ;
-	#if defined COLANDREAS || defined COLANDREAS_VERSION
+	#if defined CA_RayCastLine
 		new Float:temp;
 		if(!CA_RayCastLine(CreatorInfo[playerid][ucClickMapX], CreatorInfo[playerid][ucClickMapY], 700.0, CreatorInfo[playerid][ucClickMapX], CreatorInfo[playerid][ucClickMapY], -1000.0, temp, temp, posZ))
 			posZ = CreatorInfo[playerid][ucClickMapZ];
@@ -26400,7 +26539,9 @@ fpublic cmd_copyobjects(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
 	if(isnull(MapName)) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
-	#if defined COLANDREAS || defined COLANDREAS_VERSION
+	#if defined CA_RayCastLine\
+		&& defined CA_RayCastLineEx\
+		&& defined CA_RayCastLineAngleEx
 		ResetPlayerHoldingItems(playerid);
 		ResetPlayerSelectedItems(playerid);
 		CreatorInfo[playerid][ucDelDefObj] = false;
@@ -26415,7 +26556,9 @@ fpublic cmd_remobjects(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
 	if(isnull(MapName)) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
-	#if defined COLANDREAS || defined COLANDREAS_VERSION
+	#if defined CA_RayCastLine\
+		&& defined CA_RayCastLineEx\
+		&& defined CA_RayCastLineAngleEx
 		CreatorInfo[playerid][ucCalledFromCmd] = true;
 		ShowCreatorDialog(playerid, DIALOG_REMOVE_OBJECTS_WARN);
 	#else
@@ -26854,45 +26997,16 @@ fpublic cmd_settime(playerid, const params[])
 	else
 	{
 		new time = strval(params);
-		if(!IsNumeric(params) && strfind(params, "AM", true) == -1 && strfind(params, "PM", true) == -1 || !(0 <= time <= 23))
-		{
-			CreatorInfo[playerid][ucCalledFromCmd] = true;
-			ShowCreatorDialog(playerid, DIALOG_SETTINGS_TIME);
-			return 1;
-		}
-		new time_fixed = time;
-		static strtmp2[145], strtmp3[16], pname[MAX_PLAYER_NAME + 1];
-		if(time_fixed > 12 || strfind(params, "AM", true) == -1 && strfind(params, "PM", true) == -1)
-		{
-			if(time_fixed > 11)
-			{
-				if(time_fixed != 12) time_fixed -= 12;
-				format(strtmp3, sizeof strtmp3, "%d:00 PM", time_fixed);
-			}
-			else if(time == 0) strtmp3 = "12:00 AM";
-			else format(strtmp3, sizeof strtmp3, "%d:00 AM", time_fixed);
-		}
-		else if(strfind(params, "AM", true) != -1)
-		{
-			if(time_fixed == 0) strtmp3 = "12:00 AM";
-			else format(strtmp3, sizeof strtmp3, "%d:00 AM", time_fixed);
-			if(time == 12) time = 0;
-		}
-		else if(strfind(params, "PM", true) != -1)
-		{
-			if(time_fixed == 0) strtmp3 = "12:00 PM";
-			else format(strtmp3, sizeof strtmp3, "%d:00 PM", time_fixed);
-			if(time != 12) time += 12;
-		}
-		else
+		if(!IsNumeric(params) || !(0 <= time <= 23))
 		{
 			CreatorInfo[playerid][ucCalledFromCmd] = true;
 			ShowCreatorDialog(playerid, DIALOG_SETTINGS_TIME);
 			return 1;
 		}
 		SetWorldTime(time);
+		static strtmp2[145], pname[MAX_PLAYER_NAME + 1];
 		GetPlayerName(playerid, pname, sizeof pname);
-		format(strtmp2, sizeof strtmp2, TIME_CHANGED, pname, strtmp3);
+		format(strtmp2, sizeof strtmp2, TIME_CHANGED, pname, time);
 		SendMessageToCreators(DEFAULT_COLOR, strtmp2);
 	}
 	return 1;
@@ -26980,24 +27094,51 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 			}
 			else if(IsMapListFileCreated("ucmaps.lst"))
 			{
-				new File:pfile;
-				if((pfile = fopen("ucmaps.lst")))
+				new tmp, TotalCount = CountLinesInFile("ucmaps.lst");
+				tmp = ((CreatorInfo[playerid][ucLoadPage] + 1) * MAX_MAPS_PER_PAGE) - MAX_MAPS_PER_PAGE;
+				if(!versatile && tmp + 1 > TotalCount)
 				{
-					static strtmp[512], strtmp2[MAX_MAPNAME_LENGTH];
-					strtmp[0] = EOS;
-					strtmp2[0] = EOS;
-					if(!versatile) strcat(strtmp, ENTER_MAP_NAME"\n");
-					while(fread(pfile, strtmp2))
+					CreatorInfo[playerid][ucLoadPage] = 0;
+					ShowCreatorDialog(playerid, DIALOG_OPEN_MAP);
+				}
+				else
+				{
+					new c, d, File:pfile;
+					if((pfile = fopen("ucmaps.lst")))
 					{
-						if(!IsEmptyString(strtmp2)) strcat(strtmp, strtmp2);
+						static strtmp[1920], strtmp2[MAX_MAPNAME_LENGTH];
+						strtmp[0] = EOS;
+						strtmp2[0] = EOS;
+						if(!versatile)
+						{
+							if(CreatorInfo[playerid][ucLoadPage]) strcat(strtmp, "<< "PREV_ITEM"\n");
+							else strcat(strtmp, ENTER_MAP_NAME"\n");
+						}
+						while(fread(pfile, strtmp2))
+						{
+							if(!IsEmptyString(strtmp2))
+							{
+								if(d >= tmp)
+								{
+									if(c >= MAX_MAPS_PER_PAGE) break;
+									strcat(strtmp, strtmp2);
+									++c;
+								}
+								d++;
+							}
+						}
+						if(versatile)
+						{
+							strcat(strtmp, "\n"ENTER_MAP_NAME_TO_OPEN);
+							ShowPlayerDialog(playerid, DIALOG_OPEN_MAP, DIALOG_STYLE_INPUT, OPEN_MAP, strtmp, OK_BUTTON, BACK_BUTTON);
+						}
+						else
+						{
+							if(c >= MAX_MAPS_PER_PAGE && tmp + c < TotalCount) strcat(strtmp, "\n"NEXT_ITEM" >>");
+							ShowPlayerDialog(playerid, DIALOG_OPEN_MAP, DIALOG_STYLE_LIST, OPEN_MAP, strtmp, OK_BUTTON, BACK_BUTTON);
+						}
+						fclose(pfile);
 					}
-					if(versatile)
-					{
-						strcat(strtmp, "\n"ENTER_MAP_NAME_TO_OPEN);
-						ShowPlayerDialog(playerid, DIALOG_OPEN_MAP, DIALOG_STYLE_INPUT, OPEN_MAP, strtmp, OK_BUTTON, BACK_BUTTON);
-					}
-					else ShowPlayerDialog(playerid, DIALOG_OPEN_MAP, DIALOG_STYLE_LIST, OPEN_MAP, strtmp, OK_BUTTON, BACK_BUTTON);
-					fclose(pfile);
 				}
 			}
 			else ShowPlayerDialog(playerid, DIALOG_OPEN_MAP, DIALOG_STYLE_INPUT, OPEN_MAP, ENTER_MAP_NAME_TO_OPEN, OK_BUTTON, BACK_BUTTON);
@@ -27016,24 +27157,51 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 			}
 			else if(IsMapListFileCreated("ucmaps.lst"))
 			{
-				new File:pfile;
-				if((pfile = fopen("ucmaps.lst")))
+				new tmp, TotalCount = CountLinesInFile("ucmaps.lst");
+				tmp = ((CreatorInfo[playerid][ucLoadPage] + 1) * MAX_MAPS_PER_PAGE) - MAX_MAPS_PER_PAGE;
+				if(!versatile && tmp + 1 > TotalCount)
 				{
-					static strtmp[512], strtmp2[MAX_MAPNAME_LENGTH];
-					strtmp[0] = EOS;
-					strtmp2[0] = EOS;
-					if(!versatile) strcat(strtmp, ENTER_MAP_NAME"\n");
-					while(fread(pfile, strtmp2))
+					CreatorInfo[playerid][ucLoadPage] = 0;
+					ShowCreatorDialog(playerid, DIALOG_OPEN_MAP_OVER);
+				}
+				else
+				{
+					new c, d, File:pfile;
+					if((pfile = fopen("ucmaps.lst")))
 					{
-						if(!IsEmptyString(strtmp2)) strcat(strtmp, strtmp2);
+						static strtmp[1920], strtmp2[MAX_MAPNAME_LENGTH];
+						strtmp[0] = EOS;
+						strtmp2[0] = EOS;
+						if(!versatile)
+						{
+							if(CreatorInfo[playerid][ucLoadPage]) strcat(strtmp, "<< "PREV_ITEM"\n");
+							else strcat(strtmp, ENTER_MAP_NAME"\n");
+						}
+						while(fread(pfile, strtmp2))
+						{
+							if(!IsEmptyString(strtmp2))
+							{
+								if(d >= tmp)
+								{
+									if(c >= MAX_MAPS_PER_PAGE) break;
+									strcat(strtmp, strtmp2);
+									++c;
+								}
+								d++;
+							}
+						}
+						if(versatile)
+						{
+							strcat(strtmp, "\n"ENTER_MAP_NAME_TO_OPEN);
+							ShowPlayerDialog(playerid, DIALOG_OPEN_MAP_OVER, DIALOG_STYLE_INPUT, OPEN_MAP_OVER, strtmp, OK_BUTTON, BACK_BUTTON);
+						}
+						else
+						{
+							if(c >= MAX_MAPS_PER_PAGE && tmp + c < TotalCount) strcat(strtmp, "\n"NEXT_ITEM" >>");
+							ShowPlayerDialog(playerid, DIALOG_OPEN_MAP_OVER, DIALOG_STYLE_LIST, OPEN_MAP_OVER, strtmp, OK_BUTTON, BACK_BUTTON);
+						}
+						fclose(pfile);
 					}
-					if(versatile)
-					{
-						strcat(strtmp, "\n"ENTER_MAP_NAME_TO_OPEN);
-						ShowPlayerDialog(playerid, DIALOG_OPEN_MAP_OVER, DIALOG_STYLE_INPUT, OPEN_MAP_OVER, strtmp, OK_BUTTON, BACK_BUTTON);
-					}
-					else ShowPlayerDialog(playerid, DIALOG_OPEN_MAP_OVER, DIALOG_STYLE_LIST, OPEN_MAP_OVER, strtmp, OK_BUTTON, BACK_BUTTON);
-					fclose(pfile);
 				}
 			}
 			else ShowPlayerDialog(playerid, DIALOG_OPEN_MAP_OVER, DIALOG_STYLE_INPUT, OPEN_MAP_OVER, ENTER_MAP_NAME_TO_OPEN, OK_BUTTON, BACK_BUTTON);
@@ -27052,24 +27220,51 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 			}
 			else if(IsMapListFileCreated("ucmaps.lst"))
 			{
-				new File:pfile;
-				if((pfile = fopen("ucmaps.lst")))
+				new tmp, TotalCount = CountLinesInFile("ucmaps.lst");
+				tmp = ((CreatorInfo[playerid][ucLoadPage] + 1) * MAX_MAPS_PER_PAGE) - MAX_MAPS_PER_PAGE;
+				if(!versatile && tmp + 1 > TotalCount)
 				{
-					static strtmp[512], strtmp2[MAX_MAPNAME_LENGTH];
-					strtmp[0] = EOS;
-					strtmp2[0] = EOS;
-					if(!versatile) strcat(strtmp, ENTER_MAP_NAME"\n");
-					while(fread(pfile, strtmp2))
+					CreatorInfo[playerid][ucLoadPage] = 0;
+					ShowCreatorDialog(playerid, DIALOG_DELETE_MAP);
+				}
+				else
+				{
+					new c, d, File:pfile;
+					if((pfile = fopen("ucmaps.lst")))
 					{
-						if(!IsEmptyString(strtmp2)) strcat(strtmp, strtmp2);
+						static strtmp[1920], strtmp2[MAX_MAPNAME_LENGTH];
+						strtmp[0] = EOS;
+						strtmp2[0] = EOS;
+						if(!versatile)
+						{
+							if(CreatorInfo[playerid][ucLoadPage]) strcat(strtmp, "<< "PREV_ITEM"\n");
+							else strcat(strtmp, ENTER_MAP_NAME"\n");
+						}
+						while(fread(pfile, strtmp2))
+						{
+							if(!IsEmptyString(strtmp2))
+							{
+								if(d >= tmp)
+								{
+									if(c >= MAX_MAPS_PER_PAGE) break;
+									strcat(strtmp, strtmp2);
+									++c;
+								}
+								d++;
+							}
+						}
+						if(versatile)
+						{
+							strcat(strtmp, "\n"ENTER_MAP_NAME_TO_DELETE);
+							ShowPlayerDialog(playerid, DIALOG_DELETE_MAP, DIALOG_STYLE_INPUT, DELETE_MAP, strtmp, OK_BUTTON, BACK_BUTTON);
+						}
+						else
+						{
+							if(c >= MAX_MAPS_PER_PAGE && tmp + c < TotalCount) strcat(strtmp, "\n"NEXT_ITEM" >>");
+							ShowPlayerDialog(playerid, DIALOG_DELETE_MAP, DIALOG_STYLE_LIST, DELETE_MAP, strtmp, OK_BUTTON, BACK_BUTTON);
+						}
+						fclose(pfile);
 					}
-					if(versatile)
-					{
-						strcat(strtmp, "\n"ENTER_MAP_NAME_TO_DELETE);
-						ShowPlayerDialog(playerid, DIALOG_DELETE_MAP, DIALOG_STYLE_INPUT, DELETE_MAP, strtmp, OK_BUTTON, BACK_BUTTON);
-					}
-					else ShowPlayerDialog(playerid, DIALOG_DELETE_MAP, DIALOG_STYLE_LIST, DELETE_MAP, strtmp, OK_BUTTON, BACK_BUTTON);
-					fclose(pfile);
 				}
 			}
 			else ShowPlayerDialog(playerid, DIALOG_DELETE_MAP, DIALOG_STYLE_INPUT, DELETE_MAP, ENTER_MAP_NAME_TO_DELETE, OK_BUTTON, BACK_BUTTON);
@@ -27129,7 +27324,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 			if(!isnull(text))
 			{
 				CreatorInfo[playerid][ucEditDialog] = true;
-				ShowPlayerDialog(playerid, DIALOG_EDIT, DIALOG_STYLE_LIST, EDIT, text, OK_BUTTON, BACK_BUTTON);
+				ShowPlayerDialog(playerid, DIALOG_EDIT, DIALOG_STYLE_TABLIST, EDIT, text, OK_BUTTON, BACK_BUTTON);
 			}
 			else
 			{
@@ -27137,7 +27332,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 				TotalCount = ObjectsCount + VehiclesCount +
 				ActorsCount + PickupsCount + CheckpointCount +
 				RaceCpCount + IconsCount + ZonesCount + LabelsCount;
-				tmp = ((CreatorInfo[playerid][ucPage] + 1) * MAX_ITEMS_PER_PAGE) - MAX_ITEMS_PER_PAGE;
+				tmp = ((CreatorInfo[playerid][ucEditPage] + 1) * MAX_ITEMS_PER_PAGE) - MAX_ITEMS_PER_PAGE;
 				if(TotalCount < 1)
 				{
 					SendClientMessage(playerid, DEFAULT_COLOR, EMPTY_MAP_ERROR);
@@ -27145,14 +27340,14 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 				}
 				else if(tmp + 1 > TotalCount)
 				{
-					CreatorInfo[playerid][ucPage] = 0;
+					CreatorInfo[playerid][ucEditPage] = 0;
 					ShowCreatorDialog(playerid, DIALOG_EDIT);
 				}
 				else
 				{
-					static strtmp[1152], strtmp2[145];
+					static strtmp[2522], strtmp2[145];
 					strtmp[0] = EOS;
-					if(CreatorInfo[playerid][ucPage]) strcat(strtmp, "<< "PREV_ITEM"\n");
+					if(CreatorInfo[playerid][ucEditPage]) strcat(strtmp, "<< "PREV_ITEM"\t \t\n");
 					for(i = 1; i < sizeof ObjectsInfo; ++i)
 					{
 						if(ObjectsInfo[i][oCreated])
@@ -27160,7 +27355,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 							if(d >= tmp)
 							{
 								if(c >= MAX_ITEMS_PER_PAGE) break;
-								format(strtmp2, sizeof strtmp2, OBJECT" %d (id %d)\n", ObjectsInfo[i][oModelid], i);
+								format(strtmp2, sizeof strtmp2, OBJECT" %d\t(id %d)\t%0.1f %0.1f %0.1f\n", ObjectsInfo[i][oModelid], i, ObjectsInfo[i][oX], ObjectsInfo[i][oY], ObjectsInfo[i][oZ]);
 								strcat(strtmp, strtmp2);
 								++c;
 							}
@@ -27174,7 +27369,8 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 							if(d >= tmp)
 							{
 								if(c >= MAX_ITEMS_PER_PAGE) break;
-								format(strtmp2, sizeof strtmp2, VEHICLE" %d (id %d)\n", VehiclesInfo[i][vModelid], i);
+								GetVehiclePos(i, VehiclesInfo[i][vX], VehiclesInfo[i][vY], VehiclesInfo[i][vZ]);
+								format(strtmp2, sizeof strtmp2, VEHICLE" %d\t(id %d)\t%0.1f %0.1f %0.1f\n", VehiclesInfo[i][vModelid], i, VehiclesInfo[i][vX], VehiclesInfo[i][vY], VehiclesInfo[i][vZ]);
 								strcat(strtmp, strtmp2);
 								++c;
 							}
@@ -27188,7 +27384,12 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 							if(d >= tmp)
 							{
 								if(c >= MAX_ITEMS_PER_PAGE) break;
-								format(strtmp2, sizeof strtmp2, ACTOR" %d (id %d)\n", ActorsInfo[i][aModelid], i);
+								#if defined GetDynamicActorPos
+									GetDynamicActorPos(i, ActorsInfo[i][aX], ActorsInfo[i][aY], ActorsInfo[i][aZ]);
+								#else
+									GetActorPos(i, ActorsInfo[i][aX], ActorsInfo[i][aY], ActorsInfo[i][aZ]);
+								#endif
+								format(strtmp2, sizeof strtmp2, ACTOR" %d\t(id %d)\t%0.1f %0.1f %0.1f\n", ActorsInfo[i][aModelid], i, ActorsInfo[i][aX], ActorsInfo[i][aY], ActorsInfo[i][aZ]);
 								strcat(strtmp, strtmp2);
 								++c;
 							}
@@ -27202,7 +27403,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 							if(d >= tmp)
 							{
 								if(c >= MAX_ITEMS_PER_PAGE) break;
-								format(strtmp2, sizeof strtmp2, PICKUP" %d (id %d)\n", PickupsInfo[i][pModelid], i);
+								format(strtmp2, sizeof strtmp2, PICKUP" %d\t(id %d)\t%0.1f %0.1f %0.1f\n", PickupsInfo[i][pModelid], i, PickupsInfo[i][pX], PickupsInfo[i][pY], PickupsInfo[i][pZ]);
 								strcat(strtmp, strtmp2);
 								++c;
 							}
@@ -27215,7 +27416,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 						{
 							if(c < MAX_ITEMS_PER_PAGE)
 							{
-								format(strtmp2, sizeof strtmp2, CHECKPOINT" (id %d)\n", 1);
+								format(strtmp2, sizeof strtmp2, CHECKPOINT"\t(id %d)\t%0.1f %0.1f %0.1f\n", 1, CheckpointInfo[cpX], CheckpointInfo[cpY], CheckpointInfo[cpZ]);
 								strcat(strtmp, strtmp2);
 								++c;
 							}
@@ -27228,7 +27429,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 						{
 							if(c < MAX_ITEMS_PER_PAGE)
 							{
-								format(strtmp2, sizeof strtmp2, RACECP" (id %d)\n", 1);
+								format(strtmp2, sizeof strtmp2, RACECP"\t(id %d)\t%0.1f %0.1f %0.1f\n", 1, RaceCpInfo[rcpX], RaceCpInfo[rcpY], RaceCpInfo[rcpZ]);
 								strcat(strtmp, strtmp2);
 								++c;
 							}
@@ -27242,7 +27443,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 							if(d >= tmp)
 							{
 								if(c >= MAX_ITEMS_PER_PAGE) break;
-								format(strtmp2, sizeof strtmp2, MAPICON" (id %d)\n", i);
+								format(strtmp2, sizeof strtmp2, MAPICON" %d\t(id %d)\t%0.1f %0.1f %0.1f\n", IconsInfo[i][iType], i, IconsInfo[i][iX], IconsInfo[i][iY], IconsInfo[i][iZ]);
 								strcat(strtmp, strtmp2);
 								++c;
 							}
@@ -27256,7 +27457,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 							if(d >= tmp)
 							{
 								if(c >= MAX_ITEMS_PER_PAGE) break;
-								format(strtmp2, sizeof strtmp2, GANGZONE" (id %d)\n", i);
+								format(strtmp2, sizeof strtmp2, GANGZONE"\t(id %d)\t%0.1f %0.1f %0.1f %0.1f\n", i, ZonesInfo[i][gMinX], ZonesInfo[i][gMinY], ZonesInfo[i][gMaxX], ZonesInfo[i][gMaxY]);
 								strcat(strtmp, strtmp2);
 								++c;
 							}
@@ -27270,16 +27471,16 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 							if(d >= tmp)
 							{
 								if(c >= MAX_ITEMS_PER_PAGE) break;
-								format(strtmp2, sizeof strtmp2, LABEL" (id %d)\n", i);
+								format(strtmp2, sizeof strtmp2, LABEL"\t(id %d)\t%0.1f %0.1f %0.1f\n", i, LabelsInfo[i][lX], LabelsInfo[i][lY], LabelsInfo[i][lZ]);
 								strcat(strtmp, strtmp2);
 								++c;
 							}
 							d++;
 						}
 					}
-					if(c >= MAX_ITEMS_PER_PAGE) strcat(strtmp, NEXT_ITEM" >>");
+					if(c >= MAX_ITEMS_PER_PAGE && tmp + c < TotalCount) strcat(strtmp, NEXT_ITEM" >>");
 					CreatorInfo[playerid][ucEditDialog] = true;
-					ShowPlayerDialog(playerid, DIALOG_EDIT, DIALOG_STYLE_LIST, EDIT, strtmp, OK_BUTTON, BACK_BUTTON);
+					ShowPlayerDialog(playerid, DIALOG_EDIT, DIALOG_STYLE_TABLIST, EDIT, strtmp, OK_BUTTON, BACK_BUTTON);
 				}
 			}
 		}
@@ -28244,7 +28445,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 				}
 				else
 				{
-					static strtmp[1856], strtmp2[145];
+					static strtmp[1930], strtmp2[145];
 					strtmp[0] = EOS;
 					for(i = sizeof(ObjectsInfo) - 1; i >= 1; --i)
 					{
@@ -28387,7 +28588,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 					else
 					{
 						CreatorInfo[playerid][ucDupDialog] = true;
-						if(c >= MAX_ITEMS_PER_PAGE)
+						if(c >= MAX_ITEMS_PER_PAGE && c < TotalCount)
 						{
 							format(strtmp, sizeof strtmp, SHOW_FOUNDED_MATCHES"\n%s", MAX_ITEMS_PER_PAGE, strtmp);
 							ShowPlayerDialog(playerid, DIALOG_DUPLICATIONS, DIALOG_STYLE_TABLIST_HEADERS, DUPLICATES, strtmp, OK_BUTTON, BACK_BUTTON);
@@ -28670,7 +28871,7 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 			else
 			{
 				static strtmp[128], strtmp2[8];
-				GetServerVarAsString("weather", strtmp2, sizeof strtmp2);
+				GetConsoleVarAsString("weather", strtmp2, sizeof strtmp2);
 				format(strtmp, sizeof strtmp, ENTER_WEATHER_ID"\n"WEATHER_NOW" %d", strval(strtmp2));
 				ShowPlayerDialog(playerid, DIALOG_SETTINGS_WEATHER, DIALOG_STYLE_INPUT, EDIT_WEATHER, strtmp, OK_BUTTON, BACK_BUTTON);
 			}
@@ -28680,18 +28881,9 @@ ShowCreatorDialog(playerid, dialogid, text[] = "", versatile = false)
 			if(!isnull(text)) ShowPlayerDialog(playerid, DIALOG_SETTINGS_TIME, DIALOG_STYLE_TABLIST_HEADERS, EDIT_WORLDTIME, text, OK_BUTTON, BACK_BUTTON);
 			else
 			{
-				new time;
-				static strtmp[256], strtmp2[16];
-				GetServerVarAsString("worldtime", strtmp2, sizeof strtmp2);
-				time = strval(strtmp2);
-				if(time > 11)
-				{
-					if(time != 12) time -= 12;
-					format(strtmp2, sizeof strtmp2, "%d:00 PM", time);
-				}
-				else if(time == 0) strtmp2 = "12:00 AM";
-				else format(strtmp2, sizeof strtmp2, "%d:00 AM", time);
-				format(strtmp, sizeof strtmp, WORLDTIME_NOW" %s\n12:00 AM\n1:00 AM\n2:00 AM\n3:00 AM\n4:00 AM\n5:00 AM\n6:00 AM\n7:00 AM\n8:00 AM\n9:00 AM\n10:00 AM\n11:00 AM\n12:00 PM\n1:00 PM\n2:00 PM\n3:00 PM\n4:00 PM\n5:00 PM\n6:00 PM\n7:00 PM\n8:00 PM\n9:00 PM\n10:00 PM\n11:00 PM", strtmp2);
+				static strtmp[256], strtmp2[8];
+				GetConsoleVarAsString("worldtime", strtmp2, sizeof strtmp2);
+				format(strtmp, sizeof strtmp, WORLDTIME_NOW" %d:00\n0:00\n1:00\n2:00\n3:00\n4:00\n5:00\n6:00\n7:00\n8:00\n9:00\n10:00\n11:00\n12:00\n13:00\n14:00\n15:00\n16:00\n17:00\n18:00\n19:00\n20:00\n21:00\n22:00\n23:00", strval(strtmp2));
 				ShowPlayerDialog(playerid, DIALOG_SETTINGS_TIME, DIALOG_STYLE_TABLIST_HEADERS, EDIT_WORLDTIME, strtmp, OK_BUTTON, BACK_BUTTON);
 			}
 		}
@@ -29090,7 +29282,7 @@ SendMessageToCreators(color, const message[])
 
 GetSelectedObjectNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Float:posZ, &Float:rotX, &Float:rotY, &Float:rotZ)
 {
-	if(lr == KEY_LEFT)
+	if(lr < 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29117,7 +29309,7 @@ GetSelectedObjectNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &F
 			posY -= MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	else if(lr == KEY_RIGHT)
+	else if(lr > 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29144,7 +29336,7 @@ GetSelectedObjectNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &F
 			posY += MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	if(ud == KEY_UP)
+	if(ud < 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP)
 		{
@@ -29176,7 +29368,7 @@ GetSelectedObjectNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &F
 			posY += MOVEMENT_SPEED * floatcos(-angle, degrees);
 		}
 	}
-	else if(ud == KEY_DOWN)
+	else if(ud > 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP)
 		{
@@ -29213,7 +29405,7 @@ GetSelectedObjectNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &F
 
 GetSelectedVehicleNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Float:posZ, &Float:rotZ)
 {
-	if(lr == KEY_LEFT)
+	if(lr < 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29240,7 +29432,7 @@ GetSelectedVehicleNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &
 			posY -= MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	else if(lr == KEY_RIGHT)
+	else if(lr > 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29267,7 +29459,7 @@ GetSelectedVehicleNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &
 			posY += MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	if(ud == KEY_UP)
+	if(ud < 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ += MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -29286,7 +29478,7 @@ GetSelectedVehicleNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &
 			posY += MOVEMENT_SPEED * floatcos(-angle, degrees);
 		}
 	}
-	else if(ud == KEY_DOWN)
+	else if(ud > 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ -= MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -29310,7 +29502,7 @@ GetSelectedVehicleNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &
 
 GetSelectedActorNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Float:posZ, &Float:rotZ)
 {
-	if(lr == KEY_LEFT)
+	if(lr < 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29337,7 +29529,7 @@ GetSelectedActorNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Fl
 			posY -= MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	else if(lr == KEY_RIGHT)
+	else if(lr > 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29364,7 +29556,7 @@ GetSelectedActorNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Fl
 			posY += MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	if(ud == KEY_UP)
+	if(ud < 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ += MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -29383,7 +29575,7 @@ GetSelectedActorNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Fl
 			posY += MOVEMENT_SPEED * floatcos(-angle, degrees);
 		}
 	}
-	else if(ud == KEY_DOWN)
+	else if(ud > 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ -= MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -29407,7 +29599,7 @@ GetSelectedActorNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Fl
 
 GetSelectedPickupNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Float:posZ)
 {
-	if(lr == KEY_LEFT)
+	if(lr < 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29425,7 +29617,7 @@ GetSelectedPickupNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &F
 			posY -= MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	else if(lr == KEY_RIGHT)
+	else if(lr > 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29443,7 +29635,7 @@ GetSelectedPickupNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &F
 			posY += MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	if(ud == KEY_UP)
+	if(ud < 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ += MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -29462,7 +29654,7 @@ GetSelectedPickupNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &F
 			posY += MOVEMENT_SPEED * floatcos(-angle, degrees);
 		}
 	}
-	else if(ud == KEY_DOWN)
+	else if(ud > 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ -= MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -29486,7 +29678,7 @@ GetSelectedPickupNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &F
 
 GetSelectedCheckPointNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Float:posZ)
 {
-	if(lr == KEY_LEFT)
+	if(lr < 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29504,7 +29696,7 @@ GetSelectedCheckPointNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY
 			posY -= MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	else if(lr == KEY_RIGHT)
+	else if(lr > 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29522,7 +29714,7 @@ GetSelectedCheckPointNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY
 			posY += MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	if(ud == KEY_UP)
+	if(ud < 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ += MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -29541,7 +29733,7 @@ GetSelectedCheckPointNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY
 			posY += MOVEMENT_SPEED * floatcos(-angle, degrees);
 		}
 	}
-	else if(ud == KEY_DOWN)
+	else if(ud > 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ -= MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -29565,7 +29757,7 @@ GetSelectedCheckPointNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY
 
 GetSelectedRaceCpNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Float:posZ)
 {
-	if(lr == KEY_LEFT)
+	if(lr < 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29583,7 +29775,7 @@ GetSelectedRaceCpNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &F
 			posY -= MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	else if(lr == KEY_RIGHT)
+	else if(lr > 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29601,7 +29793,7 @@ GetSelectedRaceCpNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &F
 			posY += MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	if(ud == KEY_UP)
+	if(ud < 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ += MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -29620,7 +29812,7 @@ GetSelectedRaceCpNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &F
 			posY += MOVEMENT_SPEED * floatcos(-angle, degrees);
 		}
 	}
-	else if(ud == KEY_DOWN)
+	else if(ud > 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ -= MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -29644,7 +29836,7 @@ GetSelectedRaceCpNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &F
 
 GetSelectedIconNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Float:posZ)
 {
-	if(lr == KEY_LEFT)
+	if(lr < 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29662,7 +29854,7 @@ GetSelectedIconNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Flo
 			posY -= ICON_MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	else if(lr == KEY_RIGHT)
+	else if(lr > 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29680,7 +29872,7 @@ GetSelectedIconNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Flo
 			posY += ICON_MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	if(ud == KEY_UP)
+	if(ud < 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ += ICON_MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -29699,7 +29891,7 @@ GetSelectedIconNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Flo
 			posY += ICON_MOVEMENT_SPEED * floatcos(-angle, degrees);
 		}
 	}
-	else if(ud == KEY_DOWN)
+	else if(ud > 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ -= ICON_MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -29725,28 +29917,28 @@ GetSelectedZoneNextSize(keys, lr, ud, Float:angle, &Float:minX, &Float:minY, &Fl
 {
 	if((270.0 + 45.0) <= angle <= 360.0 || 0.0 <= angle < (0.0 + 45.0))
 	{
-		if(lr == KEY_LEFT)
+		if(lr < 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) minX += ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) minX -= ZONE_MOVEMENT_SPEED_SLOW;
 			else if(keys & KEY_JUMP) minX -= ZONE_MOVEMENT_SPEED_FAST;
 			else minX -= ZONE_MOVEMENT_SPEED;
 		}
-		else if(lr == KEY_RIGHT)
+		else if(lr > 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) maxX -= ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) maxX += ZONE_MOVEMENT_SPEED_SLOW;
 			else if(keys & KEY_JUMP) maxX += ZONE_MOVEMENT_SPEED_FAST;
 			else maxX += ZONE_MOVEMENT_SPEED;
 		}
-		if(ud == KEY_UP)
+		if(ud < 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) maxY -= ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) maxY += ZONE_MOVEMENT_SPEED_SLOW;
 			else if(keys & KEY_JUMP) maxY += ZONE_MOVEMENT_SPEED_FAST;
 			else maxY += ZONE_MOVEMENT_SPEED;
 		}
-		else if(ud == KEY_DOWN)
+		else if(ud > 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) minY += ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) minY -= ZONE_MOVEMENT_SPEED_SLOW;
@@ -29756,28 +29948,28 @@ GetSelectedZoneNextSize(keys, lr, ud, Float:angle, &Float:minX, &Float:minY, &Fl
 	}
 	else if((0.0 + 45.0) <= angle < (90.0 + 45.0))
 	{
-		if(lr == KEY_LEFT)
+		if(lr < 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) minY += ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) minY -= ZONE_MOVEMENT_SPEED_SLOW;
 			else if(keys & KEY_JUMP) minY -= ZONE_MOVEMENT_SPEED_FAST;
 			else minY -= ZONE_MOVEMENT_SPEED;
 		}
-		else if(lr == KEY_RIGHT)
+		else if(lr > 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) maxY -= ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) maxY += ZONE_MOVEMENT_SPEED_SLOW;
 			else if(keys & KEY_JUMP) maxY += ZONE_MOVEMENT_SPEED_FAST;
 			else maxY += ZONE_MOVEMENT_SPEED;
 		}
-		if(ud == KEY_UP)
+		if(ud < 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) minX += ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) minX -= ZONE_MOVEMENT_SPEED_SLOW;
 			else if(keys & KEY_JUMP) minX -= ZONE_MOVEMENT_SPEED_FAST;
 			else minX -= ZONE_MOVEMENT_SPEED;
 		}
-		else if(ud == KEY_DOWN)
+		else if(ud > 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) maxX -= ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) maxX += ZONE_MOVEMENT_SPEED_SLOW;
@@ -29787,28 +29979,28 @@ GetSelectedZoneNextSize(keys, lr, ud, Float:angle, &Float:minX, &Float:minY, &Fl
 	}
 	else if((90.0 + 45.0) <= angle < (180.0 + 45.0))
 	{
-		if(lr == KEY_LEFT)
+		if(lr < 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) maxX -= ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) maxX += ZONE_MOVEMENT_SPEED_SLOW;
 			else if(keys & KEY_JUMP) maxX += ZONE_MOVEMENT_SPEED_FAST;
 			else maxX += ZONE_MOVEMENT_SPEED;
 		}
-		else if(lr == KEY_RIGHT)
+		else if(lr > 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) minX += ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) minX -= ZONE_MOVEMENT_SPEED_SLOW;
 			else if(keys & KEY_JUMP) minX -= ZONE_MOVEMENT_SPEED_FAST;
 			else minX -= ZONE_MOVEMENT_SPEED;
 		}
-		if(ud == KEY_UP)
+		if(ud < 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) minY += ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) minY -= ZONE_MOVEMENT_SPEED_SLOW;
 			else if(keys & KEY_JUMP) minY -= ZONE_MOVEMENT_SPEED_FAST;
 			else minY -= ZONE_MOVEMENT_SPEED;
 		}
-		else if(ud == KEY_DOWN)
+		else if(ud > 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) maxY -= ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) maxY += ZONE_MOVEMENT_SPEED_SLOW;
@@ -29818,28 +30010,28 @@ GetSelectedZoneNextSize(keys, lr, ud, Float:angle, &Float:minX, &Float:minY, &Fl
 	}
 	else if((180.0 + 45.0) <= angle < (270.0 + 45.0))
 	{
-		if(lr == KEY_LEFT)
+		if(lr < 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) maxY -= ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) maxY += ZONE_MOVEMENT_SPEED_SLOW;
 			else if(keys & KEY_JUMP) maxY += ZONE_MOVEMENT_SPEED_FAST;
 			else maxY += ZONE_MOVEMENT_SPEED;
 		}
-		else if(lr == KEY_RIGHT)
+		else if(lr > 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) minY += ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) minY -= ZONE_MOVEMENT_SPEED_SLOW;
 			else if(keys & KEY_JUMP) minY -= ZONE_MOVEMENT_SPEED_FAST;
 			else minY -= ZONE_MOVEMENT_SPEED;
 		}
-		if(ud == KEY_UP)
+		if(ud < 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) maxX -= ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) maxX += ZONE_MOVEMENT_SPEED_SLOW;
 			else if(keys & KEY_JUMP) maxX += ZONE_MOVEMENT_SPEED_FAST;
 			else maxX += ZONE_MOVEMENT_SPEED;
 		}
-		else if(ud == KEY_DOWN)
+		else if(ud > 0)
 		{
 			if(keys & KEY_WALK && keys & KEY_JUMP) minX += ZONE_MOVEMENT_SPEED;
 			else if(keys & KEY_WALK) minX -= ZONE_MOVEMENT_SPEED_SLOW;
@@ -29852,7 +30044,7 @@ GetSelectedZoneNextSize(keys, lr, ud, Float:angle, &Float:minX, &Float:minY, &Fl
 
 GetSelectedZoneNextPos(keys, lr, ud, Float:angle, &Float:minX, &Float:minY, &Float:maxX, &Float:maxY)
 {
-	if(lr == KEY_LEFT)
+	if(lr < 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29876,7 +30068,7 @@ GetSelectedZoneNextPos(keys, lr, ud, Float:angle, &Float:minX, &Float:minY, &Flo
 			maxY -= ZONE_MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	else if(lr == KEY_RIGHT)
+	else if(lr > 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29900,7 +30092,7 @@ GetSelectedZoneNextPos(keys, lr, ud, Float:angle, &Float:minX, &Float:minY, &Flo
 			maxY += ZONE_MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	if(ud == KEY_UP)
+	if(ud < 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29924,7 +30116,7 @@ GetSelectedZoneNextPos(keys, lr, ud, Float:angle, &Float:minX, &Float:minY, &Flo
 			maxY += ZONE_MOVEMENT_SPEED * floatcos(-angle, degrees);
 		}
 	}
-	else if(ud == KEY_DOWN)
+	else if(ud > 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29953,7 +30145,7 @@ GetSelectedZoneNextPos(keys, lr, ud, Float:angle, &Float:minX, &Float:minY, &Flo
 
 GetSelectedLabelNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Float:posZ)
 {
-	if(lr == KEY_LEFT)
+	if(lr < 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29971,7 +30163,7 @@ GetSelectedLabelNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Fl
 			posY -= MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	else if(lr == KEY_RIGHT)
+	else if(lr > 0)
 	{
 		if(keys & KEY_WALK)
 		{
@@ -29989,7 +30181,7 @@ GetSelectedLabelNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Fl
 			posY += MOVEMENT_SPEED * floatsin(angle, degrees);
 		}
 	}
-	if(ud == KEY_UP)
+	if(ud < 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ += MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -30008,7 +30200,7 @@ GetSelectedLabelNextPos(keys, lr, ud, Float:angle, &Float:posX, &Float:posY, &Fl
 			posY += MOVEMENT_SPEED * floatcos(-angle, degrees);
 		}
 	}
-	else if(ud == KEY_DOWN)
+	else if(ud > 0)
 	{
 		if(keys & KEY_WALK && keys & KEY_JUMP) posZ -= MOVEMENT_SPEED;
 		else if(keys & KEY_WALK)
@@ -30372,7 +30564,7 @@ SaveCreatorMap(const filename[])
 			{
 				if(!anycreated)
 				{
-					fwrite(pfile, "//Objetos removidos\r\n");
+					fwrite(pfile, "//Removed objects\r\n");
 					anycreated = true;
 				}
 				break;
@@ -30394,10 +30586,10 @@ SaveCreatorMap(const filename[])
 			{
 				if(!iswrite)
 				{
-					if(anycreated) fwrite(pfile, "\r\n//Objetos\r\n");
+					if(anycreated) fwrite(pfile, "\r\n//Objects\r\n");
 					else
 					{
-						fwrite(pfile, "//Objetos\r\n");
+						fwrite(pfile, "//Objects\r\n");
 						anycreated = true;
 					}
 					iswrite = true;
@@ -30586,10 +30778,10 @@ SaveCreatorMap(const filename[])
 			{
 				if(!iswrite)
 				{
-					if(anycreated) fwrite(pfile, "\r\n//Veiculos\r\n");
+					if(anycreated) fwrite(pfile, "\r\n//Vehicles\r\n");
 					else
 					{
-						fwrite(pfile, "//Veiculos\r\n");
+						fwrite(pfile, "//Vehicles\r\n");
 						anycreated = true;
 					}
 					iswrite = true;
@@ -30683,10 +30875,10 @@ SaveCreatorMap(const filename[])
 			{
 				if(!iswrite)
 				{
-					if(anycreated) fwrite(pfile, "\r\n//Ators\r\n");
+					if(anycreated) fwrite(pfile, "\r\n//Actors\r\n");
 					else
 					{
-						fwrite(pfile, "//Ators\r\n");
+						fwrite(pfile, "//Actors\r\n");
 						anycreated = true;
 					}
 					iswrite = true;
@@ -30786,10 +30978,10 @@ SaveCreatorMap(const filename[])
 		}
 		if(RaceCpInfo[rcpCreated])
 		{
-			if(anycreated) fwrite(pfile, "\r\n//Checkpoints de corrida\r\n");
+			if(anycreated) fwrite(pfile, "\r\n//Race checkpoints\r\n");
 			else
 			{
-				fwrite(pfile, "//Checkpoints de corrida\r\n");
+				fwrite(pfile, "//Race checkpoints\r\n");
 				anycreated = true;
 			}
 			#if defined GetDynamicObjectPos
@@ -30805,10 +30997,10 @@ SaveCreatorMap(const filename[])
 		{
 			if(IconsInfo[i][iCreated])
 			{
-				if(anycreated) fwrite(pfile, "\r\n//Нcones do mapa\r\n");
+				if(anycreated) fwrite(pfile, "\r\n//Map icons\r\n");
 				else
 				{
-					fwrite(pfile, "//Нcones do mapa\r\n");
+					fwrite(pfile, "//Map icons\r\n");
 					anycreated = true;
 				}
 				break;
@@ -30860,10 +31052,10 @@ SaveCreatorMap(const filename[])
 			{
 				if(!iswrite)
 				{
-					if(anycreated) fwrite(pfile, "\r\n//Textos 3D\r\n");
+					if(anycreated) fwrite(pfile, "\r\n//3D text labels\r\n");
 					else
 					{
-						fwrite(pfile, "//Textos 3D\r\n");
+						fwrite(pfile, "//3D text labels\r\n");
 						anycreated = true;
 					}
 					iswrite = true;
@@ -31556,7 +31748,7 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 					#else
 						ApplyActorAnimation(ac, found[1], found[2], floatstr(found[3]), strval(found[4]), strval(found[5]), strval(found[6]), strval(found[7]), strval(found[8]));
 					#endif
-					SetTimerEx("ReApplyActorAnimation", 800, 0, "i", ac);
+					SetTimerEx("ReApplyActorAnimation", DELAY_ANIM_REAPPLYING, 0, "i", ac);
 					#if defined CREATOR_DEBUG
 						#if defined ApplyDynamicActorAnimation
 							format(logtmp, sizeof logtmp, "ApplyDynamicActorAnimation(%d, \"%s\", \"%s\", %.1f, %d, %d, %d, %d, %d);", ac, found[1], found[2], floatstr(found[3]), strval(found[4]), strval(found[5]), strval(found[6]), strval(found[7]), strval(found[8]));
@@ -31583,7 +31775,7 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 					#else
 						ApplyActorAnimation(ac, found[1], found[2], floatstr(found[3]), strval(found[4]), strval(found[5]), strval(found[6]), strval(found[7]), strval(found[8]));
 					#endif
-					SetTimerEx("ReApplyActorAnimation", 800, 0, "i", ac);
+					SetTimerEx("ReApplyActorAnimation", DELAY_ANIM_REAPPLYING, 0, "i", ac);
 					#if defined CREATOR_DEBUG
 						#if defined ApplyDynamicActorAnimation
 							format(logtmp, sizeof logtmp, "ApplyDynamicActorAnimation(%d, \"%s\", \"%s\", %.1f, %d, %d, %d, %d, %d);", ac, found[1], found[2], floatstr(found[3]), strval(found[4]), strval(found[5]), strval(found[6]), strval(found[7]), strval(found[8]));
@@ -32015,7 +32207,7 @@ LoadCreatorMap(const filename[], clearoldmap = true)
 				}
 			}
 			#if defined CREATOR_DEBUG
-				format(logtmp, sizeof logtmp, "Carregado %d objetos, %d veiculos, %d ators, %d pickups, %d checkpoints,\n%d checkpoints de corrida, %d icones de mapa, %d gangzones, %d textos 3D, %d objetos removidos",
+				format(logtmp, sizeof logtmp, "Loaded %d objects, %d vehicles, %d actors, %d pickups, %d checkpoints,\n%d race checkpoints, %d map icons, %d gangzones, %d 3D text labels, %d removed objects",
 				ObjectsCount, VehiclesCount, ActorsCount, PickupsCount, CheckpointCount, RaceCpCount, IconsCount, ZonesCount, LabelsCount, RemoveCount);
 				SendClientMessageToAll(DEFAULT_COLOR, logtmp);
 				print(logtmp);
@@ -32095,9 +32287,30 @@ IsMapListFileCreated(const filename[])
 	return 0;
 }
 
+CountLinesInFile(const filename[])
+{
+	if(fexist(filename))
+	{
+		new File:pfile;
+		if((pfile = fopen(filename)))
+		{
+			new c;
+			static strtmp[MAX_MAPNAME_LENGTH];
+			strtmp[0] = EOS;
+			while(fread(pfile, strtmp))
+			{
+				if(!IsEmptyString(strtmp)) c++;
+			}
+			fclose(pfile);
+			return c;
+		}
+	}
+	return 0;
+}
+
 IsEmptyString(const string[])
 {
-	for(new i; string[i] != 0; i++)
+	for(new i; string[i] != '\0'; i++)
 	{
 		switch(string[i])
 		{
@@ -32111,7 +32324,7 @@ IsEmptyString(const string[])
 IsNumeric(const string[])
 {
 	new ret;
-	for(new i, c, l = strlen(string); i < l; ++i)
+	for(new i, c, l = strlen(string); i < l; i++)
 	{
 		if('0' <= string[i] <= '9') ret = 1;
 		else if(string[i] == '.')
@@ -32131,7 +32344,7 @@ IsNumeric(const string[])
 
 split(const source[], destination[][], delim, destsize, destlen)
 {
-	for(new i, li, aNum, len, s = strlen(source), bool:t; i <= s && aNum < destsize; ++i)
+	for(new i, li, aNum, len, s = strlen(source), bool:t; i <= s && aNum < destsize; i++)
 	{
 		if(source[i] == '\"') t = !t;
 		if(source[i] == delim && !t || i == s)
@@ -32147,7 +32360,7 @@ split(const source[], destination[][], delim, destsize, destlen)
 
 splitex(const source[], destination[][], delim, delim2, destsize, destlen)
 {
-	for(new i, li, aNum, len, s = strlen(source); i <= s && aNum < destsize; ++i)
+	for(new i, li, aNum, len, s = strlen(source); i <= s && aNum < destsize; i++)
 	{
 		if((source[i] == delim || source[i] == delim2) && i > 0 && source[i - 1] != delim && source[i - 1] != delim2 || i == s)
 		{
@@ -32163,7 +32376,7 @@ splitex(const source[], destination[][], delim, delim2, destsize, destlen)
 strcpy2(dest[], const source[], maxlength = sizeof dest)
 {
 	new i;
-	for(; source[i] != 0; i++)
+	for(; source[i] != '\0'; i++)
 	{
 		if(source[i] == '\r' || source[i] == '\n') break;
 	}
@@ -32187,17 +32400,40 @@ strtok(const string[], dest[], dest_size, &index)
 
 strfindchar(const string[], sub)
 {
-	for(new i; string[i] != '\0'; ++i)
+	for(new i; string[i] != '\0'; i++)
 	{
 		if(string[i] == sub) return i;
 	}
 	return -1;
 }
 
+unescctrlchar(string[], ctrlchar)
+{
+	new i, sub[3];
+	switch(ctrlchar)
+	{
+		case '\a': sub = "\\a";
+		case '\b': sub = "\\b";
+		case '\e': sub = "\\e";
+		case '\f': sub = "\\f";
+		case '\r': sub = "\\r";
+		case '\n': sub = "\\n";
+		case '\t': sub = "\\t";
+		case '\v': sub = "\\v";
+		case '\x': sub = "\\x";
+	}
+	while((i = strfind(string, sub, true)) != -1)
+	{
+		strdel(string, i + 1, i + 2);
+		string[i] = ctrlchar;
+	}
+	return 1;
+}
+
 trimspaces(string[])
 {
 	new c;
-	for(new i; string[i] != '\0'; ++i)
+	for(new i; string[i] != '\0'; i++)
 	{
 		if(string[i] == ' ') continue;
 		string[c] = string[i];
@@ -32211,7 +32447,7 @@ fwriteASCII(File:fhandle, const string[])
 {
 	if(!fhandle) return 0;
 	new len = strlen(string);
-	for(new i; i < len; ++i) fputchar(fhandle, string[i], false);
+	for(new i; i < len; i++) fputchar(fhandle, string[i], false);
 	return len;
 }
 
