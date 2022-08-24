@@ -253,7 +253,7 @@ https://youtube.com/watch?v=CGYh62aCGHc&list=PLBBuSTiHoK4wQO11RNnVOcl4DIVcay-68
 ## Related works:
 Using these scripts you can also extend the functionality and simplify the process of creating your projects
 
-[aview by SoNikMells](https://sampforum.blast.hk/showthread.php?tid=587916)
+[aview by SoNikMells](https://sampforum.blast.hk/showthread.php?tid=587916)  
 [Gammix's Textdraw Editor](https://github.com/Agneese-Saini/SA-MP/blob/master/filterscripts/TDEditor.pwn)  
 [Nickk's TextDraw Editor](https://github.com/Nickk888SAMP/TextDraw-Editor)  
 [Map Mover 2.1](https://github.com/adri1samp/MAP-MOVER)
