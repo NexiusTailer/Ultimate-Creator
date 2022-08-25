@@ -248,7 +248,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 
 ## Videos:
 https://youtube.com/watch?v=4GCBDS3r-fc (in Russian with English subtitles)  
-https://youtube.com/watch?v=CGYh62aCGHc&list=PLBBuSTiHoK4wQO11RNnVOcl4DIVcay-68
+[Ultimate Creator v1.4.2 demo](https://youtube.com/watch?v=CGYh62aCGHc&list=PLBBuSTiHoK4wQO11RNnVOcl4DIVcay-68)
 
 ## Related works:
 Using these scripts you can also extend the functionality and simplify the process of creating your projects
