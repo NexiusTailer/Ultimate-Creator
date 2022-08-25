@@ -247,7 +247,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 ![](https://i.imgur.com/6FovoD2.gif) ![](https://i.imgur.com/sHUchzF.gif) ![](https://i.imgur.com/v4JJ2QJ.gif) ![](https://i.imgur.com/l1ocYk0.gif)
 
 ## Videos:
-https://youtube.com/watch?v=4GCBDS3r-fc (in Russian with English subtitles)  
+[MTA MAP EDITOR IN SAMP / HOW TO INSTALL COLANDREAS](https://youtube.com/watch?v=4GCBDS3r-fc) (in Russian with English subtitles)  
 [Ultimate Creator v1.4.2 demo](https://youtube.com/watch?v=CGYh62aCGHc&list=PLBBuSTiHoK4wQO11RNnVOcl4DIVcay-68)
 
 ## Related works:
