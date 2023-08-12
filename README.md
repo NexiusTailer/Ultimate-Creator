@@ -1,4 +1,4 @@
-# [Ultimate Creator - Advanced map editor](https://pawn-wiki.ru/index.php?/topic/44289-ultimate-creator/)
+# [Ultimate Creator - Advanced map editor](https://pawn.wiki/index.php?/topic/44289-ultimate-creator/)
 
 It is an advanced object, vehicle, actor editor (full list below), which can work right in the game!  
 Editing: Objects, Vehicles, Actors, Pickups, Checkpoints, Map icons, Gangzones, 3D texts.
