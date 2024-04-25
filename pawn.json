@@ -5,7 +5,7 @@
 	[
 		"IllidanS4/YSF",
 		"samp-incognito/samp-streamer-plugin",
-		"karimcambridge/samp-foreach"
+		"Open-GTO/foreach"
 	],
 	"builds":
 	[
