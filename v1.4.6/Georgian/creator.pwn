@@ -700,7 +700,7 @@
 #define KEY_INSTRUCTION_STRING_7		"* LCtrl (KEY_FIRE) + W, A, S, D - Icleba Motrialeba object/vehicle/actor..."
 #define KEY_INSTRUCTION_STRING_8		"* LCtrl (KEY_FIRE) + LShift (KEY_JUMP) + LAlt (KEY_WALK) + W, A, S, D - Icvleba Moxra X-Gerdze Obiekti/Transporti/Actori..."
 #define KEY_INSTRUCTION_STRING_9		"RMB (KEY_HANDBRAKE) - Modzravi Obiektebi/Transporti/Actori... Mausit"
-#define KEY_INSTRUCTION_STRING_10		"Space (KEY_SPRINT) - Airchie Obiektebi/Transporti/Actoris Modzraobis Sichkare
+#define KEY_INSTRUCTION_STRING_10		"Space (KEY_SPRINT) - Airchie Obiektebi/Transporti/Actoris Modzraobis Sichkare"
 #define KEY_INSTRUCTION_STRING_11		"C (KEY_CROUCH) + LMB (KEY_FIRE) - Daakopire Obiektebi/Transporti/Actori..."
 #define KEY_INSTRUCTION_STRING_12		"* LShift (KEY_JUMP) + LAlt (KEY_WALK) + C (KEY_CROUCH) + LMB (KEY_FIRE) - Daakopire Mimagrebuli Obiekti/3Dtext"
 #define KEY_INSTRUCTION_STRING_13		"\\ (KEY_ACTION) + LMB (KEY_FIRE) - Washale Obiektebi/Transporti/Actori..."
