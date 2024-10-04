@@ -35,6 +35,15 @@
 			{
 				"version": "3.10.8"
 			}
+		},
+		{
+			"name": "georgian",
+			"input": "v1.4.6/Georgian/creator.pwn",
+			"output": "../../filterscripts/creator.amx",
+			"compiler":
+			{
+				"version": "3.10.8"
+			}
 		}
 	]
 }
