@@ -263,7 +263,7 @@ Batka1337, Vitalik_Gonsor, TheHero, Apec, Magic_York, f0Re3t - help with testing
 Vip_Uzer, DANGER_Hidden, continue - some advices  
 Crayder - some help with ColAndreas  
 El-SpaceX - Portuguese (Brazilian) translation  
-Lashoo28 - Georgian translation
+Lasho4 - Georgian translation
 
 Special thanks to the huge number of authors whose ideas/developments were included in this script.
 
