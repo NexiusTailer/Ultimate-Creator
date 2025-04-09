@@ -55,6 +55,9 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 \ `(KEY_ACTION)` + LMB `(KEY_FIRE)` - Delete an object/vehicle/actor...  
 
 ## Available commands:
+<details>
+<summary>Click to expand</summary>
+
 #### Map management:
 `/newmap` - create new map  
 `/loadmap` - load existing map  
@@ -235,6 +238,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/setweather` - set weather  
 `/settime` - set time  
 `/setgravity` - set gravity
+</details>
 
 **ATTENTION!** Some features works only with [ColAndreas](https://github.com/Pottus/ColAndreas) plugin!
 
