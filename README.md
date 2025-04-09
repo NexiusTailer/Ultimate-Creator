@@ -58,7 +58,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 <details>
 <summary>Click to expand</summary>
 
-**Map management:**
+**Map management:**  
 `/newmap` - create new map  
 `/loadmap` - load existing map  
 `/loadover` - load map over the current one  
@@ -66,7 +66,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/savemap` - save the current map  
 `/delmap` - delete map
 
-**Objects:**
+**Objects:**  
 `/newobj` - create object  
 `/delobj` - delete selected object  
 `/cobj` - copy selected object  
@@ -84,7 +84,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/objrx` - `/objry` - `/objrz` - set rotation angles of selected object  
 `/objrreset` - reset rotation angles of selected object
 
-**Textures:**
+**Textures:**  
 `/txdset` *[layer ID]* *[texture ID]* - set material of selected object  
 `/txdreset` *[layer ID]* - reset material of selected object  
 `/txdcolor` *[layer ID]* *[hex code]* - set color of selected object  
@@ -97,7 +97,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/tresetall` - reset text and textures of selected object from all layers  
 `/tclear` - clear text and textures clipboard
 
-**Vehicles:**
+**Vehicles:**  
 `/newveh` - create vehicle  
 `/delveh` - delete selected vehicle  
 `/cveh` - copy selected vehicle  
@@ -111,14 +111,14 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/vehrtime` - set respawn time of selected vehicle  
 `/vehcolor` - set colors of selected vehicle
 
-**Tuning:**
+**Tuning:**  
 `/compadd` - add component on selected vehicle  
 `/complist` - viewing and deleting components on selected vehicle  
 `/compremoveall` - remove all components from selected vehicle  
 `/paintjob` - set paintjob (for certain vehicles)  
 `/pjobremove` - remove paintjob from selected vehicle
 
-**Actors:**
+**Actors:**  
 `/newact` - create actor  
 `/delact` - delete selected actor  
 `/cact` - copy selected actor  
@@ -131,7 +131,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/actx` - `/acty` - `/actz` - set position of selected actor  
 `/actrz` - set rotation angle of selected actor
 
-**Pickups:**
+**Pickups:**  
 `/newpick` - create pickup  
 `/delpick` - delete selected pickup  
 `/cpick` - copy selected pickup  
@@ -143,7 +143,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/pickx` - `/picky` - `/pickz` - set position of selected pickup  
 `/pickvw` - set virtual world of selected pickup
 
-**Checkpoints:**
+**Checkpoints:**  
 `/newcp` - create checkpoint  
 `/delcp` - delete checkpoint  
 `/selcp` - select checkpoint  
@@ -152,7 +152,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/cpx` - `/cpy` - set position of checkpoint  
 `/cpsize` - set size of checkpoint
 
-**Race checkpoints:**
+**Race checkpoints:**  
 `/newrcp` - create race checkpoint  
 `/delrcp` - delete race checkpoint  
 `/selrcp` - select race checkpoint  
@@ -163,7 +163,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/rcpnextx` - `/rcpnexty` - `/rcpnextz` - arrow pointer's position of race checkpoint  
 `/rcpsize` - set size of race checkpoint
 
-**Map icons:**
+**Map icons:**  
 `/newicon` - create map icon  
 `/delicon` - delete selected map icon  
 `/cicon` - copy selected map icon  
@@ -174,7 +174,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/iconcolor` - set color of selected map icon  
 `/iconstyle` - set style of selected map icon
 
-**Gangzones:**
+**Gangzones:**  
 `/newzone` - create gangzone  
 `/delzone` - delete selected gangzone  
 `/czone` - copy selected gangzone  
@@ -185,7 +185,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/zoneminx` - `/zoneminy` - `/zonemaxx` - `/zonemaxy` - set position of selected gangzone  
 `/zonecolor` - set color of selected gangzone
 
-**3D texts:**
+**3D texts:**  
 `/newlab` - create 3D text  
 `/dellab` - delete selected 3D text  
 `/clab` - copy selected 3D text  
@@ -203,18 +203,18 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/labvw` - set virtual world of selected 3D text  
 `/lablos` - set visibility through walls of selected 3D text
 
-**Moving around the map:**
+**Moving around the map:**  
 `/setpos` - teleport to the coordinates  
 `/setint` - interior setting by ID  
 `/setvw` - virtual world setting by ID  
 `/maptp` - teleport to the last map marker  
 `/gotoint` - teleport to default interiors
 
-**Default objects:**
+**Default objects:**  
 `/copyobjects` - copy default objects mode  
 `/remobjects` - delete default objects mode
 
-**Editor settings:**
+**Editor settings:**  
 `/camspeed` - change camera speed  
 `/camspeedslow` - change camera speed (Alt)  
 `/camspeedfast` - change camera speed (Shift)  
@@ -234,7 +234,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 `/showgui` - show interface  
 `/hidegui` - hide interface
 
-**Map settings:**
+**Map settings:**  
 `/setweather` - set weather  
 `/settime` - set time  
 `/setgravity` - set gravity
