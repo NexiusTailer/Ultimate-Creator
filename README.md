@@ -56,7 +56,7 @@ C `(KEY_CROUCH)` + LMB `(KEY_FIRE)` - Copy an object/vehicle/actor...
 
 ## Available commands:
 <details>
-<summary>Click to expand</summary>
+<summary>Click to expand the list</summary>
 
 **Map management:**  
 `/newmap` - create new map  
