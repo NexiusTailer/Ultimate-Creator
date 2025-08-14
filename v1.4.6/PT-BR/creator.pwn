@@ -179,7 +179,6 @@
 #define BUFFER_CLEARED					"Texto e texturas de prancheta limpa"
 #define INCORRECT_PLAYER_ID_ERROR		"Digite o ID do jogador válido!"
 #define PLAYER_IS_NOT_SPAWNED_ERROR		"Este jogador não é gerado!"
-#define STREAMER_COMPATIBILITY_ERROR	"Este recurso não estará disponível se o Plugin streamer for usado!"
 #define OBJECT_ATTACHED_TO_PLAYER		"Objeto id %d ligado ao id do jogador %d"
 #define INCORRECT_OBJECT_ID_ERROR		"Digite o ID de objeto válido!"
 #define UNKNOWN_OBJECT_ID_ERROR			"Este objeto não é criado no editor!"
@@ -9048,7 +9047,8 @@ uc_DestroyVehicle(vehicleid)
 
 CopyVehicle(vehicleid, modelid, Float:x, Float:y, Float:z, Float:rz)
 {
-	new cveh = CreateVehicle(modelid, x, y, z, rz, VehiclesInfo[vehicleid][vColor1], VehiclesInfo[vehicleid][vColor2], VehiclesInfo[vehicleid][vRespawnDelay]);
+	new delay = (VehiclesInfo[vehicleid][vRespawnDelay] > 0 ? VehiclesInfo[vehicleid][vRespawnDelay] : -1);
+	new cveh = CreateVehicle(modelid, x, y, z, rz, VehiclesInfo[vehicleid][vColor1], VehiclesInfo[vehicleid][vColor2], delay);
 	if(cveh > 0 && cveh != INVALID_VEHICLE_ID)
 	{
 		new
@@ -13554,12 +13554,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								ObjectsInfo[clickedid][oAttachedObjectID] != INVALID_OBJECT_ID ||
 								ObjectsInfo[clickedid][oAttachedVehicleID] != INVALID_VEHICLE_ID) goto edit_object_case_12;
 								edit_object_case_13:
-								#if defined AttachDynamicObjectToPlayer
-									SendClientMessage(playerid, DEFAULT_COLOR, STREAMER_COMPATIBILITY_ERROR);
-								#else
-									CreatorInfo[playerid][ucCalledFromCmd] = false;
-									ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_PLAYER);
-								#endif
+								CreatorInfo[playerid][ucCalledFromCmd] = false;
+								ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_PLAYER);
 							}
 							case 12:
 							{
@@ -17342,12 +17338,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								if(LabelsInfo[clickedid][lAttachedPlayerID] != INVALID_PLAYER_ID ||
 								LabelsInfo[clickedid][lAttachedVehicleID] != INVALID_VEHICLE_ID) goto edit_label_case_8;
 								edit_label_case_9:
-								#if defined AttachDynamicObjectToPlayer
-									SendClientMessage(playerid, DEFAULT_COLOR, STREAMER_COMPATIBILITY_ERROR);
-								#else
-									CreatorInfo[playerid][ucCalledFromCmd] = false;
-									ShowCreatorDialog(playerid, DIALOG_ATTACH_LAB_TO_PLAYER);
-								#endif
+								CreatorInfo[playerid][ucCalledFromCmd] = false;
+								ShowCreatorDialog(playerid, DIALOG_ATTACH_LAB_TO_PLAYER);
 							}
 							case 9:
 							{
@@ -21106,36 +21098,32 @@ fpublic cmd_oplattach(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
 	if(isnull(MapName)) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
-	#if defined AttachDynamicObjectToPlayer
-		SendClientMessage(playerid, DEFAULT_COLOR, STREAMER_COMPATIBILITY_ERROR);
-	#else
-		new selectedid = CreatorInfo[playerid][ucSelectedObj];
-		if(selectedid == INVALID_OBJECT_ID)
-		{
-			selectedid = CreatorInfo[playerid][ucHoldingObj];
-			if(selectedid == INVALID_OBJECT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_OBJECTS_ERROR);
-		}
-		if(!IsNumeric(params))
-		{
-			CreatorInfo[playerid][ucClickedObj] = selectedid;
-			CreatorInfo[playerid][ucCalledFromCmd] = true;
-			ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_PLAYER);
-		}
-		else
-		{
-			new pid = strval(params);
-			if(!IsPlayerConnected(pid)) return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_PLAYER_ID_ERROR);
-			if(!(PLAYER_STATE_ONFOOT <= GetPlayerState(pid) <= PLAYER_STATE_PASSENGER)) return SendClientMessage(playerid, DEFAULT_COLOR, PLAYER_IS_NOT_SPAWNED_ERROR);
-			#if defined AttachDynamicObjectToPlayer
-				AttachDynamicObjectToPlayer(selectedid, pid, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-			#else
-				AttachObjectToPlayer(selectedid, pid, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-			#endif
-			static strtmp[145];
-			format(strtmp, sizeof strtmp, OBJECT_ATTACHED_TO_PLAYER, selectedid, pid);
-			SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
-		}
-	#endif
+	new selectedid = CreatorInfo[playerid][ucSelectedObj];
+	if(selectedid == INVALID_OBJECT_ID)
+	{
+		selectedid = CreatorInfo[playerid][ucHoldingObj];
+		if(selectedid == INVALID_OBJECT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_OBJECTS_ERROR);
+	}
+	if(!IsNumeric(params))
+	{
+		CreatorInfo[playerid][ucClickedObj] = selectedid;
+		CreatorInfo[playerid][ucCalledFromCmd] = true;
+		ShowCreatorDialog(playerid, DIALOG_ATTACH_OBJ_TO_PLAYER);
+	}
+	else
+	{
+		new pid = strval(params);
+		if(!IsPlayerConnected(pid)) return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_PLAYER_ID_ERROR);
+		if(!(PLAYER_STATE_ONFOOT <= GetPlayerState(pid) <= PLAYER_STATE_PASSENGER)) return SendClientMessage(playerid, DEFAULT_COLOR, PLAYER_IS_NOT_SPAWNED_ERROR);
+		#if defined AttachDynamicObjectToPlayer
+			AttachDynamicObjectToPlayer(selectedid, pid, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+		#else
+			AttachObjectToPlayer(selectedid, pid, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+		#endif
+		static strtmp[145];
+		format(strtmp, sizeof strtmp, OBJECT_ATTACHED_TO_PLAYER, selectedid, pid);
+		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+	}
 	return 1;
 }
 
@@ -26098,39 +26086,35 @@ fpublic cmd_lplattach(playerid, const params[])
 {
 	if(!CreatorInfo[playerid][ucCameraMode]) return SendClientMessage(playerid, DEFAULT_COLOR, NOT_IN_FLYMODE_ERROR);
 	if(isnull(MapName)) return SendClientMessage(playerid, DEFAULT_COLOR, MAP_DOES_NOT_EXIST_ERROR);
-	#if defined AttachDynamicObjectToPlayer
-		SendClientMessage(playerid, DEFAULT_COLOR, STREAMER_COMPATIBILITY_ERROR);
-	#else
-		new selectedid = CreatorInfo[playerid][ucSelectedLab];
-		if(selectedid == INVALID_3DTEXT_ID)
-		{
-			selectedid = CreatorInfo[playerid][ucHoldingLab];
-			if(selectedid == INVALID_3DTEXT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_LABELS_ERROR);
-		}
-		if(!IsNumeric(params))
-		{
-			CreatorInfo[playerid][ucClickedLab] = selectedid;
-			CreatorInfo[playerid][ucCalledFromCmd] = true;
-			ShowCreatorDialog(playerid, DIALOG_ATTACH_LAB_TO_PLAYER);
-		}
-		else
-		{
-			new pid = strval(params);
-			if(!IsPlayerConnected(pid)) return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_PLAYER_ID_ERROR);
-			if(!(PLAYER_STATE_ONFOOT <= GetPlayerState(pid) <= PLAYER_STATE_PASSENGER)) return SendClientMessage(playerid, DEFAULT_COLOR, PLAYER_IS_NOT_SPAWNED_ERROR);
-			#if defined Streamer_SetIntData\
-				&& defined Streamer_SetItemPos\
-				&& defined Streamer_Update
-				AttachDyn3DTextToPlayer(selectedid, pid, 0.0, 0.0, 0.0);
-				Streamer_Update(playerid);
-			#else
-				Attach3DTextLabelToPlayer(selectedid, pid, 0.0, 0.0, 0.0);
-			#endif
-			static strtmp[145];
-			format(strtmp, sizeof strtmp, LABEL_ATTACHED_TO_PLAYER, selectedid, pid);
-			SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
-		}
-	#endif
+	new selectedid = CreatorInfo[playerid][ucSelectedLab];
+	if(selectedid == INVALID_3DTEXT_ID)
+	{
+		selectedid = CreatorInfo[playerid][ucHoldingLab];
+		if(selectedid == INVALID_3DTEXT_ID) return SendClientMessage(playerid, DEFAULT_COLOR, NO_SELECTED_LABELS_ERROR);
+	}
+	if(!IsNumeric(params))
+	{
+		CreatorInfo[playerid][ucClickedLab] = selectedid;
+		CreatorInfo[playerid][ucCalledFromCmd] = true;
+		ShowCreatorDialog(playerid, DIALOG_ATTACH_LAB_TO_PLAYER);
+	}
+	else
+	{
+		new pid = strval(params);
+		if(!IsPlayerConnected(pid)) return SendClientMessage(playerid, DEFAULT_COLOR, INCORRECT_PLAYER_ID_ERROR);
+		if(!(PLAYER_STATE_ONFOOT <= GetPlayerState(pid) <= PLAYER_STATE_PASSENGER)) return SendClientMessage(playerid, DEFAULT_COLOR, PLAYER_IS_NOT_SPAWNED_ERROR);
+		#if defined Streamer_SetIntData\
+			&& defined Streamer_SetItemPos\
+			&& defined Streamer_Update
+			AttachDyn3DTextToPlayer(selectedid, pid, 0.0, 0.0, 0.0);
+			Streamer_Update(playerid);
+		#else
+			Attach3DTextLabelToPlayer(selectedid, pid, 0.0, 0.0, 0.0);
+		#endif
+		static strtmp[145];
+		format(strtmp, sizeof strtmp, LABEL_ATTACHED_TO_PLAYER, selectedid, pid);
+		SendClientMessage(playerid, DEFAULT_COLOR, strtmp);
+	}
 	return 1;
 }
 
